@@ -1,0 +1,9 @@
+{
+  "baseline_strong_error": 1.35,
+  "best_cubic_gamma": 0.0887,
+  "best_cubic_error": 0.0006082859249022691,
+  "best_alpha_for_strong": 0.007353068640197353,
+  "best_alpha_strong_error": 0.0006344415565999626,
+  "best_phi_power": 5.016,
+  "best_phi_power_error": 0.017506888540559394
+}
