@@ -60,8 +60,12 @@ def neutrino_mass(m_lepton_mev, generation, k=22, q=0.957, phi=PHI, C=C_TWO_SIDE
     return (m_lepton_mev ** q) * MeV_to_eV * (phi ** (-2 * (n + k))) * C
 
 
-def all_neutrino_masses(k=22, q=0.957):
+def all_neutrino_masses(k=22, q=None):
     """Compute all three neutrino masses. Returns [m_νe, m_νμ, m_ντ] in eV."""
+    if q is None:
+        # Use A5-derived q = cos(72 deg * phi^-3)
+        from a5_pmns import q_factor
+        q = q_factor()
     leptons = [M_ELECTRON, M_MUON, M_TAU]
     return [neutrino_mass(m, n+1, k, q) for n, m in enumerate(leptons)]
 
