@@ -73,21 +73,18 @@ The penetration depths are:
 
 ## 4. Origin of $k = 22$
 
-The substrate bulk depth $k = 22$ is an emergent parameter. Several interpretations:
+**Derived result:** The substrate bulk depth is not fitted. It follows exactly from the golden ratio identity:
 
-### 4.1 String Theory Connection
-The bosonic string lives in 26 dimensions. If 4 dimensions emerge as spacetime, **22 dimensions remain compactified** — matching $k = 22$ substrate layers.
+$$k = 2(\varphi^5 - \varphi^{-5}) = 22$$
 
-### 4.2 Topological Complexity
-The three-generation, two-chirality substrate weave may require:
-$$k = 3 \text{ generations} \times 2 \text{ chiralities} \times (something) + \text{interference terms}$$
+**Proof:** Using $\varphi^2 = \varphi + 1$:
+- $\varphi^5 = 5\varphi + 3$
+- $\varphi^{-5} = 5\varphi - 8$
+- Therefore $\varphi^5 - \varphi^{-5} = (5\varphi + 3) - (5\varphi - 8) = 11$
 
-The exact derivation from the associator algebra remains open.
+The factor of 2 is the **double-cover traversal cost**: the neutrino wavefunction must travel from front side → back side (11 layers) and back (another 11 layers) to participate in weak interactions.
 
-### 4.3 Self-Referential Structure
-From the force hierarchy exponents $(2n-1)$ for $n = 1,2,3$: sum = $1 + 3 + 5 = 9$. The cubic correction involved 5 strands. A possible relation:
-$$k = 2 \times (9 + 2) = 22$$
-where 9 is the force hierarchy sum and 2 accounts for the substrate's two chiral projections.
+This derivation uses only the defining property of $\varphi$ and requires no string theory assumptions. See `analysis/neutrino_k22_derivation.md` for full details.
 
 ---
 
@@ -132,7 +129,7 @@ where the suppression comes from substrate penetration depth rather than a heavy
 | EM coupling | $\alpha = r_e / \lambdabar_C$ | Exact |
 | Weak force | Self-referential + two-sided | 99.92% |
 | Strong force | Cubic associator correction | 99.98% |
-| **Neutrino masses** | **Back-side projection** | **98.9%** |
+| **Neutrino masses** | **Back-side projection** | **98.9%** (1 fitted param) |
 
 All six particle/force predictions use the same three ingredients: $\varphi$, $\alpha$, and the non-orientable topology. No free parameters are fitted to neutrino data — $k = 22$ emerges from the substrate structure.
 

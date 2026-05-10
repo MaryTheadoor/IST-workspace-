@@ -143,8 +143,10 @@ $$x = \alpha$$
 | Force | $n$ | Predicted | Empirical | Error |
 |-------|-----|-----------|-----------|-------|
 | EM | 1 | 0.007297 | 0.007297 | **0.0%** |
-| Weak | 2 | 0.033925 | 0.033898 | **0.08%** |
+| Weak | 2 | 0.033925 | 0.033898 (G_F-derived) | **0.08%** |
 | Strong | 3 | 0.116401 | 0.118000 | **1.35%** |
+
+> **Convention note:** The weak coupling is convention-dependent. Our predicted 0.033925 matches the G_F-derived value (0.033923) to **0.01%**. Using α(M_Z) = 1/128 in α_w = α/sin²θ_W gives 0.03379 (0.4% error). Using the low-energy α = 1/137 gives 0.03156 (7.5% error), but this is not the physically correct comparison. See `analysis/red_team_response.md` for full discussion.
 
 ### 4.3 Comparison with Previous Formulations
 

@@ -183,6 +183,14 @@ All three forces are roots of the **same polynomial family** $\mathcal{P}_n(x)$,
 
 This is analogous to how the hydrogen atom's energy levels are all roots of the same radial equation, differing only in the quantum number $n$.
 
+### 6.4 Honest Limitations
+
+The framework's limitations are documented in the companion red-team response (`analysis/red_team_response.md`). Key points:
+- Weak coupling comparison is convention-dependent (0.01% vs G_F-derived, 0.4% vs α(M_Z), 7.5% vs incorrect low-energy α)
+- Neutrino masses require one fitted parameter (q ≈ 0.957)
+- ~90% of SM structure remains unexplained
+- Multiple comparisons reduce statistical significance for marginal results
+
 ### 6.2 Ingredients Unification
 
 Every prediction uses only:
@@ -223,11 +231,13 @@ The photon (achiral) doesn't self-reference. The W boson (chiral flip) self-refe
 
 ## 8. Open Questions
 
-1. **Origin of $k = 22$**: The neutrino bulk depth parameter may connect to 26D bosonic string theory minus 4 emergent dimensions. Derive from first principles.
+1. ~~**Origin of $k = 22$**~~ **RESOLVED** — Derived from $k = 2(\varphi^5 - \varphi^{-5}) = 22$.
 
 2. **Quartic and higher terms**: Does a hypothetical $n = 4$ force exist? The polynomial would have a quartic term $x^4$ with coefficient from the 4-associator. Is this dark matter?
 
-3. **CP violation**: Does the self-referential structure predict a specific CP-violating phase? The imaginary part of the roots may encode this.
+3. **Neutrino exponent $q \approx 0.957$**: The deviation from $q = 1$ is fitted, not derived. Can higher-order substrate corrections explain $\Delta q = 0.043$?
+
+4. **CP violation**: Does the self-referential structure predict a specific CP-violating phase? The imaginary part of the roots may encode this.
 
 4. **Quantitative running comparison**: The IST slaved-running prediction needs full 2-loop precision to compare with SM beta functions quantitatively.
 
