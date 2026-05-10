@@ -1,0 +1,36 @@
+# Information Substrate Theory - Python Dependencies
+# Install: pip install -r requirements.txt
+
+# Core numerical computing
+numpy>=1.24.0
+scipy>=1.10.0
+
+# Symbolic mathematics
+sympy>=1.12
+mpmath>=1.3.0
+
+# Visualization
+matplotlib>=3.7.0
+plotly>=5.15.0
+
+# Jupyter (for interactive notebooks)
+jupyterlab>=4.0.0
+ipywidgets>=8.0.0
+
+# Data analysis (for empirical assessment)
+pandas>=2.0.0
+
+# Optional: GPU acceleration
+# jax[cpu]>=0.4.0  # For CPU-only
+# jax[cuda]>=0.4.0  # For GPU (CUDA)
+
+# Optional: Advanced visualization
+# manim>=0.17.0  # For mathematical animations
+# mayavi>=4.8.0  # For 3D scientific visualization
+
+# Optional: Network analysis
+# networkx>=3.1  # For graph theory on substrate
+
+# Optional: Machine learning (for pattern recognition)
+# scikit-learn>=1.3.0
+# torch>=2.0.0
