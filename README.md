@@ -49,6 +49,11 @@ ist_papers/
 |
 |-- code/
 |   |-- ist_toolkit_v2.py               # Core Python module
+|   |-- black_hole_simulation.py         # GPU-accelerated BH topology simulation
+|   |-- black_hole_viz.py               # Klein bottle information knot visualization
+|   |-- outputs/
+|   |   |-- entropy_comparison.csv       # BH entropy by topology
+|   |   |-- klein_info_knot.png          # Klein bottle info knot rendering
 |   |-- requirements.txt                # Python dependencies
 |   |-- notebooks/                      # Jupyter notebooks
 |       |-- proton_mass.ipynb
@@ -58,6 +63,7 @@ ist_papers/
 |-- notes/
 |   |-- research_log.md                 # Ongoing research notes
 |   |-- open_questions.md               # List of open problems
+|   |-- black_hole_topology_plan.md     # BH Klein bottle execution plan
 |   |-- references.bib                  # Bibliography
 |   |-- meeting_notes/                  # Meeting summaries
 |
@@ -210,6 +216,15 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Formula:** $\eta \sim \alpha^4/\varphi^2 \approx 1.1 \times 10^{-9}$
 - **Status:** Within factor of 2 of observed; needs refinement
 
+### Black Hole Topology (Klein Bottle Horizon)
+- **Model:** Black hole horizons as non-orientable topological spaces
+- **Class:** `TopologicalHorizon` in `ist_toolkit_v2.py`
+- **Entropy:** Topology-corrected Bekenstein-Hawking $S = A/(4\ell_P^2) \times f(T)$, where $f(\text{Klein}) = 1 + |\text{twist}|$
+- **Simulation:** JAX-accelerated 1000-step info-density evolution across sphere, torus, and Klein bottle
+- **Ringdown:** Topology-dependent quasinormal mode frequencies
+- **Viz:** 3D Klein bottle with extracted information knots and linking numbers
+- **Status:** Proof-of-concept; see `notes/black_hole_topology_plan.md`
+
 ---
 
 ## Open Questions
@@ -232,7 +247,7 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 11. [ ] Formalize projection map $P: \Sigma \rightarrow \mathbb{R}^3$
 12. [ ] Derive Bell inequality violation from substrate topology
 13. [ ] Connect to Riemann hypothesis (information density = zeta zeros?)
-14. [ ] Numerical relativity on the substrate (black hole mergers)
+14. [x] Numerical relativity on the substrate (black hole mergers) -- *Proof-of-concept: TopologicalHorizon class with Klein bottle horizon simulation*
 15. [ ] Consciousness substrates (speculative; IIT connection)
 
 ---
