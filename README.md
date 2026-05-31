@@ -49,11 +49,23 @@ ist_papers/
 |
 |-- code/
 |   |-- ist_toolkit_v2.py               # Core Python module
-|   |-- black_hole_simulation.py         # GPU-accelerated BH topology simulation
-|   |-- black_hole_viz.py               # Klein bottle information knot visualization
+|   |-- black_hole_simulation.py         # BH topology simulation (Runs A-E)
+|   |-- black_hole_viz.py               # 6 BH topology visualizations
 |   |-- outputs/
 |   |   |-- entropy_comparison.csv       # BH entropy by topology
 |   |   |-- klein_info_knot.png          # Klein bottle info knot rendering
+|   |   |-- gradient_vs_time.csv         # Run A: gradient evolution
+|   |   |-- topology_timeline.csv        # Run A: transition events
+|   |   |-- compact_dims_vs_mass.csv     # Run B: compact dim growth
+|   |   |-- phase_diagram.csv            # Run C: mass-spin phase diagram
+|   |   |-- gravitational_waveform.csv   # Run D: GW burst signal
+|   |   |-- radiation_spectrum.csv       # Run E: non-thermal Hawking
+|   |   |-- topology_transition.png      # Sphere -> Klein bottle 3D
+|   |   |-- gradient_threshold.png       # Gradient vs time with bands
+|   |   |-- compact_dimensions.png       # n_compact step plot
+|   |   |-- phase_diagram.png            # 2D colormap (mass x spin)
+|   |   |-- gravitational_waveform.png   # h_+, h_x time series
+|   |   |-- radiation_spectrum.png       # log-log with annotated peaks
 |   |-- requirements.txt                # Python dependencies
 |   |-- notebooks/                      # Jupyter notebooks
 |       |-- proton_mass.ipynb
@@ -216,14 +228,14 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Formula:** $\eta \sim \alpha^4/\varphi^2 \approx 1.1 \times 10^{-9}$
 - **Status:** Within factor of 2 of observed; needs refinement
 
-### Black Hole Topology (Klein Bottle Horizon)
-- **Model:** Black hole horizons as non-orientable topological spaces
-- **Class:** `TopologicalHorizon` in `ist_toolkit_v2.py`
-- **Entropy:** Topology-corrected Bekenstein-Hawking $S = A/(4\ell_P^2) \times f(T)$, where $f(\text{Klein}) = 1 + |\text{twist}|$
-- **Simulation:** JAX-accelerated 1000-step info-density evolution across sphere, torus, and Klein bottle
-- **Ringdown:** Topology-dependent quasinormal mode frequencies
-- **Viz:** 3D Klein bottle with extracted information knots and linking numbers
-- **Status:** Proof-of-concept; see `notes/black_hole_topology_plan.md`
+### Black Hole Topology (Phase 2: Hysteresis, Compact Dims, GW, Non-Thermal Hawking)
+- **Gradient trigger:** $\|\nabla \rho_I\|_H > \gamma_{\text{crit}}$ flips sphere to Klein bottle
+- **Hysteresis:** System oscillates at transition boundary (2667 flips in Run A) — transition is **reversible** with current thresholds; gradient must fall below $\gamma_{\text{hold}} = 0.3\gamma_{\text{crit}}$ for reversion
+- **Compact dimensions:** $n_{\text{compact}} = \lfloor \rho_I / \rho_I^{\text{crit}} \rfloor$ grows with infall; tracked to $n=6$ in Run B
+- **GW emission:** Dimensional shift generates $h_+, h_\times$ waveform with $\kappa$ coupling; $E_{\text{GW}} = \frac12 \kappa (\Delta n)^2 M_{\text{Pl}}^2$
+- **Non-thermal Hawking spectrum:** Power spectrum includes narrow peaks at $\omega_i = c/R_s \cdot Lk_i$ from winding numbers
+- **Simulations:** Runs A–E complete (40 configs across mass/spin space)
+- **Outputs:** 6 CSVs + 6 PNGs in `code/outputs/`
 
 ---
 

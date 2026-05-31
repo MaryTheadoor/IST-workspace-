@@ -319,7 +319,8 @@ class TopologicalHorizon:
     """Black hole horizon as a non-orientable topological space (Klein bottle) within IST.
 
     Models the horizon as an information-density surface whose topology
-    determines entropy, ringdown, and information leakage.
+    determines entropy, ringdown, information leakage, gradient-driven
+    phase transitions, compact dimension growth, and gravitational wave emission.
 
     Parameters
     ----------
@@ -331,40 +332,58 @@ class TopologicalHorizon:
         Schwarzschild radius in Planck units.
     mesh_resolution : int
         Number of points per dimension for the mesh.
+    mass_solar : float
+        Black hole mass in solar masses (for physical unit conversions).
+    spin : float
+        Dimensionless spin parameter a* (0 to 1).
     """
 
-    L_PLANCK = 1.616255e-35       # Planck length (m)
-    T_PLANCK = 5.391247e-44       # Planck time (s)
+    L_PLANCK = 1.616255e-35
+    T_PLANCK = 5.391247e-44
+    M_PLANCK = 2.176434e-8
+    C = 299792458
+    G = 6.67430e-11
+    H_BAR = 1.054571817e-34
+    M_SOLAR = 1.98847e30
 
-    def __init__(self, topology="klein_bottle", twist_param=1.0, radius=10.0, mesh_resolution=50):
+    def __init__(self, topology="klein_bottle", twist_param=1.0, radius=10.0,
+                 mesh_resolution=50, mass_solar=10.0, spin=0.0):
         self.topology = topology
         self.twist_param = twist_param
         self.radius = radius
         self.mesh_resolution = mesh_resolution
+        self.mass_solar = mass_solar
+        self.spin = spin
         self.info_density_grid = None
         self._mesh = None
         self._vertices = None
         self._faces = None
+        self.compact_dimensions = 0
+        self.winding_numbers = []
+        self._transition_history = []
+
+        self.rho_crit_sphere = 0.3
+        self.rho_crit_klein = 0.15
+        self.gradient_threshold = 0.8
+        self.gradient_hold = 0.3
+
+        self._mean_density_history = []
+        self._gradient_history = []
 
     # ── Mesh Construction ──────────────────────────────────────────────────
 
     def build_mesh(self):
-        """Construct a triangulated surface mesh for the chosen topology.
-
-        Returns
-        -------
-        vertices : ndarray (N, 3)
-        faces : ndarray (M, 3)
-        """
+        """Construct a triangulated surface mesh for the chosen topology."""
         n = self.mesh_resolution
         u = np.linspace(0, 2 * np.pi, n)
         v = np.linspace(0, 2 * np.pi, n)
         u, v = np.meshgrid(u, v, indexing="ij")
 
         if self.topology == "sphere":
-            x = self.radius * np.sin(v) * np.cos(u)
-            y = self.radius * np.sin(v) * np.sin(u)
-            z = self.radius * np.cos(v)
+            r_eff = self.radius * (1.0 - self.spin ** 2) ** 0.3
+            x = r_eff * np.sin(v) * np.cos(u)
+            y = r_eff * np.sin(v) * np.sin(u)
+            z = r_eff * np.cos(v)
 
         elif self.topology == "torus":
             R = self.radius
@@ -399,7 +418,8 @@ class TopologicalHorizon:
         self._faces = np.array(faces)
 
         nx, ny = x.shape
-        self.info_density_grid = np.ones((nx, ny)) * 0.5
+        if self.info_density_grid is None or self.info_density_grid.shape != (nx, ny):
+            self.info_density_grid = np.ones((nx, ny)) * 0.5
 
         return self._vertices, self._faces
 
@@ -418,15 +438,8 @@ class TopologicalHorizon:
         return area
 
     def compute_entropy(self):
-        """Corrected Bekenstein-Hawking entropy for the given topology.
-
-        S = A / (4 ℓ_P²) × f(topology)
-
-        where f(sphere) = 1, f(torus) = 1, f(klein_bottle) = 1 + |twist_param|.
-        """
         A = self.surface_area()
-        S_bh = A / (4 * self.L_PLANCK**2)
-
+        S_bh = A / (4 * self.L_PLANCK ** 2)
         topo_factor = {"sphere": 1.0, "torus": 1.0, "klein_bottle": 1.0 + abs(self.twist_param)}
         S = S_bh * topo_factor.get(self.topology, 1.0)
         return S
@@ -434,11 +447,6 @@ class TopologicalHorizon:
     # ── Information Density Evolution ──────────────────────────────────────
 
     def evolve_info(self, dt, diffusion_coeff=0.01):
-        """Evolve info density using a diffusion-like IST Hamiltonian.
-
-        Uses finite-difference Laplacian on the parametric grid with
-        periodic boundary conditions and a Klein-bottle sign flip on twist.
-        """
         if self.info_density_grid is None:
             self.build_mesh()
 
@@ -449,7 +457,7 @@ class TopologicalHorizon:
             np.roll(rho, -1, axis=0) + np.roll(rho, 1, axis=0)
             + np.roll(rho, -1, axis=1) + np.roll(rho, 1, axis=1)
             - 4 * rho
-        ) / (2 * np.pi / n)**2
+        ) / (2 * np.pi / n) ** 2
 
         if self.topology == "klein_bottle":
             lap *= (1.0 + 0.1 * self.twist_param * np.sin(np.linspace(0, 2 * np.pi, n))[:, None])
@@ -460,23 +468,100 @@ class TopologicalHorizon:
         leakage = (1.0 - rho_new.mean() / rho.mean()) if rho.mean() > 0 else 0.0
 
         self.info_density_grid = rho_new
+        self._mean_density_history.append(float(rho_new.mean()))
         return leakage
+
+    # ── Gradient Computation ───────────────────────────────────────────────
+
+    def compute_gradient(self):
+        if self.info_density_grid is None:
+            self.build_mesh()
+        rho = self.info_density_grid
+        n = self.mesh_resolution
+        du = 2 * np.pi / n
+        dv = 2 * np.pi / n
+
+        d_du = (np.roll(rho, -1, axis=0) - np.roll(rho, 1, axis=0)) / (2 * du)
+        d_dv = (np.roll(rho, -1, axis=1) - np.roll(rho, 1, axis=1)) / (2 * dv)
+
+        grad_sq = d_du ** 2 + d_dv ** 2
+        if self._vertices is not None and self._faces is not None:
+            v = self._vertices
+            f = self._faces
+            tri = v[f]
+            a = tri[:, 1] - tri[:, 0]
+            b = tri[:, 2] - tri[:, 0]
+            face_areas = 0.5 * np.linalg.norm(np.cross(a, b), axis=1)
+            dA = face_areas.sum() / (n * n)
+        else:
+            dA = (4 * np.pi * self.radius ** 2) / (n * n)
+
+        grad_norm = np.sqrt(grad_sq).sum() * dA
+        self._gradient_history.append(float(grad_norm))
+        return grad_norm
+
+    # ── Transition Trigger ─────────────────────────────────────────────────
+
+    def transition_if_needed(self):
+        grad = self.compute_gradient()
+        if self.topology == "sphere" and grad > self.gradient_threshold:
+            old = self.topology
+            self.topology = "klein_bottle"
+            self.twist_param = 1.0 + 0.1 * (grad / self.gradient_threshold - 1.0)
+            self._transition_history.append((old, self.topology, float(grad)))
+            self.build_mesh()
+            return True
+        return False
+
+    def hysteresis_test(self, grad):
+        if self.topology == "klein_bottle" and grad < self.gradient_hold:
+            old = self.topology
+            self.topology = "sphere"
+            self.twist_param = 1.0
+            self._transition_history.append((old, self.topology, float(grad)))
+            self.build_mesh()
+            return True
+        return False
+
+    # ── Compact Dimensions ─────────────────────────────────────────────────
+
+    def update_compact_dimensions(self):
+        if self.info_density_grid is None:
+            self.build_mesh()
+        rho_mean = self.info_density_grid.mean()
+        rho_crit = self.rho_crit_klein if self.topology == "klein_bottle" else self.rho_crit_sphere
+        n_new = int(np.floor(rho_mean / rho_crit)) if rho_crit > 0 else 0
+        delta_n = n_new - self.compact_dimensions
+        self.compact_dimensions = max(0, n_new)
+        self.winding_numbers = [i + 1 for i in range(self.compact_dimensions)]
+        return delta_n
+
+    # ── Gravitational Wave Emission ────────────────────────────────────────
+
+    def emit_gravitational_wave(self, delta_n, kappa=0.01, duration=1.0, dt=1e-4):
+        if delta_n <= 0:
+            t = np.arange(0, duration, dt)
+            return t, np.zeros_like(t), np.zeros_like(t)
+
+        E_gw = 0.5 * kappa * (delta_n ** 2) * self.M_PLANCK ** 2
+        R_compact = self.L_PLANCK * np.sqrt(max(self.compact_dimensions, 1))
+        f_char = self.C / (2 * np.pi * R_compact)
+        omega_char = 2 * np.pi * f_char
+
+        M_kg = self.mass_solar * self.M_SOLAR
+        R_s = 2 * self.G * M_kg / self.C ** 2
+        amp_0 = np.sqrt(2 * self.G * E_gw / (R_s ** 2 * self.C ** 3 * duration))
+
+        t = np.arange(0, duration, dt)
+        envelope = np.exp(-t / (duration * 0.3))
+        h_plus = amp_0 * envelope * np.cos(omega_char * t)
+        h_cross = amp_0 * envelope * np.sin(omega_char * t)
+
+        return t, h_plus, h_cross
 
     # ── Ringdown Waveform ──────────────────────────────────────────────────
 
     def waveform_signal(self, duration=100.0, dt=0.1, mode_l=2, mode_m=0):
-        """Compute ringdown gravitational-wave Fourier modes.
-
-        Models the horizon oscillation as a damped sinusoid whose
-        frequency and damping depend on topology.
-
-        Returns
-        -------
-        t : ndarray
-        signal : ndarray
-        freqs : ndarray
-        spectrum : ndarray
-        """
         t = np.arange(0, duration, dt)
 
         M = self.radius * self.L_PLANCK / (2 * 1.0)
@@ -486,9 +571,6 @@ class TopologicalHorizon:
         if self.topology == "klein_bottle":
             omega_qnm *= 1.0 + 0.05 * self.twist_param
             tau *= 1.0 + 0.1 * abs(self.twist_param)
-
-        if self.topology == "sphere":
-            omega_qnm *= 1.0
         elif self.topology == "torus":
             omega_qnm *= 1.1
 
@@ -500,6 +582,25 @@ class TopologicalHorizon:
         freqs = np.fft.rfftfreq(n_fft, d=dt)
 
         return t, signal, freqs, spectrum
+
+    # ── Non-Thermal Hawking Spectrum ───────────────────────────────────────
+
+    def hawking_spectrum(self, freqs):
+        M_kg = self.mass_solar * self.M_SOLAR
+        T_H = (self.H_BAR * self.C ** 3) / (8 * np.pi * self.G * M_kg * 1.380649e-23)
+
+        R_s = 2 * self.G * M_kg / self.C ** 2
+        spectrum = (self.H_BAR * freqs ** 3) / (8 * np.pi ** 2 * self.C ** 2)
+        thermal = 1.0 / (np.exp(self.H_BAR * freqs / (1.380649e-23 * T_H)) - 1)
+        thermal = np.nan_to_num(thermal, nan=0.0, posinf=0.0)
+        spectrum = spectrum * thermal
+
+        for w in self.winding_numbers:
+            omega_i = self.C / R_s * abs(w)
+            peak = 1e6 * np.exp(-((freqs - omega_i) / (omega_i * 0.01)) ** 2)
+            spectrum += peak
+
+        return spectrum
 
 
 # ───────────────────────────────────────────────────────────────────────────────

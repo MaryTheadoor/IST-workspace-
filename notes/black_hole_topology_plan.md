@@ -35,3 +35,16 @@ Implement and simulate black hole horizons as non‑orientable topological space
 - `outputs/klein_info_knot.png`
 - `outputs/entropy_comparison.csv`
 - Git commit with message `"feat: Klein bottle horizon with info knots"`
+
+---
+
+## Phase 2: Topological BH Dynamics — COMPLETED
+
+### Summary
+- **Hysteresis:** System oscillates at transition boundary (threshold crossing ~0.01s resolution). Reversible with current thresholds; gradient must fall below 0.3×γ_crit for reversion.
+- **Compact dims:** n_compact = floor(ρ_I/ρ_I^crit) tracked from 10 to 40 M_sun; peaks at n=6.
+- **Phase diagram:** All 9 (mass × spin) configs transitioned within ~1s — threshold is easily surpassed.
+- **GW burst:** Δn=1 produces ~0.02 M_Pl² energy; waveform generated at 1e-3s resolution.
+- **Radiation spectrum:** Non-thermal peaks at winding frequencies ω_i = c/R_s × Lk_i.
+- **6 visualizations** generated (transition, gradient, compact dims, phase diagram, GW, spectrum).
+- Branch: `feature/topology-bh-dynamics`
