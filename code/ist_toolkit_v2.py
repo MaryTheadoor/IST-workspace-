@@ -312,6 +312,197 @@ def ist_summary():
 
 
 # ───────────────────────────────────────────────────────────────────────────────
+# MODULE 6: Topological Horizon (Black Hole)
+# ───────────────────────────────────────────────────────────────────────────────
+
+class TopologicalHorizon:
+    """Black hole horizon as a non-orientable topological space (Klein bottle) within IST.
+
+    Models the horizon as an information-density surface whose topology
+    determines entropy, ringdown, and information leakage.
+
+    Parameters
+    ----------
+    topology : str
+        One of "sphere", "torus", "klein_bottle".
+    twist_param : float
+        Twist parameter for Klein bottle (dimensionless).
+    radius : float
+        Schwarzschild radius in Planck units.
+    mesh_resolution : int
+        Number of points per dimension for the mesh.
+    """
+
+    L_PLANCK = 1.616255e-35       # Planck length (m)
+    T_PLANCK = 5.391247e-44       # Planck time (s)
+
+    def __init__(self, topology="klein_bottle", twist_param=1.0, radius=10.0, mesh_resolution=50):
+        self.topology = topology
+        self.twist_param = twist_param
+        self.radius = radius
+        self.mesh_resolution = mesh_resolution
+        self.info_density_grid = None
+        self._mesh = None
+        self._vertices = None
+        self._faces = None
+
+    # ── Mesh Construction ──────────────────────────────────────────────────
+
+    def build_mesh(self):
+        """Construct a triangulated surface mesh for the chosen topology.
+
+        Returns
+        -------
+        vertices : ndarray (N, 3)
+        faces : ndarray (M, 3)
+        """
+        n = self.mesh_resolution
+        u = np.linspace(0, 2 * np.pi, n)
+        v = np.linspace(0, 2 * np.pi, n)
+        u, v = np.meshgrid(u, v, indexing="ij")
+
+        if self.topology == "sphere":
+            x = self.radius * np.sin(v) * np.cos(u)
+            y = self.radius * np.sin(v) * np.sin(u)
+            z = self.radius * np.cos(v)
+
+        elif self.topology == "torus":
+            R = self.radius
+            r = R / 3
+            x = (R + r * np.cos(v)) * np.cos(u)
+            y = (R + r * np.cos(v)) * np.sin(u)
+            z = r * np.sin(v)
+
+        elif self.topology == "klein_bottle":
+            R = self.radius
+            twist = self.twist_param
+            x = (R + np.cos(u / 2) * np.sin(v) - np.sin(u / 2) * np.sin(2 * v)) * np.cos(u)
+            y = (R + np.cos(u / 2) * np.sin(v) - np.sin(u / 2) * np.sin(2 * v)) * np.sin(u)
+            z = np.sin(u / 2) * np.sin(v) + np.cos(u / 2) * np.sin(2 * v)
+            x *= twist
+
+        else:
+            raise ValueError(f"Unknown topology: {self.topology}")
+
+        points = np.stack([x.ravel(), y.ravel(), z.ravel()], axis=1)
+        faces = []
+        for i in range(n - 1):
+            for j in range(n - 1):
+                i0 = i * n + j
+                i1 = i0 + 1
+                i2 = (i + 1) * n + j
+                i3 = i2 + 1
+                faces.append([i0, i1, i2])
+                faces.append([i1, i3, i2])
+
+        self._vertices = points
+        self._faces = np.array(faces)
+
+        nx, ny = x.shape
+        self.info_density_grid = np.ones((nx, ny)) * 0.5
+
+        return self._vertices, self._faces
+
+    # ── Entropy Calculation ────────────────────────────────────────────────
+
+    def surface_area(self):
+        if self._vertices is None:
+            self.build_mesh()
+        v = self._vertices
+        f = self._faces
+        tri = v[f]
+        a = tri[:, 1] - tri[:, 0]
+        b = tri[:, 2] - tri[:, 0]
+        normals = np.cross(a, b)
+        area = 0.5 * np.sum(np.linalg.norm(normals, axis=1))
+        return area
+
+    def compute_entropy(self):
+        """Corrected Bekenstein-Hawking entropy for the given topology.
+
+        S = A / (4 ℓ_P²) × f(topology)
+
+        where f(sphere) = 1, f(torus) = 1, f(klein_bottle) = 1 + |twist_param|.
+        """
+        A = self.surface_area()
+        S_bh = A / (4 * self.L_PLANCK**2)
+
+        topo_factor = {"sphere": 1.0, "torus": 1.0, "klein_bottle": 1.0 + abs(self.twist_param)}
+        S = S_bh * topo_factor.get(self.topology, 1.0)
+        return S
+
+    # ── Information Density Evolution ──────────────────────────────────────
+
+    def evolve_info(self, dt, diffusion_coeff=0.01):
+        """Evolve info density using a diffusion-like IST Hamiltonian.
+
+        Uses finite-difference Laplacian on the parametric grid with
+        periodic boundary conditions and a Klein-bottle sign flip on twist.
+        """
+        if self.info_density_grid is None:
+            self.build_mesh()
+
+        rho = self.info_density_grid.copy()
+        n = self.mesh_resolution
+
+        lap = (
+            np.roll(rho, -1, axis=0) + np.roll(rho, 1, axis=0)
+            + np.roll(rho, -1, axis=1) + np.roll(rho, 1, axis=1)
+            - 4 * rho
+        ) / (2 * np.pi / n)**2
+
+        if self.topology == "klein_bottle":
+            lap *= (1.0 + 0.1 * self.twist_param * np.sin(np.linspace(0, 2 * np.pi, n))[:, None])
+
+        rho_new = rho + diffusion_coeff * lap * dt
+        rho_new = np.clip(rho_new, 0, 1)
+
+        leakage = (1.0 - rho_new.mean() / rho.mean()) if rho.mean() > 0 else 0.0
+
+        self.info_density_grid = rho_new
+        return leakage
+
+    # ── Ringdown Waveform ──────────────────────────────────────────────────
+
+    def waveform_signal(self, duration=100.0, dt=0.1, mode_l=2, mode_m=0):
+        """Compute ringdown gravitational-wave Fourier modes.
+
+        Models the horizon oscillation as a damped sinusoid whose
+        frequency and damping depend on topology.
+
+        Returns
+        -------
+        t : ndarray
+        signal : ndarray
+        freqs : ndarray
+        spectrum : ndarray
+        """
+        t = np.arange(0, duration, dt)
+
+        M = self.radius * self.L_PLANCK / (2 * 1.0)
+        omega_qnm = 1.0 / (3 * np.sqrt(3) * M)
+        tau = 4 * M
+
+        if self.topology == "klein_bottle":
+            omega_qnm *= 1.0 + 0.05 * self.twist_param
+            tau *= 1.0 + 0.1 * abs(self.twist_param)
+
+        if self.topology == "sphere":
+            omega_qnm *= 1.0
+        elif self.topology == "torus":
+            omega_qnm *= 1.1
+
+        signal = np.exp(-t / tau) * np.sin(omega_qnm * t)
+        signal[:int(10 / dt)] *= np.linspace(0, 1, int(10 / dt))
+
+        n_fft = len(signal)
+        spectrum = np.abs(np.fft.rfft(signal))
+        freqs = np.fft.rfftfreq(n_fft, d=dt)
+
+        return t, signal, freqs, spectrum
+
+
+# ───────────────────────────────────────────────────────────────────────────────
 # MAIN
 # ───────────────────────────────────────────────────────────────────────────────
 
