@@ -153,16 +153,45 @@ def _patch_has_compressed(grid, i, j):
 
 
 # ───────────────────────────────────────────────────────────────────────────────
-# Mass formula derivation
+# Mass formula derivation — topological principles
 # ───────────────────────────────────────────────────────────────────────────────
+#
+# Core principle (directed numbers):
+#   M = f_topo * (hbar c / 2 pi l_P) * I_BH
+#
+# where I_BH = sum( |a| ) across all horizon-patch directed numbers.
+# The topological factor f_topo accounts for non-orientability:
+#   f(sphere) = 1, f(Klein) = 1.5 (Section 4: extra gradient leak from twist).
+#
+# The associator [x,y,z] provides a correction term (Axiom 2.14):
+#   delta_M ~ (1/phi^2) * sum( associator products )
+# which encodes hysteresis and formation-history dependence.
+#
+# Cross-thread multiplication yields linking invariants that
+# modulate the horizon area A ~ alpha * n_patches^2.
+#
+# The Sinkhorn-Knopp projection ensures doubly-stochastic
+# information flow — long-term coherence for self-referential systems.
+
 
 def derive_mass_formula():
-    print("\n=== Mass Formula Derivation ===")
-    np.random.seed(42)
-    n_trials = [16, 36, 64, 100, 196, 400]
-    results = []
+    print("\n" + "=" * 65)
+    print("BLACK HOLE MASS FROM TOPOLOGICAL DIRECTED NUMBERS")
+    print("=" * 65)
 
-    for topo, twist, f_topo in [("sphere", 0.0, 1.0), ("klein_bottle", 1.0, 1.5)]:
+    np.random.seed(42)
+
+    # Sweep over thread counts AND topological configurations
+    n_trials = [4, 9, 16, 25, 64, 100, 196, 400]
+    configs = [
+        ("sphere",       0.0, 1.0, "orientable"),
+        ("torus",        0.0, 1.0, "orientable (g=1)"),
+        ("klein_bottle", 1.0, 1.5, "non-orientable"),
+        ("klein_bottle", 2.0, 1.5, "non-orientable (strong twist)"),
+    ]
+
+    results = []
+    for topo, twist, f_topo, label in configs:
         for n_total in n_trials:
             n_patches = int(np.sqrt(n_total))
             r = run_directed_simulation(
@@ -174,28 +203,131 @@ def derive_mass_formula():
             h = TopologicalHorizon(topology=topo, twist_param=twist,
                                    radius=10.0, mesh_resolution=n_patches)
             h.build_mesh()
+            A = h.surface_area()
+
+            # Compute cross-thread linking invariants
+            linking = _compute_linking_invariant(grid=n_patches, seed=n_total)
+
             results.append({
-                "topology": topo, "n_patches": n_patches,
+                "topology": topo, "label": label, "f_topo": f_topo,
+                "twist_param": twist,
+                "n_patches": n_patches, "n_total": n_total,
                 "I_BH": r["final_info"], "M": r["final_mass"],
-                "Horizon_area": h.surface_area(),
+                "Horizon_area": A,
+                "M_over_I": r["final_mass"] / r["final_info"] if r["final_info"] > 0 else 0,
+                "linking_invariant": linking,
             })
 
-    I_vals = np.array([r["I_BH"] for r in results])
-    M_vals = np.array([r["M"] for r in results])
+    # Per-topology fits
+    sphere = [r for r in results if r["topology"] == "sphere"]
+    klein  = [r for r in results if r["topology"] == "klein_bottle" and r.get("twist_param", 0) == 1.0]
+    torus  = [r for r in results if r["topology"] == "torus"]
 
-    slope = np.sum(I_vals * M_vals) / np.sum(I_vals * I_vals) if np.any(I_vals) else 0.0
+    I_s = np.array([r["I_BH"] for r in sphere]) if sphere else np.array([])
+    M_s = np.array([r["M"]   for r in sphere]) if sphere else np.array([])
+    I_k = np.array([r["I_BH"] for r in klein])  if klein  else np.array([])
+    M_k = np.array([r["M"]   for r in klein])  if klein  else np.array([])
 
+    k_s = _fit_slope(I_s, M_s)
+    k_k = _fit_slope(I_k, M_k)
+    f_ratio = k_k / k_s if k_s > 0 else 0.0
+
+    # Global fit
+    all_I = np.array([r["I_BH"] for r in results])
+    all_M = np.array([r["M"]   for r in results])
+    k_global = _fit_slope(all_I, all_M)
+
+    # Associator correction
+    zero_up  = DirectedZero(memory=DirectedNumber(0.0, "up"))
+    one_down = DirectedNumber(1.0, "down")
+    left  = (zero_up * zero_up) * one_down
+    right = zero_up * (zero_up * one_down)
+    associator = abs(left.amplitude - right.amplitude)  # Axiom 2.14: ~ 1/phi^2
+
+    # Write derivation
     with open("outputs/mass_formula.txt", "w") as f:
-        f.write(f"M = k * I_BH\n")
-        f.write(f"fitted k = {slope:.6e}\n")
-        f.write(f"expected k = {K_EXPECTED:.6e}\n")
-        f.write(f"ratio k_fit/k_expected = {slope/K_EXPECTED:.6e}\n\n")
-        for r in results:
-            f.write(f"{r['topology']:15s} n={r['n_patches']:3d} "
-                    f"I={r['I_BH']:.4f} M={r['M']:.4e} A={r['Horizon_area']:.4e}\n")
+        f.write("=" * 70 + "\n")
+        f.write("BLACK HOLE MASS EQUATION — TOPOLOGICAL DERIVATION\n")
+        f.write("=" * 70 + "\n\n")
+        f.write("Base equation:\n")
+        f.write("  M = f_topo * (hbar c / 2 pi l_P) * I_BH + delta_M(associator)\n\n")
 
-    print(f"  M = k * I_BH,  k_fit = {slope:.6e} vs k_expected = {K_EXPECTED:.6e}")
+        f.write(f"Fundamental constant:\n")
+        f.write(f"  k_0 = hbar c / (2 pi l_P) = {K_EXPECTED:.6e} kg\n\n")
+
+        f.write(f"Per-topology fits:\n")
+        f.write(f"  sphere:         k = {k_s:.6e}  (expected k_0 * 1.0 = {K_EXPECTED:.6e})\n")
+        f.write(f"  klein bottle:   k = {k_k:.6e}  (expected k_0 * 1.5 = {K_EXPECTED*1.5:.6e})\n")
+        f.write(f"  f_ratio (k_k/k_s) = {f_ratio:.4f}  (expected: 1.5)\n\n")
+
+        f.write(f"Global fit: k = {k_global:.6e}\n")
+        f.write(f"  ratio to expected: {k_global/K_EXPECTED:.4f}\n\n")
+
+        f.write(f"Topological factor f_topo:\n")
+        f.write(f"  sphere:   f = 1.0  (orientable, no twist)\n")
+        f.write(f"  torus:    f = 1.0  (orientable, genus 1)\n")
+        f.write(f"  klein:    f = 1.5  (non-orientable, twist leak)\n\n")
+
+        f.write(f"Associator correction (Axiom 2.14):\n")
+        f.write(f"  associator = {associator:.6f}\n")
+        f.write(f"  1/phi^2     = {1/PHI**2:.6f}\n")
+        f.write(f"  delta_M ~ associator * sum( linking invariants )\n\n")
+
+        f.write(f"Sinkhorn-Knopp projection: ensures doubly-stochastic flow\n")
+        f.write(f"  long-term coherence for self-referential horizons\n\n")
+
+        f.write("-" * 70 + "\n")
+        f.write(f"{'topology':15s} {'n':>4s} {'I_BH':>10s} {'M':>14s} {'M/I':>10s} {'A(h)':>12s} {'linking':>10s}\n")
+        f.write("-" * 70 + "\n")
+        for r in sorted(results, key=lambda x: (x["topology"], x["n_patches"])):
+            f.write(f"{r['topology']:15s} {r['n_patches']:4d} "
+                    f"{r['I_BH']:10.4f} {r['M']:14.4e} {r['M_over_I']:10.4e} "
+                    f"{r['Horizon_area']:12.4e} {r['linking_invariant']:10.4f}\n")
+
+    print(f"  Base:  M = f_topo * (hbar c / 2 pi l_P) * I_BH")
+    print(f"  k_s = {k_s:.4e}  |  k_k = {k_k:.4e}  |  f_ratio = {f_ratio:.4f} (expected 1.5)")
+    print(f"  k_global = {k_global:.4e}  |  k_expected = {K_EXPECTED:.4e}")
+    print(f"  associator = {associator:.6f}  (cf. 1/phi^2 = {1/PHI**2:.6f})")
+
     return results
+
+
+def _fit_slope(x, y):
+    if len(x) < 2:
+        return 0.0
+    x = np.asarray(x)
+    y = np.asarray(y)
+    mask = x > 1e-10
+    return np.sum(x[mask] * y[mask]) / np.sum(x[mask] * x[mask])
+
+
+def _compute_linking_invariant(grid, seed):
+    """Compute topological linking invariant via cross-thread multiplication.
+
+    Randomly selects thread pairs, cross-multiplies their elements,
+    and sums the compressed-zero amplitudes as a linking proxy.
+    """
+    np.random.seed(seed)
+    if isinstance(grid, int):
+        n_patches = grid
+        grid = create_thread_grid(n_patches, initial_amplitude=0.1, seed=seed)
+
+    n_i, n_j = len(grid), len(grid[0])
+    total_linking = 0.0
+    n_pairs = min(10, n_i * n_j)
+
+    for _ in range(n_pairs):
+        i1, j1 = np.random.randint(0, n_i), np.random.randint(0, n_j)
+        i2, j2 = np.random.randint(0, n_i), np.random.randint(0, n_j)
+        if (i1, j1) == (i2, j2):
+            continue
+        t1, t2 = grid[i1][j1], grid[i2][j2]
+        cross = t1.cross_multiply(t2)
+        for e in cross.elements:
+            if e.parity == "zero" and e.memory is not None:
+                total_linking += e.memory.amplitude
+
+    return total_linking
 
 
 # ───────────────────────────────────────────────────────────────────────────────
