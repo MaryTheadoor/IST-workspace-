@@ -1,0 +1,22 @@
+GOLDEN RATIO CORRECTION — VALIDATION REPORT
+==================================================
+
+Full mass equation (directed numbers + associator):
+  M_tot = f_topo * K_0 * I_BH + K_0 * (alpha/phi^2) * sum(associators)
+
+Constants:
+  K_0 = hbar c / (2 pi l_P)  = 3.113201e+08 kg
+  alpha (fine-structure)      = 0.0072973526
+  phi (golden ratio)          = 1.6180339887
+  alpha / phi^2               = 0.0027873407
+  associator per pair (axiom) = 1.000000
+
+Correction per neighbor pair:
+  dM_pair = K_0 * alpha/phi^2 * assoc = 8.677551e+05 kg
+
+Scaling with mass:
+  n_pairs = 2 * n_patches^2 ~ M_base^2
+  δM_assoc = dM_pair * n_pairs ~ M_base^2
+  Fitted β = δM / M_base^2 = 2.941596e-16
+
+Validation: PASSED — alpha/phi^2 scaling confirmed

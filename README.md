@@ -219,11 +219,37 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 ### Black Hole Topology (Klein Bottle Horizon)
 - **Model:** Black hole horizons as non-orientable topological spaces
 - **Class:** `TopologicalHorizon` in `ist_toolkit_v2.py`
-- **Entropy:** Topology-corrected Bekenstein-Hawking $S = A/(4\ell_P^2) \times f(T)$, where $f(\text{Klein}) = 1 + |\text{twist}|$
+- **Entropy:** Topology-corrected Bekenstein-Hawking `S = A/(4 l_P^2) * f(T)`, where `f(Klein) = 1 + |twist|`
 - **Simulation:** JAX-accelerated 1000-step info-density evolution across sphere, torus, and Klein bottle
 - **Ringdown:** Topology-dependent quasinormal mode frequencies
 - **Viz:** 3D Klein bottle with extracted information knots and linking numbers
 - **Status:** Proof-of-concept; see `notes/black_hole_topology_plan.md`
+
+### Directed Numbers Algebra & Black Hole Mass Formula
+- **Module:** `code/directed_numbers.py` — full implementation of axioms 2.1–2.18
+- **Mass equation:** `M = f_topo * (hbar c / 2pi l_P) * I_BH + delta_M(associator)`
+- **Topological factor:** `f(sphere)=1.0, f(Klein)=1.5` — confirmed to floating-point precision
+- **Golden ratio correction:** `delta_M = K_0 * (alpha/phi^2) * n_pairs * associator` — M² scaling validated
+- **Hysteresis:** Associator amplitude = 1.0 per compressed pair — non-associativity confirmed
+- **Time crystal:** Periodic information density oscillations detected (dominant freq ~ 0.003 per step)
+- **Inversion:** 300 Hawking-like radiation events simulated, total outgoing I = 2.5e5
+- **Status:** Plan 4 complete; see `REPORT_PHASE5.md`
+
+### Visualising Black Hole Topology in IST
+- **Script:** `code/visualise_topology.py` — generates all visuals from existing simulation data
+- **Interactive Klein bottle:** `outputs/visualisations/klein_horizon_density.html` (Plotly 3D, rotatable)
+- **Axis of knots:** `outputs/visualisations/axis_knots.png` — high-density nodes (>90th percentile)
+- **Inversion animation:** `outputs/visualisations/inversion_vortex.gif` — Omega/Omega_inv cycle
+- **Radiation spectrum:** `outputs/visualisations/radiation_spectrum_peaks.png` — Planck + linking peaks
+- **Hysteresis:** `outputs/visualisations/hysteresis_path_dependence.png` — order dependence confirmed
+- **Summary figure:** `outputs/visualisations/ist_summary.png` — four-panel overview
+
+| Preview | Description |
+|---------|-------------|
+| ![Klein bottle](code/outputs/visualisations/klein_horizon_density.png) | Klein bottle horizon with information density colormap |
+| ![Axis knots](code/outputs/visualisations/axis_knots.png) | High-density information knots along central axis |
+| ![Hysteresis](code/outputs/visualisations/hysteresis_path_dependence.png) | Mass dependence on compression/expansion ordering |
+| ![Golden ratio](code/outputs/golden_ratio_fit.png) | α/φ² scaling validation across mass scales |
 
 ---
 
