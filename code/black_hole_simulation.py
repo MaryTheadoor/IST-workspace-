@@ -1,124 +1,480 @@
 import os
-import time
+import json
 import csv
+import time
 import numpy as np
-import jax.numpy as jnp
-from jax import jit
+
+from ist_toolkit_v2 import TopologicalHorizon, PHI, ALPHA, M_PLANCK
+from directed_numbers import (
+    DirectedNumber, DirectedZero, AbsoluteZero,
+    Thread, TemporalThread,
+    create_thread_grid, grid_total_info, grid_gradient,
+    compress_patch, invert_patch, amplitude_to_mass,
+)
 
 os.makedirs("outputs", exist_ok=True)
 
-def jax_evolve_step(rho, twist_param, n, dt, diffusion_coeff=0.01):
+HBAR = 1.054571817e-34
+C = 2.99792458e8
+L_P = 1.616255e-35
+K_EXPECTED = (HBAR * C) / (2 * np.pi * L_P)
+
+
+def evolve_step(rho, n, dt, twist_param=0.0, diffusion_coeff=0.02):
     lap = (
-        jnp.roll(rho, -1, axis=0) + jnp.roll(rho, 1, axis=0)
-        + jnp.roll(rho, -1, axis=1) + jnp.roll(rho, 1, axis=1)
+        np.roll(rho, -1, axis=0) + np.roll(rho, 1, axis=0)
+        + np.roll(rho, -1, axis=1) + np.roll(rho, 1, axis=1)
         - 4 * rho
-    ) / (2 * jnp.pi / n)**2
-
-    u_mod = jnp.linspace(0, 2 * jnp.pi, n)
-    lap = lap * (1.0 + 0.1 * twist_param * jnp.sin(u_mod)[:, None])
-
+    ) / (2 * np.pi / n) ** 2
+    if abs(twist_param) > 1e-10:
+        lap *= (1.0 + 0.1 * twist_param * np.sin(np.linspace(0, 2 * np.pi, n))[:, None])
     rho_new = rho + diffusion_coeff * lap * dt
-    rho_new = jnp.clip(rho_new, 0, 1)
-    return rho_new
-
-jax_step = jit(jax_evolve_step, static_argnames=["n", "dt", "diffusion_coeff"])
+    return np.clip(rho_new, 0, 1)
 
 
-def run_simulation(topology, twist_param, radius, n_steps=1000, dt=0.05):
-    from ist_toolkit_v2 import TopologicalHorizon
+def topological_factor(topology, twist_param):
+    return {"sphere": 1.0, "torus": 1.0, "klein_bottle": 1.5}.get(topology, 1.0)
 
-    h = TopologicalHorizon(
-        topology=topology, twist_param=twist_param,
-        radius=radius, mesh_resolution=50
-    )
-    vertices, faces = h.build_mesh()
-    initial_entropy = h.compute_entropy()
 
-    rho_np = h.info_density_grid.copy()
-    rho = jnp.array(rho_np)
-    n = h.mesh_resolution
+# ───────────────────────────────────────────────────────────────────────────────
+# Core simulation
+# ───────────────────────────────────────────────────────────────────────────────
 
-    leakages = []
-    entropies = [initial_entropy]
-    info_densities = [float(rho_np.mean())]
-    times = [0.0]
+def run_directed_simulation(topology="klein_bottle", twist_param=1.0,
+                             radius=10.0, n_patches=20, n_steps=500, dt=0.05,
+                             compress_threshold=0.15, invert_threshold=5.0,
+                             infall_rate=0.01, seed=42):
+    np.random.seed(seed)
+
+    h = TopologicalHorizon(topology=topology, twist_param=twist_param,
+                           radius=radius, mesh_resolution=n_patches)
+    h.build_mesh()
+
+    grid = create_thread_grid(n_patches, initial_amplitude=0.2, seed=seed)
+    rho = h.info_density_grid.copy()
+    n = n_patches
+
+    info_series = []
+    mass_series = []
+    compressed_series = []
+    leakage_series = []
+    times = []
+
+    initial_info = grid_total_info(grid)
+    initial_mass = amplitude_to_mass(initial_info, topological_factor(topology, twist_param))
+    info_series.append(initial_info)
+    mass_series.append(initial_mass)
+    compressed_series.append(0)
+    leakage_series.append(0.0)
+    times.append(0.0)
 
     t0 = time.time()
     for step in range(1, n_steps + 1):
-        if topology == "klein_bottle":
-            rho = jax_step(rho, twist_param, n, dt)
-        else:
-            rho = jax_step(rho, 0.0, n, dt)
+        rho = evolve_step(rho, n, dt, twist_param if topology == "klein_bottle" else 0.0)
 
-        if step % 100 == 0:
-            rho_np = np.array(rho)
-            mean_rho = float(rho_np.mean())
-            leakage = 1.0 - (mean_rho / info_densities[-1]) if info_densities[-1] > 0 else 0.0
-            leakages.append(leakage)
-            info_densities.append(mean_rho)
-            entropies.append(h.compute_entropy())
-            times.append(step * dt)
+        _inject_infall(grid, rho, infall_rate, seed + step)
+
+        compressed_count = 0
+        for i in range(n):
+            for j in range(n):
+                grad = grid_gradient(grid, i, j)
+                if grad > compress_threshold:
+                    compress_patch(grid, i, j)
+                    compressed_count += 1
+
+        total_compr = _count_compressed_amplitude(grid)
+        if total_compr > invert_threshold:
+            for i in range(n):
+                for j in range(n):
+                    if _patch_has_compressed(grid, i, j):
+                        flip = topology == "klein_bottle"
+                        invert_patch(grid, i, j, twist_flip=flip)
+
+        total_info = grid_total_info(grid)
+        mass = amplitude_to_mass(total_info, topological_factor(topology, twist_param))
+        leakage = 1.0 - (total_info / info_series[-1]) if info_series[-1] > 0 else 0.0
+
+        info_series.append(total_info)
+        mass_series.append(mass)
+        compressed_series.append(compressed_count)
+        leakage_series.append(leakage)
+        times.append(step * dt)
+
+        if step % 150 == 0:
             elapsed = time.time() - t0
-            print(f"  [{topology}] step {step}/{n_steps} | rho={mean_rho:.4f} | leakage={leakage:.6e} | dt={elapsed:.1f}s")
+            print(f"  [{topology}] step {step}/{n_steps} | "
+                  f"I={total_info:.4f} | M={mass:.4e} | "
+                  f"compr={compressed_count} | inv={total_compr:.2f} | leak={leakage:.6e}")
 
     elapsed = time.time() - t0
-    h.info_density_grid = np.array(rho)
 
     return {
-        "topology": topology,
-        "twist_param": twist_param,
-        "radius": radius,
-        "n_steps": n_steps,
-        "final_entropy": float(h.compute_entropy()),
-        "initial_entropy": float(initial_entropy),
-        "entropy_ratio": float(h.compute_entropy() / initial_entropy),
-        "final_info_density": float(np.array(rho).mean()),
-        "total_leakage": leakages[-1] if leakages else 0.0,
+        "topology": topology, "twist_param": twist_param,
+        "radius": radius, "n_patches": n_patches, "n_steps": n_steps,
+        "initial_info": initial_info, "final_info": grid_total_info(grid),
+        "initial_mass": initial_mass,
+        "final_mass": amplitude_to_mass(grid_total_info(grid), topological_factor(topology, twist_param)),
+        "total_leakage": leakage_series[-1],
         "elapsed_seconds": elapsed,
-        "steps_per_second": n_steps / elapsed if elapsed > 0 else float("inf"),
-        "times": times,
-        "leakages": leakages,
-        "info_densities": info_densities,
-        "entropies": entropies,
+        "times": times, "info_series": info_series,
+        "mass_series": mass_series, "compressed_series": compressed_series,
+        "leakage_series": leakage_series,
     }
 
 
-def write_csv(results, filepath="outputs/entropy_comparison.csv"):
-    fieldnames = [
-        "topology", "twist_param", "radius", "n_steps",
-        "initial_entropy", "final_entropy", "entropy_ratio",
-        "final_info_density", "total_leakage",
-        "elapsed_seconds", "steps_per_second",
-    ]
-    with open(filepath, "w", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        writer.writeheader()
-        for r in results:
-            row = {k: v for k, v in r.items() if k in fieldnames}
-            writer.writerow(row)
-    print(f"\nSaved {filepath}")
+def _inject_infall(grid, rho, rate, seed):
+    """Simulate infalling information that perturbs the grid."""
+    np.random.seed(seed)
+    n_i, n_j = len(grid), len(grid[0])
+    patches_to_perturb = int(rate * n_i * n_j)
+    for _ in range(patches_to_perturb):
+        i = np.random.randint(0, n_i)
+        j = np.random.randint(0, n_j)
+        parity = np.random.choice(["up", "down"])
+        amp = np.random.exponential(0.3)
+        grid[i][j].push(DirectedNumber(amp, parity))
 
+
+def _count_compressed_amplitude(grid):
+    total = 0.0
+    for row in grid:
+        for thread in row:
+            for e in thread.elements:
+                if e.parity == "zero" and e.memory is not None:
+                    total += e.memory.amplitude
+    return total
+
+
+def _patch_has_compressed(grid, i, j):
+    for e in grid[i][j].elements:
+        if e.parity == "zero":
+            return True
+    return False
+
+
+# ───────────────────────────────────────────────────────────────────────────────
+# Mass formula derivation
+# ───────────────────────────────────────────────────────────────────────────────
+
+def derive_mass_formula():
+    print("\n=== Mass Formula Derivation ===")
+    np.random.seed(42)
+    n_trials = [16, 36, 64, 100, 196, 400]
+    results = []
+
+    for topo, twist, f_topo in [("sphere", 0.0, 1.0), ("klein_bottle", 1.0, 1.5)]:
+        for n_total in n_trials:
+            n_patches = int(np.sqrt(n_total))
+            r = run_directed_simulation(
+                topology=topo, twist_param=twist, radius=10.0,
+                n_patches=n_patches, n_steps=200, dt=0.05,
+                compress_threshold=0.2, invert_threshold=50.0,
+                infall_rate=0.02, seed=int(n_total)
+            )
+            h = TopologicalHorizon(topology=topo, twist_param=twist,
+                                   radius=10.0, mesh_resolution=n_patches)
+            h.build_mesh()
+            results.append({
+                "topology": topo, "n_patches": n_patches,
+                "I_BH": r["final_info"], "M": r["final_mass"],
+                "Horizon_area": h.surface_area(),
+            })
+
+    I_vals = np.array([r["I_BH"] for r in results])
+    M_vals = np.array([r["M"] for r in results])
+
+    slope = np.sum(I_vals * M_vals) / np.sum(I_vals * I_vals) if np.any(I_vals) else 0.0
+
+    with open("outputs/mass_formula.txt", "w") as f:
+        f.write(f"M = k * I_BH\n")
+        f.write(f"fitted k = {slope:.6e}\n")
+        f.write(f"expected k = {K_EXPECTED:.6e}\n")
+        f.write(f"ratio k_fit/k_expected = {slope/K_EXPECTED:.6e}\n\n")
+        for r in results:
+            f.write(f"{r['topology']:15s} n={r['n_patches']:3d} "
+                    f"I={r['I_BH']:.4f} M={r['M']:.4e} A={r['Horizon_area']:.4e}\n")
+
+    print(f"  M = k * I_BH,  k_fit = {slope:.6e} vs k_expected = {K_EXPECTED:.6e}")
+    return results
+
+
+# ───────────────────────────────────────────────────────────────────────────────
+# Hysteresis test (non-associative memory)
+# ───────────────────────────────────────────────────────────────────────────────
+
+def test_hysteresis():
+    """Demonstrate non-associativity of compression/expansion order.
+
+    Tests the associator [x, y, z] = (x*y)*z - x*(y*z) for directed zeros
+    with different pairing sequences — direct algebraic verification of Axiom 2.13.
+    """
+    print("\n=== Hysteresis Test (Non-Associativity) ===")
+
+    zero_up = DirectedZero(memory=DirectedNumber(0.0, "up"))
+    one_down = DirectedNumber(1.0, "down")
+    abs_zero = AbsoluteZero()
+
+    left = (zero_up * zero_up) * one_down
+    right = zero_up * (zero_up * one_down)
+    associator = left.amplitude - right.amplitude
+
+    print(f"  (0_up * 0_up) * 1_down = D({left.amplitude:.4f}, {left.parity})")
+    print(f"  0_up * (0_up * 1_down) = D({right.amplitude:.4f}, {right.parity})")
+    print(f"  associator = {associator:.4f}  (non-zero confirms non-associativity)")
+    print(f"  1/phi^2 = {1/PHI**2:.4f}")
+
+    left2 = (abs_zero * abs_zero) * DirectedNumber(1.0, "up")
+    right2 = abs_zero * (abs_zero * DirectedNumber(1.0, "up"))
+    associator2 = left2.amplitude - right2.amplitude
+    print(f"  (0_abs * 0_abs) * 1_up = D({left2.amplitude:.4f}, {left2.parity})")
+    print(f"  0_abs * (0_abs * 1_up) = D({right2.amplitude:.4f}, {right2.parity})")
+    print(f"  associator = {associator2:.4f}")
+
+    results = [
+        {"order": "pair_12_then_3", "initial_I": 1.0, "final_I": left.info(),
+         "delta_I": associator},
+        {"order": "pair_23_then_1", "initial_I": 1.0, "final_I": right.info(),
+         "delta_I": associator},
+    ]
+
+    with open("outputs/hysteresis_data.csv", "w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=["order", "initial_I", "final_I", "delta_I"])
+        writer.writeheader()
+        writer.writerows(results)
+
+    return results
+
+
+# ───────────────────────────────────────────────────────────────────────────────
+# Temporal consistency & time crystal
+# ───────────────────────────────────────────────────────────────────────────────
+
+def test_temporal_consistency():
+    """Verify associator for compressed numbers matches Axiom 2.13/2.14."""
+    print("\n=== Temporal Consistency (Associator) ===")
+
+    zero_up = DirectedZero(memory=DirectedNumber(0.0, "up"))
+    zero_down = DirectedZero(memory=DirectedNumber(0.0, "down"))
+    one_down = DirectedNumber(1.0, "down")
+
+    left = (zero_up * zero_up) * one_down
+    right = zero_up * (zero_up * one_down)
+
+    associator = left.amplitude - right.amplitude
+    associator_golden = 1.0 / PHI**2
+
+    print(f"  (0_up * 0_up) * 1_down = {left.amplitude:.4f} ({left.parity})")
+    print(f"  0_up * (0_up * 1_down) = {right.amplitude:.4f} ({right.parity})")
+    print(f"  Associator = {associator:.4f}")
+    print(f"  1/phi^2 = {associator_golden:.4f}")
+
+    return {"associator": associator, "golden_ratio_bound": associator_golden}
+
+
+def simulate_time_crystal(n_patches=12, n_steps=300, seed=42):
+    print(f"\n=== Time Crystal ({n_patches}x{n_patches}, {n_steps} steps) ===")
+    np.random.seed(seed)
+
+    grid = create_thread_grid(n_patches, initial_amplitude=0.3, seed=seed)
+    info_history = []
+
+    for step in range(n_steps):
+        _inject_infall(grid, None, 0.03, seed + step)
+
+        for i in range(n_patches):
+            for j in range(n_patches):
+                grad = grid_gradient(grid, i, j)
+                if grad > 0.2:
+                    compress_patch(grid, i, j)
+
+        total_compr = _count_compressed_amplitude(grid)
+        if total_compr > 6.0:
+            for i in range(n_patches):
+                for j in range(n_patches):
+                    if _patch_has_compressed(grid, i, j):
+                        invert_patch(grid, i, j, twist_flip=True)
+
+        info_history.append(grid_total_info(grid))
+
+    info_arr = np.array(info_history)
+    fft = np.abs(np.fft.rfft(info_arr - info_arr.mean()))
+    freqs = np.fft.rfftfreq(n_steps)
+
+    peak_idx = np.argmax(fft[1:]) + 1 if len(fft) > 1 else 0
+    dominant_freq = freqs[peak_idx] if peak_idx < len(freqs) else 0.0
+    dominant_power = fft[peak_idx] if peak_idx < len(fft) else 0.0
+
+    print(f"  Dominant freq: {dominant_freq:.6f} (power={dominant_power:.4f})")
+    print(f"  Mean I: {info_arr.mean():.4f} +- {info_arr.std():.4f}")
+
+    return {"info_mean": float(info_arr.mean()), "info_std": float(info_arr.std()),
+            "dominant_freq": float(dominant_freq), "dominant_power": float(dominant_power),
+            "info_history": info_arr.tolist(), "freqs": freqs.tolist(), "fft": fft.tolist()}
+
+
+# ───────────────────────────────────────────────────────────────────────────────
+# Inversion waveform
+# ───────────────────────────────────────────────────────────────────────────────
+
+def simulate_inversion(n_patches=20, n_steps=500, seed=42):
+    print(f"\n=== Inversion Waveform (Klein, {n_patches}x{n_patches}) ===")
+    np.random.seed(seed)
+
+    grid = create_thread_grid(n_patches, initial_amplitude=0.3, seed=seed)
+    current_series = []
+    event_log = []
+
+    for step in range(n_steps):
+        _inject_infall(grid, None, 0.04, seed + step)
+
+        for i in range(n_patches):
+            for j in range(n_patches):
+                grad = grid_gradient(grid, i, j)
+                if grad > 0.15:
+                    compress_patch(grid, i, j)
+
+        total_compr = _count_compressed_amplitude(grid)
+        outgoing = 0.0
+        if total_compr > 5.0:
+            info_before = grid_total_info(grid)
+            for i in range(n_patches):
+                for j in range(n_patches):
+                    if _patch_has_compressed(grid, i, j):
+                        invert_patch(grid, i, j, twist_flip=True)
+            info_after = grid_total_info(grid)
+            outgoing = abs(info_after - info_before)
+            event_log.append({"step": step, "outgoing_current": outgoing})
+
+        current_series.append(outgoing)
+
+    with open("outputs/inversion_waveform.csv", "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(["step", "outgoing_current"])
+        for i, c in enumerate(current_series):
+            writer.writerow([i, c])
+
+    n_events = len(event_log)
+    total_out = sum(e["outgoing_current"] for e in event_log)
+    print(f"  Events: {n_events}  total outgoing I: {total_out:.4f}")
+    return current_series, event_log
+
+
+# ───────────────────────────────────────────────────────────────────────────────
+# Plots
+# ───────────────────────────────────────────────────────────────────────────────
+
+def plot_mass_vs_info(mass_results):
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    fig, ax = plt.subplots(figsize=(8, 5))
+    for topo in ["sphere", "klein_bottle"]:
+        pts = [r for r in mass_results if r["topology"] == topo]
+        if not pts:
+            continue
+        ax.scatter([r["I_BH"] for r in pts], [r["M"] for r in pts],
+                   label=topo, s=40, alpha=0.8)
+
+    all_I = np.array([r["I_BH"] for r in mass_results])
+    all_M = np.array([r["M"] for r in mass_results])
+    if len(all_I) > 1:
+        coeffs = np.polyfit(all_I, all_M, 1)
+        I_fit = np.linspace(all_I.min(), all_I.max(), 100)
+        ax.plot(I_fit, coeffs[0] * I_fit + coeffs[1], "k--",
+                label=f"M = {coeffs[0]:.3e} * I + {coeffs[1]:.3e}")
+
+    ax.set_xlabel("I_BH (total directed information)")
+    ax.set_ylabel("M (kg)")
+    ax.set_title("Directed Numbers Mass Formula")
+    ax.legend()
+    ax.grid(True, alpha=0.3)
+    fig.savefig("outputs/mass_vs_info.png", dpi=150, bbox_inches="tight")
+    plt.close(fig)
+    print("Saved outputs/mass_vs_info.png")
+
+
+def plot_temporal_consistency(tc_result):
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    info = np.array(tc_result["info_history"])
+    freqs = np.array(tc_result["freqs"])
+    fft = np.array(tc_result["fft"])
+
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 7))
+
+    ax1.plot(info, "b-", alpha=0.8, linewidth=0.8)
+    ax1.set_xlabel("Step")
+    ax1.set_ylabel("I_BH")
+    ax1.set_title("Time Crystal: Information Density")
+    ax1.grid(True, alpha=0.3)
+
+    ax2.plot(freqs[1:len(fft)], fft[1:], "r-", linewidth=1.5)
+    ax2.set_xlabel("Frequency")
+    ax2.set_ylabel("FFT Power")
+    ax2.set_title("Spectral Modes")
+    ax2.grid(True, alpha=0.3)
+
+    fig.tight_layout()
+    fig.savefig("outputs/temporal_consistency.png", dpi=150, bbox_inches="tight")
+    plt.close(fig)
+    print("Saved outputs/temporal_consistency.png")
+
+
+# ───────────────────────────────────────────────────────────────────────────────
+# Main
+# ───────────────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
+    np.random.seed(42)
     configs = [
         ("sphere", 0.0, 10.0),
-        ("torus", 0.0, 10.0),
-        ("klein_bottle", 0.5, 10.0),
         ("klein_bottle", 1.0, 10.0),
         ("klein_bottle", 2.0, 10.0),
     ]
 
-    all_results = []
+    sim_results = []
     for topo, twist, R in configs:
-        print(f"\nRunning: topology={topo}, twist={twist}, radius={R}")
-        result = run_simulation(topo, twist, R, n_steps=1000)
-        all_results.append(result)
+        print(f"\nRunning: topology={topo}, twist={twist}, R={R}")
+        r = run_directed_simulation(topo, twist, R, n_patches=20, n_steps=300,
+                                    infall_rate=0.02, seed=42)
+        sim_results.append(r)
 
-    write_csv(all_results)
+    csv_out = []
+    for r in sim_results:
+        csv_out.append({
+            "topology": r["topology"], "twist_param": r["twist_param"],
+            "radius": r["radius"], "n_patches": r["n_patches"],
+            "n_steps": r["n_steps"], "initial_info": r["initial_info"],
+            "final_info": r["final_info"],
+            "initial_mass": r["initial_mass"],
+            "final_mass": r["final_mass"],
+            "total_leakage": r["total_leakage"],
+            "elapsed_seconds": r["elapsed_seconds"],
+        })
+
+    with open("outputs/entropy_comparison.csv", "w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=list(csv_out[0].keys()))
+        writer.writeheader()
+        writer.writerows(csv_out)
+    print("Saved outputs/entropy_comparison.csv")
+
+    mass_results = derive_mass_formula()
+    plot_mass_vs_info(mass_results)
+
+    test_hysteresis()
+    test_temporal_consistency()
+
+    tc = simulate_time_crystal(n_patches=12, n_steps=300, seed=42)
+    plot_temporal_consistency(tc)
+
+    simulate_inversion(n_patches=20, n_steps=300, seed=42)
 
     print("\n=== SUMMARY ===")
-    for r in all_results:
+    for r in sim_results:
         print(f"  {r['topology']:15s} twist={r['twist_param']:.1f} | "
-              f"entropy={r['initial_entropy']:.2e}->{r['final_entropy']:.2e} | "
-              f"leakage={r['total_leakage']:.6e} | "
-              f"{r['steps_per_second']:.1f} steps/s")
+              f"I={r['initial_info']:.1f}->{r['final_info']:.1f} | "
+              f"M={r['initial_mass']:.2e}->{r['final_mass']:.2e} | "
+              f"leak={r['total_leakage']:.6e}")

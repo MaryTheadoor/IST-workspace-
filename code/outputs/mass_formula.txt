@@ -1,0 +1,17 @@
+M = k * I_BH
+fitted k = 3.891501e+08
+expected k = 3.113201e+08
+ratio k_fit/k_expected = 1.250000e+00
+
+sphere          n=  4 I=3.2239 M=1.0037e+09 A=1.0923e+03
+sphere          n=  6 I=7.3143 M=2.2771e+09 A=1.9523e+03
+sphere          n=  8 I=74.5970 M=2.3224e+10 A=2.2220e+03
+sphere          n= 10 I=153.8741 M=4.7904e+10 A=2.3360e+03
+sphere          n= 14 I=233.4765 M=7.2686e+10 A=2.4279e+03
+sphere          n= 20 I=563.2863 M=1.7536e+11 A=2.4733e+03
+klein_bottle    n=  4 I=3.2239 M=1.5055e+09 A=1.9648e+02
+klein_bottle    n=  6 I=7.3143 M=3.4156e+09 A=4.0740e+02
+klein_bottle    n=  8 I=74.5970 M=3.4835e+10 A=4.8675e+02
+klein_bottle    n= 10 I=153.8741 M=7.1856e+10 A=5.2778e+02
+klein_bottle    n= 14 I=233.4765 M=1.0903e+11 A=5.6051e+02
+klein_bottle    n= 20 I=563.2863 M=2.6304e+11 A=5.7734e+02
