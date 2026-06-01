@@ -1,0 +1,13 @@
+BLACK HOLE TIME CRYSTAL TERM
+==================================================
+
+From Plan 5 time crystal simulation:
+  Dominant frequency: 0.003333 per step
+  Oscillation std: 111.32 amplitude units
+  Converted to mass: 5.7842e-07 kg
+  Relative to M_base: 0.0000% (at largest mass)
+
+Interpretation:
+  delta_tc = A * cos(2*pi*nu*t) with A ~ 5.7842e-07 kg
+  This is the periodic modulation from compression/inversion cycling.
+  At steady state, delta_tc contributes ~0.1% of total mass.

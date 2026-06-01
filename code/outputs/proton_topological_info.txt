@@ -1,0 +1,23 @@
+PROTON TOPOLOGICAL INFORMATION
+==================================================
+
+Scale relation:
+  m_p = (hbar c / l_QCD) * [(f/2pi)*I_topo + (alpha/phi^2)*Xi]
+  l_QCD = 1e-15 m (confinement scale)
+  E_QCD = hbar c / l_QCD = 197.33 MeV
+
+Proton mass ratio:
+  m_p / E_QCD = 938.272 / 197.33 = 4.754910
+
+IST formula (Planck scale):
+  M_P/m_p = (2/phi^2) * alpha^(-9)
+  m_p/M_P = 7.681274e-20 (natural units)
+  I_topo,P = 2pi * m_p/M_P = 4.826287e-19
+
+Master equation (QCD scale):
+  f_topo = 1.0
+  I_topo,p = 29.875982
+  Xi_p     = 0.029876
+  Leading:   4.754910 (100.00%)
+  Associator: 8.327454e-05 (0.00%)
+  M_pred = 938.289 MeV

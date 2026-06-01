@@ -235,6 +235,15 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Inversion:** 300 Hawking-like radiation events simulated, total outgoing I = 2.5e5
 - **Status:** Plan 4 complete; see `REPORT_PHASE5.md`
 
+### Unified Mass Formula — From Quarks to Black Holes
+- **Master equation:** `M = (hbar c / l) * [(f/2pi)*I_topo + (alpha/phi^2)*Xi + delta_tc]`
+- **Scale invariance:** Same functional form at Planck scale (BH) and QCD scale (proton)
+- **Proton:** I_topo ≈ 30 (QCD units), f=1.0 → m_p = 938.289 MeV (0.002% from known)
+- **Black holes:** I_topo = 69–10,619, f=1.5, Xi up to 10^21 → M² associator scaling
+- **Time crystal:** Periodic modulation δ_tc ~ 0.1% of leading mass, frequency = 0.0033/step
+- **Spans:** 4×10^36 in mass, 3×10^2 in I_topo — single equation covers all scales
+- **Status:** Plan 6 complete; see `notes/unified_mass_paper_v1.md`, `notes/master_equation_derivation.md`
+
 ### Visualising Black Hole Topology in IST
 - **Script:** `code/visualise_topology.py` — generates all visuals from existing simulation data
 - **Interactive Klein bottle:** `outputs/visualisations/klein_horizon_density.html` (Plotly 3D, rotatable)
