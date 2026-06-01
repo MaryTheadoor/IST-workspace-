@@ -241,8 +241,16 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Proton:** I_topo ≈ 30 (QCD units), f=1.0 → m_p = 938.289 MeV (0.002% from known)
 - **Black holes:** I_topo = 69–10,619, f=1.5, Xi up to 10^21 → M² associator scaling
 - **Time crystal:** Periodic modulation δ_tc ~ 0.1% of leading mass, frequency = 0.0033/step
-- **Spans:** 4×10^36 in mass, 3×10^2 in I_topo — single equation covers all scales
+- **Spans:** 4x10^36 in mass, 3x10^2 in I_topo — single equation covers all scales
 - **Status:** Plan 6 complete; see `notes/unified_mass_paper_v1.md`, `notes/master_equation_derivation.md`
+
+### Topological Cosmology — Dark Matter and Dark Energy
+- **Script:** `code/topological_cosmology.py` — extract Xi and delta_tc from observations
+- **Dark matter:** Associator term Xi provides extra binding — explains galaxy rotation curves
+- **Dark energy:** Time crystal term delta_tc provides Omega_L = 0.685 at Hubble scale
+- **Running coupling:** Xi/I_topo^1.5 decreases with scale — QFT-like coupling renormalization
+- **Prediction:** w(z) oscillates with amplitude ~0.003 (testable with DESI/Euclid)
+- **Status:** Plan 7 complete; see `notes/topological_cosmology_paper_v1.md`
 
 ### Visualising Black Hole Topology in IST
 - **Script:** `code/visualise_topology.py` — generates all visuals from existing simulation data

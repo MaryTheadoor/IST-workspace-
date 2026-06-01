@@ -1,0 +1,4 @@
+f_univ = 1.5 (Klein bottle)
+I_topo_univ = 1.766751e+120
+Xi_univ = 3.427955e+123
+delta_tc_univ = 2.469846e+121

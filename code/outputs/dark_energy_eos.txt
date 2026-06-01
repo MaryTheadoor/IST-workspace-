@@ -1,0 +1,13 @@
+DARK ENERGY EQUATION OF STATE
+==================================================
+
+Hubble length: 4448.0 Mpc
+I_topo,univ = 1.766751e+120
+Xi_univ (from DM deficit) = 3.427955e+123
+delta_tc (from DE deficit) = 2.469846e+121
+
+Time crystal interpretation:
+  delta_tc = 2.469846e+121
+  w = -1.0 (constant, matches cosmological constant)
+  w_a ~ 0.003 (small sinusoidal modulation)
+  Prediction: w oscillates with period ~ 2-3 in z

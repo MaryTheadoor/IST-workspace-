@@ -1,0 +1,19 @@
+GALAXY ROTATION CURVE — TOPOLOGICAL BINDING PARAMETERS
+==================================================
+
+Galaxy model: MW-like spiral
+  M_disk = 6.0e+10 Msun
+  M_bulge = 1.0e+10 Msun
+  R_disk = 3.0 kpc
+  l_gal = 1.0 kpc
+
+Topological binding (associator term):
+  max M_assoc = 4.16e+42 Msun
+  M_assoc/M_disk = 6936927925971112824473202978717696.0%
+  coupling alpha/phi^2 = 0.002787
+
+Fit quality:
+  chi^2 (IST associator):  220374814723833232007220209454678016.0
+  chi^2 (baryons only):    560.0
+  Improvement: -39352158147753916076367132389015552%
+  No free parameters: alpha, phi are fundamental constants.

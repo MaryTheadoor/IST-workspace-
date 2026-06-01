@@ -1,0 +1,40 @@
+IST DARK MATTER & DARK ENERGY FROM MASTER EQUATION
+==================================================
+
+System: Proton (QCD)
+  f_topo = 1.0
+  l = 1.00e-15 m
+  I_topo = 4.279363e+00
+  Xi = 1.705873e+02
+  M_baryon = 1.5053e-27 kg
+  M_excess = 1.6726e-28 kg
+  excess/obs = 10.0%
+
+System: Galaxy (MW)
+  f_topo = 1.5
+  l = 9.26e+19 m
+  I_topo = 3.663973e+103
+  Xi = 3.624278e+107
+  M_baryon = 1.3923e+41 kg
+  M_excess = 3.8388e+42 kg
+  excess/obs = 96.5%
+
+System: Cluster (Coma-like)
+  f_topo = 1.5
+  l = 3.09e+22 m
+  I_topo = 8.723746e+108
+  Xi = 5.946571e+112
+  M_baryon = 9.9450e+43 kg
+  M_excess = 1.8896e+45 kg
+  excess/obs = 95.0%
+
+System: Universe (Hubble)
+  f_topo = 1.5
+  l = 1.37e+26 m
+  I_topo = 1.766751e+120
+  Xi = 3.427955e+123
+  M_baryon = 4.5281e+51 kg
+  M_excess = 8.7882e+52 kg
+  excess/obs = 95.1%
+  delta_tc = 2.469846e+121
+
