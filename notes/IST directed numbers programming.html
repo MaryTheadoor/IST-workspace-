@@ -1,0 +1,353 @@
+Implementing the Directed Numbers formalism as a runtime library – not a full language but a native Python extension – would make the thread calculus and manifold dynamics computationally accessible. Here's a practical roadmap for turning the algebra into executable code.
+
+---
+
+1. Core Design Goals
+
+· Native Python feel – use operator overloading (+, *, @ for non‑associative product) but with explicit directed number semantics.
+· Thread calculus – support for parallel, nested, and temporal threads with push/pop, fork/join.
+· Compression/Expansion – Ω and Ω⁻¹ as first‑class operators.
+· Non‑associativity – explicit associator [x,y,z] function; multiplication must respect order (i.e., (a*b)*c != a*(b*c) in general).
+· Performance – use NumPy for vectorised amplitudes, but keep parity logic in Python (or use Numba/JAX for GPU). For extreme scale, a C++ extension via pybind11.
+
+---
+
+2. Data Model
+
+A directed number has:
+
+· amplitude: float or complex (real for now)
+· parity: enumerated type (UP, DOWN, ZERO, plus optional GRAV_UP, GRAV_DOWN for IST)
+· memory: optional (for directed zeros, storing original amplitude and parity before compression)
+
+```python
+from enum import Enum, auto
+from dataclasses import dataclass
+from typing import Optional
+
+class Parity(Enum):
+    UP = auto()
+    DOWN = auto()
+    ZERO = auto()
+    GRAV_UP = auto()      # for gravitational chirality
+    GRAV_DOWN = auto()
+
+@dataclass
+class DirectedNumber:
+    amp: float
+    parity: Parity
+    memory: Optional[tuple[float, Parity]] = None   # for directed zeros
+```
+
+---
+
+3. Multiplication Table (Axioms 2.7–2.10)
+
+Implement as a function mul(a, b) that returns a new DirectedNumber. The table is deterministic except for 0⁰·0⁰ (probabilistic). For now, we can implement the probabilistic case using a placeholder distribution (e.g., uniform random or golden‑ratio‑based).
+
+```python
+def mul(a: DirectedNumber, b: DirectedNumber) -> DirectedNumber:
+    # Absolute zero cases
+    if a.parity == Parity.ZERO and a.memory is None:   # absolute zero
+        if b.parity == Parity.ZERO and b.memory is None:
+            # Axiom 2.10: probabilistic
+            r = random.uniform(-1, 1)   # placeholder; replace with golden ratio distribution
+            return DirectedNumber(r, Parity.ZERO, memory=None)
+        else:
+            return DirectedNumber(a.amp * b.amp, Parity.ZERO, memory=None)
+    # Directed zeros (with memory)
+    if a.parity == Parity.ZERO and a.memory is not None:
+        if b.parity == Parity.ZERO and b.memory is not None:
+            # product of two directed zeros -> expand according to memory
+            if a.memory[1] == b.memory[1]:
+                # same parity memory -> output manifest with sign
+                sign = 1 if a.memory[1] == Parity.UP else -1
+                amp_out = a.memory[0] * b.memory[0]
+                return DirectedNumber(sign * amp_out, a.memory[1])
+            else:
+                # opposite parity memory -> absolute zero
+                return DirectedNumber(0.0, Parity.ZERO, memory=None)
+        else:
+            # directed zero * manifest -> compressed
+            return DirectedNumber(a.amp * b.amp, Parity.ZERO, memory=a.memory)
+    # Manifest * manifest (Axiom 2.7)
+    if a.parity in (Parity.UP, Parity.DOWN) and b.parity in (Parity.UP, Parity.DOWN):
+        if a.parity == b.parity:
+            return DirectedNumber(a.amp * b.amp, a.parity)
+        else:
+            return DirectedNumber(a.amp * b.amp, Parity.ZERO, memory=None)   # product flips to zero
+    # Manifest * zero (Axiom 2.8)
+    if b.parity == Parity.ZERO:
+        return DirectedNumber(a.amp * b.amp, Parity.ZERO, memory=b.memory)
+    # ... etc.
+```
+
+Note: Non‑associativity is automatic because mul is not associative; the result of (a*b)*c will differ from a*(b*c) due to the intermediate compression to zero.
+
+---
+
+4. Compression and Expansion Operators
+
+```python
+def Omega(x: DirectedNumber) -> DirectedNumber:
+    """Compression: manifest -> directed zero."""
+    if x.parity in (Parity.UP, Parity.DOWN):
+        return DirectedNumber(0.0, Parity.ZERO, memory=(x.amp, x.parity))
+    else:
+        # already compressed: no change
+        return x
+
+def Omega_inv(x: DirectedNumber) -> DirectedNumber:
+    """Expansion: directed zero -> manifest (if memory exists)."""
+    if x.parity == Parity.ZERO and x.memory is not None:
+        return DirectedNumber(x.memory[0], x.memory[1], memory=None)
+    elif x.parity == Parity.ZERO and x.memory is None:
+        # absolute zero expansion: probabilistic (Axiom 2.12)
+        r = random.uniform(-1, 1)   # placeholder; should be fixed by temporal consistency
+        # parity could be chosen randomly or based on context
+        parity = random.choice([Parity.UP, Parity.DOWN])
+        return DirectedNumber(r, parity, memory=None)
+    else:
+        # expansion of manifest: identity
+        return x
+```
+
+---
+
+5. Thread Calculus
+
+A Thread is a sequence of DirectedNumber elements. It supports:
+
+· push(val), pop() – LIFO stack semantics.
+· fork() – create a new parallel thread starting from the current state.
+· join(other) – merge two threads (element‑wise multiplication, with rules for combining parities).
+· cross_multiply(other) – returns a new thread where each element is mul(self[i], other[i]).
+
+Temporal threads add time_index and shift operators T_plus(), T_minus(). The twist condition (parity flip when crossing a twist) can be implemented with a twisted flag.
+
+```python
+class Thread:
+    def __init__(self, elements=None):
+        self.elements = elements or []
+        self.time = 0
+        self.twisted = False
+
+    def push(self, dn: DirectedNumber):
+        self.elements.append(dn)
+
+    def pop(self) -> DirectedNumber:
+        return self.elements.pop()
+
+    def fork(self):
+        new_thread = Thread(self.elements.copy())
+        return new_thread
+
+    def join(self, other: 'Thread'):
+        # merge by element-wise multiplication
+        min_len = min(len(self.elements), len(other.elements))
+        new_elems = [mul(self.elements[i], other.elements[i]) for i in range(min_len)]
+        self.elements = new_elems
+
+    def T_plus(self):
+        """Forward time shift, flipping parity if twisted."""
+        self.time += 1
+        if self.twisted:
+            for e in self.elements:
+                if e.parity == Parity.UP:
+                    e.parity = Parity.DOWN
+                elif e.parity == Parity.DOWN:
+                    e.parity = Parity.UP
+        return self
+
+    def T_minus(self):
+        self.time -= 1
+        if self.twisted:
+            for e in self.elements:
+                if e.parity == Parity.UP:
+                    e.parity = Parity.DOWN
+                elif e.parity == Parity.DOWN:
+                    e.parity = Parity.UP
+        return self
+```
+
+---
+
+6. Integration with IST Black Hole Simulation
+
+The existing black_hole_simulation.py can use DirectedNumber objects in its information density arrays. For example, a patch on the horizon would hold a Thread of directed numbers representing the sequence of compression/expansion events.
+
+Critical gradient triggers Omega() on all elements of the thread. The “inversion” (vortex) triggers Omega_inv() with parity flip (by setting twisted=True before calling T_plus()).
+
+---
+
+7. Performance Considerations
+
+· Pure Python is fine for prototyping (thousands of threads, each with tens of elements). Use numpy for vectorised amplitudes when performing bulk operations.
+· For large‑scale manifold dynamics (e.g., cosmological simulation), write a C++ extension using pybind11. The directed number product table is simple enough to map to integer codes.
+· GPU acceleration via cupy or jax would require rethinking the data structure – each thread becomes a separate array, or use a single array with thread indices.
+
+---
+
+8. Example Usage
+
+```python
+# Create two manifest numbers
+x = DirectedNumber(2.0, Parity.UP)
+y = DirectedNumber(3.0, Parity.DOWN)
+
+# Multiplication: opposite parity -> zero (compressed)
+z = mul(x, y)          # amplitude 6.0, parity ZERO, memory None
+
+# Compress
+z_compressed = Omega(x)   # amplitude 0.0, parity ZERO, memory=(2.0, UP)
+
+# Expand back
+x_restored = Omega_inv(z_compressed)  # amplitude 2.0, parity UP
+
+# Thread operations
+t = Thread()
+t.push(x)
+t.push(y)
+t2 = t.fork()
+t2.push(DirectedNumber(1.0, Parity.UP))
+t.join(t2)
+```
+
+---
+
+9. Deliverables for Your Agent
+
+You can task your agent with:
+
+1. Implement directed_numbers.py containing the classes and functions above.
+2. Write unit tests verifying Axioms 2.7–2.10, non‑associativity, and temporal consistency (Axiom 2.18).
+3. Integrate into black_hole_simulation.py – replace plain numbers with DirectedNumber objects in the info density patches.
+4. Benchmark – compare performance of pure Python vs NumPy vs a possible C++ extension.
+5. Document – produce a README_directed_numbers.md with examples.
+
+This would give you an executable runtime for the directed number thread calculus, directly usable for your manifold dynamics simulations.
+
+# Plan 9: Directed Numbers Runtime – Executable Thread Calculus for Manifold Dynamics
+
+## Objective
+Implement the Directed Numbers algebra (v0.8.1) as a native Python runtime library, including the thread calculus, compression/expansion operators, temporal shifts, and non‑associative multiplication. Integrate this runtime into the existing IST black hole simulation (`black_hole_simulation.py`) to replace plain scalar information densities with full directed number threads.
+
+## Motivation
+- Enable simulation of **non‑associative information flow** on black hole horizons and cosmic manifolds.
+- Provide a **testbed for the associator term** \(\Xi\) in the unified mass formula.
+- Allow **temporal consistency loops** (time crystals) to be computed directly.
+- Serve as a foundation for future **topological quantum computing** simulations (braiding of directed number threads).
+
+## Architecture
+
+The runtime consists of three layers:
+
+1. **Core Algebra** – `DirectedNumber` class with multiplication, addition, compression/expansion.
+2. **Thread Calculus** – `Thread` class with push/pop, fork/join, cross‑multiplication, temporal shifts.
+3. **Integration Layer** – wrappers for `black_hole_simulation.py` to use threads as horizon patches.
+
+## Deliverables (Agent Tasks)
+
+### Task 1: Implement Core Directed Number Algebra
+File: `code/directed_numbers.py`
+
+- Define `Parity` enum (UP, DOWN, ZERO, optional GRAV_UP, GRAV_DOWN).
+- Define `DirectedNumber` dataclass with fields: `amp` (float), `parity` (Parity), `memory` (optional tuple of original amplitude and parity).
+- Implement `__add__` (same parity add amplitudes; different parity raise error or return zero).
+- Implement `__mul__` according to Axioms 2.7–2.10 (use a lookup table or conditional logic). **Must be non‑associative** – i.e., `(a*b)*c` may differ from `a*(b*c)`.
+- Implement `Omega()` and `Omega_inv()` as methods (compression to directed zero, expansion from memory).
+- Implement `info()` property returning absolute amplitude (information measure).
+- Implement `is_absolute_zero` and `is_directed_zero` helper properties.
+- For the probabilistic product of absolute zeros (Axiom 2.10), start with a deterministic placeholder (e.g., return amplitude 0.5 with parity UP) but include a TODO to replace with golden‑ratio‑based distribution after temporal consistency is implemented.
+
+**Testing:** Unit tests must verify:
+- `(a↑ * b↓) == (ab)⁰` (opposite parity → zero)
+- `(a↑ * b↑) == (ab)↑` (same parity)
+- `Omega(a↑).is_directed_zero` and `Omega_inv(Omega(a↑)) == a↑`
+- Non‑associativity: `(0↑·0↑)·1↓ ≠ 0↑·(0↑·1↓)`
+- Absolute zero product returns a valid DirectedNumber (non‑deterministic placeholder fine for now).
+
+### Task 2: Implement Thread Calculus
+Same file, add classes:
+
+- `Thread` – elements: list of `DirectedNumber`, plus `parent` and `children` (for nested/parallel threads).
+  - `push(dn)`, `pop()` – stack semantics.
+  - `fork()` – returns a new `Thread` with a copy of current elements.
+  - `join(other)` – element‑wise multiplication of two threads (using `mul`), replacing current elements with the result.
+  - `cross_multiply(other)` – returns a new `Thread` where each element is `mul(self.elements[i], other.elements[i])`.
+  - `info_total()` – sum of `info()` over all elements.
+- `TemporalThread` (subclass of `Thread`) – adds `time_index` (int) and `twisted` (bool) attributes.
+  - `T_plus()` – increment time; if `twisted`, flip parity of all elements (UP↔DOWN).
+  - `T_minus()` – decrement time; same parity flip if twisted.
+  - `closed_loop_condition()` – checks that after a sequence of shifts returning to the same time, the product of all elements (in order) equals `1↑` or `(-1)↓` depending on number of twist crossings (Axiom 2.18). Raise error if violated.
+
+**Testing:**
+- Fork/join preserves total information (within floating error).
+- Temporal shift with twist flips parities correctly.
+- Closed loop consistency test (simple example: two shifts on a twisted thread should restore parity).
+
+### Task 3: Integration into Black Hole Simulation
+Modify `black_hole_simulation.py`:
+
+- Replace the plain `info_density` array per patch with a `Thread` object (or a list of threads for multiple knots per patch).
+- The horizon is divided into patches; each patch has one thread representing the sequence of compression/expansion events in that region.
+- The **critical gradient** triggers `Omega()` on all elements of the thread.
+- The **inversion** (vortex) triggers `Omega_inv()` with a parity flip; set `twisted=True` on the thread and call `T_plus()` (or directly flip parities) before expansion.
+- The total information of the black hole `I_BH` is the sum of `info_total()` over all patches.
+
+Update the mass formula calculation to use the directed number threads: the mass is `(ħc / (2πℓ_P)) * f_topo * I_BH` (Plan 6). The associator term `(α/φ²) Ξ` should be computed as the sum of associators `[x,y,z]` over all triples in each thread (or over cross‑thread triple products). For performance, we can initially ignore cross‑thread associators.
+
+**Integration test:** Run a simplified simulation with a single patch, compress a manifest number, then expand with twist, and verify that the final state matches the original (if no information loss).
+
+### Task 4: Performance Optimisation (Optional but Recommended)
+- For large simulations (many patches, long threads), use NumPy for vectorised amplitude operations while keeping parity logic in Python loops.
+- Alternatively, use `numba.jit` on critical multiplication loops (but `numba` struggles with enums and dataclasses; may need plain tuples).
+- Provide a C++ extension using `pybind11` for the core `mul` and `Omega` functions if Python becomes a bottleneck. This is a stretch goal.
+
+### Task 5: Documentation
+- Write `code/README_directed_numbers.md` with:
+  - Overview of the algebra and thread calculus.
+  - Installation (dependencies: Python 3.9+, NumPy optional).
+  - API reference with examples.
+  - Integration notes for the IST simulation.
+
+### Task 6: Unit Tests and Validation
+Create `tests/test_directed_numbers.py` using `pytest`. Cover:
+- All multiplication cases (including directed zeros and absolute zero placeholder).
+- Compression/expansion round‑trip.
+- Thread operations (push/pop, fork/join, cross_mul).
+- Temporal consistency for a simple closed loop (e.g., two steps on twisted thread).
+- Non‑associativity examples.
+
+## Expected Outputs
+
+| File | Description |
+|------|-------------|
+| `code/directed_numbers.py` | Core runtime (DirectedNumber, Thread, TemporalThread) |
+| `code/black_hole_simulation.py` | Updated to use directed number threads |
+| `code/README_directed_numbers.md` | Documentation |
+| `tests/test_directed_numbers.py` | Unit tests |
+| `code/outputs/directed_numbers_validation.png` | (Optional) Plot showing info conservation during compression/expansion cycles |
+
+## Execution Instructions for the Agent
+
+1. Create a new branch `feature/directed-numbers-runtime`.
+2. Implement `directed_numbers.py` as described.
+3. Write unit tests and ensure they pass.
+4. Integrate into `black_hole_simulation.py` (use the existing Plan 5/6 structure).
+5. Run a small validation simulation (single patch, compress and expand) and save output to `outputs/`.
+6. Commit all changes with message: `"feat: directed numbers runtime (Plan 9) – thread calculus for IST"`.
+
+## Dependencies
+- Python 3.9+
+- NumPy (optional for vectorisation)
+- pytest (for tests)
+
+## Notes for the Agent
+- The probabilistic absolute zero product can be a placeholder for now; we will refine it later using the temporal consistency condition (Axiom 2.18). For now, return a fixed DirectedNumber(0.5, Parity.UP, memory=None) for `0⁰·0⁰`.
+- For performance, keep threads short (length < 100) in initial simulations. Long threads can be optimised later.
+- The associator term \(\Xi\) calculation may be computationally expensive; we can start with a simple sum over triples in each thread, and later add cross‑thread contributions.
+- If any step fails, log the error and continue with the remaining tasks.
+
+## Commit Message
+`"feat: directed numbers runtime (Plan 9) – thread calculus for manifold dynamics"`
