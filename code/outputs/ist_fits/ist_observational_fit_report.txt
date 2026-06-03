@@ -1,0 +1,21 @@
+IST OBSERVATIONAL FIT REPORT
+=======================================================
+
+Date: 2026-06-03
+IST constants: phi=1.618034, alpha=0.0072973526
+
+1. PBH MASS FUNCTION FIT
+------------------------------
+  Candidates: 12
+  Fitted slope: 1.0000 (IST predicts 1.0000)
+  Fitted intercept: -2.5548 (IST: -2.5548)
+  Status: CONSISTENT
+
+2. ENVIRONMENTAL QUENCHING
+------------------------------
+  Quenched galaxies: 24
+  Star-forming: 476
+  Quenched <Xi/I>: 362.1173
+  SF <Xi/I>: 97.9941
+  Ratio Q/SF: 3.70x
+  IST prediction (>1.0): CONFIRMED

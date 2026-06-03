@@ -21,6 +21,14 @@ from enum import Enum, auto
 from dataclasses import dataclass, field
 from typing import Optional, Union, List, Tuple
 
+# ── Fundamental Constants (Plan 9) ────────────────────────────────────────────
+
+PHI = (1 + np.sqrt(5)) / 2  # golden ratio ~ 1.618034
+ALPHA = 1 / 137.035999084    # fine-structure constant
+HBAR = 1.054571817e-34       # reduced Planck constant (J·s)
+C = 2.99792458e8             # speed of light (m/s)
+L_P = 1.616255e-35           # Planck length (m)
+
 # ───────────────────────────────────────────────────────────────────────────────
 # Parity Enum (Plan 9)
 # ───────────────────────────────────────────────────────────────────────────────
