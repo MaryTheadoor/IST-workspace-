@@ -1,0 +1,28 @@
+PLAN 10: TIME CRYSTAL SIMULATION REPORT
+==================================================
+
+Simulation 1: Klein Bottle Horizon
+  Patches: 16x16
+  Steps: 800
+  Info mean: 910.5304
+  Info std:  484.8112
+  Dominant frequency: 0.001250
+  Dominant power:    213509.80
+
+Simulation 2: TemporalThread Loop
+  Thread length: 30
+  Cycles: 200
+  Info mean: 10.8016
+  Info std:  11.1464
+  Dominant frequency: 0.200000
+  Dominant power:    1132.24
+
+Interpretation:
+  A persistent oscillation in information density that does not
+  damp out over time is the time crystal signature. The Klein
+  bottle twist drives parity flips during expansion, creating a
+  periodic modulation at frequency related to the twist period.
+
+  The FFT peak frequency ~1/(2*cycles_per_twist) corresponds to
+  the natural oscillation frequency of the compressed/expanded
+  directed number lattice on a non-orientable surface.

@@ -1,0 +1,27 @@
+PLAN 10: ASSOCIATOR CHARGE FROM PBH CANDIDATES
+==================================================
+
+Formula: Xi = (phi^2/alpha) * M / M_Planck
+  phi^2/alpha = 358.7649
+  M_Planck = 2.1764e-08 kg = 1.0942e-38 M_sun
+
+Candidates: 13 (12 HSC M31 + 1 Phoebe)
+
+Xi statistics (log10):
+  Mean:   33.78
+  Median: 33.75
+  Std:    0.2485
+  Range:  [33.43, 34.26]
+
+Physical interpretation:
+  Xi ~ 10^33.8 associator units for a
+  PBH of mass ~10^{-7} M_sun. This is consistent with the
+  running coupling from Plan 7:
+    log10(Xi_proton)  ~ 2.2   (QCD scale)
+    log10(Xi_PBH)     ~ 33.8  (PBH scale)
+    log10(Xi_galaxy)  ~ 107.6 (galactic scale)
+    log10(Xi_universe)~ 123.5 (Hubble scale)
+
+  The associator charge grows with the length scale,
+  reflecting the running of the topological coupling.
+  The PBH sits between the QCD and galactic regimes.
