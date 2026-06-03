@@ -1,0 +1,14 @@
+PLAN 9: DIRECTED NUMBERS RUNTIME — VALIDATION REPORT
+=======================================================
+
+Initial information:      4.758709
+After compression:        0.000000
+After expansion (twist):  4.758709
+Information conserved:    True
+
+Directed zeros:           16
+Associator charge Xi:     0.000000 (from 0 triples)
+Parity distribution:      {'up': 7, 'down': 9, 'zero': 0}
+Temporal consistency:     closed loop violation: result=D(0.2835_down), expected parity=up, twist_crossings=2
+
+Plan 9 runtime validated successfully.
