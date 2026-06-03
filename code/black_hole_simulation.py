@@ -1,946 +1,258 @@
 import os
-import json
-import csv
 import time
+import csv
 import numpy as np
-
-from ist_toolkit_v2 import TopologicalHorizon, PHI, ALPHA, M_PLANCK
-from directed_numbers import (
-    DirectedNumber, DirectedZero, AbsoluteZero,
-    Thread, TemporalThread,
-    create_thread_grid, grid_total_info, grid_gradient,
-    compress_patch, invert_patch, amplitude_to_mass,
-    associator, Omega, Omega_inv, mul, Parity,
-)
+import jax.numpy as jnp
+from jax import jit
+from ist_toolkit_v2 import TopologicalHorizon
 
 os.makedirs("outputs", exist_ok=True)
 
-HBAR = 1.054571817e-34
-C = 2.99792458e8
-L_P = 1.616255e-35
-K_EXPECTED = (HBAR * C) / (2 * np.pi * L_P)
-
-
-def evolve_step(rho, n, dt, twist_param=0.0, diffusion_coeff=0.02):
+def jax_evolve_step(rho, twist_param, n, dt, diffusion_coeff=0.01):
     lap = (
-        np.roll(rho, -1, axis=0) + np.roll(rho, 1, axis=0)
-        + np.roll(rho, -1, axis=1) + np.roll(rho, 1, axis=1)
+        jnp.roll(rho, -1, axis=0) + jnp.roll(rho, 1, axis=0)
+        + jnp.roll(rho, -1, axis=1) + jnp.roll(rho, 1, axis=1)
         - 4 * rho
-    ) / (2 * np.pi / n) ** 2
-    if abs(twist_param) > 1e-10:
-        lap *= (1.0 + 0.1 * twist_param * np.sin(np.linspace(0, 2 * np.pi, n))[:, None])
+    ) / (2 * jnp.pi / n) ** 2
+    u_mod = jnp.linspace(0, 2 * jnp.pi, n)
+    lap = lap * (1.0 + 0.1 * twist_param * jnp.sin(u_mod)[:, None])
     rho_new = rho + diffusion_coeff * lap * dt
-    return np.clip(rho_new, 0, 1)
+    return jnp.clip(rho_new, 0, 1)
 
+jax_step = jit(jax_evolve_step, static_argnames=["n", "dt", "diffusion_coeff"])
 
-def topological_factor(topology, twist_param):
-    return {"sphere": 1.0, "torus": 1.0, "klein_bottle": 1.5}.get(topology, 1.0)
+def jax_infall_step(rho, twist_param, n, dt, infall_rate, diffusion_coeff=0.01):
+    rho_new = jax_evolve_step(rho, twist_param, n, dt, diffusion_coeff)
+    u_mod = jnp.linspace(0, 2 * jnp.pi, n)
+    bump = jnp.exp(-((u_mod - jnp.pi) ** 2) / (2 * (0.3 * jnp.pi) ** 2))
+    infall_field = infall_rate * dt * (0.5 + 0.5 * bump[:, None])
+    rho_new = rho_new + infall_field
+    return jnp.clip(rho_new, 0, 1)
 
+jax_infall = jit(jax_infall_step, static_argnames=["n", "dt", "diffusion_coeff"])
 
-# ───────────────────────────────────────────────────────────────────────────────
-# Core simulation
-# ───────────────────────────────────────────────────────────────────────────────
+# ── Run A: Critical Gradient & One-Way Transition ──────────────────────────
 
-def run_directed_simulation(topology="klein_bottle", twist_param=1.0,
-                             radius=10.0, n_patches=20, n_steps=500, dt=0.05,
-                             compress_threshold=0.15, invert_threshold=5.0,
-                             infall_rate=0.01, seed=42):
-    np.random.seed(seed)
-
-    h = TopologicalHorizon(topology=topology, twist_param=twist_param,
-                           radius=radius, mesh_resolution=n_patches)
+def run_a():
+    print("=== Run A: Critical Gradient & One-Way Transition ===")
+    h = TopologicalHorizon(topology="sphere", radius=10.0, mesh_resolution=40, mass_solar=10.0)
     h.build_mesh()
+    rho = jnp.array(h.info_density_grid)
+    n = h.mesh_resolution
 
-    grid = create_thread_grid(n_patches, initial_amplitude=0.2, seed=seed)
-    rho = h.info_density_grid.copy()
-    n = n_patches
+    times, gradients, topologies, masses, rho_means = [], [], [], [], []
+    t = 0.0; dt = 0.05
+    mass = 10.0
 
-    info_series = []
-    mass_series = []
-    compressed_series = []
-    leakage_series = []
-    times = []
+    for step in range(8000):
+        infall = 0.1 if mass < 30.0 else -0.05
+        rho_np = np.array(rho)
+        h.info_density_grid = rho_np
+        grad = float(h.compute_gradient())
+        h.info_density_grid = jnp.array(rho_np)
 
-    initial_info = grid_total_info(grid)
-    initial_mass = amplitude_to_mass(initial_info, topological_factor(topology, twist_param))
-    info_series.append(initial_info)
-    mass_series.append(initial_mass)
-    compressed_series.append(0)
-    leakage_series.append(0.0)
-    times.append(0.0)
+        was_sphere = h.topology == "sphere"
+        if was_sphere:
+            flipped = h.transition_if_needed()
+            if flipped:
+                print(f"  Transition at t={t:.1f}s, mass={mass:.1f} M_sun")
+                rho = jnp.array(h.info_density_grid)
+        else:
+            if infall < 0 and grad < h.gradient_hold:
+                reverted = h.hysteresis_test(grad)
 
-    t0 = time.time()
-    for step in range(1, n_steps + 1):
-        rho = evolve_step(rho, n, dt, twist_param if topology == "klein_bottle" else 0.0)
+        rho = jax_infall(rho, h.twist_param, n, dt, infall)
+        mass += infall * dt
+        t += dt
 
-        _inject_infall(grid, rho, infall_rate, seed + step)
+        if step % 200 == 0:
+            rho_mean = float(np.array(rho).mean())
+            times.append(t); gradients.append(grad)
+            topologies.append(h.topology)
+            masses.append(mass); rho_means.append(rho_mean)
+            print(f"  t={t:.0f}s mass={mass:.1f} M_sun grad={grad:.2e} topo={h.topology}")
 
-        compressed_count = 0
-        for i in range(n):
-            for j in range(n):
-                grad = grid_gradient(grid, i, j)
-                if grad > compress_threshold:
-                    compress_patch(grid, i, j)
-                    compressed_count += 1
+    h.info_density_grid = np.array(rho)
 
-        total_compr = _count_compressed_amplitude(grid)
-        if total_compr > invert_threshold:
-            for i in range(n):
-                for j in range(n):
-                    if _patch_has_compressed(grid, i, j):
-                        flip = topology == "klein_bottle"
-                        invert_patch(grid, i, j, twist_flip=flip)
+    with open("outputs/gradient_vs_time.csv", "w", newline="") as f:
+        w = csv.writer(f); w.writerow(["time", "gradient", "topology", "mass", "rho_mean"])
+        for i in range(len(times)):
+            w.writerow([times[i], gradients[i], topologies[i], masses[i], rho_means[i]])
+    print("Saved outputs/gradient_vs_time.csv")
 
-        # Cross-thread topological coupling — linking energy (periodic)
-        linking_energy = 0.0
-        if step % 10 == 0:
-            linking_energy = _compute_linking_energy(grid, seed + step)
+    with open("outputs/topology_timeline.csv", "w", newline="") as f:
+        w = csv.writer(f); w.writerow(["time", "from_topo", "to_topo", "gradient"])
+        for idx, entry in enumerate(h._transition_history):
+            t_entry = times[min(idx, len(times) - 1)]
+            w.writerow([t_entry, entry[0], entry[1], entry[2]])
+    print(f"Saved outputs/topology_timeline.csv ({len(h._transition_history)} transitions)")
 
-        total_info = grid_total_info(grid)
-        mass = amplitude_to_mass(total_info, topological_factor(topology, twist_param))
-        mass += linking_energy
-        leakage = 1.0 - (total_info / info_series[-1]) if info_series[-1] > 0 else 0.0
+    return h, times, gradients, topologies, masses
 
-        info_series.append(total_info)
-        mass_series.append(mass)
-        compressed_series.append(compressed_count)
-        leakage_series.append(leakage)
-        times.append(step * dt)
+# ── Run B: Compact Dimension Growth ────────────────────────────────────────
 
-        if step % 150 == 0:
-            elapsed = time.time() - t0
-            print(f"  [{topology}] step {step}/{n_steps} | "
-                  f"I={total_info:.4f} | M={mass:.4e} | "
-                  f"compr={compressed_count} | inv={total_compr:.2f} | leak={leakage:.6e}")
+def run_b():
+    print("\n=== Run B: Compact Dimension Growth ===")
+    h = TopologicalHorizon(topology="sphere", radius=10.0, mesh_resolution=40, mass_solar=10.0)
+    h.build_mesh()
+    rho = jnp.array(h.info_density_grid)
+    n = h.mesh_resolution
 
-    elapsed = time.time() - t0
+    masses, n_compacts, rho_means = [], [], []
+    mass = 10.0; t = 0.0; dt = 0.05
 
-    return {
-        "topology": topology, "twist_param": twist_param,
-        "radius": radius, "n_patches": n_patches, "n_steps": n_steps,
-        "initial_info": initial_info, "final_info": grid_total_info(grid),
-        "initial_mass": initial_mass,
-        "final_mass": amplitude_to_mass(grid_total_info(grid), topological_factor(topology, twist_param)),
-        "total_leakage": leakage_series[-1],
-        "elapsed_seconds": elapsed,
-        "times": times, "info_series": info_series,
-        "mass_series": mass_series, "compressed_series": compressed_series,
-        "leakage_series": leakage_series,
-    }
+    for step in range(8000):
+        infall = 0.1 if mass < 40.0 else 0.0
+        rho_np = np.array(rho)
+        h.info_density_grid = rho_np
+        _ = h.compute_gradient()
+        h.transition_if_needed()
+        delta_n = h.update_compact_dimensions()
+        rho = jax_infall(rho, h.twist_param, n, dt, infall)
+        mass += infall * dt; t += dt
 
+        if step % 200 == 0:
+            n_compacts.append(h.compact_dimensions)
+            masses.append(mass)
+            rho_means.append(float(np.array(rho).mean()))
 
-def _inject_infall(grid, rho, rate, seed):
-    """Simulate infalling information that perturbs the grid."""
-    np.random.seed(seed)
-    n_i, n_j = len(grid), len(grid[0])
-    patches_to_perturb = int(rate * n_i * n_j)
-    for _ in range(patches_to_perturb):
-        i = np.random.randint(0, n_i)
-        j = np.random.randint(0, n_j)
-        parity = np.random.choice(["up", "down"])
-        amp = np.random.exponential(0.3)
-        grid[i][j].push(DirectedNumber(amp, parity))
+    with open("outputs/compact_dims_vs_mass.csv", "w", newline="") as f:
+        w = csv.writer(f); w.writerow(["mass", "compact_dimensions", "rho_mean"])
+        for i in range(len(masses)):
+            w.writerow([masses[i], n_compacts[i], rho_means[i]])
+    print("Saved outputs/compact_dims_vs_mass.csv")
 
+    return masses, n_compacts
 
-def _count_compressed_amplitude(grid):
-    total = 0.0
-    for row in grid:
-        for thread in row:
-            for e in thread.elements:
-                if e.parity == "zero" and e.memory is not None:
-                    total += e.memory.amplitude
-    return total
+# ── Run C: Formation Phase Diagram ─────────────────────────────────────────
 
-
-def _patch_has_compressed(grid, i, j):
-    for e in grid[i][j].elements:
-        if e.parity == "zero":
-            return True
-    return False
-
-
-def _compute_linking_energy(grid, seed):
-    """Topological coupling energy from cross-thread associator interactions.
-
-    For neighboring patch pairs, cross-multiply threads and sum associator
-    amplitudes. Scales with n_patches^2 ~ M^2, producing the ΔM residual.
-
-    beta_energy = K_EXPECTED * (ALPHA / PHI^2) * sum(associators)
-    """
-    np.random.seed(seed)
-    n_i, n_j = len(grid), len(grid[0])
-    total_energy = 0.0
-    n_samples = min(n_i * n_j // 2, 50)
-
-    for _ in range(n_samples):
-        i, j = np.random.randint(0, n_i), np.random.randint(0, n_j)
-        di, dj = [(1, 0), (-1, 0), (0, 1), (0, -1)][np.random.randint(0, 4)]
-        ni, nj = (i + di) % n_i, (j + dj) % n_j
-
-        t_a, t_b = grid[i][j], grid[ni][nj]
-        for ea in t_a.elements:
-            for eb in t_b.elements:
-                if ea.parity == "zero" and eb.parity != "zero":
-                    left = (ea * ea) * eb
-                    right = ea * (ea * eb)
-                    associator_amp = abs(left.amplitude - right.amplitude)
-                    total_energy += associator_amp
-
-    return K_EXPECTED * (ALPHA / PHI**2) * total_energy
-
-
-# ───────────────────────────────────────────────────────────────────────────────
-# Plan 9: Associator Charge Computation
-# ───────────────────────────────────────────────────────────────────────────────
-
-
-def compute_associator_charge(grid, sample_fraction=0.1, seed=None):
-    """Plan 9: Compute total associator charge Xi from thread triples.
-
-    For each patch thread, samples triples (a,b,c) and computes
-    the associator [a,b,c] = (a*b)*c - a*(b*c). The associator is
-    non-zero only when elements pass through the zero-point gate.
-
-    Returns:
-        (Xi_total: float, n_triples_checked: int)
-    """
-    if seed is not None:
-        np.random.seed(seed)
-
-    n_i, n_j = len(grid), len(grid[0])
-    total_xi = 0.0
-    n_checked = 0
-
-    for i in range(n_i):
-        for j in range(n_j):
-            thread = grid[i][j]
-            if len(thread.elements) < 3:
-                continue
-            n_sample = max(1, int(len(thread.elements) * sample_fraction))
-            indices = np.random.choice(len(thread.elements), size=min(n_sample, 10), replace=False)
-            for ii in range(len(indices)):
-                for jj in range(ii + 1, len(indices)):
-                    for kk in range(jj + 1, len(indices)):
-                        a = thread.elements[indices[ii]]
-                        b = thread.elements[indices[jj]]
-                        c = thread.elements[indices[kk]]
-                        total_xi += associator(a, b, c)
-                        n_checked += 1
-
-    return total_xi, n_checked
-
-
-def run_validation_simulation():
-    """Plan 9: Small validation simulation — compress and expand a single patch.
-
-    Demonstrates the core directed numbers runtime: compression, expansion
-    with parity flip (twist), and information conservation.
-    """
-    print("\n" + "=" * 65)
-    print("PLAN 9: DIRECTED NUMBERS RUNTIME — VALIDATION SIMULATION")
-    print("=" * 65)
-
-    np.random.seed(42)
-    n_patches = 4
-    grid = create_thread_grid(n_patches, initial_amplitude=0.3, seed=42)
-
-    I_initial = grid_total_info(grid)
-    print(f"  Initial I = {I_initial:.4f}")
-
-    # Phase 1: Compress all patches
-    for i in range(n_patches):
-        for j in range(n_patches):
-            compress_patch(grid, i, j)
-    I_compressed = grid_total_info(grid)
-    print(f"  After compression  I = {I_compressed:.4f} (amps preserved as memory)")
-
-    # Verify all elements are directed zeros
-    n_compressed = 0
-    for i in range(n_patches):
-        for j in range(n_patches):
-            for e in grid[i][j].elements:
-                if e.is_directed_zero:
-                    n_compressed += 1
-    print(f"  Directed zeros: {n_compressed}")
-
-    # Phase 2: Expand with twist (parity flip)
-    for i in range(n_patches):
-        for j in range(n_patches):
-            invert_patch(grid, i, j, twist_flip=True)
-
-    I_final = grid_total_info(grid)
-    print(f"  After expansion    I = {I_final:.4f}")
-    print(f"  Information conserved: {abs(I_final - I_initial) < 1e-10}")
-
-    # Phase 3: Associator computation
-    xi, n_checked = compute_associator_charge(grid, sample_fraction=1.0, seed=99)
-    print(f"  Associator charge Xi = {xi:.6f} (n_triples={n_checked})")
-
-    # Phase 4: Temporal consistency check
-    tt = TemporalThread(elements=list(grid[0][0].elements), twist_on_shift=True)
-    tt.T_plus()
-    tt.T_plus()
-    valid, msg = tt.closed_loop_condition()
-    print(f"  Temporal loop: valid={valid}, {msg}")
-
-    # Save validation output
-    import matplotlib
-    matplotlib.use("Agg")
-    import matplotlib.pyplot as plt
-
-    fig, axes = plt.subplots(1, 2, figsize=(12, 5))
-
-    # Bar chart: information conservation phases
-    phases = ["Initial", "Compressed", "Expanded"]
-    values = [I_initial, I_compressed, I_final]
-    axes[0].bar(phases, values, color=["blue", "orange", "green"])
-    axes[0].set_ylabel("Total Information I")
-    axes[0].set_title("Information Conservation\n(Compression + Expansion)")
-    axes[0].axhline(y=I_initial, color="red", linestyle="--", alpha=0.5, label=f"Initial I={I_initial:.4f}")
-    axes[0].legend()
-    axes[0].grid(True, alpha=0.3)
-
-    # Grid visualization: show parity distribution after expansion
-    parity_counts = {"up": 0, "down": 0, "zero": 0}
-    for i in range(n_patches):
-        for j in range(n_patches):
-            for e in grid[i][j].elements:
-                parity_counts[e.parity] = parity_counts.get(e.parity, 0) + 1
-
-    axes[1].bar(parity_counts.keys(), parity_counts.values(), color=["red", "blue", "gray"])
-    axes[1].set_ylabel("Count")
-    axes[1].set_title("Parity Distribution After Twist Expansion")
-    axes[1].grid(True, alpha=0.3)
-
-    fig.tight_layout()
-    os.makedirs("outputs", exist_ok=True)
-    fig.savefig("outputs/directed_numbers_validation.png", dpi=150, bbox_inches="tight")
-    plt.close(fig)
-    print("  Saved outputs/directed_numbers_validation.png")
-
-    # Write validation report
-    with open("outputs/directed_numbers_validation.txt", "w", encoding="utf-8") as f:
-        f.write("PLAN 9: DIRECTED NUMBERS RUNTIME — VALIDATION REPORT\n")
-        f.write("=" * 55 + "\n\n")
-        f.write(f"Initial information:      {I_initial:.6f}\n")
-        f.write(f"After compression:        {I_compressed:.6f}\n")
-        f.write(f"After expansion (twist):  {I_final:.6f}\n")
-        f.write(f"Information conserved:    {abs(I_final - I_initial) < 1e-10}\n\n")
-        f.write(f"Directed zeros:           {n_compressed}\n")
-        f.write(f"Associator charge Xi:     {xi:.6f} (from {n_checked} triples)\n")
-        f.write(f"Parity distribution:      {parity_counts}\n")
-        f.write(f"Temporal consistency:     {msg}\n\n")
-        f.write("Plan 9 runtime validated successfully.\n")
-
-    print("  Saved outputs/directed_numbers_validation.txt")
-    return {"I_initial": I_initial, "I_compressed": I_compressed, "I_final": I_final,
-            "Xi": xi, "conserved": abs(I_final - I_initial) < 1e-10}
-
-
-# ───────────────────────────────────────────────────────────────────────────────
-# Mass formula derivation — topological principles
-# ───────────────────────────────────────────────────────────────────────────────
-#
-# Core principle (directed numbers):
-#   M = f_topo * (hbar c / 2 pi l_P) * I_BH
-#
-# where I_BH = sum( |a| ) across all horizon-patch directed numbers.
-# The topological factor f_topo accounts for non-orientability:
-#   f(sphere) = 1, f(Klein) = 1.5 (Section 4: extra gradient leak from twist).
-#
-# The associator [x,y,z] provides a correction term (Axiom 2.14):
-#   delta_M ~ (1/phi^2) * sum( associator products )
-# which encodes hysteresis and formation-history dependence.
-#
-# Cross-thread multiplication yields linking invariants that
-# modulate the horizon area A ~ alpha * n_patches^2.
-#
-# The Sinkhorn-Knopp projection ensures doubly-stochastic
-# information flow — long-term coherence for self-referential systems.
-
-
-def derive_mass_formula():
-    print("\n" + "=" * 65)
-    print("BLACK HOLE MASS FROM TOPOLOGICAL DIRECTED NUMBERS")
-    print("=" * 65)
-
-    np.random.seed(42)
-
-    # Sweep over thread counts AND topological configurations
-    n_trials = [4, 9, 16, 25, 64, 100, 196, 400]
-    configs = [
-        ("sphere",       0.0, 1.0, "orientable"),
-        ("torus",        0.0, 1.0, "orientable (g=1)"),
-        ("klein_bottle", 1.0, 1.5, "non-orientable"),
-        ("klein_bottle", 2.0, 1.5, "non-orientable (strong twist)"),
-    ]
-
+def run_c():
+    print("\n=== Run C: Formation Phase Diagram ===")
     results = []
-    for topo, twist, f_topo, label in configs:
-        for n_total in n_trials:
-            n_patches = int(np.sqrt(n_total))
-            r = run_directed_simulation(
-                topology=topo, twist_param=twist, radius=10.0,
-                n_patches=n_patches, n_steps=200, dt=0.05,
-                compress_threshold=0.2, invert_threshold=50.0,
-                infall_rate=0.02, seed=int(n_total)
-            )
-            h = TopologicalHorizon(topology=topo, twist_param=twist,
-                                   radius=10.0, mesh_resolution=n_patches)
-            h.build_mesh()
-            A = h.surface_area()
 
-            # Compute cross-thread linking invariants
-            linking = _compute_linking_invariant(grid=n_patches, seed=n_total)
+    for mass_init in [5.0, 10.0, 20.0]:
+        for spin in [0.0, 0.5, 0.9]:
+            h = TopologicalHorizon(topology="sphere", radius=mass_init / 2.0,
+                                    mesh_resolution=30, mass_solar=mass_init, spin=spin)
+            h.build_mesh()
+            rho = jnp.array(h.info_density_grid)
+            n = h.mesh_resolution
+            transition_time = None
+            t = 0.0; dt = 0.05; mass = mass_init
+
+            for step in range(4000):
+                infall = 0.1
+                rho_np = np.array(rho)
+                h.info_density_grid = rho_np
+                if h.topology == "sphere":
+                    if h.transition_if_needed():
+                        transition_time = t
+                rho = jax_infall(rho, h.twist_param, n, dt, infall)
+                mass += infall * dt; t += dt
+                if transition_time is not None and step > 100:
+                    break
 
             results.append({
-                "topology": topo, "label": label, "f_topo": f_topo,
-                "twist_param": twist,
-                "n_patches": n_patches, "n_total": n_total,
-                "I_BH": r["final_info"], "M": r["final_mass"],
-                "Horizon_area": A,
-                "M_over_I": r["final_mass"] / r["final_info"] if r["final_info"] > 0 else 0,
-                "linking_invariant": linking,
+                "mass_init": mass_init, "spin": spin,
+                "transition_time": transition_time if transition_time is not None else -1.0,
+                "topology_after": h.topology
             })
+            tt_str = f"{transition_time:.0f}" if transition_time is not None else "None"
+            print(f"  M={mass_init} a*={spin} -> transition={tt_str}s topo={h.topology}")
 
-    # Per-topology fits
-    sphere = [r for r in results if r["topology"] == "sphere"]
-    klein  = [r for r in results if r["topology"] == "klein_bottle" and r.get("twist_param", 0) == 1.0]
-    torus  = [r for r in results if r["topology"] == "torus"]
-
-    I_s = np.array([r["I_BH"] for r in sphere]) if sphere else np.array([])
-    M_s = np.array([r["M"]   for r in sphere]) if sphere else np.array([])
-    I_k = np.array([r["I_BH"] for r in klein])  if klein  else np.array([])
-    M_k = np.array([r["M"]   for r in klein])  if klein  else np.array([])
-
-    k_s = _fit_slope(I_s, M_s)
-    k_k = _fit_slope(I_k, M_k)
-    f_ratio = k_k / k_s if k_s > 0 else 0.0
-
-    # Global fit
-    all_I = np.array([r["I_BH"] for r in results])
-    all_M = np.array([r["M"]   for r in results])
-    k_global = _fit_slope(all_I, all_M)
-
-    # Associator correction
-    zero_up  = DirectedZero(memory=DirectedNumber(0.0, "up"))
-    one_down = DirectedNumber(1.0, "down")
-    left  = (zero_up * zero_up) * one_down
-    right = zero_up * (zero_up * one_down)
-    associator = abs(left.amplitude - right.amplitude)  # Axiom 2.14: ~ 1/phi^2
-
-    # Write derivation
-    with open("outputs/mass_formula.txt", "w") as f:
-        f.write("=" * 70 + "\n")
-        f.write("BLACK HOLE MASS EQUATION — TOPOLOGICAL DERIVATION\n")
-        f.write("=" * 70 + "\n\n")
-        f.write("Base equation:\n")
-        f.write("  M = f_topo * (hbar c / 2 pi l_P) * I_BH + delta_M(associator)\n\n")
-
-        f.write(f"Fundamental constant:\n")
-        f.write(f"  k_0 = hbar c / (2 pi l_P) = {K_EXPECTED:.6e} kg\n\n")
-
-        f.write(f"Per-topology fits:\n")
-        f.write(f"  sphere:         k = {k_s:.6e}  (expected k_0 * 1.0 = {K_EXPECTED:.6e})\n")
-        f.write(f"  klein bottle:   k = {k_k:.6e}  (expected k_0 * 1.5 = {K_EXPECTED*1.5:.6e})\n")
-        f.write(f"  f_ratio (k_k/k_s) = {f_ratio:.4f}  (expected: 1.5)\n\n")
-
-        f.write(f"Global fit: k = {k_global:.6e}\n")
-        f.write(f"  ratio to expected: {k_global/K_EXPECTED:.4f}\n\n")
-
-        f.write(f"Topological factor f_topo:\n")
-        f.write(f"  sphere:   f = 1.0  (orientable, no twist)\n")
-        f.write(f"  torus:    f = 1.0  (orientable, genus 1)\n")
-        f.write(f"  klein:    f = 1.5  (non-orientable, twist leak)\n\n")
-
-        f.write(f"Associator correction (Axiom 2.14):\n")
-        f.write(f"  associator = {associator:.6f}\n")
-        f.write(f"  1/phi^2     = {1/PHI**2:.6f}\n")
-        f.write(f"  delta_M ~ associator * sum( linking invariants )\n\n")
-
-        f.write(f"Sinkhorn-Knopp projection: ensures doubly-stochastic flow\n")
-        f.write(f"  long-term coherence for self-referential horizons\n\n")
-
-        f.write("-" * 70 + "\n")
-        f.write(f"{'topology':15s} {'n':>4s} {'I_BH':>10s} {'M':>14s} {'M/I':>10s} {'A(h)':>12s} {'linking':>10s}\n")
-        f.write("-" * 70 + "\n")
-        for r in sorted(results, key=lambda x: (x["topology"], x["n_patches"])):
-            f.write(f"{r['topology']:15s} {r['n_patches']:4d} "
-                    f"{r['I_BH']:10.4f} {r['M']:14.4e} {r['M_over_I']:10.4e} "
-                    f"{r['Horizon_area']:12.4e} {r['linking_invariant']:10.4f}\n")
-
-    print(f"  Base:  M = f_topo * (hbar c / 2 pi l_P) * I_BH")
-    print(f"  k_s = {k_s:.4e}  |  k_k = {k_k:.4e}  |  f_ratio = {f_ratio:.4f} (expected 1.5)")
-    print(f"  k_global = {k_global:.4e}  |  k_expected = {K_EXPECTED:.4e}")
-    print(f"  associator = {associator:.6f}  (cf. 1/phi^2 = {1/PHI**2:.6f})")
-
+    with open("outputs/phase_diagram.csv", "w", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=["mass_init", "spin", "transition_time", "topology_after"])
+        w.writeheader(); w.writerows(results)
+    print("Saved outputs/phase_diagram.csv")
     return results
 
-
-def _fit_slope(x, y):
-    if len(x) < 2:
-        return 0.0
-    x = np.asarray(x)
-    y = np.asarray(y)
-    mask = x > 1e-10
-    return np.sum(x[mask] * y[mask]) / np.sum(x[mask] * x[mask])
-
-
-def _compute_linking_invariant(grid, seed):
-    """Compute topological linking invariant via cross-thread multiplication.
-
-    Randomly selects thread pairs, cross-multiplies their elements,
-    and sums the compressed-zero amplitudes as a linking proxy.
-    """
-    np.random.seed(seed)
-    if isinstance(grid, int):
-        n_patches = grid
-        grid = create_thread_grid(n_patches, initial_amplitude=0.1, seed=seed)
-
-    n_i, n_j = len(grid), len(grid[0])
-    total_linking = 0.0
-    n_pairs = min(10, n_i * n_j)
-
-    for _ in range(n_pairs):
-        i1, j1 = np.random.randint(0, n_i), np.random.randint(0, n_j)
-        i2, j2 = np.random.randint(0, n_i), np.random.randint(0, n_j)
-        if (i1, j1) == (i2, j2):
-            continue
-        t1, t2 = grid[i1][j1], grid[i2][j2]
-        cross = t1.cross_multiply(t2)
-        for e in cross.elements:
-            if e.parity == "zero" and e.memory is not None:
-                total_linking += e.memory.amplitude
-
-    return total_linking
-
-
-# ───────────────────────────────────────────────────────────────────────────────
-# Hysteresis test (non-associative memory)
-# ───────────────────────────────────────────────────────────────────────────────
-
-def test_hysteresis():
-    """Demonstrate non-associativity of compression/expansion order.
-
-    Tests the associator [x, y, z] = (x*y)*z - x*(y*z) for directed zeros
-    with different pairing sequences — direct algebraic verification of Axiom 2.13.
-    """
-    print("\n=== Hysteresis Test (Non-Associativity) ===")
-
-    zero_up = DirectedZero(memory=DirectedNumber(0.0, "up"))
-    one_down = DirectedNumber(1.0, "down")
-    abs_zero = AbsoluteZero()
-
-    left = (zero_up * zero_up) * one_down
-    right = zero_up * (zero_up * one_down)
-    associator = left.amplitude - right.amplitude
-
-    print(f"  (0_up * 0_up) * 1_down = D({left.amplitude:.4f}, {left.parity})")
-    print(f"  0_up * (0_up * 1_down) = D({right.amplitude:.4f}, {right.parity})")
-    print(f"  associator = {associator:.4f}  (non-zero confirms non-associativity)")
-    print(f"  1/phi^2 = {1/PHI**2:.4f}")
-
-    left2 = (abs_zero * abs_zero) * DirectedNumber(1.0, "up")
-    right2 = abs_zero * (abs_zero * DirectedNumber(1.0, "up"))
-    associator2 = left2.amplitude - right2.amplitude
-    print(f"  (0_abs * 0_abs) * 1_up = D({left2.amplitude:.4f}, {left2.parity})")
-    print(f"  0_abs * (0_abs * 1_up) = D({right2.amplitude:.4f}, {right2.parity})")
-    print(f"  associator = {associator2:.4f}")
-
-    results = [
-        {"order": "pair_12_then_3", "initial_I": 1.0, "final_I": left.info(),
-         "delta_I": associator},
-        {"order": "pair_23_then_1", "initial_I": 1.0, "final_I": right.info(),
-         "delta_I": associator},
-    ]
-
-    with open("outputs/hysteresis_data.csv", "w", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=["order", "initial_I", "final_I", "delta_I"])
-        writer.writeheader()
-        writer.writerows(results)
-
-    return results
-
-
-# ───────────────────────────────────────────────────────────────────────────────
-# Temporal consistency & time crystal
-# ───────────────────────────────────────────────────────────────────────────────
-
-def test_temporal_consistency():
-    """Verify associator for compressed numbers matches Axiom 2.13/2.14."""
-    print("\n=== Temporal Consistency (Associator) ===")
-
-    zero_up = DirectedZero(memory=DirectedNumber(0.0, "up"))
-    zero_down = DirectedZero(memory=DirectedNumber(0.0, "down"))
-    one_down = DirectedNumber(1.0, "down")
-
-    left = (zero_up * zero_up) * one_down
-    right = zero_up * (zero_up * one_down)
-
-    associator = left.amplitude - right.amplitude
-    associator_golden = 1.0 / PHI**2
-
-    print(f"  (0_up * 0_up) * 1_down = {left.amplitude:.4f} ({left.parity})")
-    print(f"  0_up * (0_up * 1_down) = {right.amplitude:.4f} ({right.parity})")
-    print(f"  Associator = {associator:.4f}")
-    print(f"  1/phi^2 = {associator_golden:.4f}")
-
-    return {"associator": associator, "golden_ratio_bound": associator_golden}
-
-
-def simulate_time_crystal(n_patches=12, n_steps=300, seed=42):
-    print(f"\n=== Time Crystal ({n_patches}x{n_patches}, {n_steps} steps) ===")
-    np.random.seed(seed)
-
-    grid = create_thread_grid(n_patches, initial_amplitude=0.3, seed=seed)
-    info_history = []
-
-    for step in range(n_steps):
-        _inject_infall(grid, None, 0.03, seed + step)
-
-        for i in range(n_patches):
-            for j in range(n_patches):
-                grad = grid_gradient(grid, i, j)
-                if grad > 0.2:
-                    compress_patch(grid, i, j)
-
-        total_compr = _count_compressed_amplitude(grid)
-        if total_compr > 6.0:
-            for i in range(n_patches):
-                for j in range(n_patches):
-                    if _patch_has_compressed(grid, i, j):
-                        invert_patch(grid, i, j, twist_flip=True)
-
-        info_history.append(grid_total_info(grid))
-
-    info_arr = np.array(info_history)
-    fft = np.abs(np.fft.rfft(info_arr - info_arr.mean()))
-    freqs = np.fft.rfftfreq(n_steps)
-
-    peak_idx = np.argmax(fft[1:]) + 1 if len(fft) > 1 else 0
-    dominant_freq = freqs[peak_idx] if peak_idx < len(freqs) else 0.0
-    dominant_power = fft[peak_idx] if peak_idx < len(fft) else 0.0
-
-    print(f"  Dominant freq: {dominant_freq:.6f} (power={dominant_power:.4f})")
-    print(f"  Mean I: {info_arr.mean():.4f} +- {info_arr.std():.4f}")
-
-    return {"info_mean": float(info_arr.mean()), "info_std": float(info_arr.std()),
-            "dominant_freq": float(dominant_freq), "dominant_power": float(dominant_power),
-            "info_history": info_arr.tolist(), "freqs": freqs.tolist(), "fft": fft.tolist()}
-
-
-# ───────────────────────────────────────────────────────────────────────────────
-# Golden Ratio Closure — ΔM correction
-# ───────────────────────────────────────────────────────────────────────────────
-
-def run_golden_ratio_closure():
-    """Phase 1: Validate golden ratio correction to black hole mass formula.
-
-    The full mass equation:
-       M = f_topo * K_0 * I_BH + δM_assoc
-       δM_assoc = K_0 * (alpha/phi^2) * sum_over_pairs( associator(i,j) )
-
-    Since n_pairs ~ n_patches^2 ~ M^2, verify:
-       δM_assoc / (n_pairs * K_0 * alpha/phi^2) ≈ associator_per_pair
-
-    The associator per compressed pair is ~1 (Axiom 2.14).
-    This test confirms the alpha/phi^2 scaling of the topological correction.
-    """
-    print("\n" + "=" * 65)
-    print("GOLDEN RATIO CORRECTION — α/φ² SCALING VALIDATION")
-    print("=" * 65)
-
-    np.random.seed(42)
-    mass_targets = [5, 10, 20, 30, 50, 100]
-    results = []
-
-    assoc_per_pair = _standard_associator()
-    alpha_over_phi2 = ALPHA / PHI**2
-    const = K_EXPECTED * alpha_over_phi2
-
-    for mass_target in mass_targets:
-        n_patches = int(4 + mass_target * 0.6)
-        r = run_directed_simulation(
-            topology="klein_bottle", twist_param=1.0, radius=10.0,
-            n_patches=n_patches, n_steps=200, dt=0.05,
-            compress_threshold=0.15, invert_threshold=30.0,
-            infall_rate=0.04, seed=mass_target
-        )
-
-        I_BH = r["final_info"]
-        M_base = 1.5 * K_EXPECTED * I_BH
-        n_pairs = 2 * n_patches * n_patches
-        dM_assoc = const * n_pairs * assoc_per_pair
-        M_total = M_base + dM_assoc
-
-        results.append({
-            "mass_target": mass_target, "n_patches": n_patches,
-            "n_pairs": n_pairs, "I_BH": I_BH,
-            "M_base": M_base, "dM_assoc": dM_assoc,
-            "M_total": M_total,
-            "dM_per_pair": dM_assoc / n_pairs,
-        })
-        print(f"  n={n_patches:3d}  I_BH={I_BH:.2f}  "
-              f"M_base={M_base:.4e}  dM={dM_assoc:.4e}  "
-              f"dM/n_pairs={dM_assoc/n_pairs:.2e}")
-
-    # Verify dM/n_pairs = const * assoc_per_pair for every point
-    dM_per_pair = np.array([r["dM_per_pair"] for r in results])
-    expected = const * assoc_per_pair
-    errors = np.abs(dM_per_pair - expected)
-    max_rel_err = errors.max() / expected if expected > 0 else 0.0
-    validated = max_rel_err < 1e-6
-
-    if validated:
-        print(f"  ✓ dM_per_pair = {dM_per_pair[0]:.6e} = const * assoc = {expected:.6e}")
-        print(f"  ✓ Identical for all n (by construction)")
-    else:
-        print(f"  ✗ max relative error: {max_rel_err:.2e}")
-
-    # M² scaling verification
-    M_sq_vals = np.array([r["M_base"] ** 2 for r in results])
-    dM_vals   = np.array([r["dM_assoc"] for r in results])
-    beta_fit  = _fit_slope(M_sq_vals, dM_vals)
-
-    with open("outputs/mass_scaling.csv", "w", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=[
-            "mass_target", "n_patches", "n_pairs", "I_BH",
-            "M_base", "dM_assoc", "M_total", "dM_per_pair"
-        ])
-        writer.writeheader()
-        writer.writerows(results)
-
-    with open("outputs/golden_ratio_conclusion.txt", "w", encoding="utf-8") as f:
-        f.write("GOLDEN RATIO CORRECTION — VALIDATION REPORT\n")
-        f.write("=" * 50 + "\n\n")
-        f.write("Full mass equation (directed numbers + associator):\n")
-        f.write("  M_tot = f_topo * K_0 * I_BH + K_0 * (alpha/phi^2) * sum(associators)\n\n")
-        f.write(f"Constants:\n")
-        f.write(f"  K_0 = hbar c / (2 pi l_P)  = {K_EXPECTED:.6e} kg\n")
-        f.write(f"  alpha (fine-structure)      = {ALPHA:.10f}\n")
-        f.write(f"  phi (golden ratio)          = {PHI:.10f}\n")
-        f.write(f"  alpha / phi^2               = {alpha_over_phi2:.10f}\n")
-        f.write(f"  associator per pair (axiom) = {assoc_per_pair:.6f}\n\n")
-        f.write(f"Correction per neighbor pair:\n")
-        f.write(f"  dM_pair = K_0 * alpha/phi^2 * assoc = {expected:.6e} kg\n\n")
-        f.write(f"Scaling with mass:\n")
-        f.write(f"  n_pairs = 2 * n_patches^2 ~ M_base^2\n")
-        f.write(f"  δM_assoc = dM_pair * n_pairs ~ M_base^2\n")
-        f.write(f"  Fitted β = δM / M_base^2 = {beta_fit:.6e}\n\n")
-        f.write(f"Validation: {'PASSED — alpha/phi^2 scaling confirmed' if validated else 'INCONCLUSIVE'}\n")
-
-    import matplotlib
-    matplotlib.use("Agg")
-    import matplotlib.pyplot as plt
-
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
-
-    ax1.scatter([r["n_patches"]**2 for r in results],
-                [r["dM_assoc"] for r in results],
-                c="blue", s=60)
-    ax1.set_xlabel("n_patches²")
-    ax1.set_ylabel("δM_assoc (kg)")
-    ax1.set_title("δM_assoc ~ n_patches² ~ M²")
-    ax1.grid(True, alpha=0.3)
-
-    n_sq = np.array([r["n_patches"]**2 for r in results])
-    dM_arr = np.array([r["dM_assoc"] for r in results])
-    ax2.scatter(n_sq, dM_arr / n_sq, c="green", s=60)
-    ax2.axhline(y=expected, color="red", linestyle="--", label=f"theory: {expected:.2e}")
-    ax2.set_xlabel("n_patches²")
-    ax2.set_ylabel("δM_assoc / n_pairs")
-    ax2.set_title(f"α/φ² Scaling: α/φ² = {alpha_over_phi2:.6f}")
-    ax2.legend()
-    ax2.grid(True, alpha=0.3)
-
-    fig.tight_layout()
-    fig.savefig("outputs/golden_ratio_fit.png", dpi=150, bbox_inches="tight")
-    plt.close(fig)
-    print("Saved outputs/golden_ratio_fit.png")
-
-    return results, expected, dM_per_pair[0], validated
-
-
-def _standard_associator():
-    """Compute the standard associator amplitude per compressed pair.
-
-    From Axiom 2.13:  (0_up * 0_up) * 1_down vs 0_up * (0_up * 1_down)
-    The associator amplitude is ~1 (for unit amplitudes).
-    """
-    zero_up  = DirectedZero(memory=DirectedNumber(0.0, "up"))
-    one_down = DirectedNumber(1.0, "down")
-    left  = (zero_up * zero_up) * one_down
-    right = zero_up * (zero_up * one_down)
-    return abs(left.amplitude - right.amplitude)
-
-
-# ───────────────────────────────────────────────────────────────────────────────
-# Inversion waveform
-# ───────────────────────────────────────────────────────────────────────────────
-
-def simulate_inversion(n_patches=20, n_steps=500, seed=42):
-    print(f"\n=== Inversion Waveform (Klein, {n_patches}x{n_patches}) ===")
-    np.random.seed(seed)
-
-    grid = create_thread_grid(n_patches, initial_amplitude=0.3, seed=seed)
-    current_series = []
-    event_log = []
-
-    for step in range(n_steps):
-        _inject_infall(grid, None, 0.04, seed + step)
-
-        for i in range(n_patches):
-            for j in range(n_patches):
-                grad = grid_gradient(grid, i, j)
-                if grad > 0.15:
-                    compress_patch(grid, i, j)
-
-        total_compr = _count_compressed_amplitude(grid)
-        outgoing = 0.0
-        if total_compr > 5.0:
-            info_before = grid_total_info(grid)
-            for i in range(n_patches):
-                for j in range(n_patches):
-                    if _patch_has_compressed(grid, i, j):
-                        invert_patch(grid, i, j, twist_flip=True)
-            info_after = grid_total_info(grid)
-            outgoing = abs(info_after - info_before)
-            event_log.append({"step": step, "outgoing_current": outgoing})
-
-        current_series.append(outgoing)
-
-    with open("outputs/inversion_waveform.csv", "w", newline="") as f:
-        writer = csv.writer(f)
-        writer.writerow(["step", "outgoing_current"])
-        for i, c in enumerate(current_series):
-            writer.writerow([i, c])
-
-    n_events = len(event_log)
-    total_out = sum(e["outgoing_current"] for e in event_log)
-    print(f"  Events: {n_events}  total outgoing I: {total_out:.4f}")
-    return current_series, event_log
-
-
-# ───────────────────────────────────────────────────────────────────────────────
-# Plots
-# ───────────────────────────────────────────────────────────────────────────────
-
-def plot_mass_vs_info(mass_results):
-    import matplotlib
-    matplotlib.use("Agg")
-    import matplotlib.pyplot as plt
-
-    fig, ax = plt.subplots(figsize=(8, 5))
-    for topo in ["sphere", "klein_bottle"]:
-        pts = [r for r in mass_results if r["topology"] == topo]
-        if not pts:
-            continue
-        ax.scatter([r["I_BH"] for r in pts], [r["M"] for r in pts],
-                   label=topo, s=40, alpha=0.8)
-
-    all_I = np.array([r["I_BH"] for r in mass_results])
-    all_M = np.array([r["M"] for r in mass_results])
-    if len(all_I) > 1:
-        coeffs = np.polyfit(all_I, all_M, 1)
-        I_fit = np.linspace(all_I.min(), all_I.max(), 100)
-        ax.plot(I_fit, coeffs[0] * I_fit + coeffs[1], "k--",
-                label=f"M = {coeffs[0]:.3e} * I + {coeffs[1]:.3e}")
-
-    ax.set_xlabel("I_BH (total directed information)")
-    ax.set_ylabel("M (kg)")
-    ax.set_title("Directed Numbers Mass Formula")
-    ax.legend()
-    ax.grid(True, alpha=0.3)
-    fig.savefig("outputs/mass_vs_info.png", dpi=150, bbox_inches="tight")
-    plt.close(fig)
-    print("Saved outputs/mass_vs_info.png")
-
-
-def plot_temporal_consistency(tc_result):
-    import matplotlib
-    matplotlib.use("Agg")
-    import matplotlib.pyplot as plt
-
-    info = np.array(tc_result["info_history"])
-    freqs = np.array(tc_result["freqs"])
-    fft = np.array(tc_result["fft"])
-
-    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 7))
-
-    ax1.plot(info, "b-", alpha=0.8, linewidth=0.8)
-    ax1.set_xlabel("Step")
-    ax1.set_ylabel("I_BH")
-    ax1.set_title("Time Crystal: Information Density")
-    ax1.grid(True, alpha=0.3)
-
-    ax2.plot(freqs[1:len(fft)], fft[1:], "r-", linewidth=1.5)
-    ax2.set_xlabel("Frequency")
-    ax2.set_ylabel("FFT Power")
-    ax2.set_title("Spectral Modes")
-    ax2.grid(True, alpha=0.3)
-
-    fig.tight_layout()
-    fig.savefig("outputs/temporal_consistency.png", dpi=150, bbox_inches="tight")
-    plt.close(fig)
-    print("Saved outputs/temporal_consistency.png")
-
-
-# ───────────────────────────────────────────────────────────────────────────────
-# Main
-# ───────────────────────────────────────────────────────────────────────────────
+# ── Run D: Gravitational Wave Burst ────────────────────────────────────────
+
+def run_d():
+    print("\n=== Run D: Gravitational Wave Burst ===")
+    h = TopologicalHorizon(topology="sphere", radius=10.0, mesh_resolution=40, mass_solar=10.0)
+    h.build_mesh()
+    rho = jnp.array(h.info_density_grid)
+    n = h.mesh_resolution
+    t = 0.0; dt = 0.05; mass = 10.0
+
+    for step in range(1000):
+        infall = 0.1 if t < 50 else 0.5
+        rho_np = np.array(rho)
+        h.info_density_grid = rho_np
+        h.transition_if_needed()
+
+        if t < 50:
+            h.compact_dimensions = 2
+            delta_n_prev = 0
+        elif abs(t - 50) < dt:
+            h.compact_dimensions = 2
+            delta_n_prev = h.update_compact_dimensions()
+
+        rho = jax_infall(rho, h.twist_param, n, dt, infall)
+        mass += infall * dt; t += dt
+
+        if abs(t - 50) < 0.1:
+            print(f"  Jump at t=50s: infall 0.1->0.5 M_sun/s")
+
+    h.update_compact_dimensions()
+    delta_n = 1
+    t_gw, h_plus, h_cross = h.emit_gravitational_wave(delta_n=delta_n, duration=2.0, dt=1e-3)
+
+    with open("outputs/gravitational_waveform.csv", "w", newline="") as f:
+        w = csv.writer(f); w.writerow(["time", "h_plus", "h_cross"])
+        for i in range(len(t_gw)):
+            w.writerow([t_gw[i], h_plus[i], h_cross[i]])
+    print("Saved outputs/gravitational_waveform.csv")
+
+    return t_gw, h_plus, h_cross
+
+# ── Run E: Non-Thermal Hawking Spectrum ────────────────────────────────────
+
+def run_e():
+    print("\n=== Run E: Non-Thermal Hawking Spectrum ===")
+    h = TopologicalHorizon(topology="klein_bottle", twist_param=1.5, radius=10.0,
+                            mesh_resolution=40, mass_solar=10.0)
+    h.build_mesh()
+    rho = h.info_density_grid.copy()
+
+    np.random.seed(7)
+    for _ in range(5):
+        cx = np.random.randint(0, 40)
+        cy = np.random.randint(0, 40)
+        i_arr, j_arr = np.meshgrid(np.arange(40), np.arange(40), indexing="ij")
+        d = np.sqrt((i_arr - cx) ** 2 + (j_arr - cy) ** 2)
+        rho += 0.3 * np.exp(-(d ** 2) / (2 * (4) ** 2))
+    h.info_density_grid = np.clip(rho, 0, 1)
+
+    h.winding_numbers = [2, 3, 5]
+    freqs = np.logspace(10, 25, 2000)
+    spectrum = h.hawking_spectrum(freqs)
+
+    with open("outputs/radiation_spectrum.csv", "w", newline="") as f:
+        w = csv.writer(f); w.writerow(["frequency", "power"])
+        for i in range(len(freqs)):
+            w.writerow([freqs[i], spectrum[i]])
+    print("Saved outputs/radiation_spectrum.csv")
+
+    return freqs, spectrum
+
+# ── Main ───────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    np.random.seed(42)
+    t0_all = time.time()
 
-    # Plan 9: Run validation simulation first
-    run_validation_simulation()
+    h_a, times_a, grads_a, topos_a, masses_a = run_a()
+    masses_b, n_comp_b = run_b()
+    phase_c = run_c()
+    t_gw, hp, hc = run_d()
+    freqs_e, spec_e = run_e()
 
-    configs = [
-        ("sphere", 0.0, 10.0),
-        ("klein_bottle", 1.0, 10.0),
-        ("klein_bottle", 2.0, 10.0),
-    ]
-
-    sim_results = []
-    for topo, twist, R in configs:
-        print(f"\nRunning: topology={topo}, twist={twist}, R={R}")
-        r = run_directed_simulation(topo, twist, R, n_patches=20, n_steps=300,
-                                    infall_rate=0.02, seed=42)
-        sim_results.append(r)
-
-    csv_out = []
-    for r in sim_results:
-        csv_out.append({
-            "topology": r["topology"], "twist_param": r["twist_param"],
-            "radius": r["radius"], "n_patches": r["n_patches"],
-            "n_steps": r["n_steps"], "initial_info": r["initial_info"],
-            "final_info": r["final_info"],
-            "initial_mass": r["initial_mass"],
-            "final_mass": r["final_mass"],
-            "total_leakage": r["total_leakage"],
-            "elapsed_seconds": r["elapsed_seconds"],
-        })
-
-    with open("outputs/entropy_comparison.csv", "w", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=list(csv_out[0].keys()))
-        writer.writeheader()
-        writer.writerows(csv_out)
-    print("Saved outputs/entropy_comparison.csv")
-
-    mass_results = derive_mass_formula()
-    plot_mass_vs_info(mass_results)
-
-    test_hysteresis()
-    test_temporal_consistency()
-
-    tc = simulate_time_crystal(n_patches=12, n_steps=300, seed=42)
-    plot_temporal_consistency(tc)
-
-    simulate_inversion(n_patches=20, n_steps=300, seed=42)
-
-    print("\n=== SUMMARY ===")
-    for r in sim_results:
-        print(f"  {r['topology']:15s} twist={r['twist_param']:.1f} | "
-              f"I={r['initial_info']:.1f}->{r['final_info']:.1f} | "
-              f"M={r['initial_mass']:.2e}->{r['final_mass']:.2e} | "
-              f"leak={r['total_leakage']:.6e}")
+    elapsed = time.time() - t0_all
+    print(f"\nAll runs completed in {elapsed:.1f}s")
+    print(f"  Run A: {len(times_a)} samples, transition: {len(h_a._transition_history)} events")
+    print(f"  Run B: compact dims tracked to n={max(n_comp_b)}")
+    trans_count = sum(1 for r in phase_c if r["transition_time"] > 0)
+    print(f"  Run C: {trans_count}/{len(phase_c)} configurations transitioned")
+    print(f"  Run D: GW waveform generated ({len(t_gw)} samples)")
+    print(f"  Run E: radiation spectrum ({len(freqs_e)} bins)")

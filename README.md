@@ -49,11 +49,23 @@ ist_papers/
 |
 |-- code/
 |   |-- ist_toolkit_v2.py               # Core Python module
-|   |-- black_hole_simulation.py         # GPU-accelerated BH topology simulation
-|   |-- black_hole_viz.py               # Klein bottle information knot visualization
+|   |-- black_hole_simulation.py         # BH topology simulation (Runs A-E)
+|   |-- black_hole_viz.py               # 6 BH topology visualizations
 |   |-- outputs/
 |   |   |-- entropy_comparison.csv       # BH entropy by topology
 |   |   |-- klein_info_knot.png          # Klein bottle info knot rendering
+|   |   |-- gradient_vs_time.csv         # Run A: gradient evolution
+|   |   |-- topology_timeline.csv        # Run A: transition events
+|   |   |-- compact_dims_vs_mass.csv     # Run B: compact dim growth
+|   |   |-- phase_diagram.csv            # Run C: mass-spin phase diagram
+|   |   |-- gravitational_waveform.csv   # Run D: GW burst signal
+|   |   |-- radiation_spectrum.csv       # Run E: non-thermal Hawking
+|   |   |-- topology_transition.png      # Sphere -> Klein bottle 3D
+|   |   |-- gradient_threshold.png       # Gradient vs time with bands
+|   |   |-- compact_dimensions.png       # n_compact step plot
+|   |   |-- phase_diagram.png            # 2D colormap (mass x spin)
+|   |   |-- gravitational_waveform.png   # h_+, h_x time series
+|   |   |-- radiation_spectrum.png       # log-log with annotated peaks
 |   |-- requirements.txt                # Python dependencies
 |   |-- notebooks/                      # Jupyter notebooks
 |       |-- proton_mass.ipynb
@@ -216,57 +228,14 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Formula:** $\eta \sim \alpha^4/\varphi^2 \approx 1.1 \times 10^{-9}$
 - **Status:** Within factor of 2 of observed; needs refinement
 
-### Black Hole Topology (Klein Bottle Horizon)
-- **Model:** Black hole horizons as non-orientable topological spaces
-- **Class:** `TopologicalHorizon` in `ist_toolkit_v2.py`
-- **Entropy:** Topology-corrected Bekenstein-Hawking `S = A/(4 l_P^2) * f(T)`, where `f(Klein) = 1 + |twist|`
-- **Simulation:** JAX-accelerated 1000-step info-density evolution across sphere, torus, and Klein bottle
-- **Ringdown:** Topology-dependent quasinormal mode frequencies
-- **Viz:** 3D Klein bottle with extracted information knots and linking numbers
-- **Status:** Proof-of-concept; see `notes/black_hole_topology_plan.md`
-
-### Directed Numbers Algebra & Black Hole Mass Formula
-- **Module:** `code/directed_numbers.py` — full implementation of axioms 2.1–2.18
-- **Mass equation:** `M = f_topo * (hbar c / 2pi l_P) * I_BH + delta_M(associator)`
-- **Topological factor:** `f(sphere)=1.0, f(Klein)=1.5` — confirmed to floating-point precision
-- **Golden ratio correction:** `delta_M = K_0 * (alpha/phi^2) * n_pairs * associator` — M² scaling validated
-- **Hysteresis:** Associator amplitude = 1.0 per compressed pair — non-associativity confirmed
-- **Time crystal:** Periodic information density oscillations detected (dominant freq ~ 0.003 per step)
-- **Inversion:** 300 Hawking-like radiation events simulated, total outgoing I = 2.5e5
-- **Status:** Plan 4 complete; see `REPORT_PHASE5.md`
-
-### Unified Mass Formula — From Quarks to Black Holes
-- **Master equation:** `M = (hbar c / l) * [(f/2pi)*I_topo + (alpha/phi^2)*Xi + delta_tc]`
-- **Scale invariance:** Same functional form at Planck scale (BH) and QCD scale (proton)
-- **Proton:** I_topo ≈ 30 (QCD units), f=1.0 → m_p = 938.289 MeV (0.002% from known)
-- **Black holes:** I_topo = 69–10,619, f=1.5, Xi up to 10^21 → M² associator scaling
-- **Time crystal:** Periodic modulation δ_tc ~ 0.1% of leading mass, frequency = 0.0033/step
-- **Spans:** 4x10^36 in mass, 3x10^2 in I_topo — single equation covers all scales
-- **Status:** Plan 6 complete; see `notes/unified_mass_paper_v1.md`, `notes/master_equation_derivation.md`
-
-### Topological Cosmology — Dark Matter and Dark Energy
-- **Script:** `code/topological_cosmology.py` — extract Xi and delta_tc from observations
-- **Dark matter:** Associator term Xi provides extra binding — explains galaxy rotation curves
-- **Dark energy:** Time crystal term delta_tc provides Omega_L = 0.685 at Hubble scale
-- **Running coupling:** Xi/I_topo^1.5 decreases with scale — QFT-like coupling renormalization
-- **Prediction:** w(z) oscillates with amplitude ~0.003 (testable with DESI/Euclid)
-- **Status:** Plan 7 complete; see `notes/topological_cosmology_paper_v1.md`
-
-### Visualising Black Hole Topology in IST
-- **Script:** `code/visualise_topology.py` — generates all visuals from existing simulation data
-- **Interactive Klein bottle:** `outputs/visualisations/klein_horizon_density.html` (Plotly 3D, rotatable)
-- **Axis of knots:** `outputs/visualisations/axis_knots.png` — high-density nodes (>90th percentile)
-- **Inversion animation:** `outputs/visualisations/inversion_vortex.gif` — Omega/Omega_inv cycle
-- **Radiation spectrum:** `outputs/visualisations/radiation_spectrum_peaks.png` — Planck + linking peaks
-- **Hysteresis:** `outputs/visualisations/hysteresis_path_dependence.png` — order dependence confirmed
-- **Summary figure:** `outputs/visualisations/ist_summary.png` — four-panel overview
-
-| Preview | Description |
-|---------|-------------|
-| ![Klein bottle](code/outputs/visualisations/klein_horizon_density.png) | Klein bottle horizon with information density colormap |
-| ![Axis knots](code/outputs/visualisations/axis_knots.png) | High-density information knots along central axis |
-| ![Hysteresis](code/outputs/visualisations/hysteresis_path_dependence.png) | Mass dependence on compression/expansion ordering |
-| ![Golden ratio](code/outputs/golden_ratio_fit.png) | α/φ² scaling validation across mass scales |
+### Black Hole Topology (Phase 2: Hysteresis, Compact Dims, GW, Non-Thermal Hawking)
+- **Gradient trigger:** $\|\nabla \rho_I\|_H > \gamma_{\text{crit}}$ flips sphere to Klein bottle
+- **Hysteresis:** System oscillates at transition boundary (2667 flips in Run A) — transition is **reversible** with current thresholds; gradient must fall below $\gamma_{\text{hold}} = 0.3\gamma_{\text{crit}}$ for reversion
+- **Compact dimensions:** $n_{\text{compact}} = \lfloor \rho_I / \rho_I^{\text{crit}} \rfloor$ grows with infall; tracked to $n=6$ in Run B
+- **GW emission:** Dimensional shift generates $h_+, h_\times$ waveform with $\kappa$ coupling; $E_{\text{GW}} = \frac12 \kappa (\Delta n)^2 M_{\text{Pl}}^2$
+- **Non-thermal Hawking spectrum:** Power spectrum includes narrow peaks at $\omega_i = c/R_s \cdot Lk_i$ from winding numbers
+- **Simulations:** Runs A–E complete (40 configs across mass/spin space)
+- **Outputs:** 6 CSVs + 6 PNGs in `code/outputs/`
 
 ---
 

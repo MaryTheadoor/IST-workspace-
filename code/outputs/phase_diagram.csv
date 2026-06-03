@@ -1,0 +1,10 @@
+mass_init,spin,transition_time,topology_after
+5.0,0.0,0.35,klein_bottle
+5.0,0.5,0.39999999999999997,klein_bottle
+5.0,0.9,0.9000000000000002,klein_bottle
+10.0,0.0,0.1,klein_bottle
+10.0,0.5,0.1,klein_bottle
+10.0,0.9,0.25,klein_bottle
+20.0,0.0,0.05,klein_bottle
+20.0,0.5,0.05,klein_bottle
+20.0,0.9,0.1,klein_bottle
