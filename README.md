@@ -281,6 +281,21 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Next:** Anisotropic fits (direction-dependent modulation), Pantheon+ SNe Ia integration, full MCMC
 - **Script:** `code/oscillatory_dark_energy.py` | **Data:** `data/hz_cosmic_chronometers.csv` | **Note:** `notes/hubble_tension_resolution_IST.md`
 
+### Plan 11.5: Anisotropic Hubble & Directed Numbers Cosmological Simulation
+- **Anisotropic Extension:** Tests direction-dependent H0 from Klein bottle twist axis
+  - Sky-direction-dependent fitting implemented in `code/anisotropic_hubble.py`
+  - Mock SNe Ia data test recovers dipole within 8.4° (amplitude error ~0.006)
+  - Compares fitted dipole to CMB, radio, and quasar dipoles
+- **Directed Numbers Cosmology:** Full bottom-up simulation bridging Plan 9 runtime to cosmology
+  - 3D grid of TemporalThread objects with compression-expansion cycles (Omega/Omega_inv)
+  - Extracts H(z), sky H0 map, time-crystal oscillation, and dipole amplitude
+  - Calibrated to Plan 11 log-periodic parameters (Δ = 1.54, ε = 0.136)
+  - Framework operational in `code/directed_numbers_cosmology.py`
+- **IST Cross-linking:** Master equation (Plan 7), associator charge Ξ(x), time-crystal δ_tc, Klein bottle topology (main paper §4)
+- **Plan:** `notes/IST plan 11.5 — anisotropic extension.md`
+- **Scripts:** `code/anisotropic_hubble.py`, `code/directed_numbers_cosmology.py`
+- **Outputs:** `code/outputs/anisotropic_fit.png`, `code/outputs/cosmo_grid_diagnostics.png`, `code/outputs/cosmo_grid_hz.png`
+
 ### Data Pipeline
 - **Fetch:** `data_fetch/fetch_hsc_m31.py`, `fetch_cosmos_web.py`, `fetch_ligo.py`
 - **Preprocess:** `preprocess_microlensing.py` (events → threads), `preprocess_lss.py` (galaxies → Ξ threads)

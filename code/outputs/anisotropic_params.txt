@@ -1,0 +1,14 @@
+=================================================================
+ANISOTROPIC HUBBLE PARAMETER FIT
+=================================================================
+
+Mock data: 300 SNe Ia
+True dipole: H_dip = 0.0200, axis = (150.0, -10.0)
+
+Isotropic chi^2 = 297.7 / 295
+Anisotropic chi^2 = 275.8 / 292
+Delta chi^2 = 21.9
+
+Fitted dipole: H_dip = 0.026365, axis = (152.9, -18.0)
+Angular recovery error: 8.4 deg
+H0_iso = 74.47, H0_aniso = 74.42

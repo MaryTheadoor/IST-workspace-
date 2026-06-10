@@ -1,0 +1,21 @@
+=================================================================
+DIRECTED NUMBERS COSMOLOGICAL SIMULATION PARAMETERS
+=================================================================
+
+Grid size: 6^3 = 216 patches
+Time steps: 100
+Physical time per step: 0.138 Gyr
+Initial total information: 2461.60
+Final total information: 2763.55
+
+Simulation oscillation frequency: 0.010000 (sim units)
+Physical oscillation frequency: 0.000725 Gyr^-1
+Simulation period (1/f): 100.00
+Plan 11 fitted period (Delta): 1.54
+
+Simulation eps (std/mean): 0.017049
+Plan 11 fitted eps: 0.1360
+IST predicted eps (alpha/phi^2): 0.002787
+
+Sky dipole amplitude (l=1): 0.150808
+Mean simulated H0: 0.00 km/s/Mpc
