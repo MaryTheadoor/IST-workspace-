@@ -1,0 +1,27 @@
+=================================================================
+χ² COMPARISON: ΛCDM vs OSCILLATORY MODELS
+=================================================================
+
+Data points: 60
+
+  Flat ΛCDM:
+    χ² = 22.88, dof = 58, reduced χ² = 0.395
+    AIC = 26.88, BIC = 31.07
+    H0 = 70.35 km/s/Mpc, tension w.r.t. SH0ES = 1.94σ
+
+  Log-periodic oscillatory:
+    χ² = 21.52, dof = 55, reduced χ² = 0.391
+    AIC = 31.52, BIC = 41.99
+    Δχ² = 1.37 (relative to ΛCDM)
+    H0 = 71.00 km/s/Mpc, tension w.r.t. SH0ES = 0.29σ
+
+  Redshift-linear oscillatory:
+    χ² = 19.51, dof = 55, reduced χ² = 0.355
+    AIC = 29.51, BIC = 39.98
+    Δχ² = 3.38 (relative to ΛCDM)
+    H0 = 76.41 km/s/Mpc, tension w.r.t. SH0ES = 0.97σ
+
+-----------------------------------------------------------------
+Planck 2018 H0 = 67.4 ± 0.5 km/s/Mpc
+SH0ES 2022 H0  = 73.0 ± 1.0 km/s/Mpc
+Δ(Planck−SH0ES) = 5.6 km/s/Mpc = 5.0σ

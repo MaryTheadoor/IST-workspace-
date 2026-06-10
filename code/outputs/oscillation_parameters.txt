@@ -1,0 +1,32 @@
+=================================================================
+OSCILLATION PARAMETERS
+=================================================================
+
+  Log-periodic model: H(z) = H0 sqrt[Om (1+z)^3 + (1-Om)(1+eps cos(2pi/Δ ln(1+z) + phi))]
+
+    H0   = 71.0022
+    Om_m = 0.247002
+    eps  = 0.135975
+    Δ    = 1.540317
+    phi  = -3.141593
+
+    Tension with SH0ES = 0.29σ
+
+    IST prediction for eps: alpha/phi^2 = 0.002787
+    Ratio (fitted / IST): 48.7832
+
+-----------------------------------------------------------------
+
+  Redshift-linear model: H(z) = H0 sqrt[Om (1+z)^3 + (1-Om)(1+eps sin(2pi z/z_c + phi))]
+
+    H0   = 76.4132
+    Om_m = 0.204019
+    eps  = 0.241935
+    z_c  = 1.406815
+    phi  = -2.921559
+
+    Tension with SH0ES = 0.97σ
+
+-----------------------------------------------------------------
+IST golden-ratio scaling: eps ~ alpha/phi^2 ≈ 0.00239
+Time crystal calibration (log-periodic): frequency f_tc ~ 1/Δ in units of Hubble time

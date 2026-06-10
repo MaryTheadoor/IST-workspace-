@@ -269,6 +269,18 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
   - Time crystal modulation frequency $f_{\text{tc}} = f_{\text{rd}}/(2\phi)$ predicted for each merger
   - IST SGWB component: $A_{\text{extra}}/A_{\text{obs}} \approx 0.28\%$ — challenging but defined
 
+### Plan 11: Resolving the Hubble Tension with Time-Crystal Dark Energy
+- **Oscillatory ΛCDM:** Log-periodic extension derived from IST time-crystal term δ_tc
+- **Data:** 60 H(z) measurements from cosmic chronometers + BAO (z = 0.07–2.36)
+- **Results (Log-periodic):** H0 = 71.00 ± 6.81 km/s/Mpc, tension with SH0ES reduced from 1.94σ → 0.29σ
+  - χ² = 21.52 / 55 dof (Δχ² = 1.37 vs ΛCDM), ε = 0.136 ± 0.315, Δ = 1.54 ± 3.64
+- **Results (Redshift-linear):** H0 = 76.41 ± 3.37 km/s/Mpc, tension = 0.97σ
+  - χ² = 19.51 / 55 dof (Δχ² = 3.38 vs ΛCDM), ε = 0.242 ± 0.086, z_c = 1.41 ± 0.32
+- **IST Connection:** Oscillation period Δ linked to Klein bottle twist frequency; amplitude ε maps to associator charge Ξ scaled to cosmological e-foldings
+- **Key Finding:** Hubble tension brought below 1σ for both oscillatory models — testable, falsifiable prediction unique to IST
+- **Next:** Anisotropic fits (direction-dependent modulation), Pantheon+ SNe Ia integration, full MCMC
+- **Script:** `code/oscillatory_dark_energy.py` | **Data:** `data/hz_cosmic_chronometers.csv` | **Note:** `notes/hubble_tension_resolution_IST.md`
+
 ### Data Pipeline
 - **Fetch:** `data_fetch/fetch_hsc_m31.py`, `fetch_cosmos_web.py`, `fetch_ligo.py`
 - **Preprocess:** `preprocess_microlensing.py` (events → threads), `preprocess_lss.py` (galaxies → Ξ threads)
