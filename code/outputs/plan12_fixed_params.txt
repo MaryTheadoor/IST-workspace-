@@ -1,0 +1,40 @@
+======================================================================
+PLAN 12 — TASKS 1 & 2: FIXED PARAMETER FITS
+======================================================================
+
+Golden ratio phi = 1.618034
+IST coupling alpha/phi^2 = 0.002787
+
+Model 0 (Free log-periodic, baseline):
+  H0     = 71.0049, Om_m = 0.2470, eps = 0.136042
+  Delta  = 1.5409, phi_0 = -3.1416
+  chi^2  = 21.52 / 55, tension = 0.29 sigma
+  eps/(alpha/phi^2) = 48.81 x
+  |Delta - phi| = 0.0771
+
+Model 1 (Fixed Delta = phi):
+  H0     = 71.3576, Om_m = 0.2436, eps = 0.144761
+  phi_0  = -3.1416
+  chi^2  = 21.52 / 56, Delta_chi^2 = 0.00
+  tension = 0.24 sigma
+
+Model 2 (eps = (alpha/phi^2) * N_inflation, free Delta):
+  H0     = 71.0032, Om_m = 0.2470
+  N_inflation = 48.79 +/- 112.95
+  eps_inferred = 0.136000
+  Delta  = 1.5405, phi_0 = -3.1416
+  chi^2  = 21.52 / 55, Delta_chi^2 = -0.00
+  tension = 0.29 sigma
+
+Model 3 (eps = (alpha/phi^2) * N_inflation, Delta = phi):
+  H0     = 71.3576, Om_m = 0.2436
+  N_inflation = 51.94 +/- 33.80
+  eps_inferred = 0.144762
+  phi_0  = -3.1416
+  chi^2  = 21.52 / 56, Delta_chi^2 = 0.00
+  tension = 0.24 sigma
+
+----------------------------------------------------------------------
+BICEP/Keck r < 0.036 => N_inflation > 50
+Fitted N_inflation (free Delta):  48.8 +/- 113.0
+Fitted N_inflation (fixed Delta): 51.9 +/- 33.8

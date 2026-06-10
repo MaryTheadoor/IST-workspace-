@@ -1,0 +1,20 @@
+======================================================================
+PLAN 12 — TASK 4: 3D TIME-CRYSTAL SIMULATION
+======================================================================
+
+Grid: 4^3 = 64 cells
+Steps: 2000
+Coupling: alpha/phi^2 = 0.002787
+
+Mean information:  454.80
+Std deviation:     100.92
+eps_3D (std/mean): 0.221905
+N_eff_3D:          79.6 e-folds
+Dominant freq:     0.000500
+Period:            2000.00 steps
+Dominant power:    111124.7
+
+Plan 11 fitted eps: 0.136
+Plan 11 N_inflation: ~48.8
+2D Plan 10 eps:     ~1.71e-4 (estimated from oscillation amplitude)
+Ratio 3D/2D:        1297.7
