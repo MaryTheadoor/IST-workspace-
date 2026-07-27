@@ -309,6 +309,16 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Scripts:** `code/plan12_fixed_parameters.py`, `code/plan12_joint_cmb_fit.py`, `code/plan12_3d_time_crystal.py`
 - **Outputs:** `code/outputs/plan12_fixed_delta_fit.png`, `code/outputs/plan12_cmb_constraints.png`, `code/outputs/plan12_3d_tc_oscillations.png`
 
+### Phase 1 (Constants-from-Geometry Roadmap): Klein Bottle Spectrum & φ Gap-Ratio Test
+- **Discrete substrate:** `SubstrateGraph` — 4-regular twisted-torus cellulation of the Klein bottle with flat Z₂ twist connection (seam edges t = −1, the discrete self-intersection locus)
+- **Topology verified:** χ = 0; non-orientable (face-orientation BFS); meridian holonomy −1; contractible plaquettes flat; torus control orientable
+- **Analytic spectrum:** λ(p,ℓ) = 4 − 2cos(2πp/n) − 2cos(πℓ/m); twist removes the zero mode — λ_min = 4sin²(π/2n) > 0 (meridian momentum halved vs torus)
+- **Numerics validated:** machine-precision agreement with closed form (max err ~1e-15, n up to 128)
+- **φ gap-ratio test:** distinct-level gap ratios are number-theoretic (4p²+ℓ² ladder); median r* ≈ 0.77–0.92, no convergence to φ — **bare-grid claim falsified**; φ must enter via RG flow (Phase 1.3) or non-uniform weave coupling J_ij
+- **Plan:** `notes/IST_Research_Plan_Phases_1-5.md` | **Note:** `notes/phase1_spectral_gap_results.md`
+- **Scripts:** `code/phase1_klein_laplacian.py`, `code/phase1_spectral_analysis.py` | **Tests:** `tests/test_phase1_spectrum.py` (21 tests)
+- **Outputs:** `code/outputs/phase1/eigenvalue_convergence.csv`, `code/outputs/phase1/spectral_gaps.png`
+
 ### Data Pipeline
 - **Fetch:** `data_fetch/fetch_hsc_m31.py`, `fetch_cosmos_web.py`, `fetch_ligo.py`
 - **Preprocess:** `preprocess_microlensing.py` (events → threads), `preprocess_lss.py` (galaxies → Ξ threads)
