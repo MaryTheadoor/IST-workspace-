@@ -49,6 +49,14 @@ Conventions:
     * Fold density rho_fold of a region = mean fold field in the region
       (sheets per plonk cell). IST target exponent: G ~ rho^{1/phi} with
       1/phi ~ 0.618; Phase 1.3's measured D_eff = 2 would give rho^{1/2}.
+
+Limitations:
+      The substrate graph is a raster discretisation (square grid). The
+      fundamental substrate units are vector-encoded oscillators, not
+      spatial cells. The fold field parameterised as a geometric band
+      on the grid is a raster proxy; the correct encoding defines fold
+      density via local oscillator density on an associator-generated
+      coupling graph. See notes/discrete_substrate_not_raster.md.
 ================================================================================
 """
 

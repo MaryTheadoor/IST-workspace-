@@ -44,6 +44,15 @@ Conventions:
       constraints. The smallest eigenvalue is 4 sin^2(pi / (2 n_mer)) > 0:
       the twist removes the zero mode (no globally constant section exists
       on a non-orientable bundle).
+
+Limitations:
+      The 4-regular twisted-torus graph is a raster discretisation -- a
+      square grid with uniform vertex degree. The fundamental substrate
+      units are not raster (they have no spatial shape; they are
+      vector-encoded directed-number oscillators with a fixed minimum
+      wavelength). The raster grid introduces rational mode-locking that
+      suppresses golden-ratio gap structures. See
+      notes/discrete_substrate_not_raster.md.
 ================================================================================
 """
 

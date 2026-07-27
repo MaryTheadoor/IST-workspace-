@@ -374,6 +374,7 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Attractor variability observed:** Douady–Couder growth (deposition + repulsion + advection = plonk tick + weave self-interaction + coarse graining) settles in a neighboring noble basin (`151.9° ± 0.8°` vs golden `137.5°`) — the concrete content of "the exact value varies."
 - **Golden window in Phase 4 data:** `D_eff(f)` crosses φ exactly once, at `f ≈ 4.20` — where void suppression `1 − 1/f = 76.2%` **equals the IST ~76% void lensing phenomenology**. The golden window and the canonical void prediction coincide.
 - **Script:** `code/phase6_phi_attractor.py` | **Tests:** `tests/test_phase6_phi_attractor.py` (19 tests)
+- **Constraint note:** `notes/discrete_substrate_not_raster.md` — the substrate graph is a raster approximation; fundamental units are vector-encoded oscillators (not pixels)
 - **Outputs:** `code/outputs/phase6/rotation_survival.csv`, `persistence.csv`, `divergence.csv`, `d_eff_crossing.csv`, `phi_attractor.png`
 
 ### Data Pipeline

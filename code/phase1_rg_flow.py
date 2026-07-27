@@ -21,6 +21,14 @@ References:
     code/ist_toolkit_v2.py                  (RGFlowSimulator beta function)
     main/ist_v5_3_topology_substrate.md     (Solis fixed-point reference)
 
+Limitations:
+      The 2x2 block-spin coarse-graining is a raster RG -- it assumes
+      geometric locality of the raster grid and partitions it into
+      uniform blocks. The correct RG for a vector-encoded substrate is
+      spectral: project the Laplacian onto its low-energy eigenspace
+      rather than onto spatial cells. See
+      notes/discrete_substrate_not_raster.md.
+
 Conventions:
     * RG time t = ln(mu_0 / mu) = level * ln b, with b = 2 for 2x2 blocking.
       t = 0 is the UV (fine grid), t increasing toward the IR (coarse grid).
