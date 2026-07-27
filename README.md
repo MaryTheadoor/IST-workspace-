@@ -222,7 +222,7 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 
 ### CMB Parity
 - **Prediction:** Antipodal correlation $C \approx 0.005$
-- **Status:** Motivating; needs rigorous null tests
+- **Status:** Null tests done (Phase 5): $\sigma_C \approx 0.12$ under $\Lambda$CDM — claim consistent with noise, needs reformulated statistic
 
 ### Baryogenesis
 - **Formula:** $\eta \sim \alpha^4/\varphi^2 \approx 1.1 \times 10^{-9}$
@@ -358,6 +358,15 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Script:** `code/phase4_variable_g.py` | **Tests:** `tests/test_phase4_variable_g.py` (20 tests)
 - **Outputs:** `code/outputs/phase4/decay_spectrum.csv`, `geff_vs_rho.csv`, `crossing_time.csv`, `geff_vs_rho.png`
 
+### Phase 5 (Constants-from-Geometry Roadmap): Observational Validation & Falsification
+- **Void lensing (decisive channel):** templates for constant G, `D = 2`, `D = φ`, and Phase 4's `D = 1/0.600` at COSMOS-Web depth (100 stacked voids). Two mappings from `G(ρ)` to lensing: **Model A** (local Poisson, voids deeper) vs **Model B** (IST suppression narrative) — opposite-sign deviations. Model B vs GR: **9.4–10.7σ** (decisive); Model A vs GR: 2.3–2.7σ; A vs B: >11σ. Resolving A vs B is now a concrete task for the field-equation derivation.
+- **CMB antipodal parity:** `apply_klein_parity_flip()` implemented; 200-sky ΛCDM Monte Carlo null per mask/flip. Injected `C = 0.005` recovered exactly (shift/0.005 = 0.99), but null `σ_C ≈ 0.10–0.13` — **~25× the signal**: the v5.3 motivating value is consistent with noise and untestable as formulated.
+- **GW time-crystal modulation:** exact 2×2 matched filter (naive estimator biased by leakage, found and fixed via injection tests). `ε = α/φ²` at GWTC-3 SNRs gives 0.02–0.06σ per event — **not detectable** (needs SNR ~1.7×10³); NANOGrav extra component `(α/φ²)² ≈ 7.8×10⁻⁶` in cross-power, ~10⁵× below sensitivity.
+- **Verdicts:** void lensing = testable now (Euclid/COSMOS-Web); CMB parity = reformulate; GW/PTA = null-consistent, sensitivity-limited.
+- **Plan:** `notes/IST_Research_Plan_Phases_1-5.md` | **Report:** `analysis/validation_report.md`
+- **Script:** `code/phase5_observational_tests.py` | **Tests:** `tests/test_phase5_observational.py` (27 tests)
+- **Outputs:** `code/outputs/phase5/lensing_shear.csv`, `cmb_antipodal_summary.csv`, `gw_modulation.csv`, `*.png`, `falsification_summary.pdf`
+
 ### Data Pipeline
 - **Fetch:** `data_fetch/fetch_hsc_m31.py`, `fetch_cosmos_web.py`, `fetch_ligo.py`
 - **Preprocess:** `preprocess_microlensing.py` (events → threads), `preprocess_lss.py` (galaxies → Ξ threads)
@@ -372,8 +381,8 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 ### High Priority
 1. [ ] Derive electron mass from first principles (single-loop topology)
 2. [ ] Refine QED corrections to proton mass formula
-3. [ ] Run void lensing simulations with JWST-like noise
-4. [ ] Assess CMB parity signal significance with proper null tests
+3. [x] Run void lensing simulations with JWST-like noise -- *Phase 5: COSMOS-Web-depth templates, Model B vs GR at 9.4–10.7σ*
+4. [x] Assess CMB parity signal significance with proper null tests -- *Phase 5: ΛCDM null σ_C ≈ 0.12 ≫ 0.005 signal; untestable as formulated*
 5. [ ] Derive force coupling constants from substrate harmonics
 
 ### Medium Priority
