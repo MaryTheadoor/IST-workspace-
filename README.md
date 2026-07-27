@@ -346,6 +346,18 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Script:** `code/phase3_mass_spectrum.py` | **Tests:** `tests/test_phase3_mass_spectrum.py`
 - **Outputs:** `code/outputs/phase3/mass_predictions.csv`, `mass_hierarchy.png`
 
+### Phase 4 (Constants-from-Geometry Roadmap): G from the Compression Spectrum
+- **Ψ linearized:** `M_Ψ = I − F^{-1}L/4`; decay spectrum from the generalized problem `L v = γF v` — real, nonneg, reduces to the Phase 1 Laplacian spectrum at `f = 1`.
+- **Slowest mode = gravitational time scale:** `τ_fold = 4/γ_min`, `G_eff ∝ τ_fold`. Nonlinear Ψ simulation reproduces `τ_fold` to 99.5%.
+- **Non-orientability as IR regulator:** torus control has `γ_min = 0` → `τ_fold = ∞`; the Klein twist gap keeps gravitational latency finite.
+- **Regional latency:** sheet/void Dirichlet contrast is exactly the fold factor (`τ_sheet/τ_void = f`).
+- **Global scaling:** measured `G_eff ∝ ρ^{0.600}` over `ρ ∈ [1, 16]` — within 3% of the IST target `ρ^{1/φ}`, but it is a crossover window (extended → localized slowest mode); asymptotic exponent → 1. Crossing-time (propagation) latency gives `ρ^{1.09}`. The two measures bracket `1/φ`.
+- **Void suppression:** 93.8% at `f = 16` (IST phenomenology ~76% at gentler contrast).
+- **Implication:** the local substrate contains the crossover skeleton (sub-linear global window) on which a fractal RG completion must hang the exact `1/φ` exponent — a concrete target for the missing φ-mechanism.
+- **Plan:** `notes/IST_Research_Plan_Phases_1-5.md` | **Supplementary:** `supplementary/phase4_geff_derivation.md`
+- **Script:** `code/phase4_variable_g.py` | **Tests:** `tests/test_phase4_variable_g.py` (20 tests)
+- **Outputs:** `code/outputs/phase4/decay_spectrum.csv`, `geff_vs_rho.csv`, `crossing_time.csv`, `geff_vs_rho.png`
+
 ### Data Pipeline
 - **Fetch:** `data_fetch/fetch_hsc_m31.py`, `fetch_cosmos_web.py`, `fetch_ligo.py`
 - **Preprocess:** `preprocess_microlensing.py` (events → threads), `preprocess_lss.py` (galaxies → Ξ threads)
