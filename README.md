@@ -330,6 +330,13 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Script:** `code/phase2_hopf_alpha.py` | **Tests:** `tests/test_phase2_hopf_alpha.py`
 - **Outputs:** `code/outputs/phase2/alpha_sensitivity.csv`, `alpha_sensitivity.png`
 
+### Cross-Phase Synthesis (Phases 1–2)
+- **Finding:** both phases converge on the same diagnosis — the local, discrete substrate has the correct topology (Klein bottle, Hopf fibration), but the golden ratio φ is **not present** in the bare uniform grid or its standard RG flow.
+- **Constraint 1 (Phase 1):** standard 2×2 block-spin RG gives `D_eff → 2`, fixed point `D* ≈ 2`, not `φ`.
+- **Constraint 2 (Phase 2):** local Hopf topology gives the form of `α = 4/R_f²` but the topological minimum `p = 3` yields `α ≈ 17.5`; matching observation requires a magnification `M ≈ 49.0 ≈ φ⁸`.
+- **Implication:** φ is a large-scale, fractal/self-similar emergent property of the substrate weave — not a local graph invariant. Existing Plans 6–12 results are phenomenologically anchored but microscopically incomplete until this mechanism is found.
+- **Note:** `notes/cross_phase_analysis_phases_1_2.md`
+
 ### Data Pipeline
 - **Fetch:** `data_fetch/fetch_hsc_m31.py`, `fetch_cosmos_web.py`, `fetch_ligo.py`
 - **Preprocess:** `preprocess_microlensing.py` (events → threads), `preprocess_lss.py` (galaxies → Ξ threads)
