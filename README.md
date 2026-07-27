@@ -320,6 +320,16 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Scripts:** `code/phase1_klein_laplacian.py`, `code/phase1_spectral_analysis.py`, `code/phase1_rg_flow.py` | **Tests:** `tests/test_phase1_spectrum.py`, `tests/test_phase1_rg_flow.py` (110 tests)
 - **Outputs:** `code/outputs/phase1/eigenvalue_convergence.csv`, `spectral_gaps.png`, `rg_trajectory.csv`, `rg_trajectory.png`
 
+### Phase 2 (Constants-from-Geometry Roadmap): α from Hopf Fiber Geometry
+- **Discrete Hopf fibration:** `DiscreteHopfFibration` — principal `S¹` bundle over a latitude-longitude `S²` base, Chern-number verified
+- **Kaluza-Klein relation:** `α = 4 / R_f²` with fiber radius `R_f = p / (2π)` for a fiber of `p` plonk units
+- **Topological minimum:** `p = 3` gives `α_raw ≈ 17.5` (`α_raw⁻¹ ≈ 0.057`) — far from observed `α⁻¹ ≈ 137.036`
+- **Missing magnification:** matching observation requires `p ≈ 147` or a magnification factor `M ≈ 49.0` of the `p = 3` fiber; `M / φ⁸ ≈ 1.044`
+- **Interpretation:** local Hopf topology fixes the integer `p = 3` but not the absolute scale of `α`; the scale must come from the substrate's large-scale fractal projection (still unresolved after Phase 1.3)
+- **Plan:** `notes/IST_Research_Plan_Phases_1-5.md` | **Supplementary:** `supplementary/phase2_alpha_derivation.md`
+- **Script:** `code/phase2_hopf_alpha.py` | **Tests:** `tests/test_phase2_hopf_alpha.py`
+- **Outputs:** `code/outputs/phase2/alpha_sensitivity.csv`, `alpha_sensitivity.png`
+
 ### Data Pipeline
 - **Fetch:** `data_fetch/fetch_hsc_m31.py`, `fetch_cosmos_web.py`, `fetch_ligo.py`
 - **Preprocess:** `preprocess_microlensing.py` (events → threads), `preprocess_lss.py` (galaxies → Ξ threads)
