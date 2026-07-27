@@ -146,3 +146,45 @@ mechanism (only golden-ratio gap structures survive all deposition
 generations) provides the theoretical basis for why associator-generated
 coupling, which is inherently dynamical and history-dependent, should
 realise it.
+
+## 6. Angular propagation freedom and the raster mode-locking
+
+A distinct but compounding raster artefact is the **restricted propagation
+directions** of the grid. The 4-regular (cardinal-only) and 8-regular
+(graphs with diagonals) force wave functions to propagate along a
+fixed set of lattice vectors:
+
+| Graph | Propagation directions | Intersection angles |
+|---|---|---|
+| 4-regular (Phase 1) | 4 cardinal | multiples of 90 deg only |
+| 8-regular (R=1) | 4 cardinal + 4 diagonal | multiples of 45 deg |
+| R=2 Chebyshev | 24 neighbours | 12 unique angles |
+| Continuous 2D manifold | all angles [0, 2pi) | any relative angle |
+
+On a continuous 2D substrate, two wave functions can propagate at any
+angle and intersect at any relative angle. The grid constrains this to a
+discrete set, producing the 4p^2 + l^2 number-theoretic ladder in the
+Laplacian spectrum (Phase 1.2).
+
+A high-connectivity substrate graph with Chebyshev neighbourhood radius R
+on the twisted torus has degree (2R+1)^2 - 1 and restores angular freedom
+as R grows: code/angular_connectivity_substrate.py implements this.
+
+| R | Avg degree | Median r* (n=32) | D_eff |
+|---|---|---|---|
+| 1 | 8 | 0.90 | 1.90 |
+| 2 | 24 | 1.09 | 1.97 |
+| 3 | 48 | 0.96 | 2.09 |
+| 4 | 80 | 0.94 | 2.27 |
+| phi target | -- | 1.618 | 1.618 |
+
+**Finding.** The gap-ratio distribution does **not** converge toward phi
+as R increases. Median r* fluctuates (0.90-1.09 across R) but stays well
+below phi. High connectivity dilutes the discrete 4p^2 + l^2 ladder into a
+more continuous mode distribution, but the anti-resonant golden structure
+does not appear in the static Laplacian -- it requires the dynamical
+deposition and persistence mechanism (Phase 6).
+
+Removing the angular raster constraint fixes the rational mode-locking
+but is not sufficient. Phi emerges from the self-interaction history, not
+from the static spectrum of any graph, regardless of connectivity.
