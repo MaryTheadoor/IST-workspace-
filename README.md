@@ -337,6 +337,15 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Implication:** φ is a large-scale, fractal/self-similar emergent property of the substrate weave — not a local graph invariant. Existing Plans 6–12 results are phenomenologically anchored but microscopically incomplete until this mechanism is found.
 - **Note:** `notes/cross_phase_analysis_phases_1_2.md`
 
+### Phase 3 (Constants-from-Geometry Roadmap): Mass Hierarchy, α_s, Neutrino Tunneling
+- **Proton & electron:** formulas remain ~99.95% accurate.
+- **Neutron:** `m_n = m_p(1 + δ_n)` with `δ_n = α/φ²` gives 99.91% accuracy (high by ~0.85 MeV); best-fit `δ_n ≈ 0.001884` (~2/3 of `α/φ²`). The plan's literal ratio form has the wrong sign.
+- **Strong coupling α_s:** associator model `α_s(E) = C φ^{-n(E)}` is qualitatively asymptotically free but quantitatively fails at low energy; fixed-point normalization `C = 1/φ²` gives `α_s(M_Z) ≈ 0.38` vs observed 0.118.
+- **Neutrino mass:** topological tunneling through the non-orientable twist requires a per-tick probability `P_tunnel ≈ 4×10^{-30}` for `m_ν ~ 0.05 eV`, ~10^{27}× smaller than the naive `α/φ²` estimate.
+- **Plan:** `notes/IST_Research_Plan_Phases_1-5.md` | **Supplementary:** `supplementary/phase3_mass_hierarchy.md`
+- **Script:** `code/phase3_mass_spectrum.py` | **Tests:** `tests/test_phase3_mass_spectrum.py`
+- **Outputs:** `code/outputs/phase3/mass_predictions.csv`, `mass_hierarchy.png`
+
 ### Data Pipeline
 - **Fetch:** `data_fetch/fetch_hsc_m31.py`, `fetch_cosmos_web.py`, `fetch_ligo.py`
 - **Preprocess:** `preprocess_microlensing.py` (events → threads), `preprocess_lss.py` (galaxies → Ξ threads)
