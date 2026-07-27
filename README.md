@@ -367,6 +367,15 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Script:** `code/phase5_observational_tests.py` | **Tests:** `tests/test_phase5_observational.py` (27 tests)
 - **Outputs:** `code/outputs/phase5/lensing_shear.csv`, `cmb_antipodal_summary.csv`, `gw_modulation.csv`, `*.png`, `falsification_summary.pdf`
 
+### Phase 6: The φ-Attractor Hypothesis (Variable Golden Ratio)
+- **Hypothesis** (`notes/phi_attractor_hypothesis.md`): φ is not a fixed point but an **attractor of the substrate's harmonic self-interaction** — like the golden angle in phyllotaxis — with scale-dependent best-approach, unifying with variable G into one running quantity `D(μ, ρ)`.
+- **Anti-resonance selection confirmed:** golden rotation holds gap rigidity `R ≥ 1/φ²` for all 300 deposition generations (never collapses); rationals collapse exactly at `denominator + 1`; silver ratio survives lower (0.293); non-noble `e−2` dips to 0.133. Golden = unique maximal-persistence structure (three-gap theorem verified: exactly 2 gap sizes in ratio φ at `n = 89`).
+- **Approached, never reached:** Fibonacci rationals `F_{k−1}/F_k` track the golden floor until collapsing at generation `F_k + 1` — at finite resolution the best structure is always a Fibonacci rational approaching φ. Atela–Golé lattice: golden divergence strictly minimizes energy vs rationals, basin deepens as `g → 1` (0.998 → 0.835).
+- **Attractor variability observed:** Douady–Couder growth (deposition + repulsion + advection = plonk tick + weave self-interaction + coarse graining) settles in a neighboring noble basin (`151.9° ± 0.8°` vs golden `137.5°`) — the concrete content of "the exact value varies."
+- **Golden window in Phase 4 data:** `D_eff(f)` crosses φ exactly once, at `f ≈ 4.20` — where void suppression `1 − 1/f = 76.2%` **equals the IST ~76% void lensing phenomenology**. The golden window and the canonical void prediction coincide.
+- **Script:** `code/phase6_phi_attractor.py` | **Tests:** `tests/test_phase6_phi_attractor.py` (19 tests)
+- **Outputs:** `code/outputs/phase6/rotation_survival.csv`, `persistence.csv`, `divergence.csv`, `d_eff_crossing.csv`, `phi_attractor.png`
+
 ### Data Pipeline
 - **Fetch:** `data_fetch/fetch_hsc_m31.py`, `fetch_cosmos_web.py`, `fetch_ligo.py`
 - **Preprocess:** `preprocess_microlensing.py` (events → threads), `preprocess_lss.py` (galaxies → Ξ threads)
