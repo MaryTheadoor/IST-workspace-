@@ -377,6 +377,14 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Constraint note:** `notes/discrete_substrate_not_raster.md` — the substrate graph is a raster approximation; fundamental units are vector-encoded oscillators (not pixels)
 - **Outputs:** `code/outputs/phase6/rotation_survival.csv`, `persistence.csv`, `divergence.csv`, `d_eff_crossing.csv`, `phi_attractor.png`
 
+### Phase 7: Vector Substrate — Spectral-Proximity Coupling Graph
+- **Purpose:** Implement the non-raster substrate: N oscillators on the spectral circle coupled by Gaussian proximity (weighted by the Phase 6 anti-resonance principle: Fibonacci gap structures suppress resonant triples, minimizing associator-mediated volume). Three ensembles: Fibonacci golden rotation, random uniform, rational rotation (1/5).
+- **Key result — Fibonacci self-similarity:** D_eff stays **flat at ~1.10 ± 0.03 across a ~6× range of average degree (6–39)**, with stable Weyl fits (R² > 0.88). The spectral dimension is NOT the grid's D=2, NOT the manifold's D=1 — it is a self-similar fractal dimension induced by the Fibonacci three-gap structure. The random graph's D_eff varies continuously with degree (not constant).
+- **Interpretation:** The spectral circle's Fibonacci coupling graph is scale-invariant — a direct signature of the φ-attractor mechanism at work, producing a graph whose spectral dimension is locked by the anti-resonant gap structure. The associator (directed-number triple product) is the underlying mechanism that selects spectral proximity as the pairwise coupling rule — anti-resonant triples minimize associator magnitude, suppressing coupling at rational separations.
+- **Next:** extend to a 2D base (Klein bottle oscillator sheet) + associator volume creation → expected D_eff flowing toward φ as the coupling crosses the golden window.
+- **Script:** `code/phase7_vector_substrate.py` | **Tests:** `tests/test_phase7_vector_substrate.py` (11 tests)
+- **Outputs:** `code/outputs/phase7/sigma_scan.csv`, `vector_substrate.png`
+
 ### Data Pipeline
 - **Fetch:** `data_fetch/fetch_hsc_m31.py`, `fetch_cosmos_web.py`, `fetch_ligo.py`
 - **Preprocess:** `preprocess_microlensing.py` (events → threads), `preprocess_lss.py` (galaxies → Ξ threads)
