@@ -154,16 +154,21 @@ class KleinGoldenSubstrate:
         # golden attractor: phase rotation + drift toward golden neighbors
         self.phase = (self.phase + 2 * np.pi * ALPHA_GOLDEN) % (2 * np.pi)
 
-        # drift: cells with golden neighbors adjust toward them
+        # drift: maintain golden separation (not alignment)
         w_up, w_dn, w_r, w_l = self._edge_weights()
-        for wt, roll_x, roll_y, row_sign in [
-            (w_r, -1, 0, +1), (w_l, +1, 0, +1),
-        ]:
-            target = np.roll(np.roll(self.phase, roll_x, axis=1),
-                            roll_y, axis=0)
+        for wt, roll_x, roll_y in [(w_r, -1, 0)]:
+            nbr_phase = np.roll(np.roll(self.phase, roll_x, axis=1),
+                               roll_y, axis=0)
             drift_mask = wt > 0.5
-            self.phase[drift_mask] = (0.99 * self.phase[drift_mask]
-                + 0.01 * target[drift_mask]) % (2 * np.pi)
+            t1 = (nbr_phase - 2 * np.pi * ALPHA_GOLDEN) % (2 * np.pi)
+            t2 = (nbr_phase + 2 * np.pi * ALPHA_GOLDEN) % (2 * np.pi)
+            d1 = np.minimum(np.abs(self.phase - t1),
+                            2 * np.pi - np.abs(self.phase - t1))
+            d2 = np.minimum(np.abs(self.phase - t2),
+                            2 * np.pi - np.abs(self.phase - t2))
+            target = np.where(d1 < d2, t1, t2)
+            self.phase[drift_mask] = (0.97 * self.phase[drift_mask]
+                + 0.03 * target[drift_mask]) % (2 * np.pi)
 
         self.step_count += 1
 
