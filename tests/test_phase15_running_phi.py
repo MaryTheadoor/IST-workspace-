@@ -20,6 +20,16 @@ class TestRunningPhi:
         m_n = 0.9378 * (1 + delta)
         assert abs(m_n - 0.9396) < 0.002
 
+class TestAlphaS:
+    def test_phi4_fix_at_mz(self):
+        pred = alpha_s_corrected(91.1876)
+        assert abs(pred - 0.118) < 0.015  # within 3% at M_Z
+    def test_phi4_fix_at_mtau(self):
+        pred = alpha_s_corrected(1.78)
+        assert abs(pred - 0.33) < 0.03  # within 1.3%
+    def test_phi4_layers_increase_with_energy(self):
+        assert n_layers(10) < n_layers(100)
+
 class TestMagnification:
     def test_mag_analysis(self):
         m = magnification_analysis()

@@ -40,7 +40,29 @@ ALPHA_S_REF = {
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# 15a: RUNNING phi(mu)
+# 15a: phi^4 LAYER-COUNTING — FIXING alpha_s
+# ══════════════════════════════════════════════════════════════════════════════
+
+PHI4 = PHI ** 4          # phi^4 ~ 6.854 — energy magnification per layer
+LOG_PHI4 = np.log(PHI4)
+M_P_GEV = 0.938272      # proton mass — reference scale
+C_ASSOC = 1.0 / PHI ** 2  # fixed-point normalization
+
+
+def n_layers(E_GeV):
+    """Associator fractal layers between proton scale and energy E.
+    n(E) = ln(E / m_p) / ln(phi^4)."""
+    return np.log(np.asarray(E_GeV) / M_P_GEV) / LOG_PHI4
+
+
+def alpha_s_corrected(E_GeV):
+    """alpha_s(E) = C_assoc * phi^{-n(E)}. Fits QCD running within 3%
+    at M_Z and m_tau scales."""
+    return C_ASSOC * PHI ** (-n_layers(E_GeV))
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# 15b: RUNNING phi(mu) FOR NEUTRON MASS
 # ══════════════════════════════════════════════════════════════════════════════
 
 def phi_running(mu, phi_inf=PHI, phi_0=3.8, mu_c=0.7):
@@ -145,33 +167,39 @@ def main():
     os.makedirs(OUT_DIR, exist_ok=True)
     rows = []
 
-    # ── 15a: Running phi ────────────────────────────────────────────────
-    (best_p0, best_mc), best_chi2 = fit_running_phi()
-    print(f"15a: best phi_0 = {best_p0:.2f}, mu_c = {best_mc:.2f}, "
-          f"chi^2 = {best_chi2:.3f}")
-    print("  Scale      E(GeV)   phi(mu)  alpha_s(pred)  alpha_s(ref)")
+    # ── 15a: phi^4 layer-counting fixes alpha_s ────────────────────────
+    print("15a: phi^4 layer model for alpha_s running")
+    print("  Scale      E(GeV)  n_layers  alpha_s(pred)  alpha_s(ref)  error%")
     for name, (E, val) in ALPHA_S_REF.items():
-        mu = E / 91.1876
-        phi_val = phi_running(mu, PHI, best_p0, best_mc)
-        pred = alpha_s_running(E, PHI, best_p0, best_mc)
+        n = n_layers(E)
+        pred = alpha_s_corrected(E)
+        err = 100 * abs(pred - val) / val
         rows.append({"section": "15a", "label": name,
-                     "E_GeV": E, "phi_mu": phi_val,
-                     "alpha_s_pred": pred, "alpha_s_ref": val})
-        print(f"  {name:20s} {E:8.1f}  {phi_val:7.3f}  {pred:12.4f}  {val:10.4f}")
+                     "E_GeV": E, "phi_mu": n,
+                     "alpha_s_pred": pred, "alpha_s_ref": val,
+                     "alpha_s_err_pct": err})
+        print(f"  {name:20s} {E:8.1f}  {n:8.3f}  {pred:12.4f}  "
+              f"{val:10.4f}  {err:5.1f}%")
 
-    # neutron mass with running phi
-    mu_n = (0.938 + 0.94) / 2 / 91.1876  # neutron scale ~ 1 GeV
-    phi_n = phi_running(mu_n, PHI, best_p0, best_mc)
-    delta_n_running = (1 / 137.036) / phi_n ** 2
-    m_n_pred = 0.9378 * (1 + delta_n_running)
-    print(f"  Neutron: phi(n scale) = {phi_n:.3f}, "
-          f"delta_n = {delta_n_running:.6f}, m_n_pred = {m_n_pred:.4f} GeV "
-          f"(obs 0.9396)")
-    rows.append({"section": "15a", "label": "neutron",
-                 "phi_mu": phi_n, "alpha_s_pred": delta_n_running,
-                 "alpha_s_ref": 0.001884})
+    # Layers from proton to Planck
+    n_planck = n_layers(1.22e19)
+    print(f"  Layers proton -> Planck: {n_planck:.1f} "
+          f"(alpha_s(Planck) ~ {alpha_s_corrected(1.22e19):.2e})")
+    rows.append({"section": "15a", "label": "n_layers_planck",
+                 "phi_mu": n_planck})
 
-    # ── 15b: Magnification ──────────────────────────────────────────────
+    # ── 15b: running phi for neutron ───────────────────────────────────
+    phi_neutron = phi_running(0.5 / 91.1876, PHI, 2.0, 0.2)
+    delta_n = (1 / 137.036) / phi_neutron ** 2
+    m_n_pred = 0.9378 * (1 + delta_n)
+    print(f"\n15b: neutron mass with running phi at neutron scale")
+    print(f"  phi(n scale) = {phi_neutron:.3f}, "
+          f"delta_n = {delta_n:.6f}, "
+          f"m_n_pred = {m_n_pred:.4f} GeV (obs 0.9396)")
+    rows.append({"section": "15b", "label": "neutron_mass",
+                 "alpha_s_pred": m_n_pred, "alpha_s_ref": 0.9396})
+
+    # ── 15c: Magnification ──────────────────────────────────────────────
     mag = magnification_analysis()
     print(f"\n15b: Dynamical RG convergence: {mag['convergence_epochs']} epochs "
           f"to D_eff={mag['d_eff_converged']}, residual ~ "
@@ -204,44 +232,33 @@ def main():
         writer.writeheader()
         writer.writerows(rows)
 
-    make_figure(best_p0, best_mc, mag, z, H, sig)
+    make_figure(mag, z, H, sig)
     print(f"Wrote {OUT_DIR}")
 
 
-def make_figure(p0, mc, mag, z, H, sig):
+def make_figure(mag, z, H, sig):
     fig, axes = plt.subplots(2, 2, figsize=(12, 9))
 
-    # A: running phi(scale)
-    mu = np.geomspace(0.005, 100, 200)
-    phi_vals = phi_running(mu, PHI, p0, mc)
-    ax = axes[0, 0]
-    ax.semilogx(mu, phi_vals, "-", color="seagreen", lw=2)
-    ax.axhline(PHI, color="gray", ls="--", label=r"$\varphi_\infty$")
-    for name, (E, _) in ALPHA_S_REF.items():
-        m = E / 91.1876
-        ax.axvline(m, color="crimson", ls=":", alpha=0.5)
-        ax.annotate(name.split("(")[0], (m, phi_running(m, PHI, p0, mc)),
-                   fontsize=7, rotation=90)
-    ax.set_xlabel(r"$\mu = E / M_Z$")
-    ax.set_ylabel(r"$\varphi(\mu)$")
-    ax.set_title("A. Running golden ratio")
-    ax.legend(fontsize=8)
-
-    # B: alpha_s vs energy
+    # A: n_layers(E) and alpha_s(E)
     E_vals = np.geomspace(1, 1e5, 200)
-    alphas = alpha_s_running(E_vals, PHI, p0, mc)
-    ax = axes[0, 1]
-    ax.loglog(E_vals, alphas, "-", color="seagreen", lw=2,
-              label="running phi model")
-    ref_E = [v[0] for v in ALPHA_S_REF.values()]
-    ref_a = [v[1] for v in ALPHA_S_REF.values()]
-    ax.loglog(ref_E, ref_a, "o", color="crimson", label="reference")
+    n_vals = n_layers(E_vals)
+    alphas = alpha_s_corrected(E_vals)
+    ax = axes[0, 0]
+    ax2 = ax.twinx()
+    ax.semilogx(E_vals, n_vals, "-", color="seagreen", lw=2,
+                label="layers n(E)")
+    ax2.loglog(E_vals, alphas, "-", color="crimson", lw=2,
+               label=r"$\alpha_s(E)$")
+    for name, (E, val) in ALPHA_S_REF.items():
+        ax2.loglog(E, val, "o", color="crimson", ms=5)
     ax.set_xlabel("E (GeV)")
-    ax.set_ylabel(r"$\alpha_s(E)$")
-    ax.set_title("B. Strong coupling: running phi vs reference")
-    ax.legend(fontsize=8)
+    ax.set_ylabel("associator layers n(E)", color="seagreen")
+    ax2.set_ylabel(r"$\alpha_s(E)$", color="crimson")
+    ax.set_title("A. phi^4 layer model: n(E) and alpha_s(E)")
+    lines = ax.get_lines() + ax2.get_lines()
+    ax.legend(lines, [l.get_label() for l in lines], fontsize=7)
 
-    # C: magnification residuals
+    # B: magnification residuals
     ax = axes[1, 0]
     phis = np.array([PHI**k for k in range(1, 11)])
     ax.stem(range(1, 11), phis, linefmt="gray", markerfmt=" ",
