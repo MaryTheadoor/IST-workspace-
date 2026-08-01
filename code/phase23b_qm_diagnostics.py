@@ -77,7 +77,8 @@ def run_entanglement_test(sub):
     best_ratio = 0; best_pair = (0, 1)
     for i in range(N):
         for j in range(i+1, N):
-            d_klein = klein_distance(us[i], vs[i], us[j], vs[j])
+            d_klein, _ = klein_distance(us[i], vs[i], us[j], vs[j])
+            d_klein = float(d_klein[0,0]) if hasattr(d_klein, 'shape') else float(d_klein)
             d_euclid = np.sqrt((us[i]-us[j])**2 + (vs[i]-vs[j])**2)
             if d_euclid > 0.3 and d_klein > 0 and d_euclid/d_klein > best_ratio:
                 best_ratio = d_euclid/d_klein; best_pair = (i, j)
@@ -95,21 +96,11 @@ def run_entanglement_test(sub):
     phi_i1 = sub.oscillators[i].phase
     phi_j1 = sub.oscillators[j].phase
     diff1 = min(abs(phi_i1-phi_j1), 2*np.pi-abs(phi_i1-phi_j1))
-    # Compute Klein distance manually for scalars
-    ui, vi = us[i], vs[i]; uj, vj = us[j], vs[j]
-    du = abs(ui-uj); dv = abs(vi-vj)
-    d2 = du**2 + dv**2
-    for su in [1,-1]: d2 = min(d2, (du+su)**2 + dv**2)
-    for sv in [1,-1]: d2 = min(d2, du**2 + (dv+sv)**2)
-    for su in [1,-1]:
-        for sv in [1,-1]: d2 = min(d2, (du+su)**2 + (dv+sv)**2)
-    for su in [0,1,-1]:
-        for sv in [0,1,-1]:
-            d2t = (ui+uj+su)**2 + (vi-vj+0.5+sv)**2
-            d2 = min(d2, d2t)
-    d_klein = np.sqrt(max(d2, 0))
-    d_euclid = np.sqrt((ui-uj)**2 + (vi-vj)**2)
-    return {"i": int(i), "j": int(j), "klein_d": float(d_klein),
+    # Compute Klein distance for the chosen pair
+    d_k, _ = klein_distance(us[i], vs[i], us[j], vs[j])
+    d_klein = float(d_k[0,0])
+    d_euclid = np.sqrt((us[i]-us[j])**2 + (vs[i]-vs[j])**2)
+    return {"i": int(i), "j": int(j), "klein_d": d_klein,
             "euclid_d": float(d_euclid),
             "diff_before": float(diff0), "diff_after": float(diff1),
             "correlation": float(diff1 - diff0)}
