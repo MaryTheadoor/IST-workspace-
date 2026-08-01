@@ -53,26 +53,39 @@ def main():
     if len(fg) < 100 or len(bg) < 500:
         print("Too few galaxies."); return
 
-    # Void finding from foreground density
+    # Void finding: watershed on inverted density
     ra_fg = fg.RA.values; dec_fg = fg.DEC.values
-    bins = 50
+    bins = 80
     H, xe, ye = np.histogram2d(ra_fg, dec_fg, bins=bins,
                                range=[[ra_fg.min(), ra_fg.max()],
                                       [dec_fg.min(), dec_fg.max()]])
-    Hs = gaussian_filter(H.astype(float), sigma=2.0)
-    labelled, nv = label(Hs < 0.75 * Hs.mean())
+    Hs = gaussian_filter(H.astype(float), sigma=3.0)
+    mean_h = Hs.mean()
+    # Find underdense cells below the mean
+    underdense = Hs < mean_h
+    # Find the deepest local minimum in each connected underdense region
+    labelled, nv = label(underdense)
     regions = find_objects(labelled)
     ra_c = (xe[:-1] + xe[1:]) / 2; dec_c = (ye[:-1] + ye[1:]) / 2
-    void_ra, void_dec = [], []
+    void_ra, void_dec, void_depth = [], [], []
     for i, sl in enumerate(regions, 1):
         if sl is None: continue
         reg = labelled[sl] == i
-        if reg.sum() < 3: continue
+        if reg.sum() < 8: continue  # min void size
         local = Hs[sl].copy(); local[~reg] = np.inf
         jm = np.argmin(local); ry, rx = np.unravel_index(jm, reg.shape)
+        depth = 1.0 - Hs[sl][ry, rx] / mean_h
+        if depth < 0.3: continue  # min depth 30%
         void_ra.append(ra_c[sl[1].start + rx])
         void_dec.append(dec_c[sl[0].start + ry])
+        void_depth.append(depth)
     void_ra = np.array(void_ra); void_dec = np.array(void_dec)
+    void_depth = np.array(void_depth)
+    # Sort by depth, keep top N
+    if len(void_ra) > 20:
+        order = np.argsort(-void_depth)[:20]
+        void_ra = void_ra[order]; void_dec = void_dec[order]
+        void_depth = void_depth[order]
     print(f"Found {len(void_ra)} voids")
 
     if len(void_ra) < 3: print("Too few voids."); return
