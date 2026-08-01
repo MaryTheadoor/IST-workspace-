@@ -26,11 +26,11 @@ class TestJointFit:
         cls.zh, cls.Hd, cls.sh = load_hz()
         cls.zs, cls.mu_d, cls.mu_e = load_pantheon()
         r_l = minimize(lambda p: chi2_total(p, cls.zh, cls.Hd, cls.sh,
-                         cls.zs, cls.mu_d, cls.mu_e, False),
+                         cls.zs, cls.mu_d, cls.mu_e, "lcdm"),
                        [70, 0.3], method="Nelder-Mead", options={"maxiter": 500})
         cls.chi2_lcdm = r_l.fun
         r_o = minimize(lambda p: chi2_total(p, cls.zh, cls.Hd, cls.sh,
-                         cls.zs, cls.mu_d, cls.mu_e, True),
+                         cls.zs, cls.mu_d, cls.mu_e, "powerlaw"),
                        [r_l.x[0], r_l.x[1], 0.1, 1.618, 0.618],
                        method="Nelder-Mead", options={"maxiter": 500})
         cls.chi2_osc = r_o.fun
