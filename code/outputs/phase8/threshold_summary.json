@@ -1,0 +1,9 @@
+{
+  "threshold_layer": 11,
+  "d_eff_pinned": 1.1825,
+  "d_eff_std": 0.0063,
+  "d_eff_target_phi": 1.618,
+  "magnification_at_n8": 46.98,
+  "phi8": 46.98,
+  "mag_matches_phi8": true
+}
