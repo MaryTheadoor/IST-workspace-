@@ -3,6 +3,7 @@ import csv, os, matplotlib; matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.optimize import minimize
+from numba import njit
 from phase1_klein_laplacian import PHI
 
 OUT_DIR = os.path.join(os.path.dirname(__file__), "outputs", "phase16_joint")
@@ -99,9 +100,34 @@ def mu_pred(z, H0, Om, eps0=0, Delta=PHI, beta=0, oscillatory=False):
         res[i] = 5 * np.log10(max((1+zi)*chi, 0.1) * 1e6 / 10)
     return float(res[0]) if len(res) == 1 else res
 
-# ---- chi^2 ----
+# ---- numba-accelerated SNe chi2 ----
+@njit
+def _chi2_sne_fast(z_sne, mu_obs, mu_err, H0, Om, eps0, Delta, beta, osc):
+    C = 299792.458; N = len(z_sne); total = 0.0
+    for i in range(N):
+        zi = z_sne[i]; n = 48; dz = zi / (n - 1)
+        chi = 0.0
+        for k in range(1, n):
+            z = k * dz
+            if osc and eps0 != 0:
+                epsz = eps0 * (1.+z)**beta
+                ov = 1. + epsz * np.cos(2.*np.pi*np.log(1.+z)/Delta)
+                if ov < 0.01: ov = 0.01
+                Hz = H0 * np.sqrt(Om*(1.+z)**3 + (1.-Om)*ov)
+            else:
+                Hz = H0 * np.sqrt(Om*(1.+z)**3 + (1.-Om))
+            if Hz < 0.1: Hz = 0.1
+            chi += dz / Hz
+        chi *= C; DL = max((1.+zi)*chi, 0.1)
+        mu_p = 5. * np.log10(DL * 1e6 / 10.)
+        diff = (mu_p - mu_obs[i]) / mu_err[i]
+        total += diff * diff
+    return total
+
+# ---- chi2 ----
 def chi2_total(params, z_hz, H, sig, z_sne, mu, mu_err, model="lcdm"):
     """model: 'lcdm', 'powerlaw', 'cosmic', 'fixed_eps'"""
+    eps0 = 0.0; Delta = PHI; beta = 0.0  # defaults for lcdm
     if model == "lcdm":
         H0, Om = params
         hz_pred = Hz_lcdm(z_hz, H0, Om)
@@ -126,7 +152,8 @@ def chi2_total(params, z_hz, H, sig, z_sne, mu, mu_err, model="lcdm"):
         mu_p = mu_pred_cosmic(z_sne, H0, Om, eps0, Delta)
     else:
         mu_p = mu_pred(z_sne, H0, Om, eps0, Delta, beta, oscillatory=True)
-    chi2_sne = np.sum(((mu_p - mu)/mu_err)**2)
+    chi2_sne = _chi2_sne_fast(z_sne, mu, mu_err, H0, Om, eps0, Delta, beta,
+                               model != "lcdm")
     # BAO
     chi2_bao = 0.0
     for ze, DM_o, dDM, DH_o, dDH, rc in DESI_BAO:
@@ -303,4 +330,6 @@ def run_dimensional_test():
         lbl = " <<< BEST" if d == best[0] else ""
         print(f"d={d} beta=phi^{d}={beta:.3f} chi2={c2:.0f} "
               f"dchi2_vs_best={c2-best[2]:.1f}{lbl}")
+    print(f"d={d} beta=phi^{d}={beta:.3f} chi2={c2:.0f} "
+              f"dchi2_vs_best={c2-best[2]:.1f}")
     return dim_results
