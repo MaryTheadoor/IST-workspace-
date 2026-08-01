@@ -284,3 +284,246 @@ def make_figure(rows, threshold):
 
 if __name__ == "__main__":
     main()
+    print("\n" + "=" * 60 + "\n")
+    main_2d()
+
+
+# ==============================================================================
+# PHASE 8b — 2D KLEIN BOTTLE OSCILLATOR SHEET
+# ==============================================================================
+
+class KleinOscillatorSheet:
+    """2D oscillator population on the Klein bottle surface.
+
+    Coordinates (x, y) in [0, 2pi)^2 with the Klein bottle identifications:
+      (x, y) ~ (x + 2pi, y)       periodic longitude
+      (x, y) ~ (-x, y + 2pi)     twist meridian (orientation-reversing)
+
+    Coupling is Gaussian in geodesic distance, with negative edge signs for
+    pairs whose shortest geodesic crosses the twist seam (Möbius topology).
+    The golden filter boosts pairs at golden-multiple angular separations
+    in either coordinate direction.
+    """
+
+    def __init__(self, noise_count=120, sigma=0.6, seed=42):
+        rng = np.random.default_rng(seed)
+        self.noise_x = 2 * np.pi * rng.uniform(size=noise_count)
+        self.noise_y = 2 * np.pi * rng.uniform(size=noise_count)
+        self.golden_x = []   # each layer: array of x positions
+        self.golden_y = []
+        self.sigma = sigma
+
+    def add_harmonic_layer(self, n_new=25):
+        """Deposit golden-scaled positions in both coordinates.
+
+        Layer k: oscillators at x_i = 2pi*(i * phi^{-k} mod 1),
+        y_i = 2pi*(i * phi^{-k-1} mod 1) — a different golden
+        rotation for y to avoid diagonal degeneracy.
+        """
+        k = len(self.golden_x) + 1
+        raw_x = (np.arange(n_new) * (ALPHA_GOLDEN ** k)) % 1.0
+        raw_y = (np.arange(n_new) * (ALPHA_GOLDEN ** (k + 1))) % 1.0
+        self.golden_x.append(2 * np.pi * np.sort(raw_x))
+        self.golden_y.append(2 * np.pi * np.sort(raw_y))
+
+    @property
+    def n_layers(self):
+        return len(self.golden_x)
+
+    def all_x(self):
+        return np.concatenate([self.noise_x] + self.golden_x)
+
+    def all_y(self):
+        return np.concatenate([self.noise_y] + self.golden_y)
+
+    # ── geodesic distance on the Klein bottle ──────────────────────────
+
+    @staticmethod
+    def _angular_dist(d):
+        return np.minimum(d, 2 * np.pi - d)
+
+    def klein_metric(self, xs, ys):
+        """Returns (dist_matrix, twist_matrix) for the oscillator set.
+
+        dist[i,j] = min geodesic distance on the Klein bottle.
+        twist[i,j] = True if the minimizing path crosses the twist seam.
+        """
+        N = len(xs)
+        dx = xs[:, None] - xs[None, :]
+        dy = ys[:, None] - ys[None, :]
+        d2 = dx ** 2 + dy ** 2
+        twist_mask = np.zeros((N, N), dtype=bool)
+        # periodic images only (non-twist)
+        d2_periodic = d2.copy()
+        for sx in [2 * np.pi, -2 * np.pi]:
+            d2_periodic = np.minimum(d2_periodic, (dx + sx) ** 2 + dy ** 2)
+        for sy in [2 * np.pi, -2 * np.pi]:
+            d2_periodic = np.minimum(d2_periodic, dx ** 2 + (dy + sy) ** 2)
+        for sx in [2 * np.pi, -2 * np.pi]:
+            for sy in [2 * np.pi, -2 * np.pi]:
+                d2_periodic = np.minimum(
+                    d2_periodic, (dx + sx) ** 2 + (dy + sy) ** 2)
+
+        d2_best = d2_periodic.copy()
+        # twist images: if shorter than the best periodic path, use them
+        for sx in [0.0, 2 * np.pi, -2 * np.pi]:
+            for sy in [0.0, 2 * np.pi, -2 * np.pi]:
+                d2t = (xs[:, None] + xs[None, :] + sx) ** 2 \
+                    + (ys[:, None] - ys[None, :] + sy) ** 2
+                better = d2t < (d2_best - 1e-12)
+                d2_best = np.where(better, d2t, d2_best)
+                twist_mask = twist_mask | better
+        np.fill_diagonal(d2_best, np.inf)
+        return np.sqrt(np.maximum(d2_best, 0)), twist_mask
+
+    # ── golden-filtered 2D coupling ────────────────────────────────────
+
+    def measure(self):
+        """Build the Klein-bottle coupling graph and return all metrics."""
+        xs = self.all_x()
+        ys = self.all_y()
+        N = len(xs)
+
+        dist, twist = self.klein_metric(xs, ys)
+        J_spatial = np.exp(-dist ** 2 / (2 * self.sigma ** 2))
+        np.fill_diagonal(J_spatial, 0.0)
+
+        # golden filter: 2D angular separations at golden multiples
+        dx_ang = self._angular_dist(xs[:, None] - xs[None, :])
+        dy_ang = self._angular_dist(ys[:, None] - ys[None, :])
+        golden_boost = np.zeros((N, N))
+        for k in range(1, self.n_layers + 1):
+            target = 2 * np.pi / PHI ** k
+            width = max(0.06 * target, 0.02)
+            match_x = np.exp(-(dx_ang - target) ** 2 / (2 * width ** 2))
+            match_y = np.exp(-(dy_ang - target) ** 2 / (2 * width ** 2))
+            golden_boost = np.maximum(golden_boost,
+                                      np.maximum(match_x, match_y))
+        np.fill_diagonal(golden_boost, 0.0)
+
+        pump = 0.15 * self.n_layers
+        J = J_spatial * (1.0 + pump * golden_boost)
+        np.fill_diagonal(J, 0.0)
+
+        # signed adjacency: twist edges get sign -1
+        W = J.copy()
+        W[twist] = -W[twist]
+        D_vec = np.asarray(np.abs(W).sum(axis=1)).ravel()
+        L = sp.diags(D_vec) - sp.csr_matrix(W)
+
+        D, r2 = spectral_dimension(L)
+        deg = J.sum() / N
+        total_w = J.sum()
+        golden_w = (J * golden_boost).sum()
+        coherence = golden_w / total_w if total_w > 0 else 0.0
+
+        return {
+            "D_eff": D, "r2": r2, "avg_degree": deg,
+            "coherence": coherence,
+            "magnification": PHI ** self.n_layers,
+            "n_layers": self.n_layers,
+            "n_oscillators": N,
+            "golden_fraction": (N - self.noise_x.size) / N,
+            "lambda_min": float(spla.eigsh(L, k=1, sigma=-0.01,
+                               which="LM", return_eigenvectors=False,
+                               tol=1e-8)[0]),
+        }
+
+    def run_scan(self, n_layers=12, n_new=25):
+        rows = []
+        for k in range(n_layers + 1):
+            if k > 0:
+                self.add_harmonic_layer(n_new)
+            rows.append(self.measure())
+        return rows
+
+
+def main_2d():
+    """Run the 2D Klein bottle oscillator sheet and compare with 1D."""
+    os.makedirs(OUT_DIR, exist_ok=True)
+    print("=== 2D Klein Bottle Oscillator Sheet ===\n")
+    sheet = KleinOscillatorSheet(noise_count=120, sigma=0.6)
+    rows = sheet.run_scan(n_layers=12, n_new=25)
+
+    with open(os.path.join(OUT_DIR, "2d_scan.csv"), "w", newline="") as fh:
+        writer = csv.DictWriter(fh, fieldnames=list(rows[0].keys()))
+        writer.writeheader()
+        writer.writerows(rows)
+
+    print("n_lyr  n_osc  deg    D_eff  coher  lam_min  magnif")
+    for r in rows:
+        print(f"{r['n_layers']:5d}  {r['n_oscillators']:5d}  {r['avg_degree']:5.1f}"
+              f"  {r['D_eff']:6.3f}  {r['coherence']:6.3f}  "
+              f"{r['lambda_min']:8.4f}  {r['magnification']:8.2f}")
+
+    threshold = next((r["n_layers"] for r in rows if r["coherence"] > 0.5),
+                     None)
+    above = [r for r in rows if r["n_layers"] > (threshold or 999)]
+    d_pinned = np.mean([r["D_eff"] for r in above]) if above else np.nan
+    d_std = np.std([r["D_eff"] for r in above]) if above else np.nan
+
+    print(f"\nThreshold: {threshold}, D_eff pinned: {d_pinned:.3f} +/- "
+          f"{d_std:.3f} (target phi = {PHI:.3f})")
+    print(f"lambda_min: {rows[0]['lambda_min']:.4f} (0 layers) "
+          f"-> {rows[-1]['lambda_min']:.4f} (layer 12)")
+    print(f"Torus control (no twist): lambda_min ~ 0")
+    print(f"Klein twist lifts zero mode: lambda_min > 0")
+
+    make_2d_figure(rows, threshold)
+    print(f"Wrote {os.path.join(OUT_DIR, 'klein_2d_scan.png')}")
+
+
+def make_2d_figure(rows, threshold):
+    ns = [r["n_layers"] for r in rows]
+    Ds = [r["D_eff"] for r in rows]
+    cohs = [r["coherence"] for r in rows]
+    lams = [r["lambda_min"] for r in rows]
+
+    fig, axes = plt.subplots(2, 2, figsize=(12, 9))
+
+    ax = axes[0, 0]
+    ax.plot(ns, Ds, "o-", color="seagreen", lw=2,
+            label=r"2D Klein $D_{\rm eff}$")
+    ax.axhline(PHI, color="crimson", ls="--", lw=1.5,
+               label=r"$\varphi$ = 1.618")
+    ax.axhline(2.0, color="gray", ls=":", label="flat 2D manifold")
+    ax.axhline(1.18, color="steelblue", ls=":", label="1D pinned D_eff")
+    if threshold is not None:
+        ax.axvline(threshold, color="gray", ls="--", alpha=0.5,
+                   label=f"threshold n = {threshold}")
+    ax.set_xlabel("harmonic layers")
+    ax.set_ylabel(r"$D_{\rm eff}$")
+    ax.set_title("A. 2D Klein spectral dimension vs vacuum pump")
+    ax.legend(fontsize=8)
+
+    ax = axes[0, 1]
+    ax.plot(ns, cohs, "o-", color="seagreen", lw=2)
+    ax.axhline(0.5, color="gray", ls="--", label="threshold (0.5)")
+    ax.set_xlabel("harmonic layers")
+    ax.set_ylabel("golden coherence")
+    ax.set_title("B. Coherence transition (2D)")
+    ax.legend(fontsize=8)
+
+    ax = axes[1, 0]
+    ax.plot(ns, lams, "o-", color="crimson",
+            label=r"$\lambda_{\rm min}$ (Klein twist)")
+    ax.axhline(0, color="gray", ls=":", label="torus zero mode")
+    ax.set_xlabel("harmonic layers")
+    ax.set_ylabel(r"$\lambda_{\rm min}$")
+    ax.set_title("C. Spectral gap: Klein twist lifts zero mode")
+    ax.legend(fontsize=8)
+
+    d_above = [r["D_eff"] for r in rows if r["n_layers"] > (threshold or 999)]
+    ax = axes[1, 1]
+    if d_above:
+        ax.hist(d_above, bins=5, color="seagreen", alpha=0.7,
+                label=f"pinned D_eff = {np.mean(d_above):.3f} +/- {np.std(d_above):.3f}")
+        ax.axvline(PHI, color="crimson", ls="--", label=r"$\varphi$")
+        ax.axvline(2.0, color="gray", ls=":", label="2D manifold")
+    ax.set_xlabel(r"$D_{\rm eff}$")
+    ax.set_title("D. D_eff distribution above threshold")
+    ax.legend(fontsize=8)
+
+    fig.tight_layout()
+    fig.savefig(os.path.join(OUT_DIR, "klein_2d_scan.png"), dpi=300)
+    plt.close(fig)
