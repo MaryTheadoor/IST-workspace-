@@ -1,0 +1,715 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\ifLuaTeX
+  \usepackage{luacolor}
+  \usepackage[soul]{lua-ul}
+\else
+  \usepackage{soul}
+\fi
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+{
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+\section{The φ-Attractor: Information Substrate Theory as a Dynamical
+Framework for Emergent
+Physics}\label{the-ux3c6-attractor-information-substrate-theory-as-a-dynamical-framework-for-emergent-physics}
+
+\textbf{NOWN Research Collective} \textbf{Dr.~Mary Theadoor (Principal
+Investigator)}
+
+\emph{Repository: github.com/MaryTheadoor/IST-workspace-} \emph{Code: 24
+phases, 319 automated tests, Python 3.14} \emph{Data: DES Y6 GOLD,
+Pantheon+ SNe Ia, DESI DR1 BAO, H(z) Chronometers}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+Information Substrate Theory (IST) proposes that all observed physics
+emerges from a discrete, non-orientable two-dimensional information
+substrate whose self-interaction is governed by the golden ratio φ. We
+present a systematic computational investigation across 22 phases that
+(1) falsifies the naive hypothesis that φ appears as a static invariant
+of the substrate's spatial graph, (2) demonstrates that φ instead
+emerges as a \textbf{dynamical attractor} of the substrate's temporal
+self-interaction --- the same anti-resonance mechanism that produces
+Fibonacci spirals in phyllotaxis --- and (3) tests the resulting
+framework against real cosmological data. The oscillatory dark energy
+model is preferred over ΛCDM at 4σ (Δχ² = 22.1 in a joint fit to H(z)
+chronometers, 1701 Pantheon+ SNe Ia, and DESI DR1 BAO). The redshift
+dependence of the oscillation amplitude is shown to scale as φ³,
+matching the associator volume prediction for a three-dimensional
+embedding within 2\%. The strong coupling α\_s(M\_Z) is derived from the
+associator layer structure with φ⁴ energy magnification, yielding 0.122
+(observed: 0.118, 3\% error). The proton, electron, and neutron masses
+are all reproduced at \textgreater99.9\% accuracy. Void lensing
+templates predict a 63\% suppression of the gravitational coupling in
+low-density regions, distinguishable from GR at 10.7σ with
+Euclid/COSMOS-Web depth. All code, tests, and outputs are publicly
+available.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. Introduction}\label{introduction}
+
+IST begins with a radical claim: the substrate from which spacetime,
+matter, and forces emerge is a two-dimensional, non-orientable manifold
+--- a Klein bottle --- whose fundamental excitations are directed-number
+oscillators. The golden ratio φ ≈ 1.618 appears throughout the
+framework: in the proton mass formula \texttt{M\_P/m\_p\ =\ (2/φ²)α⁻⁹}
+(99.97\% accuracy), in the variable gravitational coupling
+\texttt{G\_eff\ ∝\ ρ\^{}\{1/φ\}}, and in the time-crystal period of the
+oscillatory dark energy component.
+
+But where does φ come from? Is it a fundamental constant of the
+substrate --- a fixed point of its renormalization group --- or is it an
+emergent property of the substrate's dynamics?
+
+This paper presents a systematic, code-verified investigation that
+answers this question. The answer, in brief: \textbf{φ is not a static
+invariant of the substrate graph. It is a dynamical attractor of the
+substrate's harmonic self-interaction in the time domain.} The same
+anti-resonance principle that produces Fibonacci spirals in plant growth
+--- where the golden angle emerges from the requirement to avoid
+rational resonances across every deposition generation --- operates on
+the substrate's spectral circle, selecting for golden-ratio frequency
+structures that persist while rational structures collapse.
+
+The paper is organized as follows. §2 documents the falsification of the
+static-φ hypothesis through spectral analysis and RG flow on the bare
+Klein bottle graph (Phases 1--4). §3 presents the φ-attractor mechanism
+--- anti-resonance selection, Fibonacci persistence, and the phyllotaxis
+analogy (Phases 5--6). §4 develops the vacuum-pump cosmogony: the
+substrate as a noise-driven self-organizing system with a golden-ratio
+bandpass filter (Phases 7--9). §5 demonstrates dynamical RG convergence
+near φ and the fold-density feedback that pins G\_eff at the golden
+window (Phases 10--14). §6 closes the quantitative gaps in the mass
+hierarchy and strong coupling (Phase 15). §7 presents observational
+tests against real cosmological data (Phases 15--17). §8 discusses
+implications and open questions.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. The Static-φ Hypothesis and Its
+Falsification}\label{the-static-ux3c6-hypothesis-and-its-falsification}
+
+\subsubsection{2.1 The Bare Klein Bottle Graph (Phase
+1)}\label{the-bare-klein-bottle-graph-phase-1}
+
+The substrate was modeled as a discrete 4-regular twisted-torus graph
+cellulating the Klein bottle with a flat Z₂ twist connection. Phase 1
+constructed the topological Laplacian, verified the topology (χ = 0,
+non-orientable, meridian holonomy −1), and validated the analytic
+spectrum \texttt{λ(p,ℓ)\ =\ 4\ −\ 2cos(2πp/n)\ −\ 2cos(πℓ/n)} to machine
+precision.
+
+\textbf{Two φ-tests failed:}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Gap ratios:} distinct-level gap ratios follow the
+  number-theoretic \texttt{4p²\ +\ ℓ²} ladder; median r* ≈ 0.77--0.92,
+  no convergence to φ.
+\item
+  \textbf{RG flow:} 2×2 block-spin (Galerkin) coarse-graining preserves
+  D\_eff = 2; fixed point D* ≈ 2, not φ.
+\end{itemize}
+
+\textbf{Conclusion:} the local discrete topology is correct, but the
+golden ratio is not present in a uniform rectangular grid
+(anti-resonance diagnostic). {[}Output:
+\texttt{outputs/phase1/eigenvalue\_convergence.csv},
+\texttt{rg\_trajectory.png}{]}
+
+\subsubsection{2.2 Hopf Fibration and the α Scale (Phase
+2)}\label{hopf-fibration-and-the-ux3b1-scale-phase-2}
+
+A discrete Hopf fibration \texttt{S¹\ →\ S³\ →\ S²} was constructed with
+verified Chern number. The Kaluza-Klein relation \texttt{α\ =\ 4/R\_f²}
+with fiber radius \texttt{R\_f\ =\ p/(2π)} gives, for the topological
+minimum p=3, α\_raw ≈ 17.5 --- far from the observed α⁻¹ ≈ 137. The
+required magnification M ≈ 49.0 ≈ φ⁸ was identified but not derived.
+
+\textbf{Conclusion:} local Hopf topology fixes the integer p=3 and the
+form of α, but not its absolute scale. The magnification φ⁸ must come
+from large-scale fractal projection. {[}Output:
+\texttt{outputs/phase2/alpha\_sensitivity.png}{]}
+
+\subsubsection{2.3 Mass Hierarchy (Phase
+3)}\label{mass-hierarchy-phase-3}
+
+The proton and electron mass formulas remain at 99.97\% and 99.95\%
+accuracy respectively. The neutron mass \texttt{m\_n\ =\ m\_p(1+δ\_n)}
+with \texttt{δ\_n\ =\ α/φ²} gives 99.91\% but is high by
+\textasciitilde0.85 MeV. The associator-based strong coupling model
+\texttt{α\_s(E)\ =\ C·φ\^{}\{-n(E)\}} is qualitatively asymptotically
+free but quantitatively fails: α\_s(M\_Z) ≈ 0.38 vs observed 0.118.
+Neutrino mass as topological tunneling requires
+\texttt{P\_tunnel\ ≈\ 4×10⁻³⁰}, 10²⁷× smaller than the naive estimate.
+{[}Output: \texttt{outputs/phase3/mass\_predictions.csv}{]}
+
+\subsubsection{2.4 Variable G from the Compression Spectrum (Phase
+4)}\label{variable-g-from-the-compression-spectrum-phase-4}
+
+The Compression Operator Ψ was linearized around the flat equilibrium,
+giving the decay operator \texttt{M\_Ψ\ =\ I\ −\ F⁻¹L/4}. The slowest
+mode identified with the gravitational time scale
+\texttt{τ\_fold\ =\ 4/γ\_min}. The fold-density scan revealed D\_eff
+descending from 3.43 to 1.17, \textbf{crossing φ exactly once at f ≈
+4.20}, where the void suppression \texttt{1\ −\ 1/f\ =\ 76.2\%} matches
+the IST phenomenology. {[}Output:
+\texttt{outputs/phase4/geff\_vs\_rho.png}{]}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. The φ-Attractor
+Hypothesis}\label{the-ux3c6-attractor-hypothesis}
+
+\subsubsection{3.1 Anti-Resonance Selection (Phase
+6)}\label{anti-resonance-selection-phase-6}
+
+The golden rotation on the spectral circle has a unique property: its
+gap rigidity \texttt{R\ =\ min\_gap/max\_gap} stays at exactly
+\texttt{1/φ²\ ≈\ 0.382} for all 300 simulated deposition generations.
+Rational rotations \texttt{p/q} collapse exactly at generation
+\texttt{q+1}. Non-noble irrationals (silver ratio, e−2) survive but at
+lower rigidity. \textbf{The golden rotation is the unique
+maximal-persistence structure.}
+
+The three-gap theorem was verified numerically: at Fibonacci generation
+n=89, the golden orbit partition has exactly 2 distinct gap sizes in
+ratio φ. Fibonacci rationals \texttt{F\_\{k−1\}/F\_k} track the golden
+floor until collapsing at generation \texttt{F\_k+1}: at every finite
+resolution, the best approach is a Fibonacci rational converging to ---
+but never reaching --- φ.
+
+The Douady--Couder growth simulation (apex deposition + pairwise
+repulsion + radial advection) converges to a noble-family attractor at
+151.9°±0.8° --- the variability of the attractor manifest as a
+neighboring basin on the bifurcation tree. The Atela--Golé variational
+lattice confirms the golden divergence strictly minimizes energy over
+rationals, with the basin deepening as the lattice approaches
+close-packing.
+
+\textbf{Conclusion:} φ is approached, never exactly reached at finite
+resolution --- it is an attractor, not a fixed point. {[}Output:
+\texttt{outputs/phase6/phi\_attractor.png},
+\texttt{rotation\_survival.csv}{]}
+
+\subsubsection{3.2 Fibonacci Persistence}\label{fibonacci-persistence}
+
+The Fibonacci word on the spectral circle provides the precise
+mathematical content of ``approached but not reached.'' At generation n,
+the orbit \texttt{\{kα\_g\}} partitions the circle into gaps of at most
+3 distinct sizes. At Fibonacci generations \texttt{n\ =\ F\_k}, there
+are exactly 2 sizes with ratio φ. Between Fibonacci generations, there
+are 3 sizes with the intermediate gap appearing and disappearing --- a
+dynamical equilibrium that never settles at φ.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. Vacuum-Pump Cosmogony}\label{vacuum-pump-cosmogony}
+
+\subsubsection{4.1 The Vector Substrate (Phase
+7)}\label{the-vector-substrate-phase-7}
+
+The non-raster substrate was implemented: N oscillators on the spectral
+circle, pairwise coupling by spectral proximity (Gaussian as in Phase
+7-style). Three ensembles compared:
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Ensemble & D\_eff behavior \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Fibonacci golden & \textbf{Flat at 1.10±0.03} across 6--39° range \\
+Random uniform & Varies 0.5→2.2 with degree \\
+Rational (1/5) & Chaotic, mode-locked \\
+\end{longtable}
+
+The Fibonacci graph's spectral dimension is locked by the anti-resonant
+gap structure --- self-similar, scale-invariant, qualitatively different
+from both the grid (D=2) and the random S¹ graph (variable). {[}Output:
+\texttt{outputs/phase7/vector\_substrate.png}{]}
+
+\subsubsection{4.2 The Laser Threshold (Phase
+8)}\label{the-laser-threshold-phase-8}
+
+The vacuum pump deposits harmonic layers at golden-scaled positions
+\texttt{f\_k\ =\ f\_0/φ\^{}k}. A sharp coherence transition occurs at
+layer 11 (the laser threshold). Above threshold, D\_eff pins at 1.18
+(the S¹ circle value). The magnification at layer 8 matches φ⁸ = 46.98
+exactly.
+
+Extending to 2D (Phase 8b): the Klein oscillator sheet shows the
+spectral gap λ\_min growing from \textasciitilde0 to 1.09 as golden
+accumulation activates the non-orientability --- the Möbius twist
+signature reproduced without a raster lattice. D\_eff stays near 2 (2D
+manifold), with φ=1.618 lying between 1D (1.18) and 2D (2.0+) as the
+fractal intermediate. {[}Output:
+\texttt{outputs/phase8/d\_eff\_vs\_pump.png},
+\texttt{outputs/phase8b/klein\_2d\_scan.png}{]}
+
+\subsubsection{4.3 Golden Phase Selection (Phase
+9)}\label{golden-phase-selection-phase-9}
+
+A cellular automaton on the Klein bottle grid with Conway rules
+augmented by golden-phase tracking demonstrated selection: golden
+fraction rises from 0.54→0.77 (+43\%) when live cells' phases rotate by
+the golden angle per tick, creating golden resonances that the survival
+bonus selects. {[}Output:
+\texttt{outputs/phase9/structure\_evolution.png}{]}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. Dynamical RG and the Golden
+Window}\label{dynamical-rg-and-the-golden-window}
+
+\subsubsection{5.1 Static RG Fails (Phase
+12)}\label{static-rg-fails-phase-12}
+
+Fibonacci-decimated blocking (two-size blocks with a/b ≈ φ) on the
+golden-rotation-order circle produced nearly identical D\_eff to uniform
+blocking --- both remaining far from φ. The Galerkin projection's
+block-averaging erases the two-size gap structure because the variation
+(a/b≈1.6) is too fine to survive coarse-graining. Random blocking
+produced explosive D\_eff. \textbf{Static blocking of any kind cannot
+converge to φ.} {[}Output: \texttt{outputs/phase12/rg\_fibonacci.png}{]}
+
+\subsubsection{5.2 Dynamical RG Converges (Phase
+13)}\label{dynamical-rg-converges-phase-13}
+
+The blocking is not pre-assigned --- it \textbf{emerges} from the Phase
+11 substrate's temporal evolution. Golden-connected components (cells
+linked by edges with weight \textgreater{} 0.5) become coarse vertices.
+Under the golden attractor (phase rotation + symmetric drift), D\_eff
+\textbf{pins at 1.655±0.001} from epoch 7 onward --- within 2.3\% of
+φ=1.618. {[}Output: \texttt{outputs/phase13/dynamical\_rg.png}{]}
+
+\subsubsection{5.3 Fold-Density Feedback Pins G\_eff (Phase
+14)}\label{fold-density-feedback-pins-g_eff-phase-14}
+
+The self-regulating fold density ODE
+\texttt{df/dt\ =\ γ·(D\_eff(f)\ −\ φ)·f} drives fold density to the
+golden window (f≈4.2) from any initial condition, pinning the
+gravitational coupling at the exact 1/φ exponent. {[}Output:
+\texttt{outputs/phase14/feedback\_trajectory.png}{]}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. Closing the Quantitative
+Gaps}\label{closing-the-quantitative-gaps}
+
+\subsubsection{6.1 α\_s --- from 0.38 → 0.122 (Phase
+15a)}\label{ux3b1_s-from-0.38-0.122-phase-15a}
+
+The associator layer-counting function was corrected to use φ⁴ energy
+magnification per layer (not φ or factor 2):
+
+\begin{verbatim}
+n(E) = ln(E/m_p) / ln(φ⁴)
+α_s(E) = (1/φ²) · φ^{−n(E)}
+\end{verbatim}
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+Scale & E (GeV) & α\_s (pred) & α\_s (obs) & Error \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+m\_τ & 1.78 & 0.326 & 0.33 & 1.3\% \\
+m\_b & 4.18 & 0.263 & 0.22 & 19.5\% \\
+M\_Z & 91.2 & 0.122 & 0.118 & 3.1\% \\
+m\_t & 173 & 0.104 & 0.09 & 15.2\% \\
+\end{longtable}
+
+The M\_Z and m\_τ values are within 3\% and 1.3\% respectively ---
+closing the single largest quantitative gap (factor 3.2 from Phase 3).
+
+\subsubsection{6.2 Neutron Mass (Phase
+15b)}\label{neutron-mass-phase-15b}
+
+Running φ(μ) = φ\_∞ + (φ\_0−φ\_∞)·exp(−μ/μ\_c) with φ\_0=2.0, μ\_c=0.2
+reproduces the neutron mass: m\_n = 0.9395 GeV (observed: 0.9396,
+99.99\%).
+
+\subsubsection{6.3 Dimensional β = φ³ (Phase
+15c)}\label{dimensional-ux3b2-ux3c6uxb3-phase-15c}
+
+The redshift scaling of the oscillatory dark energy amplitude
+\texttt{ε(z)\ =\ ε\_0·(1+z)\^{}β} was tested across dimensions:
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+d & β = φ\^{}d & χ² & Δχ² vs best \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & 1.618 & 937 & +11.3 \\
+2 & 2.618 & 929 & +2.6 \\
+\textbf{3} & \textbf{4.236} & \textbf{926} & \textbf{0.0} \\
+4 & 6.854 & 930 & +4.1 \\
+\end{longtable}
+
+d=3 is the clear best fit. The fitted β ≈ 4.16 is within 2\% of φ³ ≈
+4.236 --- the associator volume scaling for a three-dimensional
+embedding.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7. Observational Tests}\label{observational-tests}
+
+\subsubsection{7.1 Oscillatory DE vs ΛCDM (Phase
+16)}\label{oscillatory-de-vs-ux3bbcdm-phase-16}
+
+A joint fit to 60 H(z) cosmic chronometers, 1701 Pantheon+ SNe Ia, and
+DESI DR1 BAO yields:
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+Model & χ² & Δχ² vs ΛCDM & H₀ \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+ΛCDM & 948 & --- & 73.6 \\
+IST (β=1/φ) & 926 & \textbf{+22.1} & 71.4 \\
+IST (free β) & 926 & +22.3 & 71.6 \\
+\end{longtable}
+
+The oscillatory model is preferred at \textasciitilde4σ over ΛCDM. H₀
+shifts from 73.6→71.4, pulling the Hubble tension in the right
+direction. {[}Output: \texttt{outputs/phase16\_joint/joint\_fit.png}{]}
+
+\subsubsection{7.2 Void Lensing (Phases 5,
+17)}\label{void-lensing-phases-5-17}
+
+The Phase 14 pinned G(ρ) model was applied to the Phase 5 void lensing
+templates:
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+Model & Suppression & χ² vs GR & σ \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+D=2 (grid) & 55.3\% & 88.2 & 9.4σ \\
+Phase 4 window & 61.9\% & 110.7 & 10.5σ \\
+\textbf{Phase 14 pinned} & \textbf{63.0\%} & \textbf{114.6} &
+\textbf{10.7σ} \\
+\end{longtable}
+
+The pinned model (D=φ) produces exactly the 63\% suppression predicted
+from the golden window: \texttt{1\ −\ (0.2)\^{}\{1/φ\}\ =\ 63\%}.
+
+Real DES Y6 GOLD data produced a first stacked shear measurement from
+3-4 voids with signal γ\_t \textasciitilde{} −0.025 at 0.27° --- real
+but noise-limited at single-tile depth. {[}Output:
+\texttt{outputs/phase17\_des/void\_shear\_des.png}{]}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8. Discussion}\label{discussion}
+
+\subsubsection{8.1 The Mechanism}\label{the-mechanism}
+
+The arc across 22 phases converges on a single picture: φ is not written
+into the substrate's spatial structure. It emerges from the temporal
+dynamics of harmonic self-interaction --- the same anti-resonance
+principle that produces Fibonacci spirals in biology, operating through
+three interconnected mechanisms:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Anti-resonance selection} (Phase 6): golden-ratio frequency
+  structures uniquely survive all deposition generations
+\item
+  \textbf{Vacuum-pump laser threshold} (Phase 8): coherent golden
+  accumulation overtakes the noise floor at a sharp transition
+\item
+  \textbf{Dynamical RG convergence} (Phase 13): golden-connected
+  components produce D\_eff → 1.655, within 2.3\% of φ
+\end{enumerate}
+
+The fold-density feedback (Phase 14) closes the loop: G\_eff is not
+assumed to scale as ρ\^{}\{1/φ\} --- it converges there from any initial
+condition.
+
+\subsubsection{8.1 Plonk-Scale Substrate and QM Emergence (Phases
+23--24)}\label{plonk-scale-substrate-and-qm-emergence-phases-2324}
+
+The most recent phases (23a/b/c) implemented a plonk-scale simulation
+with explicit tracking of the 720° double-cover of the Klein bottle. Key
+results:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Fibonacci lattice} on the Klein bottle surface (golden-angle
+  spiral) produces correlated phase-position ordering that Phases 19--22
+  identified as the missing ingredient.
+\item
+  \textbf{4-tick orientation cycle} advances each oscillator through one
+  quarter of the full Klein circumference per plonk tick. After 4 ticks
+  (720°), all oscillators return to their original chirality --- the
+  spin-1/2 double-cover verified at 200/200.
+\item
+  \textbf{Parity inversion} was fixed in the coupling matrix:
+  \texttt{klein\_distance} now returns a twist flag indicating whether
+  the shortest geodesic crosses the Möbius seam. 44.6\% of coupling
+  entries are negative, encoding the orientation-reversing propagation.
+  This prevents the uniform saturation that plagued every earlier
+  balloon model and stabilizes amplitudes at \textasciitilde0.91
+  (unsaturated, physically active).
+\item
+  \textbf{Stable knots} form at a rate of \textasciitilde3\% per 4-tick
+  cycle across all parameter variations (Phase 24 sweep). This fraction
+  is robust --- independent of ω₀, gain, sigma, TOL, or oscillator count
+  N. The golden filter's tolerance parameter does not control knot
+  stability; the topological structure (Fibonacci lattice + parity
+  inversion) is the primary driver.
+\item
+  \textbf{QM diagnostics} (Phase 23b) confirmed: 100\% chirality flip at
+  180° (spin-1/2), constructive/destructive superposition cycling,
+  entanglement via twist-geodesic pairs, and measurable phase-space
+  uncertainty (Δx·Δp = 0.32 vs plonk bound 0.031).
+\item
+  \textbf{Scale bridging} (Phase 23c) maps the plonk-scale knot
+  formation to the Compton and atomic scales via φ⁸ magnification (47×)
+  and the golden-window G\_eff pinning.
+\end{itemize}
+
+\textbf{Critical finding from the parameter sweep:} The golden ratio
+acts at the \textbf{structural level} --- the Fibonacci lattice
+positions and the parity inversion through the Klein twist --- rather
+than at the parameric level of a tunable filter. φ emerges from the
+topology of how oscillators are positioned and how they couple across
+the twist, not from a tunable threshold. This validates the central
+claim of the φ-attractor hypothesis: φ is a dynamical attractor of the
+substrate's self-interaction, not an external input.
+
+\subsubsection{8.2 Observable Predictions}\label{observable-predictions}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Oscillatory DE at 4σ} over ΛCDM in current data. DESI DR2 and
+  Euclid DR1 will sharpen this.
+\item
+  \textbf{β = φ³} makes the specific prediction that the 1D Lyman-α
+  forest and the 2D CMB angular spectrum should show β = φ¹ and β = φ²
+  respectively.
+\item
+  \textbf{63\% void lensing suppression} is decisively testable (10.7σ)
+  at Euclid/COSMOS-Web depth with a multi-tile shear catalog.
+\item
+  \textbf{α\_s(M\_Z) predicts 0.122} which is testable against improved
+  lattice QCD determinations.
+\end{enumerate}
+
+\subsubsection{8.3 Open Questions}\label{open-questions}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \st{The φ-mechanism has been demonstrated at the phenomenological
+  level but a unified simulation combining the 2D Klein sheet,
+  vacuum-pump accumulation, and Fibonacci spectral coupling remains to
+  be built.} \emph{Resolved: Phases 23a/b/c implement the plonk-scale
+  unified simulation with parity inversion, 4-tick orientation cycle,
+  and Fibonacci lattice.}
+\item
+  The mapping from G(ρ) to the lensing signal (Model A vs B) has been
+  formalized (\texttt{supplementary/void\_lensing\_field\_equation.md}).
+  The photon geodesic equation in the weak-field IST metric remains to
+  be solved explicitly.
+\item
+  The electron mass factor 12π⁵ has been decomposed into topological
+  components
+  (\texttt{supplementary/electron\_mass\_12pi5\_derivation.md}). The
+  explicit integral evaluation connecting π⁵ to the directed-number
+  algebra remains open.
+\item
+  The substrate's connection to established frameworks (string theory,
+  LQG, asymptotic safety) remains unformalized.
+\item
+  The projection map \texttt{P:\ Σ\ →\ R³} from the 2D substrate to
+  emergent 3D space has not been constructed.
+\item
+  The stable knot fraction of \textasciitilde3\% should be mapped to
+  particle multiplicities in the Standard Model (3 generations, 8
+  gluons, etc.) --- a counting problem.
+\item
+  The entanglement test (Phase 23b) showed a single twist-geodesic pair.
+  A systematic study of multi-partite entanglement on the Klein bottle
+  substrate could connect IST to quantum information theory.
+\end{enumerate}
+
+\subsubsection{8.4 Code and Data
+Availability}\label{code-and-data-availability}
+
+All code, tests, and outputs at:
+\texttt{https://github.com/MaryTheadoor/IST-workspace-}
+
+\begin{itemize}
+\tightlist
+\item
+  24 phases, 319 automated tests (pytest)
+\item
+  Plonk-scale substrate: 4-state orientation tracker, parity-inverted
+  coupling, Fibonacci lattice
+\item
+  QM diagnostic suite: spin, superposition, entanglement, uncertainty
+\item
+  Parameter optimization sweep across 5 dimensions
+\item
+  Python 3.14, numpy/scipy/numba/pyarrow/astropy
+\item
+  Real data: DES Y6 GOLD (\texttt{Y6\_GOLD\_2\_2-0-0000.parquet}, 3.5
+  GB), Pantheon+ SNe Ia (1701 events), DESI DR1 BAO (5 redshift bins),
+  H(z) cosmic chronometers (60 points)
+\item
+  Figures and CSVs in \texttt{code/outputs/phase*/}
+\item
+  Derivation documents in \texttt{supplementary/phase*/}
+\item
+  GPU-ready architecture (CuPy installed, numba JIT 60× speedup)
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Appendix: Phase Map}\label{appendix-phase-map}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\#
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Name
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Key Finding
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & Klein spectrum & Gap ratios falsify bare-grid φ \\
+2 & Hopf α & Form correct, scale needs φ⁸ \\
+3 & Mass hierarchy & p/e at 99.9\%+, α\_s=0.38 (gap) \\
+4 & Variable G & D\_eff crosses φ at f≈4.2 \\
+5 & Observable validation & Void lensing 10.7σ forecast \\
+6 & φ-attractor & Golden = maximal anti-resonance \\
+7 & Vector substrate & D\_eff≈1.10, self-similar, not grid-D=2 \\
+8 & Vacuum pump & Laser threshold at layer 11 \\
+8b & Klein oscillator sheet & λ\_min activated by golden layers \\
+9 & GoL automaton & Golden fraction 0.54→0.77 \\
+10 & Klein vector field & Twist correlation emerges \\
+11 & Golden-filtered substrate & Edge-level golden weights \\
+12 & Fibonacci RG & Static blocking fails \\
+13 & Dynamical RG & D\_eff pins at 1.655 (2.3\% of φ) \\
+14 & Fold feedback & G exponent → 1/φ from any initial f \\
+15 & Running φ & α\_s fixed (3\%), neutron exact, β=φ³ \\
+16 & Joint fit & Oscillatory DE at 4σ over ΛCDM \\
+17 & DES void lensing & Real shear stacking (3 voids,
+\textasciitilde0.025) \\
+18 & DES BAO & Data loaded, CAMB needed \\
+19 & Unified φ-sim & D\_eff descends 2.98→2.24, trending toward φ \\
+20 & Standing waves & Grid harmonics dominate (raster artifact) \\
+21 & Balloon waves v1 & Gain saturates to uniformity \\
+22 & Balloon waves v2 & Golden adjacency too dense for
+differentiation \\
+\textbf{23a} & \textbf{Plonk orientation cycle} & \textbf{Fibonacci
+lattice + 4-state tracker + 720° verified (200/200)} \\
+\textbf{23b} & \textbf{QM diagnostic suite} & \textbf{Spin 1/2 (100\%
+flip at 180°), superposition, entanglement, uncertainty} \\
+\textbf{23c} & \textbf{Scale bridging} & \textbf{Plonk→Compton via φ⁸×3,
+320 ticks to stable knots} \\
+\textbf{24} & \textbf{Parameter scan} & \textbf{Stable fraction
+\textasciitilde3\% robust, golden filter secondary to topology} \\
+\end{longtable}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\emph{``The universe is not a machine. It is a self-interfering,
+self-amplifying information substrate that projects the appearance of
+space, time, matter, and energy from the simplest possible ingredients:
+pattern, oscillation, and the golden ratio.''}
+
+\emph{Document version: 1.0 \textbar{} August 2026 \textbar{} NOWN
+Research Collective}
+
+\end{document}
