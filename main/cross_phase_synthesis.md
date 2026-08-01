@@ -1,6 +1,6 @@
-# IST Cross-Phase Synthesis — July 2026
+# IST Cross-Phase Synthesis — August 2026
 
-## The Arc: 18 Phases, One Mechanism
+## The Arc: 24 Phases, One Mechanism
 
 | Phase | What | Key Result | Status |
 |---|---|---|---|
@@ -27,7 +27,11 @@
 | 15 | Neutron mass | Running φ: 0.9395 GeV (obs 0.9396) | GAP CLOSED |
 | 16 | Joint fit | H(z)+Pantheon++DESI BAO: 4σ over ΛCDM | Real data |
 | 17 | DES void lensing | Real shear stacking from GOLD catalog | Operational |
-| 18 | DES BAO | Data vectors loaded, CAMB needed | Limited |
+| 18 | DES BAO | Data vectors loaded, CAMB needed |
+| **23a** | **Plonk orientation cycle** | **Fibonacci lattice + 4-state tracker + 720° return verified (200/200) + parity inversion fix (44.6% negative coupling)** |
+| **23b** | **QM diagnostic suite** | **Spin 1/2 (100% chiral flip at 180°), superposition cycling, entanglement via twist geodesics, uncertainty ΔxΔp=0.32** |
+| **23c** | **Scale bridging** | **Plonk→Compton via φ⁸×3.5% stable knots = 320 ticks; Compton→atomic via golden window** |
+| **24** | **Parameter scan** | **Stable fraction ~3% robust across ω₀/gain/σ/TOL/N sweeps. Golden filter TOL is secondary — topology (Fibonacci + parity) drives knot formation** | Limited |
 
 ## The Three Closed Gaps
 
