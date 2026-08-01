@@ -62,7 +62,9 @@ def fibonacci_lattice(N, golden_angle=None):
 
 
 def klein_distance(u1, v1, u2, v2):
-    """Geodesic distance on Klein bottle [0,1)^2 with twist identification."""
+    """Geodesic distance on Klein bottle [0,1)^2 with twist identification.
+    Returns (distance, twist_flag) where twist_flag=True if the shortest
+    path crosses the orientation-reversing seam."""
     u1, v1 = np.atleast_1d(u1), np.atleast_1d(v1)
     u2, v2 = np.atleast_1d(u2), np.atleast_1d(v2)
     du = np.abs(u1[:,None] - u2[None,:])
@@ -76,11 +78,15 @@ def klein_distance(u1, v1, u2, v2):
         for sv in [1.0, -1.0]:
             d2 = np.minimum(d2, (du+su)**2 + (dv+sv)**2)
     # twist: (u1,v1) ~ (-u2, v2+0.5)
+    twist_mask = np.zeros(d2.shape, dtype=bool)
     for su in [0.0, 1.0, -1.0]:
         for sv in [0.0, 1.0, -1.0]:
-            d2t = (u1[:,None]+u2[None,:]+su)**2 + (v1[:,None]-v2[None,:]+0.5+sv)**2
-            d2 = np.minimum(d2, d2t)
-    return np.sqrt(np.maximum(d2, 0.0))
+            d2t = (u1[:,None]+u2[None,:]+su)**2 \
+                + (v1[:,None]-v2[None,:]+0.5+sv)**2
+            better = d2t < (d2 - 1e-12)
+            d2 = np.where(better, d2t, d2)
+            twist_mask |= better
+    return np.sqrt(np.maximum(d2, 0.0)), twist_mask
 
 
 class PlonkSubstrate:
@@ -95,7 +101,8 @@ class PlonkSubstrate:
         self.tick_count = 0
 
     def _golden_coupling(self):
-        """Coupling strength based on golden-ratio phase separations."""
+        """Coupling with parity inversion: twist-crossing pairs get
+        negative weight, modeling the orientation-reversing seam."""
         N = self.N
         phases = np.array([o.phase for o in self.oscillators])
         dp = np.abs(phases[:,None] - phases[None,:])
@@ -104,14 +111,22 @@ class PlonkSubstrate:
         for tgt in [2*np.pi*ALPHA_GOLD, 2*np.pi*(1-ALPHA_GOLD)]:
             golden_match |= np.abs(dp - tgt) < TOL
         np.fill_diagonal(golden_match, False)
-        # Spatial proximity on Klein surface
+
         us = np.array([o.u for o in self.oscillators])
         vs = np.array([o.v for o in self.oscillators])
-        d = klein_distance(us, vs, us, vs)
+        d, twist = klein_distance(us, vs, us, vs)
         J = np.exp(-d**2/(2*self.sigma**2))
         np.fill_diagonal(J, 0)
-        # Combine: golden pairs get 5× coupling
-        return np.where(golden_match, J*5.0, J*0.3)
+
+        # Parity inversion: twist-crossing pairs get negative sign
+        signs = np.where(twist, -1.0, 1.0)
+        np.fill_diagonal(signs, 0)
+
+        # Golden filtering with parity-aware sign
+        W = np.where(golden_match, J * 5.0 * signs,
+                     J * 0.3 * signs)
+        np.fill_diagonal(W, 0)
+        return W
 
     def plonk_tick(self):
         """One plonk tick: phase update + orientation advance + twist check."""
@@ -121,7 +136,8 @@ class PlonkSubstrate:
         amps = np.array([o.amp for o in self.oscillators])
 
         # Phase evolution: omega_0 + coupling from neighbours
-        coupling = self.gain * (W @ (chir * amps))
+        # (W already encodes parity inversion via twist signs)
+        coupling = self.gain * (W @ amps)
         new_phases = (phases + self.omega_0 + coupling) % (2*np.pi)
 
         # Update oscillators
