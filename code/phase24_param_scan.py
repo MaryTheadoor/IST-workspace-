@@ -15,13 +15,34 @@ import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
 import numpy as np
 from phase1_klein_laplacian import PHI
 from phase23a_plonk_cycle import (
-    PlonkOscillator, PlonkSubstrate, fibonacci_lattice
+    PlonkOscillator, PlonkSubstrate, fibonacci_lattice, klein_distance, ALPHA_GOLD
 )
+import scipy.sparse.linalg as spla
+import scipy.sparse as sp
 
 OUT_DIR = os.path.join(os.path.dirname(__file__), "outputs", "phase24")
 
 # Defaults from Phase 23a
 DEF = {"omega_0": 0.3, "gain": 0.8, "sigma": 0.15, "TOL": 0.25, "N": 200}
+
+
+def compute_d_eff(sub):
+    """Spectral dimension from Laplacian of signed coupling matrix."""
+    W = sub._golden_coupling()
+    D_vec = np.asarray(np.abs(W).sum(axis=1)).ravel()
+    L = sp.diags(D_vec) - sp.csr_matrix(W)
+    N = L.shape[0]; k = min(20, N - 2)
+    try:
+        vals = spla.eigsh(L, k=k, sigma=-0.01, which="LM", tol=1e-6,
+                          return_eigenvectors=False)
+    except spla.ArpackError:
+        return np.nan
+    vals = np.sort(vals[vals > 1e-10])
+    if len(vals) < 8: return np.nan
+    imin = max(1, int(0.05*len(vals))); imax = max(imin+5, int(0.4*len(vals)))
+    lam, cnt = vals[imin:imax], np.arange(imin+1, imax+1)
+    slope, _ = np.polyfit(np.log(lam), np.log(cnt), 1)
+    return 2*slope
 
 
 def run_config(n_cycles=40, **kwargs):
@@ -47,6 +68,9 @@ def run_config(n_cycles=40, **kwargs):
         gold_hist.append(sub.golden_phase_fraction())
         amp_hist.append(np.mean([o.amp for o in sub.oscillators]))
 
+    # Compute D_eff from final coupling Laplacian
+    D_eff = compute_d_eff(sub)
+
     p23.TOL = old_tol
     last10 = slice(-10, None)
     return {
@@ -57,6 +81,7 @@ def run_config(n_cycles=40, **kwargs):
         "golden_std": np.std(gold_hist[last10]),
         "amp_mean": np.mean(amp_hist[last10]),
         "amp_std": np.std(amp_hist[last10]),
+        "D_eff": D_eff,
     }
 
 
@@ -88,10 +113,12 @@ def main():
         results = sweep(name, values)
         all_rows.extend(results)
         for r in results:
+            de = r['D_eff']
             print(f"  {name}={r['sweep_value']:5.2f}: "
                   f"stable={r['stable_mean']:5.1f} "
                   f"golden={r['golden_mean']:.3f} "
-                  f"amp={r['amp_mean']:.3f}")
+                  f"amp={r['amp_mean']:.3f} "
+                  f"D_eff={de:.3f}" if not (isinstance(de, float) and np.isnan(de)) else f"  D_eff=nan")
 
     with open(os.path.join(OUT_DIR, "param_scan.csv"), "w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(all_rows[0].keys()))
@@ -103,7 +130,7 @@ def main():
 
 def make_figure(all_rows):
     params = ["omega_0", "gain", "sigma", "TOL", "N"]
-    fig, axes = plt.subplots(5, 3, figsize=(14, 18))
+    fig, axes = plt.subplots(5, 4, figsize=(16, 18))
 
     for row_idx, param in enumerate(params):
         pts = [r for r in all_rows if r["sweep_param"] == param]
@@ -128,6 +155,18 @@ def make_figure(all_rows):
         ax.axhline(1.0, color="gray", ls=":")
         ax.set_xlabel(param); ax.set_ylabel("mean amplitude")
         ax.set_title(f"Amplitude vs {param}")
+
+        ax = axes[row_idx, 3]
+        ds = [r["D_eff"] if not (isinstance(r["D_eff"], float) and np.isnan(r["D_eff"])) else np.nan for r in pts]
+        valid = [(x, d) for x, d in zip(xs, ds) if not np.isnan(d)]
+        if valid:
+            vx, vy = zip(*valid)
+            ax.plot(vx, vy, "o-", color="crimson", lw=2, ms=6)
+        ax.axhline(1.655, color="gray", ls="--", label="Phase 13 D_eff")
+        ax.axhline(1.618, color="seagreen", ls=":", label=r"$\varphi$")
+        ax.set_xlabel(param); ax.set_ylabel(r"$D_{\rm eff}$")
+        ax.set_title(f"D_eff vs {param}")
+        if row_idx == 0: ax.legend(fontsize=6)
 
     fig.tight_layout()
     fig.savefig(os.path.join(OUT_DIR, "param_scan.png"), dpi=300)
