@@ -1,0 +1,29 @@
+{
+  "dimensional_exponents": {
+    "d1": {
+      "beta": 1.618,
+      "chi2": 937,
+      "dchi2_vs_best": 11.3
+    },
+    "d2": {
+      "beta": 2.618,
+      "chi2": 929,
+      "dchi2_vs_best": 2.6
+    },
+    "d3": {
+      "beta": 4.236,
+      "chi2": 926,
+      "dchi2_vs_best": 0.0
+    },
+    "d4": {
+      "beta": 6.854,
+      "chi2": 930,
+      "dchi2_vs_best": 4.1
+    }
+  },
+  "hardware": {
+    "cpu_cores": 8,
+    "gpu": "NVIDIA GTX 1050 2GB",
+    "cuda_capable": true
+  }
+}

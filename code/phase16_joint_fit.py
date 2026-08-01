@@ -283,3 +283,24 @@ def make_fig(zh, Hd, sh, zs, mu_d, mu_e, results, beta_scan):
 
 if __name__ == "__main__":
     main()
+
+
+def run_dimensional_test():
+    """Test beta = phi^d for d=1,2,3,4; confirm d=3 gives best fit."""
+    zh, Hd, sh = load_hz()
+    zs, mu_d, mu_e = load_pantheon()
+    dim_results = []
+    for d in [1, 2, 3, 4]:
+        beta = PHI ** d
+        r = minimize(lambda p: chi2_total(
+            [p[0], p[1], p[2], p[3], beta], zh, Hd, sh, zs, mu_d, mu_e,
+            "powerlaw"),
+            [71, 0.28, 0.06, 2.2], method="Nelder-Mead",
+            options={"maxiter": 300})
+        dim_results.append((d, beta, r.fun, r.x))
+    best = min(dim_results, key=lambda x: x[2])
+    for d, beta, c2, x in dim_results:
+        lbl = " <<< BEST" if d == best[0] else ""
+        print(f"d={d} beta=phi^{d}={beta:.3f} chi2={c2:.0f} "
+              f"dchi2_vs_best={c2-best[2]:.1f}{lbl}")
+    return dim_results
