@@ -1,0 +1,8 @@
+statistic,value
+n_cells,40
+n_void_cells,745
+void_depth_measured,-0.9899881729052878
+gr_average_depth,-0.9841684786540221
+ist_suppression,0.3698390630615551
+ist_predicted_depth,-0.36398394804011963
+depth_ratio_measured_gr,1.0059133109599536
