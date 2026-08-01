@@ -400,6 +400,13 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **D_eff ~ 2 (manifold dimension):** D_eff stays near 2.0–2.8, fluctuating with graph density — the 2D manifold spectral dimension dominates, not φ. The pinned value (1.18 for S¹, ~2 for S²) depends on the base manifold dimension; φ = 1.618 lies *between* them, suggesting it requires the fractal/golden accumulation to cross the dimensional gap.
 - **Key thread:** the golden filter's laser threshold (1D, Phase 8) + the Klein twist signature (2D, Phase 8b) + the Fibonacci persistence (Phase 6) converge: φ is the dimensional attractor *between* 1D and 2D — the fractal intermediate. The full substrate (2D Klein oscillator sheet + multi-scale golden accumulation + associator volume) should produce D_eff flowing through φ in the golden window.
 
+### Phase 9: Game-of-Life Substrate Automaton — Golden Phase Selection
+- **Model:** Conway GoL on the Klein bottle grid (4-regular) augmented with golden-phase attractor: every live cell's phase rotates by golden angle 2π/φ² per plonk tick. Golden-resonant cells (>= 1 neighbor at golden phase separation ±23°) survive at n ∈ [1,4] (extended tolerance); non-golden cells use standard Conway n ∈ [2,3].
+- **Key result:** golden fraction rises from 0.54 → 0.77 (+43%), entropy drops from 21.0 → 18.2, population stabilizes at 479 (from 35% initial). The golden-angle phase rotation continuously creates golden resonances among surviving Conway clusters, and the survival bonus selects for golden-structured configurations.
+- **Mechanism:** the vacuum-pump's frequency-domain deposition (phase rotation by golden angle per tick) functions as the golden attractor — cells that survive long enough inevitably develop golden-resonant neighborhood relationships. Conway + golden attractor → selection for golden structures from random initial conditions.
+- **Script:** `code/phase9_game_of_life_substrate.py` | **Tests:** `tests/test_phase9_automaton.py` (7 tests)
+- **Outputs:** `code/outputs/phase9/structure_evolution.png`, `evolution.csv`
+
 ### Data Pipeline
 - **Fetch:** `data_fetch/fetch_hsc_m31.py`, `fetch_cosmos_web.py`, `fetch_ligo.py`
 - **Preprocess:** `preprocess_microlensing.py` (events → threads), `preprocess_lss.py` (galaxies → Ξ threads)
