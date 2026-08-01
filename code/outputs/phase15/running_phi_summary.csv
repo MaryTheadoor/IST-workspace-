@@ -1,0 +1,16 @@
+section,label,E_GeV,phi_mu,alpha_s_pred,alpha_s_ref
+15a,M_Z (91.2 GeV),91.1876,1.6206076554891502,0.38075378369077517,0.118
+15a,m_tau (1.78 GeV),1.77686,1.9645409164480367,12.012179522448493,0.33
+15a,m_b (4.18 GeV),4.18,1.9217623639408572,4.946382361723178,0.22
+15a,m_t (173 GeV),173.0,1.6180629844640175,0.24486466833368856,0.09
+15a,neutron,,1.9808313210923083,0.0018598175332221942,0.001884
+15b,convergence_epochs,,0.0,,
+15b,d_eff_converged,,1.655,,
+15b,residual_epoch_equiv,,0.05,,
+15b,total_equivalent_epochs,,7.0,,
+15b,implied_magnification,,29.7,,
+15b,phi8_target,,47.0,,
+15b,ratio,,0.632,,
+15c,chi2_const_eps,,50.41658914708017,,
+15c,chi2_running_eps,,50.74168366502437,,
+15c,delta_chi2,,-0.3250945179442013,,
