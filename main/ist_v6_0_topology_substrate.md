@@ -4,8 +4,6 @@
 **The Nown Research Group**  
 **Version 6.0 — August 1, 2026** (v5.3: April 30, 2026)
 
----
-
 ## Abstract
 
 We introduce Information Substrate Theory (IST), a unified framework in which observed physics emerges from a discrete, non-orientable two-dimensional information substrate $\Sigma$ woven from fundamental 1D Möbius loops. Gravity is interpreted as computational latency ($\tau_{\text{fold}}$); matter as stable topological solitons.
@@ -19,8 +17,6 @@ Quantitative gaps from earlier versions are closed: the strong coupling $\alpha_
 Observational tests against real cosmological data show the oscillatory dark energy model preferred over $\Lambda$CDM at $4\sigma$ ($\Delta\chi^2 = 22.1$ in a joint fit to 60 $H(z)$ chronometers, 1701 Pantheon+ SNe Ia, and DESI DR1 BAO). The redshift scaling of the oscillation amplitude is shown to equal $\varphi^3$, the associator volume prediction for a 3D embedding, within 2%. Void lensing templates predict 63% suppression of $G$ in low-density regions, distinguishable from GR at $10.7\sigma$ with Euclid/COSMOS-Web depth. Real DES Y6 data produces a first stacked shear measurement.
 
 A plonk-scale simulation (Phases 23–24) implements the $720^{\circ}$ double-cover of the Klein bottle with explicit 4-tick orientation tracking, Fibonacci lattice positioning, and parity-inverted coupling (44.6% negative entries). The spin-1/2 chirality flip is verified at 100%; stable knots form at a rate of $\sim$3% per 4-tick cycle, robust across all parameter variations. The golden filter's role is shown to be structural (Fibonacci lattice + parity inversion through the Klein twist) rather than parametric (tunable threshold).
-
----
 
 ## 1. Introduction: The Ontological Shift
 
@@ -71,8 +67,6 @@ In this paper, the substrate is a **map of the territory**. The territory itself
 - Section 6: Zero-Point Operator, self-referential automata, and the plonk-scale $720^{\circ}$ double-cover implementation
 - Appendices: Simulation protocols and reproducible code
 
----
-
 ## 2. Mathematical Foundations
 
 ### 2.1 Overview and Notation
@@ -110,8 +104,6 @@ The 1D Möbius loops are the fundamental entities. Their chirality is encoded by
 - **$a^0$**: Loop compressed at the zero-point (unmanifest)
 
 Pairwise interactions create 2D surfaces; triple interactions (associators) create 3D volume; higher-order interactions create 4D spacetime. The non-associativity of the directed number algebra arises from the order in which loops interact, and the associator $[x, y, z]$ measures the failure of commutativity when three loops entangle -- a proposed geometric origin for effective volume.
-
----
 
 ## 3. Emergent Physics
 
@@ -298,8 +290,6 @@ which is within a factor of two of the observed value $\eta \approx 6 \times 10^
 
 The appearance of $\alpha^{-1} \approx 137$ and $\varphi$ in the framework motivates a speculative organizing principle: stability may be associated with arithmetic "rigidity" (e.g., primality for discrete parameters) or with maximal incommensurability (e.g., strong irrationality for continuous fixed points).
 
----
-
 ## 4. Cosmological Implications
 
 ### 4.1 Overview
@@ -353,8 +343,6 @@ Real DES Y6 GOLD data produced a first stacked shear measurement from 3--4 voids
 A non-orientable global topology can imprint parity-inverted correlation structure on CMB temperature anisotropies. Using Planck 2018 maps, an antipodal (Klein-transformed) correlation statistic yields $C \approx 0.005$. We treat this as motivation for more controlled null tests rather than as a standalone detection claim.
 
 ![**CMB parity difference map.** Residual temperature structure after applying the Klein parity transform. The banding and correlation statistic $C$ summarize one operational test for parity-odd structure; interpretation requires careful control of systematics.](publication/figures/Figure_1_IST_CMB.png)
-
----
 
 ## 5. Simulation Results and Illustrative Tests
 
@@ -479,8 +467,6 @@ The probabilistic axiom of the directed-number algebra suggests that what appear
 
 [Philosophical implications -- work in progress.]
 
----
-
 ## 7. Critical Analysis and Discussion
 
 ### 7.1 Limitations of the Computational Program
@@ -496,10 +482,8 @@ While the 24-phase program provides a coherent narrative for the φ-attractor hy
 The φ-attractor mechanism offers a distinct path to generating dimensionless constants. Unlike string-theory moduli (which are typically tuned) or anthropic arguments (which are not predictive), the anti-resonance selection provides a dynamical mechanism for why φ emerges. However, the connection to established quantum gravity frameworks (e.g., Loop Quantum Gravity, asymptotic safety) remains to be formalized. The substrate's non-orientability is a strong assumption that requires independent observational support (e.g., CMB parity tests).
 
 ### 7.3 Outlook
+The stable-knot fraction of ~3% must be mapped to Standard Model particle multiplicities (3 generations, 8 gluons) to establish a direct correspondence.
 
-The most urgent theoretical gaps are (i) the projection map P: Σ → R³ from the 2D substrate to emergent 3D space, and (ii) the explicit integral evaluation connecting π⁵ to the directed-number algebra for the electron mass. Observationally, the DESI DR2 and Euclid DR1 datasets will provide decisive tests of the 4σ oscillatory DE signal and the 63% void lensing suppression. The stable-knot fraction of ~3% must be mapped to Standard Model particle multiplicities (3 generations, 8 gluons) to establish a direct correspondence.
-
----
 ## 8. Conclusion
 
 Information Substrate Theory provides a framework in which observed physics emerges from a discrete, non-orientable two-dimensional information substrate. A 24-phase computational program (319 automated tests) establishes that the golden ratio φ is not a static invariant of the substrate graph but a **dynamical attractor** of its harmonic self-interaction -- emerging from anti-resonance selection, the vacuum-pump laser threshold, and dynamical RG convergence, and pinned by fold-density feedback.
@@ -514,8 +498,6 @@ Information Substrate Theory provides a framework in which observed physics emer
 - Plonk-scale: $720^{\circ}$ double-cover verified (200/200), spin-1/2 flip at 100%, stable knots ~3% robust
 
 The framework is offered as a work in progress whose claims are intended to be evaluated and revised against observation.
-
----
 
 ## Appendices
 
@@ -542,8 +524,6 @@ The framework is offered as a work in progress whose claims are intended to be e
 ```python
 # [Python code for soliton simulation]
 ```
-
----
 
 ## References
 
