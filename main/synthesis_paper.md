@@ -210,6 +210,17 @@ The most recent phases (23a/b/c) implemented a plonk-scale simulation with expli
 
 **Critical finding from the parameter sweep:** The golden ratio acts at the **structural level** — the Fibonacci lattice positions and the parity inversion through the Klein twist — rather than at the parameric level of a tunable filter. φ emerges from the topology of how oscillators are positioned and how they couple across the twist, not from a tunable threshold. This validates the central claim of the φ-attractor hypothesis: φ is a dynamical attractor of the substrate's self-interaction, not an external input.
 
+### 8.1b Temporal Holonomy (Phase 25): Ψ as Parallel Transport
+
+Phase 25 implements the v6.2 reformulation: the Compression Operator Ψ is not a computational update rule but the **temporal holonomy** of the substrate's SU(2)-like connection over the closed 720° cycle. Key results:
+
+- **Flat-limit double-cover is exact.** With zero fold density the 4-tick Wilson product is *exactly* −I (max |Tr+2| = 0.0 to machine precision) — the fermionic sign of the spin-1/2 double-cover. The parity gauge (`twist_flag · σ_x`) flips chirality at tick 2 and restores it at tick 4.
+- **Exact SU(2) machinery.** Each tick is `U_k = exp(−i(π/2) n̂(ρ)·σ)` with fold density entering through the propagation axis (not an additive phase); evaluated via the Euler/Cayley–Hamilton form. Unitarity and time-reversal (`Ψ_rev = Ψ⁻¹`) hold to ~1e-16, regardless of the nonlinearity in the connection — resolving the "who computes?" regress: the substrate transports, it does not compute.
+- **Static-φ falsification reproduced with the new operator (25a).** In the zero-curvature limit the connection reduces to the static Klein Laplacian: D_eff = 2.012 (φ = 1.618), and γ_min matches the analytic twist gap 4sin²(π/2n) exactly. φ is still NOT a static graph invariant.
+- **Riccati fold flow (25b).** `df/dt = γ(D_eff(f) − φ)f` drives f to the fixed point where D_eff = φ (converging in ~55 steps; the static-scan baseline takes ~57 — the holonomy-derived D_eff is not decisively faster, an honest null on the "faster than discrete" claim).
+- **Lattice robustness.** Tr(Ψ) ∈ [−2,2] holds for all lattices (SU(2) by construction); the discriminating signature is the *deviation from the flat fermionic −I*. The Fibonacci lattice preserves non-trivial temporal winding (dev_flat ≈ 0.215) while the rational control collapses it toward trivial (dev_flat ≈ 0.038) — the golden structure keeps the 720° winding alive, rational rotation kills it.
+- **Honest tensions.** The literal §5.3 knot redefinition P(Im λ ≠ 0) gives O(0.5–0.9) in the coupled substrate, NOT ~3% — the ~3% figure was a phase-return stability criterion, a different observable. The golden-window anti-resonance min_gap/max_gap = 1/φ² is NOT realized by the holonomy eigenphase gaps (measured ≈ 0.0003); the deviation is reported per the rig instruction.
+
 ### 8.2 Observable Predictions
 
 1. **Oscillatory DE at 4σ** over ΛCDM in current data. DESI DR2 and Euclid DR1 will sharpen this.
@@ -274,6 +285,7 @@ All code, tests, and outputs at: `https://github.com/MaryTheadoor/IST-workspace-
 | **23b** | **QM diagnostic suite** | **Spin 1/2 (100% flip at 180°), superposition, entanglement, uncertainty** |
 | **23c** | **Scale bridging** | **Plonk→Compton via φ⁸×3, 320 ticks to stable knots** |
 | **24** | **Parameter scan** | **Stable fraction ~3% robust, golden filter secondary to topology** |
+| **25** | **Temporal holonomy** | **Ψ = Wilson loop of SU(2) connection over 720° cycle. Flat limit EXACTLY -I; unitarity + time-reversal at 1e-16. Static-φ falsification reproduced (D_eff=2.012≠φ). Riccati flow → D_eff=φ fixed point. Fibonacci preserves winding, rational collapses it** |
 
 ---
 

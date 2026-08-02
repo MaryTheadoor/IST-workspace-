@@ -1,6 +1,6 @@
 # IST Cross-Phase Synthesis — August 2026
 
-## The Arc: 24 Phases, One Mechanism
+## The Arc: 25 Phases, One Mechanism
 
 | Phase | What | Key Result | Status |
 |---|---|---|---|
@@ -32,6 +32,7 @@
 | **23b** | **QM diagnostic suite** | **Spin 1/2 (100% chiral flip at 180°), superposition cycling, entanglement via twist geodesics, uncertainty ΔxΔp=0.32** |
 | **23c** | **Scale bridging** | **Plonk→Compton via φ⁸×3.5% stable knots = 320 ticks; Compton→atomic via golden window** |
 | **24** | **Parameter scan** | **Stable fraction ~3% robust across ω₀/gain/σ/TOL/N sweeps. Golden filter TOL is secondary — topology (Fibonacci + parity) drives knot formation** | Limited |
+| **25** | **Temporal holonomy** | **Ψ = Wilson loop of the SU(2) connection over the 720° cycle. Flat limit EXACTLY -I (fermionic sign); unitarity + time-reversal to 1e-16. Static-φ falsification reproduced (D_eff=2.012, not φ). Riccati fold flow converges to D_eff=φ fixed point. Fibonacci preserves non-trivial winding (dev_flat=0.215) where rational collapses it (0.038)** | v6.2 mechanism |
 
 ## The Three Closed Gaps
 
