@@ -1,0 +1,8 @@
+quantity,symbol,value,note
+theta (half-integer twist),theta,0.5,single input
+leading Xi_eff,Xi_eff,0.5,meridian halving (Phase 29)
+delta_n leading,alpha/(2 phi^2),0.00139367032678752,98.8936% acc
+topological f_Klein,1+|theta|,1.5,= 3/2
+triple golden suppression,(1/phi^2)^3,0.0557280900008412,= 1/phi^6
+radiative c (claimed),f - alpha/phi^6,1.499593332479251,vs exact 1.49959350
+delta_n full,leading(1-c alpha),0.0013784193070285175,sigma +0.02

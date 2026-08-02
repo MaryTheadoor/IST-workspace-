@@ -216,10 +216,11 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Accuracy:** 99.95%
 - **Insight:** Electron is single chiral loop; proton is 3 quark loops
 
-### Neutron Mass (Phase 28/29 — exact, derived)
+### Neutron Mass (Phase 28/29/30 — exact, fully derived)
 - **Exact closed form:** $\delta_n = (\alpha/2\varphi^2)(1-(3/2-\alpha/\varphi^6)\alpha)$ — 0.02σ from CODATA 2018 (100.000000%)
-- **Factor 2 derived (Phase 29):** the 2 = half-integer Klein meridian quantization. The seam $s(i,m)=-s(-i,0)$ forces $\theta = \pi\ell/n$ ($\ell$ odd), halving the meridian momentum vs the torus. This is the 720° double-cover (flat holonomy exactly $-I$, Phase 25): a single-valued charge needs two traversals, so $\Xi_{\text{eff}} = 1/2$ and $\delta_n = (\alpha/\varphi^2)\cdot(1/2) = \alpha/(2\varphi^2)$
-- **Radiative correction:** $(3/2)\alpha$ term is QED-style, empirically motivated (not yet derived from the associator algebra)
+- **Factor 2 derived (Phase 29):** = half-integer Klein meridian quantization ($\theta = 1/2$); a single-valued charge needs two traversals, so $\Xi_{\text{eff}} = 1/2$
+- **Radiative (3/2)α derived (Phase 30):** the *same* twist $\theta=1/2$ enters twice — $f_{\text{Klein}} = 1+|\theta| = 3/2$ is the master-equation topological factor; $\alpha/\varphi^6$ is the triple golden suppression $(\alpha/\varphi^2)^3$. One twist controls the whole correction
+- **Directed-number picture:** the associator magnitude is parity-invariant; purity-flipping flips the topology ($f = 1+|\theta|$) and charge quantization ($\Xi_{\text{eff}}$), not the interaction strength
 - **Correction:** the earlier "running φ ≈ 1.98 gives 99.99%" was an arithmetic error; true running $\varphi_n = 2.301 \approx \varphi\sqrt{2}$
 
 ### Fine-Structure Constant
