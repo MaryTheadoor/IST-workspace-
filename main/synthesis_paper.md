@@ -328,6 +328,25 @@ with $\Xi_{\text{eff}} = 1 - \theta$, $c = 2\theta(f - \alpha/\varphi^6)$, $f = 
 
 **Honest scope:** this is a framework correction, not a new free parameter — it reduces to the original where validated and fixes the neutron where the original was incomplete.
 
+### 8.1j The Baryon Mass Ladder (Phase 34)
+
+With the corrected master equation as foundation, the baryon spectrum maps onto the energy quantum $E = \hbar c/1\text{ fm} = 197.33$ MeV (the master equation's QCD-scale quantum):
+
+$$N = \tfrac{19}{4}E, \qquad \Delta = N + \tfrac{3}{2}E, \qquad d = \tfrac{3}{4}E, \qquad m(S) = \Delta + S\,d$$
+
+| Baryon | S | predicted (MeV) | observed (MeV) | |
+|---|---|---|---|---|
+| Δ | 0 | 1232.00 | 1232.00 | 0.00% |
+| Σ* | 1 | 1380.00 | 1383.70 | −0.27% |
+| Ξ* | 2 | 1527.99 | 1531.80 | −0.25% |
+| Ω | 3 | 1675.99 | 1672.45 | +0.21% |
+
+**Key structural content:** $\Delta - N = \tfrac{3}{2}E$ carries the **f_Klein = 3/2** topological factor (Phase 30) — the spin-3/2 decuplet sits one topological-factor step above the spin-1/2 nucleon — and the strangeness spacing $d = \tfrac{3}{4}E$ is the half-step. The decuplet equal-spacing rule is thus tied to the master equation's confinement-scale quantum, not left as a free SU(3) parameter.
+
+**Honest octet result:** the octet does NOT fit a single clean ladder. $\Lambda - N \approx \tfrac{9}{10}E$ (0.47%) and $\Xi - N \approx 2E$ (3.9%) are approximate, but the internal $\Sigma-\Lambda$ vs $\Xi-\Sigma$ splittings (77.5 vs 125.1 MeV) are not equal — the octet carries $\Lambda$–$\Sigma$ mixing the simple E-ladder lacks. The decuplet is the clean object.
+
+**Honest scope:** the decuplet spacing at 0.8% is the robust, falsifiable content — it ties the SU(3) equal-spacing rule to the master-equation energy quantum. The $19/4$ nucleon coefficient is empirical (not yet derived from substrate topology); $\Delta$ is used as the anchor.
+
 ### 8.2 Observable Predictions
 
 1. **Oscillatory DE at 4σ** over ΛCDM in current data. DESI DR2 and Euclid DR1 will sharpen this.
@@ -400,6 +419,7 @@ All code, tests, and outputs at: `https://github.com/MaryTheadoor/IST-workspace-
 | **31** | **One-twist muon (Koide)** | **The θ=1/2 twist → π/2 phase realizes Koide Q=2/3 to 0.0009% (phase at 6.5 μrad from π/2). Three generations = three 120° offsets. Muon sits on the double-cover back sheet (negative amplitude) — why the naive m_μ/m_e=3/(2α) is only 99.41%** |
 | **32** | **Quark-sector Koide test** | **Honest falsification: heavy (c,b,t) Q=0.6696 (+0.45%) CONSISTENT with 2/3 (edge of pole-mass systematics; MS-bar gives 8%); light (u,d,s) −15%, up/down generations broken. The π/2 twist survives where topological mass dominates** | CONSISTENT, not confirmed |
 | **33** | **Master-equation correction** | **The associator term is twist-dependent: Ξ_eff = 1−θ, c = 2θ(f−α/φ⁶), f = 1+|θ|. Reduces to the original at θ=0 (p/e 99.95% unchanged); fixes neutron at 0.02σ. Electron factor-2 = spin = double-cover (same θ=1/2)** | FRAMEWORK CORRECTION |
+| **34** | **Baryon mass ladder** | **Baryon masses in units of E=ℏc/1fm=197.33 MeV: N=(19/4)E, Δ−N=(3/2)E (f_Klein!), decuplet spacing d=(3/4)E, m(S)=Δ+S·d — decuplet to ≤0.27%. Octet honest (Λ−N=0.9E, internal mixing not clean)** | DECUPLET CLEAN, OCTET OPEN |
 
 ---
 

@@ -40,6 +40,7 @@
 | **31** | **One-twist muon (Koide)** | **θ=1/2 → π/2 phase realizes Koide Q=2/3 to 0.0009% (phase 6.5 μrad from π/2). 3 generations = three 120° offsets on the 720° cover. Muon on back sheet (negative amp) — why m_μ/m_e=3/(2α) is only 99.41%** | OBSERVATIONAL ANCHOR |
 | **32** | **Quark-sector Koide test** | **Honest falsification: heavy (c,b,t) Q=0.6696 (+0.45%) consistent with 2/3 (edge of pole-mass systematics); light (u,d,s) −15%, up/down broken. π/2 twist survives where topological mass dominates** | CONSISTENT, not confirmed |
 | **33** | **Master-equation correction** | **Associator term is twist-dependent: Ξ_eff=1−θ, c=2θ(f−α/φ⁶), f=1+\|θ\|. Reduces to original at θ=0 (p/e 99.95% unchanged); fixes neutron 0.02σ. Electron 2 = spin = double-cover (same θ=1/2)** | FRAMEWORK CORRECTION |
+| **34** | **Baryon mass ladder** | **E=ℏc/1fm=197.33 MeV: N=(19/4)E, Δ−N=(3/2)E (f_Klein!), d=(3/4)E, m(S)=Δ+S·d — decuplet to ≤0.27%. Octet honest (Λ−N≈0.9E, mixing not clean)** | DECUPLET CLEAN, OCTET OPEN |
 
 ## The Three Closed Gaps
 
