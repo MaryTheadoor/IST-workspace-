@@ -1,0 +1,5 @@
+step,claim,measured,verified
+1. Klein seam quantization,"theta = pi*l/n, l odd (half-integer)",momentum ratio 0.5000 (pi vs 2pi),numeric Klein gap == analytic odd-l
+2. Double-cover (720 deg),two seam crossings per cycle; holonomy = -I,"crossings=[1, 3], max|Tr+2|=0.0e+00",exact to machine precision
+3. Xi_eff from anti-periodicity,Xi_eff = 1/2 (single-valued unit halved),Xi_eff = 0.5,structural (spinor needs 720 deg)
+4. Leading delta_n,alpha/(2 phi^2),0.00139367,vs naive alpha/phi^2 = 0.00278734

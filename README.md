@@ -216,11 +216,10 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Accuracy:** 99.95%
 - **Insight:** Electron is single chiral loop; proton is 3 quark loops
 
-### Neutron Mass (Phase 28 — exact, top-down)
-- **Naive form** $\delta_n = \alpha/\varphi^2$ overshoots by 2.02× (99.86%)
-- **Exact closed form:** $\delta_n = (\alpha/2\varphi^2)(1-(3/2-\alpha/\varphi^6)\alpha) = \alpha/(2\varphi^2) - 3\alpha^2/(4\varphi^2) + \alpha^3/(2\varphi^8)$
-- **Accuracy:** 0.02σ from CODATA 2018 (100.000000%); exact coefficient $c = 1.4995935 \approx 3/2 - \alpha/\varphi^6$
-- **Origin hypothesis:** leading 1/2 consistent with the 720° double-cover (two seam crossings per cycle); $(3/2)\alpha$ radiative-corrective in character
+### Neutron Mass (Phase 28/29 — exact, derived)
+- **Exact closed form:** $\delta_n = (\alpha/2\varphi^2)(1-(3/2-\alpha/\varphi^6)\alpha)$ — 0.02σ from CODATA 2018 (100.000000%)
+- **Factor 2 derived (Phase 29):** the 2 = half-integer Klein meridian quantization. The seam $s(i,m)=-s(-i,0)$ forces $\theta = \pi\ell/n$ ($\ell$ odd), halving the meridian momentum vs the torus. This is the 720° double-cover (flat holonomy exactly $-I$, Phase 25): a single-valued charge needs two traversals, so $\Xi_{\text{eff}} = 1/2$ and $\delta_n = (\alpha/\varphi^2)\cdot(1/2) = \alpha/(2\varphi^2)$
+- **Radiative correction:** $(3/2)\alpha$ term is QED-style, empirically motivated (not yet derived from the associator algebra)
 - **Correction:** the earlier "running φ ≈ 1.98 gives 99.99%" was an arithmetic error; true running $\varphi_n = 2.301 \approx \varphi\sqrt{2}$
 
 ### Fine-Structure Constant

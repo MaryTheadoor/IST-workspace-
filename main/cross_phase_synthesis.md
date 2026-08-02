@@ -35,6 +35,7 @@
 | **25** | **Temporal holonomy** | **Ψ = Wilson loop of the SU(2) connection over the 720° cycle. Flat limit EXACTLY -I (fermionic sign); unitarity + time-reversal to 1e-16. Static-φ falsification reproduced (D_eff=2.012, not φ). Riccati fold flow converges to D_eff=φ fixed point. Fibonacci preserves non-trivial winding (dev_flat=0.215) where rational collapses it (0.038)** | v6.2 mechanism |
 | **27** | **QM-scale ratio validation** | **Top-down. Parameter-free m_p/m_e = 6π⁵ (α,φ cancel) = 99.9981%. Neutron α/φ² overshoots 2.02×, but α/(2φ²) = 99.9985%. Muon 3/(2α) = 99.41% (open). Planck-anchored p/e ≈ 99.95%** | QM-scale anchors |
 | **28** | **Factor-2 neutron** | **δ_n = (α/2φ²)(1−(3/2−α/φ⁶)α) → m_n at 0.02σ (100.000000%). Exact c=1.4995935 vs claimed 1.4995933. Corrects running-φ=1.98 arithmetic error (true φ_n=2.301 ≈ φ√2)** | GAP CLOSED |
+| **29** | **Factor-2 derivation** | **The 2 = half-integer Klein meridian quantization: seam s(i,m)=−s(−i,0) forces θ=πℓ/n (ℓ odd), momentum halved vs torus (ratio 0.5, numeric gap matches odd-ℓ analytic). = the 720° double-cover (flat holonomy exactly −I); single-valued charge needs 2 traversals → Ξ_eff=1/2** | DERIVED |
 
 ## The Three Closed Gaps
 

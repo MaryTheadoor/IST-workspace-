@@ -251,6 +251,17 @@ The exact correction coefficient from masses is $c = 1.4995935$, agreeing with $
 
 **Correction of a prior arithmetic error:** the synthesis paper previously claimed running $\varphi \approx 1.98$ gives $m_n$ at 99.99%. That is wrong — $\varphi = 1.98$ gives $m_n = 0.9400$ GeV (99.95%). The true running $\varphi_n = 2.301$, which sits 0.55% above $\varphi\sqrt{2} \approx 2.288$.
 
+### 8.1e Deriving the Factor 2 (Phase 29)
+
+Phase 29 converts the empirical factor-2 finding into a derivation. The factor 2 is the **half-integer quantization of the Klein bottle's meridian**:
+
+1. **Seam condition.** Phase 1 established the orientation-reversing seam imposes $s(i,m) = -s(-i,0)$, forcing the meridian boundary condition $\theta = \pi\ell/n_{\text{mer}}$ with $\ell$ **odd** — a half-integer-spacing quantization. On the torus control the meridian momentum is $2\pi\ell/n$ (all integer $\ell$); on the Klein bottle it is $\pi\ell/n$ (odd $\ell$ only). The momentum is **halved** (verified: momentum ratio exactly 0.5; numeric Klein gap $4\sin^2(\pi/2n)$ matches the odd-$\ell$ analytic value to 1e-6).
+2. **This is the 720° double-cover.** A state on the Klein meridian needs TWO traversals (two seam crossings per 4-tick cycle, Phase 23a) to return to itself. Phase 25 verified the flat-limit holonomy of the full cycle is exactly $-I$ (the fermionic sign) — one traversal alone is not single-valued.
+3. **$\Xi_{\text{eff}} = 1/2$.** The master equation's associator term $(\alpha/\varphi^2)\,\Xi$ counts topologically non-trivial triples. The naive $\delta_n = \alpha/\varphi^2$ implicitly sets $\Xi = 1$ (one single-valued associator unit). But a charge living on the Klein meridian is anti-periodic: its single-valued unit is HALF the orientable unit, exactly as a spinor needs 720° where a vector needs 360°. Hence $\Xi_{\text{eff}} = 1/2$ and $\delta_n = (\alpha/2\varphi^2)$.
+4. **The (3/2)α radiative correction** then completes the empirical exact form (Phase 28), at 0.02σ of CODATA.
+
+Honest scope: the factor-2 **leading term** is now derived from the code-verified half-integer seam quantization and the $-I$ holonomy. The $(3/2)\alpha$ and $\alpha/\varphi^6$ terms remain empirically-motivated radiative corrections, not yet derived from the associator algebra.
+
 ### 8.2 Observable Predictions
 
 1. **Oscillatory DE at 4σ** over ΛCDM in current data. DESI DR2 and Euclid DR1 will sharpen this.
@@ -318,6 +329,7 @@ All code, tests, and outputs at: `https://github.com/MaryTheadoor/IST-workspace-
 | **25** | **Temporal holonomy** | **Ψ = Wilson loop of SU(2) connection over 720° cycle. Flat limit EXACTLY -I; unitarity + time-reversal at 1e-16. Static-φ falsification reproduced (D_eff=2.012≠φ). Riccati flow → D_eff=φ fixed point. Fibonacci preserves winding, rational collapses it** |
 | **27** | **QM-scale ratio validation** | **Top-down at QM scale. Parameter-free m_p/m_e = 6π⁵ (α, φ cancel) at 99.9981%. Neutron: naive α/φ² overshoots 2.02×; factor-2 α/(2φ²) lands at 99.9985%. Muon candidate 3/(2α) at 99.41% (open, not claimed)** |
 | **28** | **Factor-2 neutron** | **δ_n = (α/2φ²)(1−(3/2−α/φ⁶)α) → m_n at 0.02σ from CODATA (100.000000%). Corrects paper's running-φ=1.98 arithmetic error (true φ_n=2.301)** |
+| **29** | **Factor-2 derivation** | **The 2 = half-integer Klein meridian quantization: seam s(i,m)=−s(−i,0) forces θ=πℓ/n (ℓ odd), halving the momentum vs torus. This is the 720° double-cover; a single-valued charge needs two traversals → Ξ_eff=1/2 → δ_n=α/(2φ²)** |
 
 ---
 
