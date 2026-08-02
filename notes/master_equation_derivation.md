@@ -92,10 +92,32 @@ The time crystal term is a **formation-history memory**. It encodes the specific
 ## 5. Full Master Equation
 
 ### In Physical Units
-$$M = \frac{\hbar c}{\ell} \left[ \frac{f(\chi,\theta)}{2\pi} \cdot I_{\text{topo}} + \frac{\alpha}{\phi^2} \cdot \Xi + \delta_{\text{tc}} \right]$$
+$$M = \frac{\hbar c}{\ell} \left[ \frac{f(\chi,\theta)}{2\pi} \cdot I_{\text{topo}} + \frac{\alpha}{\phi^2} \cdot \Xi_{\text{eff}} (1 - c\,\alpha) + \delta_{\text{tc}} \right]$$
 
 ### In Planck Units ($\hbar = c = \ell_P = 1$)
-$$M = \frac{f}{2\pi} I_{\text{topo}} + \frac{\alpha}{\phi^2} \Xi + \delta_{\text{tc}}$$
+$$M = \frac{f}{2\pi} I_{\text{topo}} + \frac{\alpha}{\phi^2} \Xi_{\text{eff}} (1 - c\,\alpha) + \delta_{\text{tc}}$$
+
+### Twist-Dependent Associator (Phase 33 correction)
+
+The associator term carries the twist dependence (Phases 28-30, 33). For a
+system with twist parameter $\theta$:
+
+- $\Xi_{\text{eff}} = 1 - \theta$ — the effective associator charge
+  interpolates from 1 (orientable, $\theta = 0$) to 1/2 at the neutron's
+  half-integer twist $\theta = 1/2$, to 0 for a fully twisted meridian
+  ($\theta = 1$, no single-valued charge).
+- $c = 2\theta\,(f - \alpha/\varphi^6)$ — the radiative coefficient,
+  twist-gated (0 orientable; $3/2 - \alpha/\varphi^6$ at $\theta = 1/2$).
+- $f = 1 + |\theta|$ — the topological factor (as before).
+
+**Reduction to the original form:** at $\theta = 0$ (orientable), $f = 1$,
+$\Xi_{\text{eff}} = 1$, $c = 0$, recovering $M = \frac{1}{2\pi}I_{\text{topo}}
++ \frac{\alpha}{\varphi^2}\Xi + \delta_{\text{tc}}$. Verified: proton
+99.9496%, electron 99.9515% unchanged.
+
+**Non-orientable case (neutron, $\theta = 1/2$):** $f = 3/2$,
+$\Xi_{\text{eff}} = 1/2$, $c = 3/2 - \alpha/\varphi^6$, giving
+$\delta_n = (\alpha/2\varphi^2)(1 - c\alpha)$ at 0.02σ of CODATA 2018.
 
 ### Term Summary
 

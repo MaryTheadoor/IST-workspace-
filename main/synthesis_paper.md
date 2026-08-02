@@ -312,6 +312,22 @@ Applying the one-twist Koide test to the quark sector gives an honest falsificat
 
 **Honest status:** (c,b,t) is *consistent* with $2/3$, NOT a sharp confirmation — 0.45% vs ~1% pole-mass systematics, and the MS-bar scheme gives 8%. The light breakage is expected standard RG physics, not a unique IST prediction. The test narrows where the twist structure holds rather than confirming new physics.
 
+### 8.1i Master-Equation Correction (Phase 33): The Twist-Dependent Associator
+
+Phases 28–32 established that the half-integer twist $\theta = 1/2$ governs the neutron factor-2, the lepton $\pi/2$ Koide phase, and survives in the heavy quark generation. Phase 33 reconciles this with the framework's founding equation. The original master equation wrote the associator term as $(\alpha/\varphi^2)\Xi$ with the topological factor $f$ appearing *only* in the leading term. The neutron derivation requires the associator term to carry the twist:
+
+$$M = \frac{f}{2\pi}I_{\text{topo}} + \frac{\alpha}{\varphi^2}\,\Xi_{\text{eff}}\,(1 - c\alpha) + \delta_{\text{tc}}$$
+
+with $\Xi_{\text{eff}} = 1 - \theta$, $c = 2\theta(f - \alpha/\varphi^6)$, $f = 1 + |\theta|$.
+
+**Consistency verified numerically:**
+- **Orientable (θ = 0):** $f=1$, $\Xi_{\text{eff}}=1$, $c=0$ — reduces *exactly* to the original master equation. Proton 99.9496%, electron 99.9515% unchanged.
+- **Non-orientable (θ = 1/2, neutron):** $f = 3/2$, $\Xi_{\text{eff}} = 1/2$, $c = 3/2 - \alpha/\varphi^6$ — reproduces $\delta_n = (\alpha/2\varphi^2)(1-c\alpha)$ at **0.02σ**.
+
+**Electron factor-2 reconciliation.** The electron formula $12\pi^5 = 2\times6\times\pi^5$ assigns the $2$ to spin degeneracy. The double-cover also produces a factor 2 ($\theta=1/2$), and $f_{\text{Klein}} = 3/2$ enters radiative corrections. The audit reconciles these: spin-1/2 *is* the double-cover — the electron's $2$ is a single $\theta = 1/2$ structure, not two separate factors. The electron's leading term stays orientable ($f=1$, single loop); the twist enters only in the radiative sector. The validated 99.95% formula is unchanged.
+
+**Honest scope:** this is a framework correction, not a new free parameter — it reduces to the original where validated and fixes the neutron where the original was incomplete.
+
 ### 8.2 Observable Predictions
 
 1. **Oscillatory DE at 4σ** over ΛCDM in current data. DESI DR2 and Euclid DR1 will sharpen this.
@@ -383,6 +399,7 @@ All code, tests, and outputs at: `https://github.com/MaryTheadoor/IST-workspace-
 | **30** | **Radiative (3/2)α derived** | **One half-integer twist θ=1/2, twice: leading 1/2 (Ξ_eff=θ, Phase 29) AND radiative 3/2 (f_Klein=1+|θ|=1+1/2). c = 3/2 − α/φ⁶ with φ⁶=(φ²)³ the triple golden suppression. Full δ_n at 0.02σ; associator magnitude parity-invariant (purity flips topology, not strength)** |
 | **31** | **One-twist muon (Koide)** | **The θ=1/2 twist → π/2 phase realizes Koide Q=2/3 to 0.0009% (phase at 6.5 μrad from π/2). Three generations = three 120° offsets. Muon sits on the double-cover back sheet (negative amplitude) — why the naive m_μ/m_e=3/(2α) is only 99.41%** |
 | **32** | **Quark-sector Koide test** | **Honest falsification: heavy (c,b,t) Q=0.6696 (+0.45%) CONSISTENT with 2/3 (edge of pole-mass systematics; MS-bar gives 8%); light (u,d,s) −15%, up/down generations broken. The π/2 twist survives where topological mass dominates** | CONSISTENT, not confirmed |
+| **33** | **Master-equation correction** | **The associator term is twist-dependent: Ξ_eff = 1−θ, c = 2θ(f−α/φ⁶), f = 1+|θ|. Reduces to the original at θ=0 (p/e 99.95% unchanged); fixes neutron at 0.02σ. Electron factor-2 = spin = double-cover (same θ=1/2)** | FRAMEWORK CORRECTION |
 
 ---
 

@@ -1,0 +1,4 @@
+quantity,theta,predicted,observed,note
+orientable proton,0.0,0.9377990477829455,0.93827208816,"unchanged by generalization (f=1, Xi_eff=1, c=0)"
+orientable electron,0.0,0.0005107509388058658,0.00051099895,unchanged by generalization
+non-orientable neutron delta_n,0.5,0.0013784193070285175,0.0013784193053598681,"Xi_eff=1/2, c=3/2-alpha/phi^6 (0.02 sigma)"

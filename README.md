@@ -263,7 +263,7 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Outputs:** 6 CSVs + 6 PNGs in `code/outputs/`
 
 ### Plan 7: Topological Cosmology (Dark Matter & Dark Energy)
-- **Master equation:** $M = (\hbar c/\ell)[(f/2\pi)I_{\text{topo}} + (\alpha/\phi^2)\Xi + \delta_{\text{tc}}]$
+- **Master equation:** $M = (\hbar c/\ell)[(f/2\pi)I_{\text{topo}} + (\alpha/\phi^2)\Xi_{\text{eff}}(1-c\alpha) + \delta_{\text{tc}}]$ *(Phase 33: the associator term is twist-dependent — $\Xi_{\text{eff}} = 1-\theta$, $c = 2\theta(f-\alpha/\phi^6)$, $f = 1+|\theta|$; reduces to the original at $\theta=0$)*
 - **Dark matter:** associator term $(\alpha/\phi^2)\Xi$ provides extra binding
 - **Dark energy:** time crystal term $\delta_{\text{tc}}$ drives cosmic acceleration
 - **Running coupling:** $\Xi/I_{\text{topo}}^{1.5}$ drops by 58 orders of magnitude from QCD to Hubble scale
