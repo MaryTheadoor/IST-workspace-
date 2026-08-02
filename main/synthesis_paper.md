@@ -221,6 +221,17 @@ Phase 25 implements the v6.2 reformulation: the Compression Operator Ψ is not a
 - **Lattice robustness.** Tr(Ψ) ∈ [−2,2] holds for all lattices (SU(2) by construction); the discriminating signature is the *deviation from the flat fermionic −I*. The Fibonacci lattice preserves non-trivial temporal winding (dev_flat ≈ 0.215) while the rational control collapses it toward trivial (dev_flat ≈ 0.038) — the golden structure keeps the 720° winding alive, rational rotation kills it.
 - **Honest tensions.** The literal §5.3 knot redefinition P(Im λ ≠ 0) gives O(0.5–0.9) in the coupled substrate, NOT ~3% — the ~3% figure was a phase-return stability criterion, a different observable. The golden-window anti-resonance min_gap/max_gap = 1/φ² is NOT realized by the holonomy eigenphase gaps (measured ≈ 0.0003); the deviation is reported per the rig instruction.
 
+### 8.1c Top-Down QM-Scale Validation (Phase 27): Ratios Before Absolute Scale
+
+Phase 27 changes the validation strategy from bottom-up to **top-down**: take the *measured* QM-scale constants (CODATA 2018 masses, α, Compton/classical radii) as anchors and test IST's predictions for their **ratios**, which cancel the uncertain absolute normalization. Results:
+
+- **Parameter-free (Tier 1).** Dividing the proton and electron mass formulas cancels *both* α and φ², giving the exact prediction $m_p/m_e = 6\pi^5 = 1836.118$ vs observed 1836.153 — **99.9981%**. This is IST's strongest top-down test: no free parameters at all. The geometric identity $\alpha = r_e/\bar\lambda_C$ is exact by definition (a consistency check, not an independent prediction).
+- **Neutron (Tier 2).** The plan's literal $\delta_n = \alpha/\varphi^2$ overshoots the observed neutron excess by **2.02×** (99.86%). A factor-2 form $\delta_n = \alpha/(2\varphi^2)$ lands on $m_n$ at **99.9985%** — a striking improvement that the top-down framing surfaced. The implied running $\varphi_n = 2.30$ (between φ and φ²) reproduces $m_n$ exactly by construction.
+- **Muon (Tier 2).** $m_\mu/m_e \approx 3/(2\alpha)$ matches at 99.41% — reported honestly as a search hit for an open question, not a derivation.
+- **Planck-anchored (Tier 3).** The original bottom-up formulas ($M_P$ normalization, $\alpha^{-9}$ sensitivity) hold at ~99.95% for proton and electron — good, but strictly less secure than the ratio tests because they inherit the $M_P$ uncertainty.
+
+**Scale-reference conclusion:** the framework is on its strongest footing at the QM scale when validated top-down through ratios that cancel the absolute scale. The $\alpha^{-9}$ absolute formulas are consistent (99.95%) but the $6\pi^5$ ratio is the cleaner claim.
+
 ### 8.2 Observable Predictions
 
 1. **Oscillatory DE at 4σ** over ΛCDM in current data. DESI DR2 and Euclid DR1 will sharpen this.
@@ -286,6 +297,7 @@ All code, tests, and outputs at: `https://github.com/MaryTheadoor/IST-workspace-
 | **23c** | **Scale bridging** | **Plonk→Compton via φ⁸×3, 320 ticks to stable knots** |
 | **24** | **Parameter scan** | **Stable fraction ~3% robust, golden filter secondary to topology** |
 | **25** | **Temporal holonomy** | **Ψ = Wilson loop of SU(2) connection over 720° cycle. Flat limit EXACTLY -I; unitarity + time-reversal at 1e-16. Static-φ falsification reproduced (D_eff=2.012≠φ). Riccati flow → D_eff=φ fixed point. Fibonacci preserves winding, rational collapses it** |
+| **27** | **QM-scale ratio validation** | **Top-down at QM scale. Parameter-free m_p/m_e = 6π⁵ (α, φ cancel) at 99.9981%. Neutron: naive α/φ² overshoots 2.02×; factor-2 α/(2φ²) lands at 99.9985%. Muon candidate 3/(2α) at 99.41% (open, not claimed)** |
 
 ---
 

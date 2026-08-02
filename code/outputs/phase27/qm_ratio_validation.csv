@@ -1,0 +1,8 @@
+tier,quantity,predicted,observed,residual_percent,accuracy_percent,note
+1,m_p/m_e = 6 pi^5 (parameter-free),1836.1181087116884,1836.1526734252584,-0.0018824531353134036,99.99811754686469,alpha and phi^2 cancel; no free parameters
+1,alpha = r_e/lbar_C (geometric identity),0.00729735256021848,0.0072973525692838015,-1.2422753764652302e-07,99.99999987577246,exact by definition (consistency check)
+2,m_n from delta_n = alpha/phi^2 (plan),0.940887372095443,0.93956542052,0.1406981937150671,99.85930180628493,delta_n=0.002787 vs observed 0.001378
+2,m_n from delta_n = alpha/(2 phi^2) (factor-2),0.9395797301277216,0.93956542052,0.001523002806298499,99.99847699719369,delta_n=0.001394 vs observed 0.001378
+2,m_mu/m_e ~ 3/(2 alpha) (search hit),205.55399862599998,206.76828298766563,-0.5872681941930541,99.41273180580694,"open question; reported as a candidate, not a derivation"
+3,m_p from (2/phi^2) alpha^-9 (Planck),0.9377990477829455,0.93827208816,-0.05041611948428307,99.94958388051572,carries M_P normalization and alpha^-9 sensitivity
+3,m_e from (12pi^5/phi^2) alpha^-9 (Planck),0.0005107509388058658,0.00051099895,-0.04853457998969888,99.9514654200103,carries M_P normalization and alpha^-9 sensitivity
