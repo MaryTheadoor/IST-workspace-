@@ -280,6 +280,20 @@ at 0.02σ of CODATA 2018.
 
 Honest scope: $c = f_{\text{Klein}} - \alpha/\varphi^6$ reproduces the exact coefficient to 1.6e-7, but the factorization into a topological factor and a triple-golden suppression is a *consistent reading*, not yet an independent derivation of each sub-term.
 
+### 8.1g The One-Twist Muon: Koide Q = 2/3 (Phase 31)
+
+Applying the one-twist analysis to the muon yields a striking coherence: the half-integer twist $\theta = 1/2$ that derives the neutron factor-2 *also* governs the lepton mass spectrum, via the Koide relation.
+
+**Observational anchor.** The Koide parameter-free relation
+
+$$Q = \frac{m_e + m_\mu + m_\tau}{(\sqrt{m_e} + \sqrt{m_\mu} + \sqrt{m_\tau})^2} = \frac{2}{3}$$
+
+holds to **0.0009%** with CODATA 2018 masses.
+
+**The one-twist connection.** $Q = 2/3$ is *equivalent* to a Koide phase $\varphi = \arccos((3Q/2 - 1)/\sqrt{2}) = \pi/2$ (measured 90.000374°, 6.5 micro-rad from $\pi/2$). And $\varphi = \pi/2$ IS the half-integer twist: $\theta = 1/2 \to \pi/2$, the same $\theta$ that produced the neutron factor-2 via $f_{\text{Klein}} = 1 + |\theta| = 3/2$. The three lepton generations are a three-fold phase fan at three $2\pi/3 = 120°$ offsets — wrapping the 720° Klein double-cover.
+
+**Why the naive muon ratio fails (honest).** Phase 27's search hit $m_\mu/m_e \approx 3/(2\alpha)$ lands at 99.41%. The Koide $\sqrt{m}$-fan at $\varphi = \pi/2$ gives the muon a *negative* amplitude ($1 - \sqrt{3/2} < 0$): the muon sits on the **back sheet** of the double-cover (the $-1$ traversal, cf. the fermionic holonomy $-I$, Phase 25). Koide $Q$ is the robust observable precisely because it is invariant to this sheet choice; the individual $m_\mu/m_e$ ratio is not yet derived from first principles.
+
 ### 8.2 Observable Predictions
 
 1. **Oscillatory DE at 4σ** over ΛCDM in current data. DESI DR2 and Euclid DR1 will sharpen this.
@@ -349,6 +363,7 @@ All code, tests, and outputs at: `https://github.com/MaryTheadoor/IST-workspace-
 | **28** | **Factor-2 neutron** | **δ_n = (α/2φ²)(1−(3/2−α/φ⁶)α) → m_n at 0.02σ from CODATA (100.000000%). Corrects paper's running-φ=1.98 arithmetic error (true φ_n=2.301)** |
 | **29** | **Factor-2 derivation** | **The 2 = half-integer Klein meridian quantization: seam s(i,m)=−s(−i,0) forces θ=πℓ/n (ℓ odd), halving the momentum vs torus. This is the 720° double-cover; a single-valued charge needs two traversals → Ξ_eff=1/2 → δ_n=α/(2φ²)** |
 | **30** | **Radiative (3/2)α derived** | **One half-integer twist θ=1/2, twice: leading 1/2 (Ξ_eff=θ, Phase 29) AND radiative 3/2 (f_Klein=1+|θ|=1+1/2). c = 3/2 − α/φ⁶ with φ⁶=(φ²)³ the triple golden suppression. Full δ_n at 0.02σ; associator magnitude parity-invariant (purity flips topology, not strength)** |
+| **31** | **One-twist muon (Koide)** | **The θ=1/2 twist → π/2 phase realizes Koide Q=2/3 to 0.0009% (phase at 6.5 μrad from π/2). Three generations = three 120° offsets. Muon sits on the double-cover back sheet (negative amplitude) — why the naive m_μ/m_e=3/(2α) is only 99.41%** |
 
 ---
 

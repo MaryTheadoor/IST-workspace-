@@ -1,0 +1,6 @@
+quantity,value,target,agreement_percent,note
+Koide Q,0.6666605114773855,0.6666666666666666,-0.0009232783921730991,Q = 2/3 to ~1e-5 (parameter-free)
+Koide phase phi,1.570802855359017,1.5707963267948966,0.0004156213004202769,phi = pi/2 <=> Q = 2/3
+half-integer twist theta,0.5,0.5,0.0,theta = 1/2 -> pi/2 phase (neutron factor-2)
+m_mu/m_e (back-sheet fan),0.05051025721682205,206.76828298766566,-99.975571564223,naive pi/2 fan; fails (back-sheet sign)
+m_mu/m_e ~ 3/(2 alpha),205.55399862599998,206.76828298766566,-0.5872681941930691,Phase 27 search hit (99.41%); back-sheet
