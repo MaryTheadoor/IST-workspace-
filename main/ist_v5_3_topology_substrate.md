@@ -2,29 +2,23 @@
 
 **Dr. Mary Theadoor**  
 **The Nown Research Group**  
-**Version 5.3 -- April 30, 2026**
+**Version 6.0 — August 1, 2026** (v5.3: April 30, 2026)
 
 ---
 
 ## Abstract
 
-We introduce Information Substrate Theory (IST), a unified framework in which observed physics is modeled as emerging from a finite, discrete, non-orientable two-dimensional information lattice $\Sigma$. The lattice is not assumed to be a primitive continuum; instead, it is woven from fundamental 1D Möbius loops, whose chiral oscillations provide a candidate topological origin for spin.
+We introduce Information Substrate Theory (IST), a unified framework in which observed physics emerges from a discrete, non-orientable two-dimensional information substrate $\Sigma$ woven from fundamental 1D Möbius loops. Gravity is interpreted as computational latency ($\tau_{\text{fold}}$); matter as stable topological solitons.
 
-Within IST, gravity is interpreted as an effective computational latency $\tau_{\text{fold}}$, while matter corresponds to stable topological solitons -- knots in the weave. Under these assumptions we obtain field equations with a density-dependent effective coupling $G(\rho_{\text{fold}})$. The dependence of $G$ on fold density is controlled by the fractal dimension of the substrate's projection into emergent 3D space, yielding $G \propto \rho_{\text{fold}}^{1/D}$.
+The central question — *where does the golden ratio $\varphi$ come from?* — is addressed through a systematic computational investigation spanning 24 code-verified phases (319 automated tests). The answer: $\varphi$ is not a static invariant of the substrate's spatial graph (Phases 1–4 falsify this hypothesis). Instead, $\varphi$ emerges as a **dynamical attractor** of the substrate's harmonic self-interaction in the time domain — the same anti-resonance mechanism that produces Fibonacci spirals in phyllotaxis (Phase 6). The golden-ratio gap structure uniquely survives all deposition generations; rational structures collapse at their denominators.
 
-Renormalization-group considerations motivate the hypothesis $D = \varphi \approx 1.618$, which implies $G \propto \rho_{\text{fold}}^{0.618}$.
+Three interconnected mechanisms are demonstrated: (i) the vacuum-pump laser threshold, where coherent golden accumulation overtakes the noise floor at a sharp transition (Phase 8); (ii) dynamical RG convergence, where golden-connected components under temporal evolution produce an effective dimension $D_{\text{eff}} \to 1.655$, within 2.3% of $\varphi$ (Phase 13); and (iii) fold-density feedback, where $df/dt = \gamma(D_{\text{eff}}(f) - \varphi)f$ drives any initial condition to the golden window $f \approx 4.2$, pinning $G_{\text{eff}} \propto \rho^{1/\varphi}$ (Phase 14).
 
-We report simulations that motivate three testable signatures:
+Quantitative gaps from earlier versions are closed: the strong coupling $\alpha_s(M_Z)$ is derived from an associator layer model with $\varphi^4$ energy magnification, yielding $0.122$ (observed $0.118$, 3% error); the neutron mass matches observation to 99.99% with a running $\varphi(\mu)$; the proton and electron mass formulas remain at $>99.95\%$ accuracy.
 
-1. A small antipodal correlation $C \approx 0.005$ in Planck CMB maps, consistent with (though not uniquely diagnostic of) weak non-orientable topology;
-2. A suppression of gravitational lensing in cosmic voids whose magnitude depends on $D$, with the $\varphi$ case yielding an estimated $\sim 76\%$ reduction relative to GR and distinguishable from the earlier $\sqrt{\rho}$ scaling; and
-3. An analysis indicating that COSMOS-Web-like depth would provide sensitivity to these templates at $> 5\sigma$ under the stated assumptions.
+Observational tests against real cosmological data show the oscillatory dark energy model preferred over $\Lambda$CDM at $4\sigma$ ($\Delta\chi^2 = 22.1$ in a joint fit to 60 $H(z)$ chronometers, 1701 Pantheon+ SNe Ia, and DESI DR1 BAO). The redshift scaling of the oscillation amplitude is shown to equal $\varphi^3$, the associator volume prediction for a 3D embedding, within 2%. Void lensing templates predict 63% suppression of $G$ in low-density regions, distinguishable from GR at $10.7\sigma$ with Euclid/COSMOS-Web depth. Real DES Y6 data produces a first stacked shear measurement.
 
-We also present a closed-form relation for the proton mass, $M_P/m_p = (2/\varphi^2)\alpha^{-9}$, which matches CODATA 2022 values to within 0.034\%. The remaining discrepancy is consistent in magnitude with the leading QED correction $2\pi\alpha^2$. This calculation is offered as a quantitative consistency check and as a target for refinement as the framework is further developed.
-
-Finally, we define the Zero-Point Operator $\Omega$, a specialization of the Compression Operator that acts at the manifold's self-intersection. We argue that $\Psi$ and $\Omega$ are not externally imposed computational steps but geometric necessities: they express self-interaction in a non-orientable manifold and the associated topological transitions as information traverses the twist. The operator formalism motivates a layered substrate (stacked sheets) whose interference can generate an apparent 3D volume; this is developed further in the companion paper [4] on Directed Numbers and Zero-Point Operators.
-
-As a further working hypothesis, we outline a retrocausal reading of the probabilistic axiom in which $\Omega$ enforces global consistency constraints; we discuss potential implications for baryogenesis and for the interpretation of quantum outcomes.
+A plonk-scale simulation (Phases 23–24) implements the 720° double-cover of the Klein bottle with explicit 4-tick orientation tracking, Fibonacci lattice positioning, and parity-inverted coupling (44.6% negative entries). The spin-1/2 chirality flip is verified at 100%; stable knots form at a rate of $\sim$3% per 4-tick cycle, robust across all parameter variations. The golden filter's role is shown to be structural (Fibonacci lattice + parity inversion through the Klein twist) rather than parametric (tunable threshold).
 
 ---
 
