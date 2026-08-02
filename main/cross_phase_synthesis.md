@@ -38,6 +38,7 @@
 | **29** | **Factor-2 derivation** | **The 2 = half-integer Klein meridian quantization: seam s(i,m)=−s(−i,0) forces θ=πℓ/n (ℓ odd), momentum halved vs torus (ratio 0.5, numeric gap matches odd-ℓ analytic). = the 720° double-cover (flat holonomy exactly −I); single-valued charge needs 2 traversals → Ξ_eff=1/2** | DERIVED |
 | **30** | **Radiative (3/2)α derived** | **One half-integer twist θ=1/2 twice: leading 1/2 (Ξ_eff=θ) AND radiative 3/2 (f_Klein=1+|θ|=1+1/2). c = 3/2 − α/φ⁶ with φ⁶=(φ²)³ triple golden suppression. Full δ_n 0.02σ. Associator parity-invariant (purity flips topology, not strength)** | DERIVED |
 | **31** | **One-twist muon (Koide)** | **θ=1/2 → π/2 phase realizes Koide Q=2/3 to 0.0009% (phase 6.5 μrad from π/2). 3 generations = three 120° offsets on the 720° cover. Muon on back sheet (negative amp) — why m_μ/m_e=3/(2α) is only 99.41%** | OBSERVATIONAL ANCHOR |
+| **32** | **Quark-sector Koide test** | **Honest falsification: heavy (c,b,t) Q=0.6696 (+0.45%) consistent with 2/3 (edge of pole-mass systematics); light (u,d,s) −15%, up/down broken. π/2 twist survives where topological mass dominates** | CONSISTENT, not confirmed |
 
 ## The Three Closed Gaps
 

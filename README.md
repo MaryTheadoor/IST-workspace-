@@ -234,6 +234,12 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Muon on the back sheet:** the Koide $\sqrt{m}$-fan at $\pi/2$ gives the muon a negative amplitude ($1-\sqrt{3/2}<0$) — the double-cover's $-1$ traversal. This is *why* the naive $m_\mu/m_e \approx 3/(2\alpha)$ hits only 99.41%; Koide $Q$ is robust because it is sheet-invariant
 - **Status:** observational anchor + structural coherence; individual $m_\mu/m_e$ still open
 
+### Quark-Sector Koide Test (Phase 32 — honest falsification)
+- **Heavy (c,b,t):** Koide $Q = 0.6696$, **+0.45%** from 2/3 — *consistent* (edge of pole-mass systematics; MS-bar scheme gives 8%)
+- **Light (u,d,s):** $Q = 0.567$ (−15%) — broken; up-type (u,c,t) +27%, down-type (d,s,b) +9.7% broken
+- **Result:** exactly one Koide-valid quark generation (the heavy one) — the $\pi/2$ twist survives where the topological mass dominates
+- **Honest status:** consistent, NOT confirmed — the light breakage is expected standard RG physics, not a unique IST prediction
+
 ### Variable Gravity
 - **Formula:** $G_{\text{eff}} \propto \rho_{\text{fold}}^{1/\varphi}$
 - **Prediction:** ~76% void lensing suppression

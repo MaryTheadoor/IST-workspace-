@@ -294,6 +294,24 @@ holds to **0.0009%** with CODATA 2018 masses.
 
 **Why the naive muon ratio fails (honest).** Phase 27's search hit $m_\mu/m_e \approx 3/(2\alpha)$ lands at 99.41%. The Koide $\sqrt{m}$-fan at $\varphi = \pi/2$ gives the muon a *negative* amplitude ($1 - \sqrt{3/2} < 0$): the muon sits on the **back sheet** of the double-cover (the $-1$ traversal, cf. the fermionic holonomy $-I$, Phase 25). Koide $Q$ is the robust observable precisely because it is invariant to this sheet choice; the individual $m_\mu/m_e$ ratio is not yet derived from first principles.
 
+### 8.1h Quark-Sector Koide Test (Phase 32): Where the π/2 Twist Survives
+
+Applying the one-twist Koide test to the quark sector gives an honest falsification map:
+
+| Triplet | Q | % from 2/3 | status |
+|---|---|---|---|
+| leptons (e,μ,τ) | 0.66666 | −0.001% | phase π/2 exact |
+| **heavy (c,b,t)** | **0.66964** | **+0.45%** | **consistent** |
+| light (u,d,s) | 0.56704 | −14.9% | broken |
+| up-type (u,c,t) | 0.84909 | +27.4% | broken |
+| down-type (d,s,b) | 0.73143 | +9.7% | broken |
+
+**Result:** exactly one Koide-valid quark generation — the heavy one (c,b,t) — consistent with $Q = 2/3$ at 0.45%, at the edge of pole-mass systematics. Every triplet involving the light (u,d,s) quarks is badly broken.
+
+**IST reading (honest):** the $\pi/2$ twist phase is a statement about the substrate's fold structure. It survives where the *topological mass* dominates — the heavy generation, whose masses are set by geometry — and is washed out where light-quark masses are RG/scheme-dominated (current vs constituent, running scale). The observed pattern (one Koide-valid generation, the heavy one) is the falsifiable content.
+
+**Honest status:** (c,b,t) is *consistent* with $2/3$, NOT a sharp confirmation — 0.45% vs ~1% pole-mass systematics, and the MS-bar scheme gives 8%. The light breakage is expected standard RG physics, not a unique IST prediction. The test narrows where the twist structure holds rather than confirming new physics.
+
 ### 8.2 Observable Predictions
 
 1. **Oscillatory DE at 4σ** over ΛCDM in current data. DESI DR2 and Euclid DR1 will sharpen this.
@@ -364,6 +382,7 @@ All code, tests, and outputs at: `https://github.com/MaryTheadoor/IST-workspace-
 | **29** | **Factor-2 derivation** | **The 2 = half-integer Klein meridian quantization: seam s(i,m)=−s(−i,0) forces θ=πℓ/n (ℓ odd), halving the momentum vs torus. This is the 720° double-cover; a single-valued charge needs two traversals → Ξ_eff=1/2 → δ_n=α/(2φ²)** |
 | **30** | **Radiative (3/2)α derived** | **One half-integer twist θ=1/2, twice: leading 1/2 (Ξ_eff=θ, Phase 29) AND radiative 3/2 (f_Klein=1+|θ|=1+1/2). c = 3/2 − α/φ⁶ with φ⁶=(φ²)³ the triple golden suppression. Full δ_n at 0.02σ; associator magnitude parity-invariant (purity flips topology, not strength)** |
 | **31** | **One-twist muon (Koide)** | **The θ=1/2 twist → π/2 phase realizes Koide Q=2/3 to 0.0009% (phase at 6.5 μrad from π/2). Three generations = three 120° offsets. Muon sits on the double-cover back sheet (negative amplitude) — why the naive m_μ/m_e=3/(2α) is only 99.41%** |
+| **32** | **Quark-sector Koide test** | **Honest falsification: heavy (c,b,t) Q=0.6696 (+0.45%) CONSISTENT with 2/3 (edge of pole-mass systematics; MS-bar gives 8%); light (u,d,s) −15%, up/down generations broken. The π/2 twist survives where topological mass dominates** | CONSISTENT, not confirmed |
 
 ---
 
