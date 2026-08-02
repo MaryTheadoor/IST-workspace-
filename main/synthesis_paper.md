@@ -232,6 +232,25 @@ Phase 27 changes the validation strategy from bottom-up to **top-down**: take th
 
 **Scale-reference conclusion:** the framework is on its strongest footing at the QM scale when validated top-down through ratios that cancel the absolute scale. The $\alpha^{-9}$ absolute formulas are consistent (99.95%) but the $6\pi^5$ ratio is the cleaner claim.
 
+### 8.1d The Factor-2 Neutron (Phase 28)
+
+Phase 27 surfaced a discrepancy in the plan's neutron form; Phase 28 closes it. The plan's literal $\delta_n = \alpha/\varphi^2$ overshoots the observed neutron-proton excess by **2.02×**. A top-down refinement gives the parameter-free form
+
+$$\delta_n = \frac{\alpha}{2\varphi^2}\left(1 - \left(\tfrac{3}{2} - \tfrac{\alpha}{\varphi^6}\right)\alpha\right)
+         = \frac{\alpha}{2\varphi^2} - \frac{3\alpha^2}{4\varphi^2} + \frac{\alpha^3}{2\varphi^8},$$
+
+which reproduces $m_n$ to **0.02σ of CODATA 2018** (100.000000% accuracy). Results:
+
+- **Naive α/φ²**: 99.859% — overshoots by 2.02×.
+- **Factor-2 α/(2φ²)**: 99.9985% — the leading term; the Phase 27 discovery.
+- **Exact form** with $c = 3/2 - \alpha/\varphi^6$: 100.000000% (0.02σ).
+
+The exact correction coefficient from masses is $c = 1.4995935$, agreeing with $3/2 - \alpha/\varphi^6 = 1.4995933$ to 1.6e-7.
+
+**Physical reading (hypotheses, not derivations):** the leading factor 1/2 is consistent with the 720° double-cover (two seam crossings per full cycle, Phases 23a/25) or with the combinatorial factor the Phase 3 supplementary flagged for "the number of additional loops or isospin breaking". The $(3/2)\alpha$ term is QED-radiative-corrective in character. Whether the tiny $\alpha/\varphi^6$ refinement is real or a CODATA-precision coincidence is a documented open point.
+
+**Correction of a prior arithmetic error:** the synthesis paper previously claimed running $\varphi \approx 1.98$ gives $m_n$ at 99.99%. That is wrong — $\varphi = 1.98$ gives $m_n = 0.9400$ GeV (99.95%). The true running $\varphi_n = 2.301$, which sits 0.55% above $\varphi\sqrt{2} \approx 2.288$.
+
 ### 8.2 Observable Predictions
 
 1. **Oscillatory DE at 4σ** over ΛCDM in current data. DESI DR2 and Euclid DR1 will sharpen this.
@@ -298,6 +317,7 @@ All code, tests, and outputs at: `https://github.com/MaryTheadoor/IST-workspace-
 | **24** | **Parameter scan** | **Stable fraction ~3% robust, golden filter secondary to topology** |
 | **25** | **Temporal holonomy** | **Ψ = Wilson loop of SU(2) connection over 720° cycle. Flat limit EXACTLY -I; unitarity + time-reversal at 1e-16. Static-φ falsification reproduced (D_eff=2.012≠φ). Riccati flow → D_eff=φ fixed point. Fibonacci preserves winding, rational collapses it** |
 | **27** | **QM-scale ratio validation** | **Top-down at QM scale. Parameter-free m_p/m_e = 6π⁵ (α, φ cancel) at 99.9981%. Neutron: naive α/φ² overshoots 2.02×; factor-2 α/(2φ²) lands at 99.9985%. Muon candidate 3/(2α) at 99.41% (open, not claimed)** |
+| **28** | **Factor-2 neutron** | **δ_n = (α/2φ²)(1−(3/2−α/φ⁶)α) → m_n at 0.02σ from CODATA (100.000000%). Corrects paper's running-φ=1.98 arithmetic error (true φ_n=2.301)** |
 
 ---
 

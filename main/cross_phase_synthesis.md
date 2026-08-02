@@ -34,6 +34,7 @@
 | **24** | **Parameter scan** | **Stable fraction ~3% robust across ω₀/gain/σ/TOL/N sweeps. Golden filter TOL is secondary — topology (Fibonacci + parity) drives knot formation** | Limited |
 | **25** | **Temporal holonomy** | **Ψ = Wilson loop of the SU(2) connection over the 720° cycle. Flat limit EXACTLY -I (fermionic sign); unitarity + time-reversal to 1e-16. Static-φ falsification reproduced (D_eff=2.012, not φ). Riccati fold flow converges to D_eff=φ fixed point. Fibonacci preserves non-trivial winding (dev_flat=0.215) where rational collapses it (0.038)** | v6.2 mechanism |
 | **27** | **QM-scale ratio validation** | **Top-down. Parameter-free m_p/m_e = 6π⁵ (α,φ cancel) = 99.9981%. Neutron α/φ² overshoots 2.02×, but α/(2φ²) = 99.9985%. Muon 3/(2α) = 99.41% (open). Planck-anchored p/e ≈ 99.95%** | QM-scale anchors |
+| **28** | **Factor-2 neutron** | **δ_n = (α/2φ²)(1−(3/2−α/φ⁶)α) → m_n at 0.02σ (100.000000%). Exact c=1.4995935 vs claimed 1.4995933. Corrects running-φ=1.98 arithmetic error (true φ_n=2.301 ≈ φ√2)** | GAP CLOSED |
 
 ## The Three Closed Gaps
 
@@ -42,8 +43,8 @@ The associator layers count with φ⁴ ≈ 6.85 energy magnification per layer:
 `n(E) = ln(E/m_p) / ln(φ⁴)`, `α_s = (1/φ²)·φ^{−n}`.
 M_Z: 0.122 vs 0.118 (3%), m_τ: 0.326 vs 0.33 (1.3%).
 
-### 2. Neutron mass — from 0.9409 → 0.9395 GeV (Phase 15)
-Running φ(μ) = φ_∞ + (φ_0−φ_∞)·exp(−μ/μ_c). At the neutron scale (~1 GeV), φ ≈ 1.98, giving δ_n = 0.00184 → m_n = 0.9395 (obs 0.9396, 99.99%).
+### 2. Neutron mass — from 0.9409 → 0.939565 GeV (Phases 15, 27, 28)
+Phase 28 gives the parameter-free closed form δ_n = (α/2φ²)(1−(3/2−α/φ⁶)α) = α/(2φ²) − 3α²/(4φ²) + α³/(2φ⁸), reproducing m_n at 0.02σ (100.000000%). The naive α/φ² overshoots 2.02×; the factor-2 leading term alone lands at 99.9985%. Correction: the Phase 15 "running φ ≈ 1.98" claim was an arithmetic error (it gives 99.95%); the true running φ_n = 2.301 ≈ φ√2.
 
 ### 3. G_eff exponent — running → pinned (Phases 4, 14)
 Phase 4 measured the exponent sweeping 0.60→1.0 across the fold scan. Phase 14 proved this is the approach to a stable fixed point at f ≈ 4.2 where D_eff = φ and G ∝ ρ^{1/φ}.

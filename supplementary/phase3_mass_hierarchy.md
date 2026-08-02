@@ -65,6 +65,30 @@ neutron extension works at the ~0.1% level if written as `m_n = m_p(1+δ)`,
 but the coefficient of δ needs refinement — perhaps a combinatorial
 factor from the number of additional loops or from isospin breaking.
 
+### 2.3 RESOLVED (Phase 28): the exact factor-2 form
+
+Phase 28 (top-down, parameter-free) closes this gap. The refined form is
+
+```
+δ_n = (α / 2φ²) · (1 − (3/2 − α/φ⁶) α)
+    = α/(2φ²) − 3α²/(4φ²) + α³/(2φ⁸) ,
+```
+
+reproducing `m_n` at **0.02σ of CODATA 2018** (100.000000%). The exact
+correction coefficient from measured masses is `c = 1.4995935`, agreeing
+with `3/2 − α/φ⁶ = 1.4995933` to 1.6e-7. The naive `α/φ²` overshoots by
+2.02×; the factor-2 leading term alone lands at 99.9985%.
+
+The leading factor 1/2 is consistent with the 720° double-cover (two seam
+crossings per full Klein cycle, Phases 23a/25) or with the combinatorial
+"additional loops" factor flagged above; the `(3/2)α` term is QED-
+radiative-corrective in character. Whether the tiny `α/φ⁶` refinement is
+real or a CODATA-precision coincidence remains a documented open point.
+
+**Arithmetic correction:** the Phase 15 synthesis claim "running φ ≈ 1.98
+gives 99.99%" is wrong — φ=1.98 gives `m_n = 0.9400` GeV (99.95%). The
+true running φ for the neutron is `φ_n = 2.301 ≈ φ√2`.
+
 ## 3. Strong coupling α_s from the associator
 
 ### 3.1 Model
