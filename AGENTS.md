@@ -40,6 +40,23 @@ the `opencode` repo in the parent dir is unrelated tooling.
   spectral circle and show artificially low entropy.
 - **Klein `klein_distance` returns (distance, twist_flag)**; the twist flag is
   essential for parity-inverted coupling (44.6% negative entries).
+- **The `m_t` α_s reference 0.090 is scheme-specific**: exact 2-loop QCD
+  running from α_s(M_Z)=0.118 gives α_s(m_t)≈0.108 (+19.6%). Check reference
+  systematics (scheme/scale convention) before trusting any residual at m_t.
+- **A "tested" hypothesis can be dead code**: Phase 42's "b1 golden cast" used
+  `0.0*k1`, so its CSV row was bit-identical to "exact b0". When a phase
+  claims a hypothesis was evaluated, assert its output differs from the base
+  model (e.g. `f_b1(5) != f_exact_b0(5)`).
+
+## Performance (GPU is a dead end here)
+
+- **GPU is NOT viable**: the GTX 1050 is Pascal (CC 6.1) and the CUDA 13
+  driver dropped Pascal kernel support; installed `cupy 14.1.1` targets CUDA
+  13 and fails ("Failed to find CUDA headers"). Don't attempt GPU
+  acceleration for the phase scripts.
+- **Use numba `@njit(cache=True)` for hot loops** — it works on the system
+  Python 3.14 (numba 0.66) and is the practical speedup. Sequential
+  RGE/integration loops are not GPU-parallelizable anyway.
 
 ## Windows / shell quirks
 

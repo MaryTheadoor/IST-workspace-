@@ -37,3 +37,31 @@ Non-obvious quirks in specific phase modules.
 - Control must be a non-noble irrational (√2−1), NOT a rational like 1/3:
   low-denominator rationals grid-lock on the spectral circle and show
   artificially low entropy.
+
+## phase42_flavor_closure.py / phase43_flavor_closure_2loop.py
+
+- **The 2-loop RGE rate must use B0/B1 as-is** (they already contain 1/π and
+  1/π²): `da/dlnE = -2·B0[nf]·a² - 2·B1[nf]·a³`. Do NOT add extra π factors.
+- **The QCD RGE integrator must anchor α_s(M_Z)=0.118 at the M_Z grid point
+  and integrate both directions** (down to 0.9, up to 300). Starting the
+  integration at the bottom of the grid silently corrupts every target
+  (m_tau 0.106 vs 0.313).
+- **`n_f_active(E, upper=True)` at thresholds**: the numba-JIT inline flavor
+  count must exactly match it (`6 if e>=173 else (5 if e>=4.18 else (4 if
+  e>=1.27 else 3))`). A wrong inline ternary silently breaks all QCD targets
+  (e.g. m_tau 0.382 vs 0.313) while M_Z stays correct — the anchor masks it.
+- **`f_b1(nf)` in phase42 is DEAD CODE** (`PHI**(-(k0 + 0.0*k1))`): the "b1
+  golden cast" CSV row is bit-identical to "exact b0". Phase 43 implements the
+  real b1 cast (`f_b1_cast`). Do not trust the phase42 "b1" row.
+- **`errors()` returns PERCENT values (8.78 means 8.78%) but
+  `golden_relation_checks.base_specificity()` expects FRACTIONS (0.0878).**
+  Pass `rms(...)/100.0` or the basin comes out empty/NaN.
+
+## golden_relation_checks.py
+
+- `base_specificity(error_fn, ...)` takes error_fn returning a FRACTION
+  (0.001 = 0.1%), not percent. `fixed_point_roots(g, lo, hi)` uses sign changes
+  of `x - g(x)`; equal roots require `diffs[i] == 0.0` exact, so pass a
+  function evaluated on a fine grid.
+- `unit_robustness` takes `scale` as a 2-tuple (deg, rad); the fixed-point
+  function passed must accept the circle measure as its only argument.
