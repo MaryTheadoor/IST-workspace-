@@ -282,12 +282,13 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Result:** the golden mode crystallizes (coherence jumps to 0.86), normalized gap entropy drops 6%; silver control mode hits destructive resonance and decays
 - **Unitarity:** total information strictly conserved (error = 0.0) — collapse is a unitary redistribution of topological charge into a golden-rigid pattern, not dissipative loss
 
-### Flavor-Threshold Golden Closure (Phase 42 — boundary convention resolved, self-consistent 137)
+### Flavor-Threshold Golden Closure (Phase 42 — boundary convention resolved, H42g demoted)
 - **Bug found (Phase 39 convention):** $m_t$ never gets 6 flavors — the loop breaks at $E \le t$ before the top segment, so $f(6)$ was an unconstrained artifact
 - **Fix (QCD upper convention):** reference AT a threshold uses the flavor count ABOVE it — $m_b$ activates $f(5)$, $m_t$ activates $f(6)$
 - **Result:** principled $\varphi^{-(n_f-3)/6}$ improves RMS 9.56% → 8.78%; best single-exponent scan $a = 0.150$ → 8.70%
-- **H42g (self-referential 137):** $\alpha^{-1} = 360/\varphi^{2+\alpha}$ fixed point = **137.0257 vs CODATA 137.0360 (0.0075%)** — ~46× tighter than the plain golden angle 137.508 (0.34%); spin-1/2 self-return over the 720° double cover
-- **Honest:** no single golden rule yet fits all four $\alpha_s$ references (best 8.7%); the 137 self-consistency is parameter-free but single-point
+- **H42g (self-referential 137) — DEMOTED by robustness checks:** $\alpha^{-1} = 360/\varphi^{2+\alpha}$ fixed point = 137.026 (0.0075% from CODATA) but FAILS all four checks: non-unique root (0.0625 & 137.03), base-unspecific (0.09% basin), unit-fragile (deg 137 vs rad 1.85), exponent-free (14 k values fit). A tuned 2-parameter coincidence, not a claim.
+- **Methodology output:** `code/golden_relation_checks.py` + tests now enforce uniqueness/base-specificity/unit-invariance on every golden relation
+- **Honest:** no single golden rule fits all four $\alpha_s$ references (best 8.7%); even the flavor closure's optimal base is 1.634, 0.99% above $\varphi$
 
 ### Variable Gravity
 - **Formula:** $G_{\text{eff}} \propto \rho_{\text{fold}}^{1/\varphi}$

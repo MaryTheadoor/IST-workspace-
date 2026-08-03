@@ -441,17 +441,13 @@ This provides a functional, local, and topological mechanism for collapse: obser
 
 ### 8.1r The Flavor-Threshold Golden Closure (Phase 42): Boundary Conventions and the Self-Referential 137
 
-Phase 42 closes the Phase 39 open problem — whether one principled golden rule governs the active-flavor running of $\alpha_s$ — and, along the way, resolves the fine-structure "137 mystery" through a self-referential fixed point. Two findings:
+Phase 42 closes the Phase 39 open problem — whether one principled golden rule governs the active-flavor running of $\alpha_s$ — and tests the fine-structure "137 mystery" through a self-referential fixed point. Two findings:
 
 **Boundary-convention resolution.** Phase 39's loop `if E <= t: break` means the $m_t$ reference is never evaluated with 6 active flavors — $f(6)$ was an unconstrained free-fit artifact ($\approx \varphi$), not a signal. Adopting the QCD upper convention (a reference AT a threshold uses the flavor count ABOVE it) activates $f(5)$ at $m_b$ and $f(6)$ at $m_t$, and the principled form $f(n_f) = \varphi^{-(n_f-3)/6}$ improves from RMS 9.56% to 8.78%. No single golden rule fits all four $\alpha_s$ references below ~8.7%; the flavor-threshold mechanism is confirmed, the clean closure remains open.
 
-**The self-referential 137 (H42g).** The golden angle $360/\varphi^2 = 137.508$ sits 0.34% above CODATA $\alpha^{-1} = 137.036$. IST's spin-1/2 double cover (720°) motivates resolving the residual *self-consistently*: $\alpha$ enters its own golden exponent,
+**The self-referential 137 (H42g) — tested and DEMOTED.** The golden angle $360/\varphi^2 = 137.508$ sits 0.34% above CODATA $\alpha^{-1} = 137.036$. Folding $\alpha$ into its own exponent, $\alpha^{-1} = 360/\varphi^{2+\alpha}$, gives a fixed point at 137.026 (0.0075% off). But subjecting it to the four robustness checks now standard for golden relations (`golden_relation_checks.py`) fails all four: the equation has a second spurious root (0.0625); a ~0.09% band of bases fits equally well; the relation is unit-fragile (degrees → 137, radians → 1.85); and 14 exponent values in [1.5, 2.5] reach the same precision with some base. The "parameter-free 46× tightening" was an artifact of unexamined freedom in base and exponent — a cautionary negative, not a claim.
 
-$$\alpha^{-1} = \frac{360}{\varphi^{2+\alpha}},$$
-
-whose parameter-free fixed point solves to $x^* = 137.0257$ — **0.0075% below CODATA**, ~46× tighter than the plain golden angle, with no tuned constant (360, 2, and $\varphi$ are all given). The physical reading: over the double cover the fine-structure coupling is a self-returning map — $\alpha$ is the fixed point of "golden angle with $\alpha$ in its own exponent."
-
-**Honest scope.** The 8.7% $\alpha_s$ residual means the flavor running is not yet closed; the 137 fixed point is a single-point, coincidence-rich relation — suggestive and parameter-free, but not a spectrum.
+**Honest scope.** The 8.7% $\alpha_s$ residual means the flavor running is not yet closed; even its optimal base (1.634) is 0.99% above $\varphi$. The 137 self-reference is demoted to a cautionary example.
 
 ### 8.2 Observable Predictions
 

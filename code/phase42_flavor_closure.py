@@ -42,6 +42,10 @@ Hypotheses tested (H42a-e):
           enters its own golden exponent, alpha^-1 = 360/phi^(2+alpha).
           The double-cover (720 deg) view makes this natural: the coupling
           must return to itself after a full spinor rotation.
+          CAUTION: cross-analysis (golden_relation_checks.py) shows this
+          fixed point FAILS the four robustness checks (non-unique root,
+          base-unspecific, unit-fragile, exponent-free). Reported for
+          completeness as a cautionary negative, not a physical claim.
 
 Honest framing:
     The phase reports which single golden rule (if any) closes the four

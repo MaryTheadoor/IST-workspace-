@@ -133,6 +133,7 @@ mass towers** — the scale where the E-ladder and the α⁻⁹ tower coincide.
 | Couplings not golden-laddered | harmonics live in masses | 37 |
 | CMB excludes D→2 | crystallization precedes recombination | 36 |
 | Free-fit f(6)≈φ not a signal | Phase 39 boundary bug: m_t never gets 6 flavors | 42 |
+| H42g 137 fixed point (0.0075%) not a claim | fails uniqueness/base-specificity/unit-invariance — tuned 2-parameter coincidence | 42 |
 
 Each negative *located* the mechanism rather than killing it.
 
