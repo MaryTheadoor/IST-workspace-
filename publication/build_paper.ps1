@@ -1,5 +1,5 @@
 # ============================================================================
-# IST v6.0 — Paper build pipeline
+# IST — Paper build pipeline
 #
 #   markdown  →  pandoc  →  .tex  →  xelatex (2 passes)  →  PDF
 #
@@ -9,14 +9,14 @@
 #   - Must use XeLaTeX, NOT pdflatex (docs contain literal Unicode φ)
 #
 # Usage:
-#   powershell -File publication\build_paper.ps1 [-Source main\ist_v5_3_topology_substrate.md]
+#   powershell -File publication\build_paper.ps1 [-Source main\ist_v7_0_topology_substrate.md]
 #
 # Outputs (in publication/):
 #   - <stem>.tex     LaTeX source (Overleaf-compatible)
 #   - <stem>.pdf     rendered PDF
 # ============================================================================
 param(
-    [string]$Source = "main\ist_v6_0_topology_substrate.md"
+    [string]$Source = "main\ist_v7_0_topology_substrate.md"
 )
 
 $ErrorActionPreference = "Stop"
@@ -46,7 +46,7 @@ Write-Host "[1/3] pandoc: markdown -> LaTeX"
     -H (Join-Path $out "preamble.tex") `
     --metadata title="Information Substrate Theory (IST): Topology as a Substrate for Emergent Physics" `
     --metadata author="Dr. Mary Theadoor -- The Nown Research Group" `
-    --metadata date="Version 6.1 - August 2, 2026"
+    --metadata date="Version 7.0 - August 2026"
 if ($LASTEXITCODE -ne 0) { throw "pandoc failed (exit $LASTEXITCODE)" }
 
 Write-Host "[2/3] xelatex pass 1"

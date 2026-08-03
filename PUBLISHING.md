@@ -1,5 +1,12 @@
 # IST Publication Plan — Updated v5.3
 
+> **NOTE (August 2026):** This plan predates the v7.0 reframe. The paper is now
+> `main/ist_v7_0_topology_substrate.md` (v7.0, strict physics core — consciousness/
+> neuroscience and Greene-Levin narrative content cut from the paper body per
+> `notes/paper_development_log.md`). The lists below remain as the historical
+> May 2026 strategy record; the convergence narrative and analysis are preserved
+> in `analysis/greene_levin_klein_bottle_cosmology.md`.
+
 **Date:** 2026-05-11  
 **Status:** ACTIVE — Preparing for submission  
 **Urgency:** HIGH (Greene-Levin Klein Bottle Cosmology just published; window for convergence narrative is NOW)
@@ -8,7 +15,7 @@
 
 ## Executive Summary
 
-Information Substrate Theory v5.3 is ready for peer-reviewed publication. The framework now has:
+Information Substrate Theory v5.3 (now **v7.0**, strict physics core) is ready for peer-reviewed publication. The framework now has:
 
 - **7 derived predictions** with zero free parameters (EM, strong, weak, proton, electron, neutrino masses, PMNS angles)
 - **1 fitted parameter** honestly disclosed (12pi^5 electron factor)
@@ -234,7 +241,7 @@ After arXiv submission:
 
 | File | Purpose |
 |------|---------|
-| `main/ist_v5_3_topology_substrate.md` | Core paper text (v5.3) |
+| `main/ist_v7_0_topology_substrate.md` | Core paper text (v7.0) |
 | `analysis/unified_field_equation.md` | Force equation derivation |
 | `analysis/self_referential_force_equation.md` | Detailed force calculations |
 | `analysis/cubic_correction_derivation.md` | Strong force cubic term |

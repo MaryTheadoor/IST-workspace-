@@ -25,8 +25,8 @@ ist_papers/
 |
 |-- README.md                          # This file
 |-- main/
-|   |-- ist_v5_3_topology_substrate.md  # Primary IST paper (v5.3)
-|   |-- ist_v5_3_topology_substrate.pdf # PDF version (when published)
+|   |-- ist_v7_0_topology_substrate.md  # Primary IST paper (v7.0, strict physics core)
+|   |-- ist_v6_0_topology_substrate.md  # Deprecated snapshot (tag v6.0-paper-snapshot)
 |
 |-- supplementary/
 |   |-- directed_numbers_v0_8_1.md      # Algebraic formalism
@@ -128,8 +128,8 @@ When ready for publication:
 # apt-get install pandoc texlive-full
 
 # Convert main paper
-pandoc main/ist_v5_3_topology_substrate.md \
-  -o publication/ist_v5_3.tex \
+pandoc main/ist_v7_0_topology_substrate.md \
+  -o publication/ist_v7_0_topology_substrate.tex \
   --template=eisvogel \
   --pdf-engine=xelatex \
   --toc \
@@ -145,7 +145,7 @@ pandoc supplementary/*.md \
 Or use the provided conversion script:
 
 ```bash
-python scripts/md_to_latex.py --input main/ist_v5_3_topology_substrate.md --output publication/
+python scripts/md_to_latex.py --input main/ist_v7_0_topology_substrate.md --output publication/
 ```
 
 ---
@@ -543,7 +543,7 @@ If you use IST in your research, please cite:
   author={Theadoor, Mary and the NOWN Research Collective},
   journal={arXiv preprint},
   year={2026},
-  note={Working paper v5.3}
+  note={Working paper v7.0}
 }
 ```
 
