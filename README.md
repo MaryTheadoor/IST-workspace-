@@ -253,6 +253,12 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **CMB shift prior (decisive):** $D \to 2$ by recombination gives $R \approx 6$ vs 1.7502 — **excluded by ~985σ**
 - **Refined picture:** crystallization completes *before* recombination; $D \approx 3$ at all observable z. The 3rd dimension crystallized at/near the big bang, not gradually — the honest negative locates the postulate's valid regime
 
+### Force Unification as Harmonics (Phase 37 — honest negative)
+- **Hypothesis:** the forces are specific harmonic excitations of the substrate — the field being the non-local average of information resonating at that harmonic
+- **Tested three ways against measured couplings:** (A) fixed-scale ladder at M_Z: only $em/weak \approx \varphi^3$ (2.3%); (B) β-coefficients not clean; (C) slaved running calibrated at M_Z deviates at high energy
+- **Honest result:** the simplest harmonic-unification formulations are **not supported** by the coupling data — the framework's golden-harmonic evidence is in the *mass spectrum* (Phases 28–35), not the bare couplings
+- **Refined hypothesis needed:** harmonics may structure the mass–coupling relation rather than the couplings themselves
+
 ### Variable Gravity
 - **Formula:** $G_{\text{eff}} \propto \rho_{\text{fold}}^{1/\varphi}$
 - **Prediction:** ~76% void lensing suppression

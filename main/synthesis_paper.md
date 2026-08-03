@@ -380,6 +380,16 @@ Building on the postulate that matter is topologically knotted energy and the em
 
 **Value of the honest negative:** the falsification is more informative than a fit — it locates the postulate's valid regime (dimension crystallizes near the start, not over cosmic time) and gives a concrete target (the BAO sound horizon and high-z H(z) are the discriminators if the transition is subtle).
 
+### 8.1m Force Unification as Harmonic Excitations (Phase 37): An Honest Test
+
+The hypothesis that the forces are specific harmonic excitations of the substrate (each coupling at a harmonic of one resonance, the field being the non-local average of information resonating at that harmonic) was tested three ways against measured couplings:
+
+- **(A) Fixed-scale ladder at M_Z:** $1/\alpha_{EM} = 127.95$, $1/\alpha_W = 29.5$, $1/\alpha_S = 8.47$. Only $em/weak \approx \varphi^3$ (2.3%); $weak/strong$ and $em/strong$ are ~19–22% from the *nearest* golden harmonic. Not clean.
+- **(B) β-coefficient ladder:** $|b_3|/|b_1| \approx \varphi$ (5.2%); the others far off. Not clean.
+- **(C) Slaved running:** the existing predictor is calibrated at $M_Z$, not a pure prediction, and its high-energy running deviates from SM (strong ratio up to 2.4). Not supported.
+
+**Honest conclusion.** The simplest harmonic-unification formulations are **not supported** by the coupling data. The framework's strong golden-harmonic evidence lives in the *mass spectrum* (the φ-ladders of Phases 28–35), not the bare couplings. A refined hypothesis is needed — the harmonics may structure the *mass–coupling relation* rather than the couplings themselves.
+
 ### 8.2 Observable Predictions
 
 1. **Oscillatory DE at 4σ** over ΛCDM in current data. DESI DR2 and Euclid DR1 will sharpen this.
@@ -455,6 +465,7 @@ All code, tests, and outputs at: `https://github.com/MaryTheadoor/IST-workspace-
 | **34** | **Baryon mass ladder** | **Baryon masses in units of E=ℏc/1fm=197.33 MeV: N=(19/4)E, Δ−N=(3/2)E (f_Klein!), decuplet spacing d=(3/4)E, m(S)=Δ+S·d — decuplet to ≤0.27%. Octet honest (Λ−N=0.9E, internal mixing not clean)** | DECUPLET CLEAN, OCTET OPEN |
 | **35** | **Double-cover baryon derivation** | **m(S) = [4 + (k/2)f_Klein]E, k=1,3,4,5,6 (half-f steps). The 4 = the double-cover (4 plonk ticks); N = 4+(1/2)f = 19/4 now DERIVED, not empirical. Decuplet ≤0.29%. The half-twist (1/2)f = spin-1/2, same θ=1/2** | 19/4 DERIVED |
 | **36** | **Dimensional crystallization** | **Tests D(z): 3→2 (ice from superfluid) against 60 H(z) chronometers + CMB shift prior. H(z) degenerate with ΛCDM (Δχ²<1); CMB DECISIVE: D→2 by recombination gives R~6 (985σ off) — crystallization completes before recombination, D≈3 at all observable z** | CMB-REFINED |
+| **37** | **Force harmonics test** | **Honest negative: force couplings do NOT sit on golden harmonics. Fixed-scale em/weak≈φ³ (2.3%) but weak/strong, em/strong ~19-22% off; β-coefficients not clean; slaved-running calibrated at M_Z deviates. Harmonic evidence is in the MASS spectrum, not the couplings** | NOT SUPPORTED (simplest forms) |
 
 ---
 
