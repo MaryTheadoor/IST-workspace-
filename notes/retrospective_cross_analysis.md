@@ -99,6 +99,14 @@ running between those masses).** This reframes Phase 37's negative into a
 positive: the harmonic unification is real, but it lives in the spectrum,
 and the couplings are the "slaved" running between the harmonics.
 
+**Phase 38 confirms the concrete content:** the mass→coupling mechanism
+is real for the strong force — `α_s(E) = (1/φ²)·φ^{−n(E)}` with
+`n(E) = ln(E/m_p)/ln(φ⁴)` reproduces α_s at M_Z (3.1%) and m_τ (1.3%).
+The masses determine α_s through the golden layer count. The unified
+three-force ladder is partial (C_i = α·φ^k, k = 2.5, 5.6, 8.2, gaps
+2.6–3.0 not uniform), but the mechanism is established for the strong
+coupling.
+
 ## 5. NOVEL INSIGHT C: The Proton Is the Unification Point
 
 The proton sits at the intersection of every mass tower:

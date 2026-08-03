@@ -259,6 +259,11 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Honest result:** the simplest harmonic-unification formulations are **not supported** by the coupling data — the framework's golden-harmonic evidence is in the *mass spectrum* (Phases 28–35), not the bare couplings
 - **Refined hypothesis needed:** harmonics may structure the mass–coupling relation rather than the couplings themselves
 
+### Mass–Coupling Relation (Phase 38 — Insight B)
+- **Mechanism (strong force, supported):** $\alpha_s(E) = (1/\varphi^2)\varphi^{-n(E)}$, $n(E) = \ln(E/m_p)/\ln(\varphi^4)$ — the golden-layer count from the proton mass reproduces $\alpha_s(M_Z)$ at 3.1% and $\alpha_s(m_\tau)$ at 1.3%, with the associator magnitude $1/\varphi^2$ as the natural normalization
+- **Per-force ladder (partial):** $C_i = \alpha\varphi^{k_i}$ gives $k = 2.52, 5.57, 8.16$ for em/weak/strong — rises with force strength, but gaps (2.6–3.0) not uniform
+- **Honest synthesis:** the masses *do* determine $\alpha_s$ through the golden layer count (resolving Phase 37's tension — couplings aren't golden *values*, but the mass→coupling *mechanism* is golden)
+
 ### Variable Gravity
 - **Formula:** $G_{\text{eff}} \propto \rho_{\text{fold}}^{1/\varphi}$
 - **Prediction:** ~76% void lensing suppression

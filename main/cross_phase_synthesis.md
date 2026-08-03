@@ -44,6 +44,7 @@
 | **35** | **Double-cover baryon derivation** | **m(S)=[4+(k/2)f_Klein]E, k=1,3,4,5,6. The 4 = the double-cover (4 plonk ticks); N=4+(1/2)f=19/4 DERIVED. Decuplet ≤0.29%. Half-twist (1/2)f = spin-1/2 = θ=1/2** | 19/4 DERIVED |
 | **36** | **Dimensional crystallization** | **D(z): 3→2 vs 60 H(z) + CMB shift. H(z) degenerate with ΛCDM (Δχ²<1); CMB DECISIVE: D→2 at recombination gives R~6 (985σ off). Crystallization completes before recombination; D≈3 at all observable z** | CMB-REFINED |
 | **37** | **Force harmonics test** | **Honest negative: couplings NOT on golden harmonics. em/weak≈φ³ (2.3%) only; weak/strong, em/strong ~19-22% off; β not clean; slaved-running calibrated at M_Z deviates. Harmonic evidence is in the MASS spectrum, not couplings** | NOT SUPPORTED (simplest forms) |
+| **38** | **Mass-coupling relation (Insight B)** | **alpha_s(E)=(1/φ²)φ^{−n(E)}: M_Z 3.1%, m_τ 1.3% (mass→coupling SUPPORTED). Per-force ladder C_i=α·φ^k: k=2.5,5.6,8.2, gaps 2.6-3.0 not uniform. Total span α→α_s = 5.6 golden powers** | STRONG SUPPORTED, LADDER PARTIAL |
 
 ## Cross-Phase Insights (Retrospective, after Phase 37)
 
