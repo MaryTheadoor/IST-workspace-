@@ -290,6 +290,15 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Methodology output:** `code/golden_relation_checks.py` + tests now enforce uniqueness/base-specificity/unit-invariance on every golden relation
 - **Honest:** no single golden rule fits all four $\alpha_s$ references (best 8.7%); even the flavor closure's optimal base is 1.634, 0.99% above $\varphi$
 
+### 2-Loop Golden Closure (Phase 43 — honest negative, m_b anomaly localized)
+- **Gap fixed (H42d was dead code):** Phase 42's $b_1$ cast used `0.0*k1`; the 2-loop term was never tested. Folding the real $b_1$ in **closes $m_b$** (+15.95% → +0.75%) — the $m_b$ residual *is* the 2-loop curvature — but over-corrects the high scale ($M_Z$ −42%, $m_t$ −76%).
+- **Full-curve 2-loop QCD RGE (H43b):** overlay against exact MS-bar running shows the irreducible conflict lives in the **$m_b \to M_Z$ segment, which runs +31.5% too steep** in the golden layer model. Also surfaces that the $m_t$ reference 0.090 is scheme-dependent (2-loop QCD running gives 0.108, +19.6%).
+- **Reference-systematics audit (H43c):** even against credible PDG/uncertainty ranges, $m_b$ (+6.8%) and $M_Z$ (−5.9%) stay outside the bands — the residual is not absorbed by legitimate reference choice.
+- **Exponent-basin robustness (H43d, G4 frame):** the principled 1/6 sits inside the RMS<10% basin (width 0.157) but is not the minimum (best $a=0.148$, RMS 8.70%).
+- **Low-scale anchor (H43e):** anchoring $\alpha_s(m_\tau)=0.330$ closes $m_t$ (−0.17%) and improves $M_Z$, but worsens $m_b$ — no single anchor closes all four.
+- **Honest negative:** no single golden rule closes all four $\alpha_s$ references; the $m_b/M_Z$ slope conflict is irreducible under b0-only, b0+b1, both boundary conventions, and reference-systematics ranges. The flavor-threshold mechanism is confirmed; the clean closure remains open.
+- **Perf:** QCD RGE hot loop JIT-compiled with numba (works on Python 3.14; GPU not viable — GTX 1050 is Pascal and CUDA 13 dropped Pascal)
+
 ### Variable Gravity
 - **Formula:** $G_{\text{eff}} \propto \rho_{\text{fold}}^{1/\varphi}$
 - **Prediction:** ~76% void lensing suppression

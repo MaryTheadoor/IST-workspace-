@@ -149,12 +149,16 @@ Each negative *located* the mechanism rather than killing it.
 
 **Honest negatives:**
 - Force couplings not golden-laddered; light-quark Koide broken; the
-  octet's Λ–Σ mixing unresolved.
+  octet's Λ–Σ mixing unresolved; the clean golden closure of the α_s
+  flavor running remains open (Phase 43 localized the conflict to the
+  m_b→M_Z slope, +31.5% too steep, irreducible under b0-only, b0+b1,
+  both boundary conventions, and reference-systematics ranges).
 
 **Open (natural next targets):**
 - The octet's Λ–Σ mixing; the emergent-twist derivation; the clean golden
-  closure of the α_s flavor running (best single rule 8.7% — Phase 42
-  resolved the boundary convention but no one-rule closure yet); the BAO
+  closure of the α_s flavor running (Phase 42 resolved the boundary
+  convention; Phase 43 closed the dead-code b1 gap and pinned the residual
+  to the m_b→M_Z slope, but no one-rule closure yet); the BAO
   sound-horizon test of crystallization.
 
 ---

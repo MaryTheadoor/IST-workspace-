@@ -449,6 +449,22 @@ Phase 42 closes the Phase 39 open problem — whether one principled golden rule
 
 **Honest scope.** The 8.7% $\alpha_s$ residual means the flavor running is not yet closed; even its optimal base (1.634) is 0.99% above $\varphi$. The 137 self-reference is demoted to a cautionary example.
 
+### 8.1s The 2-Loop Golden Closure (Phase 43): The m_b Anomaly and the Running-Slope Conflict
+
+Phase 43 attacks the Phase 42 residual head-on by closing three gaps found in review: H42d's 2-loop $b_1$ term was dead code (`0.0*k1`), scoring used only four points with no full-curve QCD comparison, and references were scored against single numbers rather than credible ranges. Five hypotheses are tested:
+
+**H43a — the real $b_1$ golden cast.** Folding $b_1(n_f)$ into the golden layer base closes $m_b$ to +0.75% (from +15.95%): the $m_b$ residual *is* the 2-loop curvature. But the same cast over-corrects the high scale ($M_Z$ −42%, $m_t$ −76%). The fixed-layer golden structure cannot reproduce the energy-dependent $b_1$ curvature of QCD; b0-only and b0+b1 bracket the conflict, neither closes all four.
+
+**H43b — full-curve 2-loop QCD comparison.** Overlaying the golden layer curve against the exact MS-bar 2-loop RGE (from $\alpha_s(M_Z)=0.118$) localizes the irreducible conflict to the $m_b \to M_Z$ segment, which runs +31.5% too steep in golden layers (1.747 vs 1.328). It also surfaces a reference-level issue: the $m_t$ reference 0.090 is scheme-dependent — 2-loop QCD running gives $\alpha_s(m_t) \approx 0.108$ (+19.6%).
+
+**H43c — reference-systematics audit.** Scored against credible PDG/uncertainty ranges (e.g. $m_\tau = 0.330 \pm 0.013$, $m_t \in [0.090, 0.108]$), the $m_b$ (+6.8%) and $M_Z$ (−5.9%) residuals survive. The conflict is not absorbed by legitimate reference choice.
+
+**H43d — exponent-basin robustness (G4 frame).** The principled exponent $1/6$ sits inside the RMS<10% basin (width 0.157), but is not the basin minimum: best $a = 0.148$ at RMS 8.70%. The closure claim is real but not perfectly peaked on the principled exponent.
+
+**H43e — low-scale re-anchoring.** Anchoring $\alpha_s(m_\tau) = 0.330$ and running up closes $m_t$ (−0.17%) and improves $M_Z$ (to −4.8%), but worsens $m_b$ (+18.3%) — the opposite of the failed high-scale H42e anchor, yet still no single anchor closes all four.
+
+**Honest conclusion.** The m_b anomaly is irreducible under b0-only, b0+b1, both boundary conventions, and reference-systematics ranges. The flavor-threshold mechanism is confirmed; the clean golden closure remains open, now with the conflict precisely localized to the $m_b \to M_Z$ running slope. The QCD RGE hot loop is numba-JIT compiled (Python 3.14; GPU acceleration is not viable on the Pascal GTX 1050 under CUDA 13).
+
 ### 8.2 Observable Predictions
 
 1. **Oscillatory DE at 4σ** over ΛCDM in current data. DESI DR2 and Euclid DR1 will sharpen this.

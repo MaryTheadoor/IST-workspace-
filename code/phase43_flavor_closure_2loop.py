@@ -65,11 +65,10 @@ from numba import njit
 
 from golden_relation_checks import base_specificity
 from phase42_flavor_closure import (
-    B0, B1, C, M_P, PHI, PHI4, REFS, THRESH,
+    B0, B1, C, PHI, REFS, THRESH,
     alpha_s_piecewise,
     f_exact_b0,
     f_principled,
-    n_f_active,
 )
 
 OUT_DIR = os.path.join(os.path.dirname(__file__), "outputs", "phase43")

@@ -1,10 +1,12 @@
 # IST Phase 43 — The m_b Anomaly and the 2-Loop Golden Closure
 
-**Status:** PLAN (outline for implementation)
+**Status:** COMPLETE (honest negative; conflict localized to the m_b→M_Z slope)
 **Predecessor:** Phase 42 (`code/phase42_flavor_closure.py`) — principled upper
 RMS 8.78%, conflict isolated to m_b (+15.9%) and M_Z (-6.75%)
 **Postcondition:** A principled golden rule closing all four references, or a
 systematic, robustness-checked statement of why the residual is irreducible.
+(Result: the latter — no single golden rule closes all four; the m_b→M_Z
+segment runs +31.5% too steep under the golden layer model.)
 
 ---
 
@@ -98,6 +100,8 @@ number each, not the credible range.
 
 ## 7. Sequencing
 
-Phase 43 is the next research phase. After it, the standing open items remain:
-BAO sound-horizon test of Phase 36's crystallization; baryon octet
-Lambda-Sigma mixing; stable-knot -> SM multiplicity mapping.
+Phase 43 is complete. The standing open items remain: BAO sound-horizon test of
+Phase 36's crystallization; baryon octet Lambda-Sigma mixing; stable-knot -> SM
+multiplicity mapping. (Phase 43 added one: whether a *reference-level* fix — the
+scheme-dependence of the m_t = 0.090 reference, vs 2-loop QCD running 0.108 —
+re-scopes the closure target.)

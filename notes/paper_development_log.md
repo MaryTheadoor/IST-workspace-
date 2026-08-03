@@ -69,3 +69,8 @@ are preserved verbatim under git tag **`v6.0-paper-snapshot`**.
   cross-analysis downgrade) and referenced in v7.0 Section 8.2.
 - Full Phase 42 detail: `notes/IST_Phase_42_plan.md`, `code/phase42_flavor_closure.py`,
   `code/golden_relation_checks.py`.
+- Phase 43 (2-loop golden closure, honest negative): `notes/IST_Phase_43_plan.md`,
+  `code/phase43_flavor_closure_2loop.py`. Localizes the flavor-closure residual to the
+  m_b→M_Z running slope (+31.5% too steep); confirms the m_t = 0.090 reference is
+  scheme-dependent (2-loop QCD running gives 0.108). A v8.0 paper update should fold
+  this into the Outlook / Open Questions section.
