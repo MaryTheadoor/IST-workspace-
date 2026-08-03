@@ -78,6 +78,16 @@ the exact ratios (not the (nf-3)/6 approximation) close the residual.
    m_tau/m_b/m_t against their references. (Phase 39 anchored at m_p; a
    high-scale anchor is the QCD convention and may be more natural.)
 
+6. **H42g — Self-referential fine-structure fixed point.** The golden
+   angle 360/phi^2 = 137.5078 sits 0.34% above CODATA alpha^-1 =
+   137.035999. The residual should be resolved SELF-consistently: a
+   spin-1/2 coupling must return to itself over the 720 deg double
+   cover, so alpha enters its own golden exponent,
+   alpha^-1 = 360/phi^(2+alpha). Solving the fixed point x =
+   360/phi^(2+1/x) gives x = 137.0257 -- 0.0075% below CODATA, ~46x
+   tighter than the plain golden angle, with no free parameters (360, 2,
+   phi are all given).
+
 ## 4. Success Criteria
 
 - **Closure:** one golden rule (H42a/b with a single parameter) fits
@@ -97,7 +107,7 @@ the exact ratios (not the (nf-3)/6 approximation) close the residual.
 - `code/phase42_flavor_closure.py` — differential golden beta,
   full-curve comparison, exact-b0 cast, single-exponent scan, 2-loop
   b1 test, M_Z anchor test; CSV + figure outputs.
-- `tests/test_phase42_flavor_closure.py` — tests encoding H42a-e.
+- `tests/test_phase42_flavor_closure.py` — tests encoding H42a-e, H42g.
 - `code/outputs/phase42/` — `flavor_closure.csv`, `flavor_closure.png`.
 - Phase map row added to `README.md`, `main/cross_phase_synthesis.md`,
   `main/synthesis_paper.md` (8.1r), and `notes/retrospective_cross_analysis.md`.
