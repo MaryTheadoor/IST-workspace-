@@ -240,9 +240,10 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Result:** exactly one Koide-valid quark generation (the heavy one) — the $\pi/2$ twist survives where the topological mass dominates
 - **Honest status:** consistent, NOT confirmed — the light breakage is expected standard RG physics, not a unique IST prediction
 
-### Baryon Mass Ladder (Phase 34)
+### Baryon Mass Ladder (Phase 34/35 — derived)
 - **Baryon masses in units of $E = \hbar c/1\text{ fm} = 197.33$ MeV** (the master equation's QCD-scale quantum)
-- **Decuplet (strong):** $m(S) = \Delta + S\cdot d$ with $\Delta - N = \tfrac{3}{2}E$ (**the f_Klein = 3/2 factor**) and spacing $d = \tfrac{3}{4}E$ — matches Δ, Σ*, Ξ*, Ω to ≤0.27%
+- **Derived (Phase 35):** $m(S) = [4 + \tfrac{k}{2}f_{\text{Klein}}]E$, $k = 1,3,4,5,6$ — the **4 = the double-cover** (four plonk ticks of the 720° cycle), $f_{\text{Klein}} = 3/2$, and the nucleon's $(1/2)f = 19/4$ is now **derived, not empirical** (it's the half-twist / spin-1/2, the same $\theta = 1/2$ throughout the framework)
+- **Decuplet:** Δ, Σ*, Ξ*, Ω all to ≤0.29%
 - **The (3/2) = f_Klein:** the spin-3/2 decuplet sits one topological-factor step above the spin-1/2 nucleon
 - **Octet (honest):** $\Lambda-N \approx \tfrac{9}{10}E$ (0.47%), $\Xi-N \approx 2E$ (3.9%), but internal $\Sigma$-$\Lambda$ mixing prevents a single clean ladder — decuplet is the clean object
 

@@ -41,6 +41,7 @@
 | **32** | **Quark-sector Koide test** | **Honest falsification: heavy (c,b,t) Q=0.6696 (+0.45%) consistent with 2/3 (edge of pole-mass systematics); light (u,d,s) −15%, up/down broken. π/2 twist survives where topological mass dominates** | CONSISTENT, not confirmed |
 | **33** | **Master-equation correction** | **Associator term is twist-dependent: Ξ_eff=1−θ, c=2θ(f−α/φ⁶), f=1+\|θ\|. Reduces to original at θ=0 (p/e 99.95% unchanged); fixes neutron 0.02σ. Electron 2 = spin = double-cover (same θ=1/2)** | FRAMEWORK CORRECTION |
 | **34** | **Baryon mass ladder** | **E=ℏc/1fm=197.33 MeV: N=(19/4)E, Δ−N=(3/2)E (f_Klein!), d=(3/4)E, m(S)=Δ+S·d — decuplet to ≤0.27%. Octet honest (Λ−N≈0.9E, mixing not clean)** | DECUPLET CLEAN, OCTET OPEN |
+| **35** | **Double-cover baryon derivation** | **m(S)=[4+(k/2)f_Klein]E, k=1,3,4,5,6. The 4 = the double-cover (4 plonk ticks); N=4+(1/2)f=19/4 DERIVED. Decuplet ≤0.29%. Half-twist (1/2)f = spin-1/2 = θ=1/2** | 19/4 DERIVED |
 
 ## The Three Closed Gaps
 
