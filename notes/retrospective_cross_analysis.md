@@ -158,8 +158,14 @@ Each negative *located* the mechanism rather than killing it.
 - The octet's Λ–Σ mixing; the emergent-twist derivation; the clean golden
   closure of the α_s flavor running (Phase 42 resolved the boundary
   convention; Phase 43 closed the dead-code b1 gap and pinned the residual
-  to the m_b→M_Z slope, but no one-rule closure yet); the BAO
-  sound-horizon test of crystallization.
+  to the m_b→M_Z slope, but no one-rule closure yet). The BAO
+  sound-horizon test of crystallization (Phase 44) is an honest negative
+  that CONFIRMS Phase 36: the DESI DR1 ruler (D_M/r_d, D_H/r_d at
+  z 0.51–1.49) is degenerate (Δχ² −4.6 joint; z_c basin flat χ² 35–38;
+  shape delta +9.1 vs the model-independent D_H(0.51) anomaly +5.7σ/+5.6σ)
+  and adds no discriminating power at z ≤ 1.5 — D ≈ 3 at observable z
+  survives. The remaining discriminators are the BAO ruler and H(z) at
+  higher z.
 
 ---
 

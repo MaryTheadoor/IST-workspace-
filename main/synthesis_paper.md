@@ -465,6 +465,20 @@ Phase 43 attacks the Phase 42 residual head-on by closing three gaps found in re
 
 **Honest conclusion.** The m_b anomaly is irreducible under b0-only, b0+b1, both boundary conventions, and reference-systematics ranges. The flavor-threshold mechanism is confirmed; the clean golden closure remains open, now with the conflict precisely localized to the $m_b \to M_Z$ running slope. The QCD RGE hot loop is numba-JIT compiled (Python 3.14; GPU acceleration is not viable on the Pascal GTX 1050 under CUDA 13).
 
+### 8.1t The BAO Sound-Horizon Test (Phase 44): The Ruler Against D(z)
+
+Phase 36 left an open discriminator: the H(z) chronometers (z < 2.36, ~10% errors) cannot tell crystallization from ΛCDM, and the CMB shift only fixes the *early* universe (D ≈ 3 at recombination). Phase 44 confronts the crystallization geometry with the DESI DR1 BAO sound-horizon ruler — $D_M(z)/r_d$ and $D_H(z)/r_d$ at z = 0.51–1.49 with 1–5% precision and measured DM/DH correlation, $r_d = 147.09$ Mpc. Because $D_M(z) = (c/H_0)\int_0^z dz'/E(z')$ integrates the full geometry, it is precisely the probe H(z) never used:
+
+**H44a — joint H(z)+BAO.** Crystallization fits $\Delta\chi^2 = -4.6$ *better* than ΛCDM when the ruler is added — BAO does not break the degeneracy Phase 36 identified.
+
+**H44b — shape at fixed (H0, Ωm).** At identical parameters the crystallization shape adds only +9.1 to the BAO $\chi^2$, dwarfed by the $D_H(0.51)$ anomaly that strikes both models (+5.7σ cryst, +5.6σ lcdm): the ruling tension is the known low-z DESI point, not the crystallization geometry.
+
+**H44c — BAO-only z_c basin.** The ruler alone is flat ($\chi^2$ 35–38 across z_c = 0.5–8): BAO at z ≤ 1.5 cannot pin the crystallization redshift. Complementarily, unlike the CMB shift (which excludes early D→2 at 985σ), BAO does *not* exclude z_c = 1 either.
+
+**H44d — sound-horizon pulls.** The worst crystallization pull is 2.3σ vs 3.8σ for ΛCDM; both models fail only on the anomalous D_H(0.51) point.
+
+**Honest conclusion.** The BAO sound-horizon test is an honest negative that *confirms* Phase 36: the refined picture (crystallization before recombination, D ≈ 3 at all observable z) survives the standard ruler, and the ruler adds no discriminating power at z ≤ 1.5. The discriminators Phase 36 targeted — the BAO ruler at higher z and high-z H(z) — remain untested by current data, leaving the subtle-transition regime as the only remaining handle on the postulate.
+
 ### 8.2 Observable Predictions
 
 1. **Oscillatory DE at 4σ** over ΛCDM in current data. DESI DR2 and Euclid DR1 will sharpen this.

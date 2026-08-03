@@ -124,6 +124,8 @@ the exact ratios (not the (nf-3)/6 approximation) close the residual.
 ## 7. Sequencing
 
 Phase 42 is the immediate next phase. After it: the Phase 36 follow-up
-(BAO sound-horizon test of dimensional crystallization), then the
+(BAO sound-horizon test of dimensional crystallization -- COMPLETE as Phase 44:
+an honest negative that confirms D ~ 3 at observable z; the ruler adds no
+discriminating power at z <= 1.5), then the
 remaining open items (baryon octet Lambda-Sigma mixing; emergent-twist
 derivation) as budget allows.

@@ -253,6 +253,13 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **CMB shift prior (decisive):** $D \to 2$ by recombination gives $R \approx 6$ vs 1.7502 — **excluded by ~985σ**
 - **Refined picture:** crystallization completes *before* recombination; $D \approx 3$ at all observable z. The 3rd dimension crystallized at/near the big bang, not gradually — the honest negative locates the postulate's valid regime
 
+### BAO Sound-Horizon Test (Phase 44 — honest negative, confirms Phase 36)
+- **Hypothesis:** the DESI DR1 BAO standard ruler ($D_M/r_d$, $D_H/r_d$ at z = 0.51–1.49, 1–5% precision) is an integral geometry probe that could break the H(z) degeneracy Phase 36 left open
+- **Joint H(z)+BAO (H44a):** $\Delta\chi^2 = -4.6$ — BAO does **not** discriminate crystallization from ΛCDM
+- **BAO-only $z_c$ basin (H44c):** flat ($\chi^2$ 35–38 across $z_c$ = 0.5–8) — the ruler at z ≤ 1.5 cannot pin the crystallization redshift on its own
+- **Shape delta at fixed (H0, Om) (H44b):** only +9.1, far below the $D_H(0.51)$ anomaly that hits **both** models (+5.7σ cryst / +5.6σ lcdm) — the ruling tension is the known low-z DESI point, not the crystallization geometry
+- **Net:** BAO sound-horizon test is an honest negative that *confirms* Phase 36 — the refined picture (crystallization before recombination, D ≈ 3 at observable z) survives the ruler; discriminators remain at higher z
+
 ### Force Unification as Harmonics (Phase 37 — honest negative)
 - **Hypothesis:** the forces are specific harmonic excitations of the substrate — the field being the non-local average of information resonating at that harmonic
 - **Tested three ways against measured couplings:** (A) fixed-scale ladder at M_Z: only $em/weak \approx \varphi^3$ (2.3%); (B) β-coefficients not clean; (C) slaved running calibrated at M_Z deviates at high energy

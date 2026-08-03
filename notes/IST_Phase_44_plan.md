@@ -1,6 +1,6 @@
 # IST Phase 44 — BAO Sound-Horizon Test of Dimensional Crystallization
 
-**Status:** IN PROGRESS
+**Status:** COMPLETE (honest negative; BAO confirms the Phase 36 refined picture)
 **Predecessor:** Phase 36 (`code/phase36_dimensional_crystallization.py`) —
 H(z) chronometers cannot distinguish crystallization from LCDM (Δχ² < 1) and
 the CMB shift prior excludes D→2 by recombination (985σ), forcing the refined
@@ -9,6 +9,11 @@ picture D(1090) ≈ 3.
 D_H(z)/r_d at five redshifts — was never confronted with the crystallization
 geometry. Does it (a) break the H(z) degeneracy, (b) independently confirm
 D ≈ 3 at observable z, or (c) expose a sound-horizon tension?
+**Answer:** (b) with an honest negative — BAO does NOT break the degeneracy
+(Δχ² = −4.6 joint), the z_c basin is flat (χ² 35–38 across z_c = 0.5–8), and
+the only strong tension is the model-independent D_H(0.51) anomaly (+5.7σ
+cryst / +5.6σ lcdm). The refined picture D ≈ 3 at observable z survives the
+ruler; discriminators remain at higher z.
 
 ---
 

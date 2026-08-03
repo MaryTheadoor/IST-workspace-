@@ -74,3 +74,9 @@ are preserved verbatim under git tag **`v6.0-paper-snapshot`**.
   m_b→M_Z running slope (+31.5% too steep); confirms the m_t = 0.090 reference is
   scheme-dependent (2-loop QCD running gives 0.108). A v8.0 paper update should fold
   this into the Outlook / Open Questions section.
+- Phase 44 (BAO sound-horizon test, honest negative): `notes/IST_Phase_44_plan.md`,
+  `code/phase44_bao_sound_horizon.py`. Confronts the Phase 36 crystallization geometry
+  with the DESI DR1 BAO ruler (D_M/r_d, D_H/r_d at z 0.51–1.49): joint Δχ² = −4.6,
+  flat z_c basin (χ² 35–38), shape delta +9.1 vs the model-independent D_H(0.51)
+  anomaly (+5.7σ/+5.6σ). Confirms D ≈ 3 at observable z; discriminators remain at
+  higher z. A v8.0 paper update should note this in the Phase 36/§8.1l discussion.
