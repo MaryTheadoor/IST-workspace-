@@ -45,6 +45,23 @@
 | **36** | **Dimensional crystallization** | **D(z): 3→2 vs 60 H(z) + CMB shift. H(z) degenerate with ΛCDM (Δχ²<1); CMB DECISIVE: D→2 at recombination gives R~6 (985σ off). Crystallization completes before recombination; D≈3 at all observable z** | CMB-REFINED |
 | **37** | **Force harmonics test** | **Honest negative: couplings NOT on golden harmonics. em/weak≈φ³ (2.3%) only; weak/strong, em/strong ~19-22% off; β not clean; slaved-running calibrated at M_Z deviates. Harmonic evidence is in the MASS spectrum, not couplings** | NOT SUPPORTED (simplest forms) |
 
+## Cross-Phase Insights (Retrospective, after Phase 37)
+
+1. **The two mass towers are ONE.** The baryon ladder (m = (4+k/2·3/2)E,
+   E = ℏc/1fm) and the lepton/α tower (M_P/m = (V/φ²)α⁻⁹) both reproduce
+   the proton. Solving E from the α⁻⁹ tower gives 197.431 MeV vs the
+   ℏc/1fm input 197.327 MeV — agreement to **0.05%**. The hadronic and
+   leptonic mass sectors unify under one quantum.
+2. **The harmonics live in masses, not couplings.** Phase 37 found the
+   force couplings are not golden-laddered; but the golden harmonics are
+   everywhere in the mass spectrum (baryon (k/2)(3/2) steps, lepton π/2
+   Koide phase, neutron α/(2φ²)). The couplings are the slaved running
+   *between* the mass harmonics.
+3. **θ = 1/2 is the single structural constant.** It appears as the neutron
+   factor-2 (Ξ_eff=1/2), f_Klein = 3/2, the lepton Koide π/2 phase, and
+   the baryon half-twist (1/2)f — five independent appearances, one
+   emergent double-cover.
+
 ## The Three Closed Gaps
 
 ### 1. α_s — from 0.38 → 0.122 (Phase 15)
