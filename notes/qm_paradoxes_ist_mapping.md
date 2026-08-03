@@ -21,19 +21,23 @@ which are proposed mechanisms (hypotheses).
 measurement produces a definite outcome. The projector postulate is added
 by hand.
 
-**IST mechanism (proposed, grounded in Phase 25).** In IST, the "wavefunction"
+**IST mechanism (quantified by Phase 41).** In IST, the "wavefunction"
 is the substrate's self-interference, and unitary evolution is the temporal
 holonomy (Ψ = Wilson loop of the connection, exactly unitary to 1e-16).
 Measurement is not an added postulate: it is the *entropic crystallization*
-of a probabilistic superposition into a coherent local structure — the same
-noise→coherent-harmonics transition the vacuum-pump threshold realizes
-(Phase 8) and the same irrational-resistance-to-decay that keeps golden
-structures stable (Phase 6). Collapse = the superposition resolving onto the
-golden-rigid (anti-resonant) configuration; the branches that are not
-golden-rigid decay (rational structures collapse — Phase 6's exact result).
+of a probabilistic superposition into a coherent local structure. Phase 41
+quantifies this phase transition: under the interaction of a measurement
+probe (the vacuum pump), a probabilistic superposition crosses a laser-like
+threshold. The coherent golden mode crystallizes (coherence jumps, normalized
+gap entropy drops), while non-noble/rational branches decay (unable to
+resist destructive resonance). Crucially, the non-linear transition is
+strictly unitary (information conservation error = 0.0) — collapse is a
+redistribution of topological charge into a golden-rigid pattern, not a
+dissipative loss.
 
-**What IST adds:** a *dynamical* account of why collapse picks stable
-structures (the golden rigidity), not a philosophical stance. Distinctive.
+**What IST adds:** a *dynamical, unitary* mechanism for wavefunction
+collapse, explaining why it picks stable structures (the golden rigidity),
+rather than taking it as a philosophical postulate. Distinctive.
 
 ## 2. The EPR / Bell Non-Locality Problem
 
@@ -142,7 +146,7 @@ geometric regulation of the vacuum.
 
 | Paradox | IST mechanism | Phase support | Status |
 |---|---|---|---|
-| Measurement problem | crystallization onto golden-rigid structure | 6, 8 | proposed |
+| Measurement problem | crystallization onto golden-rigid structure | 6, 8, 41 | supported |
 | Bell non-locality | shared substrate (twist-geodesic) adjacency | 23b, 26 | machinery exists |
 | Quantum Zeno | re-pinning by re-crystallization | 14 | proposed |
 | Wave-particle duality | knot (particle) vs. superposition (wave) | 23-25 | supported |

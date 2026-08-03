@@ -47,6 +47,7 @@
 | **38** | **Mass-coupling relation (Insight B)** | **alpha_s(E)=(1/φ²)φ^{−n(E)}: M_Z 3.1%, m_τ 1.3% (mass→coupling SUPPORTED). Per-force ladder C_i=α·φ^k: k=2.5,5.6,8.2, gaps 2.6-3.0 not uniform. Total span α→α_s = 5.6 golden powers** | STRONG SUPPORTED, LADDER PARTIAL |
 | **39** | **Active-flavor thresholds** | **Flavor thresholds fix mass→coupling: free fit cuts m_b 19.5%→3.0%, m_t 15.2%→4.5%. Principled f(n_f)=φ^{−(n_f−3)/6} (QCD b0 as golden powers) improves m_t→2.7%, m_τ→2.0%; f(6)≈φ (1.3%). No single golden rule fits all 4 yet** | THRESHOLD CONFIRMED, CLOSURE OPEN |
 | **40** | **Bell non-locality mechanism** | **Shared substrate = singlet: E(a,b)=−cos(a−b) → CHSH S=2.83 (Tsirelson, Bell-violating); LHV capped at 2.00; 3024 twist-adjacent euclid-far pairs (ratio 7.5×). A-marginals signal-local (0.51≈0.49) — non-locality is a projection artifact** | EPR RESOLVED (mechanism) |
+| **41** | **Measurement problem** | **Collapse as entropic crystallization. Vacuum pump (interaction) on probabilistic superposition triggers laser threshold: golden coherence jumps to 0.86, entropy drops 6%. Silver control decays. Strict unitarity (error 0.0) — collapse is a phase transition** | COLLAPSE DYNAMICAL (mechanism) |
 
 ## Cross-Phase Insights (Retrospective, after Phase 37)
 

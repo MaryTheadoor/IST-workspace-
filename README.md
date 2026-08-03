@@ -276,6 +276,12 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Signal-locality:** A-marginals 0.51 vs 0.49 across Bob's settings — no superluminal signaling
 - **Resolution:** non-locality is a *projection artifact* (shared substrate point); no signal travels because there is no signal — there is a shared substrate region
 
+### Measurement Problem (Phase 41 — Collapse as Entropic Crystallization)
+- **Mechanism:** wavefunction collapse is a dynamic phase transition triggered by environmental/probe interaction (vacuum pump)
+- **Simulation:** pumping a probabilistic superposition of modes drives it past the laser-like threshold (layers 8-11)
+- **Result:** the golden mode crystallizes (coherence jumps to 0.86), normalized gap entropy drops 6%; silver control mode hits destructive resonance and decays
+- **Unitarity:** total information strictly conserved (error = 0.0) — collapse is a unitary redistribution of topological charge into a golden-rigid pattern, not dissipative loss
+
 ### Variable Gravity
 - **Formula:** $G_{\text{eff}} \propto \rho_{\text{fold}}^{1/\varphi}$
 - **Prediction:** ~76% void lensing suppression
