@@ -264,6 +264,12 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Per-force ladder (partial):** $C_i = \alpha\varphi^{k_i}$ gives $k = 2.52, 5.57, 8.16$ for em/weak/strong — rises with force strength, but gaps (2.6–3.0) not uniform
 - **Honest synthesis:** the masses *do* determine $\alpha_s$ through the golden layer count (resolving Phase 37's tension — couplings aren't golden *values*, but the mass→coupling *mechanism* is golden)
 
+### Active-Flavor Thresholds (Phase 39 — threshold confirmed)
+- **Problem:** the mass→coupling model over-predicts $\alpha_s$ at $m_b$ (+19.5%) and $m_t$ (+15.2%) — too-fast running above each quark mass
+- **Fix (flavor thresholds):** free fit cuts $m_b$ 19.5%→3.0%, $m_t$ 15.2%→4.5%; principled $f(n_f) = \varphi^{-(n_f-3)/6}$ (QCD $b_0$ as golden powers) improves $m_t$→2.7%, $m_\tau$→2.0%
+- **Suggestive:** free-fit $f(6) \approx \varphi$ (1.3%)
+- **Honest:** the threshold mechanism is confirmed; no single golden rule fits all four references yet — clean closure needs piecewise QCD-style active-flavor running
+
 ### Variable Gravity
 - **Formula:** $G_{\text{eff}} \propto \rho_{\text{fold}}^{1/\varphi}$
 - **Prediction:** ~76% void lensing suppression

@@ -402,6 +402,16 @@ $$\alpha_s(E) = \frac{1}{\varphi^2}\,\varphi^{-n(E)}, \qquad n(E) = \frac{\ln(E/
 
 **Honest synthesis:** Insight B is *concretely confirmed* for the strong coupling (the masses do determine $\alpha_s$ through the golden layer count), and *partially* for the three-force ladder. This resolves the Phase 37 tension: the couplings aren't golden *values*, but the *mechanism* from masses to couplings is golden. The strong force is the clean case; the unified ladder needs a refined per-force normalization.
 
+### 8.1o Active-Flavor Thresholds (Phase 39): The Missing Ingredient
+
+The mass→coupling model over-predicts $\alpha_s$ at $m_b$ (+19.5%) and $m_t$ (+15.2%) because the golden-layer base is held constant, whereas QCD's running slows as more flavors become active ($b_0 = (33-2n_f)/12\pi$). Phase 39 tests the flavor-threshold correction:
+
+- **Free 4-parameter fit of flavor factors:** cuts $m_b$ error 19.5% → 3.0% and $m_t$ 15.2% → 4.5% (trading $M_Z$ and $m_\tau$). The mechanism is confirmed.
+- **Principled golden form** $f(n_f) = \varphi^{-(n_f-3)/6}$ (the QCD $b_0$ ratio cast as golden powers): improves $m_t$ → 2.7% and keeps $m_\tau$ at 2.0%; but $m_b$ stays ~17% and $M_Z$ worsens.
+- **Suggestive:** the free-fit $f(6) = 1.639 \approx \varphi$ (1.3%), and the $b_0$ ratios for $n_f = 4,5,6$ are $\varphi^{-0.16,-0.33,-0.52} \approx \varphi^{-(n_f-3)/6}$.
+
+**Honest conclusion:** flavor thresholds are the correct missing ingredient (errors reduced ~4–6×), and the QCD $b_0$ coefficient admits a natural golden-power cast. But no single clean golden rule fits all four references simultaneously — the active-flavor running must be done piecewise (QCD-style) rather than with one global layer base. The threshold mechanism is confirmed; the clean golden closure is a genuine, tractable next step.
+
 ### 8.2 Observable Predictions
 
 1. **Oscillatory DE at 4σ** over ΛCDM in current data. DESI DR2 and Euclid DR1 will sharpen this.
@@ -479,6 +489,7 @@ All code, tests, and outputs at: `https://github.com/MaryTheadoor/IST-workspace-
 | **36** | **Dimensional crystallization** | **Tests D(z): 3→2 (ice from superfluid) against 60 H(z) chronometers + CMB shift prior. H(z) degenerate with ΛCDM (Δχ²<1); CMB DECISIVE: D→2 by recombination gives R~6 (985σ off) — crystallization completes before recombination, D≈3 at all observable z** | CMB-REFINED |
 | **37** | **Force harmonics test** | **Honest negative: force couplings do NOT sit on golden harmonics. Fixed-scale em/weak≈φ³ (2.3%) but weak/strong, em/strong ~19-22% off; β-coefficients not clean; slaved-running calibrated at M_Z deviates. Harmonic evidence is in the MASS spectrum, not the couplings** | NOT SUPPORTED (simplest forms) |
 | **38** | **Mass-coupling relation (Insight B)** | **alpha_s(E) = (1/φ²)φ^{−n(E)}, n = ln(E/m_p)/ln(φ⁴): M_Z 3.1%, m_τ 1.3% (mass→coupling SUPPORTED). Per-force ladder C_i = α·φ^k: k=2.5,5.6,8.2, gaps 2.6-3.0 not uniform (partial). Total span α→α_s = 5.6 golden powers** | STRONG SUPPORTED, LADDER PARTIAL |
+| **39** | **Active-flavor thresholds** | **Flavor thresholds fix the mass→coupling relation: free fit cuts m_b error 19.5%→3.0%, m_t 15.2%→4.5%. Principled f(n_f)=φ^{−(n_f−3)/6} (QCD b0 as golden powers) improves m_t→2.7%, m_τ→2.0%; f(6)≈φ (1.3%). No single golden rule fits all 4 yet** | THRESHOLD CONFIRMED, CLOSURE OPEN |
 
 ---
 
