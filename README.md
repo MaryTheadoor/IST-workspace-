@@ -247,6 +247,12 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **The (3/2) = f_Klein:** the spin-3/2 decuplet sits one topological-factor step above the spin-1/2 nucleon
 - **Octet (honest):** $\Lambda-N \approx \tfrac{9}{10}E$ (0.47%), $\Xi-N \approx 2E$ (3.9%), but internal $\Sigma$-$\Lambda$ mixing prevents a single clean ladder — decuplet is the clean object
 
+### Dimensional Crystallization (Phase 36 — CMB-refined)
+- **Hypothesis:** the expanding universe is the 3rd dimension crystallizing out of a 2D substrate (ice from a superfluid): $D(z) = 2 + [1+e^{(z-z_c)/w}]^{-1}$
+- **H(z) chronometers (60, z<2.4):** degenerate with ΛCDM ($\Delta\chi^2 = -0.5$) — cannot distinguish
+- **CMB shift prior (decisive):** $D \to 2$ by recombination gives $R \approx 6$ vs 1.7502 — **excluded by ~985σ**
+- **Refined picture:** crystallization completes *before* recombination; $D \approx 3$ at all observable z. The 3rd dimension crystallized at/near the big bang, not gradually — the honest negative locates the postulate's valid regime
+
 ### Variable Gravity
 - **Formula:** $G_{\text{eff}} \propto \rho_{\text{fold}}^{1/\varphi}$
 - **Prediction:** ~76% void lensing suppression

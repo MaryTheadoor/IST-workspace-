@@ -369,6 +369,17 @@ with $k = 1, 3, 4, 5, 6$ (half-$f$ steps):
 
 **Honest scope:** the octet remains open (Λ–Σ mixing not captured); this addresses the decuplet. The $\Delta$ anchor and the 1-fm scale retain a combined ~1% ambiguity.
 
+### 8.1l Dimensional Crystallization (Phase 36): The 3rd Dimension from the 2D Substrate
+
+Building on the postulate that matter is topologically knotted energy and the embedding space is emergent, Phase 36 tests the "ice crystallizing out of a superfluid" picture: the effective spatial dimension should descend from 3 today toward 2 at high redshift, $D(z) = 2 + [1+e^{(z-z_c)/w}]^{-1}$.
+
+**Result (the CMB is decisive):**
+- The 60 H(z) chronometers (z < 2.4) **cannot distinguish** crystallization from ΛCDM ($\Delta\chi^2 = -0.5$); the dimensional signature is degenerate with $(H_0,\Omega_m)$.
+- The **Planck 2018 CMB shift prior is decisive**: a $D \to 2$ early universe gives shift parameter $R \approx 6$ vs observed 1.7502 — **excluded by ~985σ**. A 2D comoving distance at recombination is ~4× too large.
+- **Refined picture:** crystallization must complete *before* recombination ($D(1090) \approx 3$, $z_c \gg 1090$). The third dimension is essentially always present at observable redshift; the crystallization happened at/near the big bang, not gradually over cosmic history. The H(z)-preferred $z_c \sim 4$ is CMB-excluded.
+
+**Value of the honest negative:** the falsification is more informative than a fit — it locates the postulate's valid regime (dimension crystallizes near the start, not over cosmic time) and gives a concrete target (the BAO sound horizon and high-z H(z) are the discriminators if the transition is subtle).
+
 ### 8.2 Observable Predictions
 
 1. **Oscillatory DE at 4σ** over ΛCDM in current data. DESI DR2 and Euclid DR1 will sharpen this.
@@ -443,6 +454,7 @@ All code, tests, and outputs at: `https://github.com/MaryTheadoor/IST-workspace-
 | **33** | **Master-equation correction** | **The associator term is twist-dependent: Ξ_eff = 1−θ, c = 2θ(f−α/φ⁶), f = 1+|θ|. Reduces to the original at θ=0 (p/e 99.95% unchanged); fixes neutron at 0.02σ. Electron factor-2 = spin = double-cover (same θ=1/2)** | FRAMEWORK CORRECTION |
 | **34** | **Baryon mass ladder** | **Baryon masses in units of E=ℏc/1fm=197.33 MeV: N=(19/4)E, Δ−N=(3/2)E (f_Klein!), decuplet spacing d=(3/4)E, m(S)=Δ+S·d — decuplet to ≤0.27%. Octet honest (Λ−N=0.9E, internal mixing not clean)** | DECUPLET CLEAN, OCTET OPEN |
 | **35** | **Double-cover baryon derivation** | **m(S) = [4 + (k/2)f_Klein]E, k=1,3,4,5,6 (half-f steps). The 4 = the double-cover (4 plonk ticks); N = 4+(1/2)f = 19/4 now DERIVED, not empirical. Decuplet ≤0.29%. The half-twist (1/2)f = spin-1/2, same θ=1/2** | 19/4 DERIVED |
+| **36** | **Dimensional crystallization** | **Tests D(z): 3→2 (ice from superfluid) against 60 H(z) chronometers + CMB shift prior. H(z) degenerate with ΛCDM (Δχ²<1); CMB DECISIVE: D→2 by recombination gives R~6 (985σ off) — crystallization completes before recombination, D≈3 at all observable z** | CMB-REFINED |
 
 ---
 
