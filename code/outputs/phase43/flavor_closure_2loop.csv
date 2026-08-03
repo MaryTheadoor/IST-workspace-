@@ -1,0 +1,8 @@
+model,convention,m_tau,m_b,M_Z,m_t,RMS
+b0-only (k0),upper,-1.99%,+15.95%,-6.74%,-2.83%,8.83%
+b1 golden cast (k0+k1),upper,-4.17%,+0.75%,-42.09%,-75.76%,43.39%
+2-loop QCD target alpha_s(m_t),QCD running,0.3133,0.2236,0.1180,0.1076,-
+principled (nf-3)/6 (range audit),upper,+0.00%,+6.84%,-5.91%,-2.18%,4.65%
+b1 cast (k0+k1) (range audit),upper,-0.23%,+0.00%,-41.25%,-75.76%,43.13%
+exponent basin (min a=0.148),width 0.157,8.70%,-,-,-,8.70%
+"low-scale anchor (m_tau, principled)",upper,0.00%,+18.31%,-4.84%,-0.17%,10.94%
