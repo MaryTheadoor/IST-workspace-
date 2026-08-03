@@ -132,6 +132,7 @@ mass towers** — the scale where the E-ladder and the α⁻⁹ tower coincide.
 | Light quarks break Koide | harmonics where topological mass dominates | 32 |
 | Couplings not golden-laddered | harmonics live in masses | 37 |
 | CMB excludes D→2 | crystallization precedes recombination | 36 |
+| Free-fit f(6)≈φ not a signal | Phase 39 boundary bug: m_t never gets 6 flavors | 42 |
 
 Each negative *located* the mechanism rather than killing it.
 
@@ -150,9 +151,10 @@ Each negative *located* the mechanism rather than killing it.
   octet's Λ–Σ mixing unresolved.
 
 **Open (natural next targets):**
-- The octet's Λ–Σ mixing; the emergent-twist derivation; the mass–coupling
-  harmonic relation suggested by Insight B; the BAO sound-horizon test of
-  crystallization.
+- The octet's Λ–Σ mixing; the emergent-twist derivation; the clean golden
+  closure of the α_s flavor running (best single rule 8.7% — Phase 42
+  resolved the boundary convention but no one-rule closure yet); the BAO
+  sound-horizon test of crystallization.
 
 ---
 
