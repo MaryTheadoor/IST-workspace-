@@ -1,0 +1,7 @@
+quantity,value,note
+twist-adjacent euclid-far pairs,3024,"mean klein_d=0.100, euclid_d=0.748"
+CHSH S (substrate singlet E=-cos),-2.82842712474619,Tsirelson bound 2.828
+CHSH S (local hidden variable),2.0,Bell bound 2 (must be <= 2)
+CHSH S (simulated substrate pairs),-1.968,from singlet pairs
+A-marginal (Bob=0.2),0.5118,signal-locality
+A-marginal (Bob=1.9),0.4948,must equal (no superluminal signal)

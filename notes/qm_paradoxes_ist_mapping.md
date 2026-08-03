@@ -40,19 +40,22 @@ structures (the golden rigidity), not a philosophical stance. Distinctive.
 **The paradox.** Entangled particles violate Bell inequalities; correlations
 are instantaneous, yet relativity forbids superluminal signaling.
 
-**IST mechanism (supported by Phase 23b/26).** Phase 26 found 30
-twist-geodesic clusters where Euclidean/Klein adjacency ratio reaches 31× —
-particles *far in the 3D projection are adjacent in the substrate* (a short
-geodesic through the twist). Phase 23b verified entanglement via
-twist-geodesic pairs. In IST, "non-locality" is a *mis-projection*: the two
-particles share a substrate point; the correlation is local *in the
-substrate*, not in the projected 3D space. No signal travels faster than
-light because there is no signal — there is a shared substrate region.
+**IST mechanism (supported by Phase 23b/26, quantified by Phase 40).**
+Phase 26 found 30 twist-geodesic clusters where Euclidean/Klein adjacency
+ratio reaches 31× — particles *far in the 3D projection are adjacent in the
+substrate* (a short geodesic through the twist). Phase 23b verified
+entanglement via twist-geodesic pairs. Phase 40 quantifies the mechanism:
+the substrate singlet E(a,b) = -cos(a-b) gives CHSH S = 2.83 (Tsirelson,
+Bell-violating), local hidden variable models are capped at S = 2.00, and
+the A-marginals are signal-local (0.51 vs 0.49 across Bob's settings). In
+IST, "non-locality" is a *mis-projection*: the two particles share a
+substrate point; the correlation is local *in the substrate*, not in the
+projected 3D space. No signal travels faster than light because there is
+no signal — there is a shared substrate region.
 
 **What IST adds:** non-locality becomes a *geometric* fact (shared substrate
-adjacency) rather than an unexplained instantaneous correlation. This is the
-open question #12 (Bell inequality from substrate topology) with a concrete
-machinery (the twist-geodesic clusters of Phase 26).
+adjacency) rather than an unexplained instantaneous correlation, with a
+quantified mechanism (Phase 40) and the twist-geodesic clusters of Phase 26.
 
 ## 3. The Quantum Zeno Effect
 

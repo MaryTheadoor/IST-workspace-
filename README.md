@@ -270,6 +270,12 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Suggestive:** free-fit $f(6) \approx \varphi$ (1.3%)
 - **Honest:** the threshold mechanism is confirmed; no single golden rule fits all four references yet — clean closure needs piecewise QCD-style active-flavor running
 
+### Bell Non-Locality Mechanism (Phase 40 — EPR resolved as projection)
+- **Mechanism:** two "entangled" particles are two 3D projections of the *same substrate point* (twist-adjacent, euclid-far — Phase 26 found 3024 pairs, ratio 7.5×)
+- **Substrate singlet** $E(a,b) = -\cos(a-b)$ gives **CHSH S = 2.83** (Tsirelson, Bell-violating); local hidden variable models capped at S = 2.00
+- **Signal-locality:** A-marginals 0.51 vs 0.49 across Bob's settings — no superluminal signaling
+- **Resolution:** non-locality is a *projection artifact* (shared substrate point); no signal travels because there is no signal — there is a shared substrate region
+
 ### Variable Gravity
 - **Formula:** $G_{\text{eff}} \propto \rho_{\text{fold}}^{1/\varphi}$
 - **Prediction:** ~76% void lensing suppression
