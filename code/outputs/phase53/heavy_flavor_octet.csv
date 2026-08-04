@@ -1,0 +1,4 @@
+flavor,split (Sig-Lam)/(Xi-Lam),sigma,target 1/phi^2,split err %,gap (Xi-Sig)/(Sig-Lam),target phi,gap err %,ordering
+light,0.3824,0.0,0.382,0.11,1.6153,1.618,0.17,normal (Lambda < Sigma < Xi)
+charm,0.9149,0.0026,0.382,139.53,0.093,1.618,94.25,normal (Lambda < Sigma < Xi)
+bottom,1.1067,0.0041,0.382,189.73,-0.0964,1.618,105.96,INVERTED (Sigma > Xi)
