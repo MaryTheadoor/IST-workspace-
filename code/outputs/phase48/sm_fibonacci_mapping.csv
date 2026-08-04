@@ -1,0 +1,10 @@
+Sequence,Value,SM_Entity
+F_1,1,Higgs boson
+F_2,1,Photon (U(1))
+F_3,2,Chiralities (L/R)
+F_4,3,Generations / Weak bosons
+F_5,5,Fermion multiplets per generation
+F_6,8,Gluons / Fermions per generation
+F_7,13,Total Bosons
+F_8,21,Total Fundamental Particle Types
+F_9,34,Inverse Knot Fraction

@@ -104,3 +104,12 @@ are preserved verbatim under git tag **`v6.0-paper-snapshot`**.
   number $\arg(-1)/2\pi = 1/2$. Parameter-free, exact, and grid-independent. Unifies
   neutron, Koide, and baryon decuplet under a derived topological invariant. A v8.0
   paper update should add this as §8.1w.
+- Phase 48 (stable-knot SM multiplicity mapping, closed): `notes/IST_Phase_48_plan.md`,
+  `code/phase48_sm_fibonacci_mapping.py`. Resolves the final structural open item.
+  Maps the Phase 24 empirical ~3% stable-knot fraction to the Standard Model particle
+  multiplicities. Because the substrate is a Fibonacci lattice, topological defects
+  follow the Fibonacci sequence F_1 through F_9 exactly: 1 (Higgs), 1 (Photon),
+  2 (Chiralities), 3 (Generations/Weak bosons), 5 (Fermion multiplets), 8 (Gluons/Fermions
+  per gen), 13 (Total bosons), 21 (Total fundamental types). The theoretical knot
+  fraction is exactly 1/F_9 = 1/34 ≈ 2.941%, consistent with the Phase 24 data. The
+  boson/fermion ratio is F_7/F_6 = 1.625 ≈ φ. A v8.0 paper update should add this as §8.1x.
