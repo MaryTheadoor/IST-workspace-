@@ -49,3 +49,6 @@ phase,relation,form,domain,outcome,best_agreement,reason
 55,photon achirality,parity-inversion = 0.000 (spin-1),photon propagation,SUPPORTED,0.000 on true Fibonacci-Klein lattice (N=210/360/480),rungs cross the zero point symmetrically vs electron 0.446
 55,photon massless E=h*nu,"E = omega_0, m = 0",photon propagation,SUPPORTED,E = omega_0 exactly (slope 1.0); v_g const,"energy linear in frequency, speed independent of energy"
 55,single U(1) photon species,F_2 = 1,photon propagation,SUPPORTED,"one gapless branch, two shared helicity modes",rung binding does not create a second propagating species
+56,achiral parity-odd 4WM channel,c2/c1 = 0.000,vacuum 4WM,SUPPORTED,IST 0.000 vs QED 1.7500 (canonical 7/4),parity-invariant dual-mode vacuum cannot source (F.F~)^2
+56,golden-weighted parity-even 4WM coupling,c1 = alpha/phi^2 (scale phi^2/alpha ~ 358.8),vacuum 4WM,SUPPORTED,"IST/QED coupling ~52.3, signal ~2.7e3",surviving channel carries the substrate golden charge scale
+56,4WM output peak at universal c,v_g = c,vacuum 4WM,SUPPORTED,v_g = 1.000000; Zhang et al. observe ~0.99c,"dual-mode dispersion, H55a consistent"

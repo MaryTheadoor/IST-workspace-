@@ -300,6 +300,20 @@ REGISTRY = [
          domain="photon propagation", outcome="SUPPORTED",
          best_agreement="one gapless branch, two shared helicity modes",
          reason="rung binding does not create a second propagating species"),
+    # Phase 56 -- 4WM discriminator (gap 7, table-top falsifiability)
+    dict(phase=56, relation="achiral parity-odd 4WM channel", form="c2/c1 = 0.000",
+         domain="vacuum 4WM", outcome="SUPPORTED",
+         best_agreement="IST 0.000 vs QED 1.7500 (canonical 7/4)",
+         reason="parity-invariant dual-mode vacuum cannot source (F.F~)^2"),
+    dict(phase=56, relation="golden-weighted parity-even 4WM coupling",
+         form="c1 = alpha/phi^2 (scale phi^2/alpha ~ 358.8)",
+         domain="vacuum 4WM", outcome="SUPPORTED",
+         best_agreement="IST/QED coupling ~52.3, signal ~2.7e3",
+         reason="surviving channel carries the substrate golden charge scale"),
+    dict(phase=56, relation="4WM output peak at universal c", form="v_g = c",
+         domain="vacuum 4WM", outcome="SUPPORTED",
+         best_agreement="v_g = 1.000000; Zhang et al. observe ~0.99c",
+         reason="dual-mode dispersion, H55a consistent"),
 ]
 
 
