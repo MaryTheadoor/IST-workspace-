@@ -65,3 +65,23 @@ Non-obvious quirks in specific phase modules.
   function evaluated on a fine grid.
 - `unit_robustness` takes `scale` as a 2-tuple (deg, rad); the fixed-point
   function passed must accept the circle measure as its only argument.
+
+## phase46_reference_rescope.py
+
+- **The flavor-closure modules form a one-way import chain:**
+  `phase42_flavor_closure` → `phase43_flavor_closure_2loop` →
+  `phase46_reference_rescope`. phase46 reuses BOTH `alpha_s_piecewise`
+  (phase42) and `alpha_s_qcd_2loop`/`qcd_layer_count` (phase43). Do NOT
+  change `alpha_s_piecewise`'s signature/`upper` default — it would silently
+  break all three modules' reference scoring.
+- **`range_residual_free(pred)` returns a FRACTION-of-relevant-bound residual**
+  (0.0 inside the range, else distance-to-near-boundary over that boundary),
+  whereas phase43's `range_residual` returns PERCENT of the nominal reference.
+  They have different units — don't treat them as interchangeable when
+  comparing H43c and H46c numbers.
+- **The closing-negative is the shape/λ-power-law mismatch**, not a reference
+  artifact: matching 2-loop QCD needs a layer base that FLATTENS above m_b
+  (required `phi^+0.82` in the m_b→M_Z segment) — the OPPOSITE sign of the
+  principled `phi^-(nf-3)/6`. Do not re-open the α_s golden-closure line with a
+  new reference choice; Phase 46 H46a-e already refuted free-refs, QCD-consistent
+  refs, and two free exponents.

@@ -22,6 +22,11 @@ the `opencode` repo in the parent dir is unrelated tooling.
   `README.md`, `main/cross_phase_synthesis.md`, and
   `main/synthesis_paper.md` (§8.1x sections). When adding a phase, update all
   three (and `notes/retrospective_cross_analysis.md` for cross-phase insights).
+- **Only `main/cross_phase_synthesis.md` has the complete phase table.**
+  `main/synthesis_paper.md`'s summary table is frozen at Phase 41 (it was never
+  extended past Phase 41); do not add rows there for Phases 42+. The paper's
+  §8.1x prose sections DO get new letters (8.1s, 8.1t, ...), and the paper's
+  older rows' status cells (e.g. row 34 "OCTET OPEN") get edited in place.
 
 ## Cross-phase numerical traps (learned the hard way)
 
@@ -58,11 +63,38 @@ the `opencode` repo in the parent dir is unrelated tooling.
   Python 3.14 (numba 0.66) and is the practical speedup. Sequential
   RGE/integration loops are not GPU-parallelizable anyway.
 
+## README phase sections are NOT strictly numeric
+
+The README's phase section order is not phase-number order: the "highlights"
+sections for the newest closed phases (Phase 44 BAO, Phase 45 octet) sit in a
+cluster between the Phase 36 and Phase 37 sections, while the strictly-ordered
+36→46 numeric sequence continues below. When adding a phase section, match the
+theme cluster (highlights vs numeric), not "after the last number".
+
+## Commit convention for a finished phase
+
+- Implementation: `feat: Phase N <title> (HNa-e, ...)` — one commit for the
+  code + outputs + tests + plan.
+- Phase-map sync: a separate `docs: sync phase map with Phase N (...)` commit.
+- Full suite must be green (`cd code && python -m pytest ../tests/ -q`, ~170s,
+  567+ tests) before the feat commit; the doc commit is a fast follow.
+
+## Scoring a "closure" / "irreducible residual" claim
+
+Always test the target against the credible **ranges** (`REF_RANGES`), not just
+single PDG numbers. A residual is only honestly "irreducible" if it persists
+with all references free inside their ranges (see Phase 46 H46c/H46d, which
+survives single- AND two-parameter scans).
+
 ## Windows / shell quirks
 
 - `git push` writes progress to stderr; in PowerShell this appears as a
   `RemoteException` but the push succeeds. Check `git log`/`git status` rather
   than the exit code.
+- **Multiline `python -c "..."` fails in PowerShell** ("ScriptBlock should only
+  be specified as a value of the Command parameter"). Put multi-statement
+  probes in a scratch `.py` (e.g. `code/_scratchN.py`) and run that; delete it
+  before committing. One-liners via `python -c` are fine.
 - File encodings: source files may contain non-ASCII (φ, °) — keep new files
   UTF-8. Some old `code/*.py` files have mojibake in comments (e.g.
   `phase13_dynamical_rg.py`) — don't "fix" them casually.
