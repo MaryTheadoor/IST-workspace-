@@ -407,6 +407,15 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **H58c — the verdict:** φ is an **RG (inflation) eigenvalue** of the golden substitution, *not* a static spectral dimension D_eff. Phase 51's negative is **rescored, not overturned** — it was right that φ is not D_eff, and the literature explains why (wrong RG).
 - **Net:** a reported negative is now mechanistically explained, and φ's home in the substrate's RG structure is identified exactly — the golden inflation eigenvalue.
 
+### Time-Crystal Dark Energy (Phase 59 — pre-registered, look-elsewhere-accounted audit of Plan 11)
+- **Origin:** the literature sweep returned Berti et al. 2026 ("Stratoverso"), already running *log-periodic* structure-growth modulation against DESI DR1 full-shape + DR2 — the arena for oscillatory dark energy has moved to DESI. Plan 11 (a *plan*, never a phase) got two corrections it never had: **pre-registered anchors** and **look-elsewhere accounting**.
+- **Pre-registered (before fitting):** ε₀ = α/φ² = 0.002787 (master-equation coupling) and Δ₀ = ln(φ) = 0.4812 (golden self-similarity period — the modulation is invariant under (1+z)→φ(1+z) ⟺ Δ = ln φ).
+- **H59a — strict amplitude anchor (ε = ε₀ fixed):** Δχ² = **+0.15** vs ΛCDM — the master-equation amplitude is *invisible* in 60 H(z) chronometers (needs ~9× better precision for 3σ).
+- **H59b — golden period anchor (Δ = ln φ fixed):** Δχ² = **+2.20**, ε = 0.106 ± 0.043, over **2.5 cycles** — the pre-registered golden period is the strongest, well-constrained hint (Plan 11's fitted Δ=1.54 spans only 0.79 cycles, which is why it was unconstrained).
+- **H59c — free-Δ scan with look-elsewhere:** best Δχ² = 3.06 (local p = 0.22), but **global p = 0.62** after the frequency-band trial count — Plan 11's "0.29σ tension cut" does **not** survive accounting; it is consistent with a chance fluctuation.
+- **H59d — detection forecast:** 3σ needs 8.9× smaller H(z) errors (for ε₀) or 2.1× (for ε = 0.136 at Δ = ln φ).
+- **Net:** the time-crystal dark-energy modulation is **plausible but unverified** — consistent with ΛCDM in the H(z) data after accounting. Its falsifiable golden form (Δ = ln φ, ε = α/φ², 2.5 cycles) is a pre-registered target for the DESI DR1/DR2 full-shape arena, not a detected signal.
+
 ### Variable Gravity
 - **Formula:** $G_{\text{eff}} \propto \rho_{\text{fold}}^{1/\varphi}$
 - **Prediction:** ~76% void lensing suppression
