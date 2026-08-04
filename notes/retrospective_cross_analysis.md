@@ -205,7 +205,20 @@ Each negative *located* the mechanism rather than killing it.
   knot fraction now emerges from the cycle, not from a prior cross-check)
   and GEOMETRIC (the counting is the lattice's two-gap consecutive-F
   partition), anchoring Phase 47's theta=1/2 as the parity source and Phase
-  51's 0.446 as the lattice signature.)
+  51's 0.446 as the lattice signature.
+  The heavy-flavor octet question is CLOSED (Phase 53: honest negative — the
+  golden partition does NOT extend to the charmed/bottom SU(3) analog
+  triplets. Charm split 0.9149 vs 1/phi^2 = 0.382 (139.5% off, 205 sigma),
+  bottom split 1.1067 (189.7% off) with the mass hierarchy INVERTED (Lambda_b
+  < Xi_b < Sigma_b, so the Xi_b - Sigma_b gap is negative). Failures are
+  177-512 sigma under PDG 2024 error propagation; the light anchor still
+  passes (0.11% off) in the same module. Interpretation: the partition is a
+  law of the EMERGENT near-degenerate light octet (diquark hyperfine vs
+  strangeness step balanced at 1/phi), erased by a hard non-emergent
+  heavy-quark mass (c/b — Higgs/Yukawa scale). This closes gap 6 of the
+  external analysis and NARROWS where phi lives: neither the bare quarks
+  (Phase 50) nor the heavy-flavor baryons (Phase 53) carry the partition —
+  only the emergent light octet does.)
 
 ---
 

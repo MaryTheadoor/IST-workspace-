@@ -362,6 +362,13 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **H52d — N-independence:** 0.446 across 210/360/480, reproducing Phase 51/23a.
 - **Net:** the Phase 48 SM counting is not an ad hoc mapping — it is the counting of the gold substrate's geometry (consecutive-F two-gap partition), realized through the 720° double-cover dynamics with the half-integer twist (Phase 47) as the generator. Closes the mechanistic loop: static count (48) → twist derivation (47) → true lattice (51) → dynamics (52).
 
+### Heavy-Flavor Octet: Does the Golden Partition Extend? (Phase 53 — closed, honest negative)
+- **Question (external gap 6, pre-registered):** Phase 45's golden partition $(\Sigma-\Lambda)/(\Xi-\Lambda) = 1/\varphi^2$ was tested only on the LIGHT octet. PDG gives precise masses for the SU(3) analog triplets $\{\Lambda_Q, \Sigma_Q, \Xi_Q\}$ (Q = c, b). If the partition is a universal flavor law, the analogs must obey it within ~0.2%.
+- **H53a — charm FAILS (139.5%, 205σ):** $(\Sigma_c-\Lambda_c)/(\Xi_c-\Lambda_c) = 0.9149$ vs $1/\varphi^2 \approx 0.3820$; gap $(\Xi_c-\Sigma_c)/(\Sigma_c-\Lambda_c) = 0.0930$ vs $\varphi$ (94.3% off, 491σ). Ordering Λ_c < Σ_c < Ξ_c still holds, so this is not a selection artifact.
+- **H53b — bottom FAILS (189.7%, 177σ) and INVERTS:** split $= 1.1067$; the hierarchy flips to Λ_b(5619.6) < Ξ_b(5794.4) < Σ_b(5813.1), so the gap $(Ξ_b-\Sigma_b)$ is *negative* (−0.0964 vs φ, 512σ). Structural (HQET): the Σ_b−Λ_b hyperfine splitting ~193 MeV now exceeds the Ξ_b−Λ_b step ~175 MeV.
+- **H53c — not an artifact:** failures are 177–512σ with PDG error propagation; the light anchor still passes (0.11% off) inside the same module.
+- **Net:** the golden partition is a law of the *emergent, near-degenerate light octet* — the diquark hyperfine split and strangeness step balanced at 1/φ. A hard heavy-quark mass (c/b, set at the Higgs/Yukawa scale, NOT emergent) injects an off-scale splitting that erases the balance. Same dividing line as Phase 50 (bare quarks don't carry it) — φ lives in the emergent light confined structures.
+
 ### Variable Gravity
 - **Formula:** $G_{\text{eff}} \propto \rho_{\text{fold}}^{1/\varphi}$
 - **Prediction:** ~76% void lensing suppression
