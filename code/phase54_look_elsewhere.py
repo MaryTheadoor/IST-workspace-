@@ -283,6 +283,23 @@ REGISTRY = [
          domain="coupling", outcome="DEMOTED",
          best_agreement="Phase 8's 46.98 is definitional; required M is 4.4% off",
          reason="see notes/IST_phi8_caution.md; no phase built"),
+    # Phase 55 -- photon dynamics (ARCHITECTURAL; numbers exact by construction)
+    dict(phase=55, relation="photon dispersion-free c", form="v_g = d(omega_0 + v|k|)/dk = v",
+         domain="photon propagation", outcome="SUPPORTED",
+         best_agreement="v_g = 1.00000 across omega_0 in {0..1.2}",
+         reason="universal speed independent of carrier; structural, not a fit"),
+    dict(phase=55, relation="photon achirality", form="parity-inversion = 0.000 (spin-1)",
+         domain="photon propagation", outcome="SUPPORTED",
+         best_agreement="0.000 on true Fibonacci-Klein lattice (N=210/360/480)",
+         reason="rungs cross the zero point symmetrically vs electron 0.446"),
+    dict(phase=55, relation="photon massless E=h*nu", form="E = omega_0, m = 0",
+         domain="photon propagation", outcome="SUPPORTED",
+         best_agreement="E = omega_0 exactly (slope 1.0); v_g const",
+         reason="energy linear in frequency, speed independent of energy"),
+    dict(phase=55, relation="single U(1) photon species", form="F_2 = 1",
+         domain="photon propagation", outcome="SUPPORTED",
+         best_agreement="one gapless branch, two shared helicity modes",
+         reason="rung binding does not create a second propagating species"),
 ]
 
 
