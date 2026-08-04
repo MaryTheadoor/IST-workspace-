@@ -1,0 +1,47 @@
+phase,relation,form,domain,outcome,best_agreement,reason
+1,bare-grid phi in Laplacian,gap ratios ~ phi,spectral,NEGATIVE,phi not local on bare raster grid,grid mode-locking; rebuilt in Phase 51
+2,alpha = 4/R_f^2,inverse-square in fiber radius,coupling,PARTIAL,form correct; scale open (M ~ phi^8),absolute scale of alpha not derived; see phi8 caution note
+3,proton/electron mass,master equation,mass,SUPPORTED,"proton 99.97%, electron 99.95%",retained; refined by Phases 33/49
+3,alpha_s from associator,alpha_s ~ alpha/phi^2,coupling,REJECTED,0.38 vs 0.118 (factor 3.2 gap),factor-3.2 gap; phasisity open until Phases 15/39
+3,neutron mass m_n = m_p(1+alpha/phi^2),alpha/phi^2 correction,mass,SUPPORTED,99.91%,corrected to factor-2 in Phase 28
+4,G_eff ~ fold density rho^1/phi,running exponent,gravity,SUPPORTED,D_eff crosses phi; pinning mechanism,retained; forecast evidenced in Phase 5
+6,golden = maximal anti-resonance,attractor,dynamical,SUPPORTED,Fibonacci persistence,mechanism found
+6,three-gap theorem ratio phi,"2 gap sizes, ratio phi at n=89",number-theoretic,DERIVED,rigorous,proved
+13,D_eff -> phi under dynamical RG,fixed point,spectral,SUPPORTED,pins at 1.655 within 2.3% of phi,dynamical (not static) RG required; Phase 12 negative
+12,static blocking RG converges,blocking RG,spectral,NEGATIVE,fails,static fails; dynamical required (Phase 13)
+15,alpha_s = phi^4 layer-count,4 golden layers,coupling,SUPPORTED,0.122 vs 0.118 (3%),GAP CLOSED
+15,"beta = phi^3, d=3",dimension falloff,gravity,SUPPORTED,2% from fitted 4.16,geometric
+25,"Psi = Wilson loop, flat limit -I",SU(2) holonomy,quantum,DERIVED,exact -I; unitarity 1e-16,v6.2 mechanism
+25,"static phi (D_eff=phi), rebuilt",spectral dimension,spectral,NEGATIVE,"D_eff=2.012, not phi",falsified statically; refined Phase 51
+49,m_p/m_e = 6 pi^5,N_c * Vol(SU(3)) = 3 * 2 pi^5,mass,DERIVED,99.9981% (1.9e-5),exact topological duality; structurally derived
+28,neutron factor-2 delta_n,c = 3/2 - alpha/phi^6,mass,DERIVED,0.02 sigma (c 1.4995935),half-integer Klein meridian quantization
+29,factor 2 = spin double-cover,theta=1/2,mass,DERIVED,ratio 0.5 matches odd-ell analytic,720 deg double cover; 2 traversals
+31,Koide Q = 2/3 via pi/2,theta=1/2 -> pi/2 phase,mass,SUPPORTED,Q=2/3 at 0.0009%,3 generations = three 120 deg offsets
+32,"heavy (c,b,t) Koide",Q ~ 2/3,mass,CONSISTENT,0.6696 (+0.45%),edge of pole-mass systematics; not confirmed
+32,"light (u,d,s) Koide",Q ~ 2/3,mass,NEGATIVE,"-15%, broken",pi/2 survives only where topological mass dominates
+33,twist-dependent associator,Xi_eff = 1 - theta,mass,SUPPORTED,p/e 99.95%; neutron 0.02 sigma,framework correction; reduces to original at theta=0
+34,decuplet E-ladder m = (19/4)E base,m = [4 + (k/2)f]E,mass,SUPPORTED,decuplet <= 0.27%,f_Klein = 3/2; 4 = double cover
+35,19/4 = double-cover derivation,N = 4 + (1/2)f,mass,DERIVED,19/4 derived; decuplet <= 0.29%,half-twist = spin-1/2 = theta=1/2
+34,octet on E-ladder,octet coefficients,mass,NEGATIVE,negative (mixing not clean),octet not an E-ladder; resolved as golden partition in Phase 45
+36,crystallization D(z): 3->2,dimensional,cosmological,SUPPORTED,CMB decisive: D->2 at recombination 985 sigma off; D~3 at obs z,crystallization completes before recombination
+37,force couplings on golden harmonics,em/weak/strong ladders,coupling,NEGATIVE,em/weak ~ phi^3 (2.3%) only; others 19-22% off,"golden harmonics live in MASS spectrum, not bare couplings"
+38,alpha_s(E) = (1/phi^2) phi^-n(E),mass -> coupling,coupling,SUPPORTED,"M_Z 3.1%, m_tau 1.3%",STRONG supported; per-force ladder partial
+39,principled f(n_f) = phi^-(n_f-3)/6,flavor threshold,coupling,PARTIAL,"improves m_t 2.7%, m_tau 2.0%; no single rule fits all 4","threshold confirmed, closure open (Closed 42-46)"
+40,"E(a,b) = -cos(a-b) -> CHSH 2.83",shared substrate,quantum,SUPPORTED,"S=2.83 (Tsirelson), LHV capped 2.00",EPR resolved as mechanism
+41,collapse as entropic crystallization,phase transition,quantum,SUPPORTED,"entropy drops 6%, golden coherence 0.86, unitarity 0.0","collapse dynamical, strict unitarity"
+42,alpha^-1 = 360/phi^(2+alpha),self-referential fixed point,coupling,DEMOTED,0.0075% BUT fails all four robustness checks,"non-unique root, base-unspecific 0.09% basin, unit-fragile, 14 k-values"
+43,2-loop golden closure,"b1 cast, full-curve RGE",coupling,NEGATIVE,"m_b closes +0.75% but M_Z -42%, m_t -76%",irreducible m_b->M_Z slope conflict
+46,reference-level fix of alpha_s closure,any legitimate reference set,coupling,NEGATIVE,all four ref choices leave m_b/M_Z OUT,"power-law-vs-log shape mismatch, reference-irreducible"
+44,BAO ruler discriminates crystallization,DESI DR1 ruler,cosmological,NEGATIVE,flat z_c basin; joint dchi^2 = -4.6,confirms Phase 36; discriminators at higher z
+45,octet (Sig-Lam)/(Xi-Lam) = 1/phi^2,golden partition,mass,SUPPORTED,0.108% off 1/phi^2; but see H54b (13/34 at 0.0067%),family-recall: needs H54b Fibonacci-rational caveat
+45,(Xi-Sig)/(Sig-Lam) = phi,golden gap ratio,mass,SUPPORTED,0.175% off phi,same partition re-expressed
+47,theta = 1/2 from Z2->U(1) embedding,holonomy W=-1 -> e^i pi,topological,DERIVED,"exact, parameter-free",load-bearing derivation
+48,stable-knot fraction = 1/34,"1/F_9, F1..F9 mapping",counting,SUPPORTED,1/34 ~ 2.94% vs empirical 3.13% +/- 0.48%,structural conjecture; least-constrained mapping
+48,boson/fermion ratio = F_7/F_6 = phi approx,F_7/F_6 = 13/8,counting,SUPPORTED,1.625 ~ phi,consecutive-F ratio
+50,"bare (u,d,s) golden partition",(m_d-m_u)/(m_s-m_u) = 1/phi^2,mass,NEGATIVE,0.0275 (92.8% off); RG-invariant,"partition is for bound-state knots, not bare quarks"
+51,D_eff = phi on true incommensurate lattice,spectral dimension,spectral,NEGATIVE,"D_eff ~ 2.2, never phi","phi = self-similarity (KKT trace map) + twist, not dimension"
+52,consecutive-F two-gap partition,"N -> (F_k-1, F_k-2)",counting,SUPPORTED,55->21/34 ... 377->144/233 exact,geometric substrate of Phase 48 counting
+52,parity fraction 0.446 (Klein vs 0.000 torus),theta=1/2 generator,topological,SUPPORTED,0.446 N-independent,matches Phase 23a/51
+53,charm octet golden partition,(Sig_c-Lam_c)/(Xi_c-Lam_c) = 1/phi^2,mass,NEGATIVE,"0.9149 (139.5% off, 205 sigma)",partition is light-octet specific
+53,bottom octet golden partition,(Sig_b-Lam_b)/(Xi_b-Lam_b) = 1/phi^2,mass,NEGATIVE,1.1067 (189.7% off); ordering inverted,hard non-emergent heavy mass erases balance
+2 phi8,magnification M = phi^8,M from R_f,coupling,DEMOTED,Phase 8's 46.98 is definitional; required M is 4.4% off,see notes/IST_phi8_caution.md; no phase built
