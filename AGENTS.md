@@ -71,13 +71,57 @@ cluster between the Phase 36 and Phase 37 sections, while the strictly-ordered
 36→46 numeric sequence continues below. When adding a phase section, match the
 theme cluster (highlights vs numeric), not "after the last number".
 
-## Commit convention for a finished phase
+## Version control & backup protocol
 
-- Implementation: `feat: Phase N <title> (HNa-e, ...)` — one commit for the
-  code + outputs + tests + plan.
-- Phase-map sync: a separate `docs: sync phase map with Phase N (...)` commit.
-- Full suite must be green (`cd code && python -m pytest ../tests/ -q`, ~170s,
-  567+ tests) before the feat commit; the doc commit is a fast follow.
+**GitHub is the backup, not just the remote.** The local repo is the working
+copy; GitHub (`MaryTheadoor/IST-workspace-`) is the disaster-recovery copy.
+Treat them as co-equal and keep them in tight sync.
+
+### Push discipline
+
+- **Push after every finished phase** (both the `feat:` and `docs:` commits).
+  Do not let more than 2–3 commits accumulate locally before pushing.
+- **Push after any paper/doc update** that represents meaningful work
+  (section additions, phase-map syncs, dev-log entries).
+- **Never end a work session without pushing.** If you're about to stop,
+  check `git status` and `git log origin/main..HEAD` — if there are
+  unpushed commits, push them.
+- **Incremental beats batch.** It is better to push small, frequent updates
+  than to let 27 commits pile up (the lesson from the June→August drift).
+
+### Protocol (per phase)
+
+```
+1. Run full test suite — green
+2. git add + commit feat: Phase N ...
+3. git push origin main          ← push the feat commit immediately
+4. git add + commit docs: sync phase map ...
+5. git push origin main          ← push the docs commit immediately
+```
+
+### What counts as "push-worthy"
+
+- Any `feat:` commit (new phase code + tests + outputs)
+- Any `docs:` commit (phase-map sync, paper updates, dev-log)
+- Any `fix:` commit (bug fixes, test corrections)
+- AGENTS.md updates (like this protocol)
+
+### What does NOT need an immediate push
+
+- Scratch files (`code/_scratchN.py`) — these should be deleted before commit
+- Uncommitted WIP within a phase — push when the phase is done
+
+### Verifying sync
+
+```powershell
+# Check how far ahead local is
+git log origin/main..HEAD --oneline
+
+# Check remote tracking
+git status    # should say "up to date with 'origin/main'"
+```
+
+If `git log origin/main..HEAD` shows more than 3 commits, push immediately.
 
 ## Scoring a "closure" / "irreducible residual" claim
 
