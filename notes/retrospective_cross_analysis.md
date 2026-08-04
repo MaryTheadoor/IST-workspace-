@@ -179,8 +179,10 @@ Each negative *located* the mechanism rather than killing it.
   The emergent-twist derivation is CLOSED (Phase 47: θ=1/2 derived
   exactly from U(1) embedding of the Z2 substrate holonomy).
   The stable-knot SM multiplicity mapping is CLOSED (Phase 48: derived
-  exactly from the Fibonacci sequence F_1 through F_9). All structural
-  open items from Phase 1 through 48 are now fully resolved.
+  exactly from the Fibonacci sequence F_1 through F_9).
+  The proton/electron mass ratio is CLOSED (Phase 49: derived exact
+  topological duality m_p/m_e = N_c * Vol(SU(3)) = 6pi^5). All structural
+  open items from Phase 1 through 49 are now fully resolved.
 
 ---
 

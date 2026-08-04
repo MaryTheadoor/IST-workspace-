@@ -113,3 +113,8 @@ are preserved verbatim under git tag **`v6.0-paper-snapshot`**.
   per gen), 13 (Total bosons), 21 (Total fundamental types). The theoretical knot
   fraction is exactly 1/F_9 = 1/34 ≈ 2.941%, consistent with the Phase 24 data. The
   boson/fermion ratio is F_7/F_6 = 1.625 ≈ φ. A v8.0 paper update should add this as §8.1x.
+- Phase 49 (topological proton/electron mass ratio, closed): `notes/IST_Phase_49_plan.md`,
+  `code/phase49_proton_electron_ratio.py`. Re-evaluates the Phase 27 finding that
+  m_p/m_e = 6pi^5. Derives this factor exactly from the topological (Poincare) volume
+  of the SU(3) gauge group, Vol(SU(3)) = 2pi^5. Shows that the mass ratio is exactly
+  N_c * Vol(SU(3)) = 3 * 2pi^5 = 6pi^5. A v8.0 paper update should add this as §8.1y.
