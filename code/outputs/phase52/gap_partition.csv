@@ -1,0 +1,8 @@
+N,n_gap_sizes,gap_counts,consecutive_fibonacci
+55,2,"[21, 34]",True
+89,2,"[34, 55]",True
+144,2,"[55, 89]",True
+233,2,"[89, 144]",True
+377,2,"[144, 233]",True
+64,2,"[59, 5]",False
+144,2,"[139, 5]",False
