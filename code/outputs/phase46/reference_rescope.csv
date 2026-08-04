@@ -1,0 +1,9 @@
+hyp,model,m_tau,m_b,M_Z,m_t,note
+H46a,"principled, m_t=0.090",-2.01%,+15.93%,-6.75%,-2.18%,RMS=8.78% (baseline)
+H46a,"principled, m_t=0.108",-2.01%,+15.93%,-6.75%,-18.48%,reference fix FAILS (RMS worsens)
+H46b,principled (QCD-consistent),+3.21%,+14.07%,-6.76%,-18.20%,RMS=12.10%
+H46b,exact b0 (QCD-consistent),+3.24%,+14.09%,-6.74%,-18.75%,RMS=12.31%
+H46b,b1 cast (QCD-consistent),+0.94%,-0.87%,-42.10%,-79.73%,RMS=45.08%
+H46b,scan best a=0.148 (QCD-consistent),+3.29%,+14.49%,-5.62%,-16.52%,RMS=11.46%
+H46c,free-ref single-exp (a=0.110),0.3241,0.2578,0.1141,0.0935,"m_b, M_Z OUT even with free references"
+H46d,"two-exp (a=0.110,b=0.000)",0.3241,0.2578,0.1141,0.1017,two free knobs still do not close m_b/M_Z
