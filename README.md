@@ -376,6 +376,15 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **H54b — octet specificity audit:** the octet split r = 0.382379 is fit **16× tighter by 13/34 = F₇/F₉ (0.0067%)** than by 1/φ² (0.108%). 12 of the 13 matching constants are consecutive-Fibonacci convergents of 1/φ² — the *same* golden family, and exactly Phase 52's consecutive-F substrate.
 - **Net (refinement, not negation):** Phase 45 should be read as "the octet split sits in the golden-Fibonacci family (limit 1/φ²)", not "1/φ² uniquely beats every rational" — Phase 45 tested competing *bases*, not competing *Fibonacci rationals*. H54b makes that blind spot explicit and public; it is consistent with Phase 52's geometric substrate.
 
+### The Photon as a Dual-Mode Wave Function (Phase 55 — photon dynamics, first)
+- **Question:** the repo had NO model of photon propagation — only defaults ("no knot → v=c, m=0" in `ist_toolkit_v2.py`; "information knot, I_topo=1" in `emc2_in_IST.md`; F₂=1 in the Phase 48 count). What is the substrate-native dynamics of the photon?
+- **Model (DNA double helix):** the photon is a dual-mode wave function ψ=(E₊, E₋) propagating across **both sides** of the non-orientable manifold. Two strands = the two helicity (circular-polarization) modes, each the peak of the amplitude propagation; the connecting **rungs cross the zero point** (the twist seam) symmetrically.
+- **H55a — dispersion-free translation:** shared group velocity v_g = 1.00000, independent of carrier frequency ω₀ ∈ {0,…,1.2} → universal c (the photon's speed is not set by its energy). Rung-lock 0.0000 — the helix translates rigidly, never unbinding (non-dispersing compound).
+- **H55b — achiral spin-1:** parity-inversion fraction **EXACTLY 0.000** on the true Fibonacci-Klein lattice vs the electron knot's **0.446** (Phase 52 H52c). Symmetric rung-crossing makes sheet-swap (parity) a symmetry → no chirality flip over the 4-tick cycle.
+- **H55c — massless, E = h·ν:** carried energy E = ω₀ exactly (linear, slope 1.0) while v_g stays constant as energy is added → m = 0.
+- **H55d — single species F₂=1:** one gapless branch at the carrier wavenumber; the two helicity modes share it (one U(1) photon, no second propagating species).
+- **Net:** the photon's four defining facts — universal c, achirality, massless E=hν, single species — are now each measured on the framework's own substrate. The 0.000-vs-0.446 parity-inversion contrast is the substrate's spin-statistics generator: fermions cross the seam once (spin-1/2 double-cover), gauge fields straddle it (spin-1).
+
 ### Variable Gravity
 - **Formula:** $G_{\text{eff}} \propto \rho_{\text{fold}}^{1/\varphi}$
 - **Prediction:** ~76% void lensing suppression

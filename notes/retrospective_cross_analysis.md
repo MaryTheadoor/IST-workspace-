@@ -231,6 +231,28 @@ Each negative *located* the mechanism rather than killing it.
   Phase 45 tested bases, not competing Fibonacci rationals. This is a
   refinement consistent with Phase 52, and it makes the look-elsewhere
   blind spot public.)
+  The photon-propagation question is OPENED (Phase 55: the FIRST phase to
+  model photon DYNAMICS — the repo previously had only defaults ("no knot ->
+  v=c, m=0"; "information knot, I_topo=1"). Model: the photon is a dual-mode
+  wave function psi=(E_+, E_-) propagating across both sides of the
+  non-orientable manifold — a DNA double helix where the two helicity strands
+  (peaks of the amplitude propagation) are tied by rungs that cross the zero
+  point (the twist seam) symmetrically. Results: H55a v_g=1.00000 independent
+  of carrier omega_0 (universal c, dispersion-free); rung-lock 0.0000 (the
+  helix translates rigidly, non-dispersing). H55b parity-inversion EXACTLY
+  0.000 (achiral spin-1) vs the electron knot's 0.446 — the two-strand photon
+  is symmetric under sheet-swap, the single-strand fermion is not. H55c E=w_0
+  exactly (E=h*nu linear) with v_g constant => m=0. H55d one gapless branch,
+  two shared helicity modes => single U(1) species F_2=1.
+  Cross-phase: Phase 55 completes the spin-statistics generator started by
+  Phase 52 — fermions cross the seam once (0.446, spin-1/2 double-cover),
+  gauge fields straddle it (0.000, spin-1). The 0.446-vs-0.000 contrast is
+  one substrate, two seam geometries. This also sharpens gap 7: the dual-mode
+  photon's structured rung self-interaction is the non-QED feature a 4WM
+  tabletop probe could discriminate. Honest scope: the measured numbers
+  (v_g=1.0, E=omega_0, 0.000) are exact by construction of the linear
+  dispersion; the phase's value is architectural — first concrete photon
+  dynamics, superseding the placeholder defaults.)
 
 ---
 
