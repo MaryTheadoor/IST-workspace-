@@ -64,3 +64,7 @@ phase,relation,form,domain,outcome,best_agreement,reason
 59,golden period anchor gives a hint,"Delta = ln(phi) fixed; eps = 0.106 +- 0.043",cosmology,PARTIAL,+2.20 vs LCDM over 2.5 cycles,pre-registered golden period is well-constrained (fitted 1.54 spans only 0.79 cycles)
 59,free-Delta oscillation not significant,"best dchi2 = 3.06; local p = 0.22",cosmology,NEGATIVE,global p = 0.62 (trial count N=4),Plan 11 "0.29 sigma tension cut" is a chance fluctuation
 59,golden self-similarity period = ln(phi),Delta = ln(phi) for (1+z)->phi(1+z) invariance,cosmology,DERIVED,modulation invariant under golden rescaling,sets the pre-registered DESI-era target period
+60,physical free fit gives no oscillation,"eps0 >= 0; free eps0 -> 0, dchi2 ~ 0",cosmology,NEGATIVE,dchi2 < 2 on full joint data (60 H(z)+1701 SNe+5 BAO),oscillation absent under physical amplitude constraint
+60,no-sign free fit reproduces 4sigma claim,"eps0 < 0 allowed; dchi2 = +39, eps0 = -0.098",cosmology,NEGATIVE,"eps0<0 = hidden phase shift pi; unacknowledged dof in the claim","the claimed '4sigma' is the anti-phase artifact"
+60,pre-registered joint phi3 invisible,"eps0=alpha/phi^2, Delta=ln phi, beta=phi^3; dchi2 = +1.0",cosmology,NEGATIVE,nearly identical to LCDM,strict derived oscillation adds nothing to joint data
+60,amplitude bridge fails,"eps_eff(phi^3) = 0.032 at z~0.78; gap x3.3 to Phase 59 eps~0.106",cosmology,NEGATIVE,"(1+z)^phi^3 at z~0.78 gives 0.032; not 0.106",e-fold running with beta=phi^3 does not close alpha/phi^2 -> 0.106 gap

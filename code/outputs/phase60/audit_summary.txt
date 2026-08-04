@@ -1,0 +1,30 @@
+======================================================================
+PHASE 60 - AUDIT OF THE '4-SIGMA' OSCILLATORY-DE HEADLINE
++ amplitude bridge (Phase 59 eps ~ 0.1 vs alpha/phi^2)
+======================================================================
+
+LCDM : chi2 = 948.5, H0 = 73.58, Om = 0.253
+FREE : chi2 = 948.5, dchi2 = -0.0 (claim: +22.1)
+       H0 = 73.58 (claim 71.4), eps0 = 0.00000, Delta = 0.613, beta = 0.697 (claim ~4.16)
+       local p (3 dof) = 1.0000
+FREE_NOSIGN (eps0 sign free = hidden phase): chi2 = 909.4, dchi2 = +39.1
+       H0 = 75.09, eps0 = -0.09778 (sign -1), Delta = 0.389, beta = -2.000
+
+prereg_phi3: chi2 = 947.5, dchi2 = +1.03 (eps0=0.00279, Delta=0.4812, beta=4.236)
+prereg_invphi: chi2 = 950.7, dchi2 = -2.20 (eps0=0.00279, Delta=0.4812, beta=0.618)
+
+H60c - LOOK-ELSEWHERE (Delta-profile over joint data)
+----------------------------------------------------------------------
+  best Delta = 5.000, best dchi2 = +11.68
+  local p (2 dof) = 0.0029, trials = 4, GLOBAL p = 0.0116
+  no-sign (anti-phase) profile: best Delta = 1.385, best dchi2 = +39.15, GLOBAL p = 0.0000
+
+  beta profile: best beta = 0.10, chi2 = 948.5, dchi2_vs_free = -0.0
+
+H60d - AMPLITUDE BRIDGE
+----------------------------------------------------------------------
+  hz: zbar = 0.780 | eps_eff(phi^3) = 0.03206 | eps_eff(1/phi) = 0.00398 | fitted = 0.00000
+  sne: zbar = 0.219 | eps_eff(phi^3) = 0.00645 | eps_eff(1/phi) = 0.00315 | fitted = 0.00000
+  Phase 59 golden-period eps = 0.1064; master-equation eps0 = 0.00279 (gap x38.2)
+
+Interpretation in notes/IST_Phase_60_plan.md and paper 8.1ai.
