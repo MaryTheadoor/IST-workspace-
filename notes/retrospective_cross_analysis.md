@@ -187,6 +187,14 @@ Each negative *located* the mechanism rather than killing it.
   negative — the bare quarks do NOT golden-partition at any scale; the
   partition is an emergent property of the hadronic bound states, refining
   where phi lives).
+  The Fibonacci Laplacian question is CLOSED (Phase 51: the true
+  incommensurate lattice has an EXACT KKT trace map + invariant (2e-13,
+  5e-10), fragments as a Cantor set (359 bands vs 2 rational), carries the
+  Klein twist fraction 0.446 exactly (N-independent), yet its spectral RG
+  D_eff ~ 2.2 is NEVER phi. This refines the Phase 1 static-φ falsification:
+  the raster grid hid the incommensurate gap structure, but even the true
+  lattice does not put phi in the spectral dimension — phi lives in the
+  self-similarity (trace map) and the topology (twist), not the dimension).
 
 ---
 

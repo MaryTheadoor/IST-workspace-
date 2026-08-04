@@ -1,6 +1,10 @@
 # IST Phase 51 — The Fibonacci Laplacian (Rebuilding Phase 1's Raster Spectral Analysis on the True Incommensurate Lattice)
 
-**Status:** IN PROGRESS
+**Status:** COMPLETE (H51a: KKT trace map + invariant to machine precision, Cantor
+fragmentation 359 bands vs 2 for the rational control. H51b: Fibonacci-Klein parity-inversion
+fraction 0.446, N-independent and matching Phase 23a, while the raster grid drifts with N.
+H51c: spectral RG D_eff stays ~2.2, never φ — the honest negative that even on the true
+incommensurate lattice, φ is not a static spectral dimension)
 **Predecessor:** Phase 1 (`code/phase1_klein_laplacian.py`, `phase1_rg_flow.py`) established the raster
 (4-regular twisted-torus grid) Laplacian and **falsified** a static φ invariant: gap ratios follow the
 rational $4p^2+\ell^2$ ladder, RG preserves $D_{eff}=2$, never $\varphi$. The constraint document

@@ -578,6 +578,18 @@ Phase 45 showed the Baryon Octet (bound states of light quarks) obeys the Golden
 
 **Honest conclusion.** The Golden Partition is a structural law of the hadronic *bound states* (the topological knots that are the physical particles), not of the bare, scheme-dependent quarks. This is the same dividing line Phase 37 drew (golden harmonics live in the masses, not the couplings) and Phase 46 reinforced (the golden power-law cannot reproduce bare QCD running). φ is a property of the *emergent, confined* substrate excitations, not the perturbative degrees of freedom — exactly where the framework claims it lives.
 
+### 8.1 The Fibonacci Laplacian (Phase 51): The True Incommensurate Substrate Spectrum
+
+Phase 1 falsified a static-φ invariant in the substrate Laplacian — but on a *commensurate* (rational) raster grid whose spectral circle carries the number-theoretic $4p^2+\ell^2$ ladder and unavoidable mode-locking. The constraint document `notes/discrete_substrate_not_raster.md` prescribed the correct cellulation: the incommensurate golden-angle (Fibonacci) lattice, with the Klein non-orientability kept as a global parity constraint. Phase 51 rebuilds Phase 1's analysis on that true lattice in 1D and 2D.
+
+**H51a — The 1D Fibonacci chain is exactly solvable (Kohmoto–Kadanoff–Tang).** The transfer-matrix traces over the Fibonacci word satisfy the 3-term map $x_{n+1} = 2 x_n x_{n-1} - x_{n-2}$ to 2e-13 (machine precision) and the KKT (Fricke) invariant $x_{n+1}^2+x_n^2+x_{n-1}^2-2x_{n+1}x_n x_{n-1}$ is conserved to 5e-10 — a *provably exact* golden self-similarity in the static spectrum. The spectrum fragments as a Cantor set: 359 distinct bands at generation 14, while the periodic (rational) control stays at 2 bands. This is the incommensurate anti-resonant structure — the static spectral analogue of Phase 6's dynamical gap-rigidity persistence.
+
+**H51b — The 2D Klein lattice carries the topological twist as an exact fraction.** On the Klein bottle, the golden-angle Fibonacci lattice gives a parity-inversion (twist) fraction 0.446, independent of lattice size and matching the Phase 23a analytic value, while the raster grid's parity fraction *drifts* 0.449 → 0.462 with N (grid mode-locking). The non-orientability is an emergent, scale-invariant property of the true lattice, not a grid artifact.
+
+**H51c — Spectral RG honest negative.** Coarse-graining the 2D Laplacian by Galerkin projection onto the low-energy eigenspace keeps $D_{\rm eff} \approx 2.2$ (r² ≈ 0.995) across all scales — **never φ**. Even on the true incommensurate lattice, φ is not a static spectral dimension. The golden structure lives in the Cantor gap hierarchy (H51a) and the topological twist fraction (H51b), not in $D_{\rm eff}$.
+
+**Honest conclusion.** Phase 51 settles the "was Phase 1's negative a raster artifact?" question with a refined negative. The raster grid did hide the incommensurate gap structure — but the true lattice still does not make $D_{\rm eff}=\varphi$. φ is not the *dimension* of the substrate spectrum; it is its *self-similarity* (the exact KKT trace map) and its *topology* (the twist). This completes the picture Phases 37, 46, and 50 drew: φ lives in the structure that survives — the fractal gap hierarchy and the parity — not in any single static observable.
+
 ### 8.2 Observable Predictions
 
 1. **Oscillatory DE at 4σ** over ΛCDM in current data. DESI DR2 and Euclid DR1 will sharpen this.

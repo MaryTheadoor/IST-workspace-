@@ -347,6 +347,13 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **H50c — Koide space fails too:** $0.084$ vs $0.382$ in $\sqrt{m}$ space.
 - **Net:** the Golden Partition is a law of the *bound-state topological knots* (the physical hadrons), not of the bare, scheme-dependent quarks — the same dividing line as Phase 37 (golden in masses, not couplings) and Phase 46 (golden power-law fails on bare QCD). φ lives in the emergent confined excitations.
 
+### Fibonacci Laplacian (Phase 51 — the true incommensurate substrate spectrum)
+- **Question:** Phase 1 falsified static-φ on a *rational* raster grid ($4p^2+\ell^2$ ladder, unavoidable mode-locking). `discrete_substrate_not_raster.md` prescribed the correct cellulation: the incommensurate golden-angle (Fibonacci) lattice. What does the true substrate spectrum look like?
+- **H51a — EXACT 1D (Kohmoto–Kadanoff–Tang):** the transfer-matrix trace map $x_{n+1}=2x_n x_{n-1}-x_{n-2}$ holds to 2e-13 and the KKT (Fricke) invariant to 5e-10 — provably exact golden self-similarity. The spectrum fragments as a **Cantor set**: 359 bands at gen 14 vs 2 for the periodic rational control.
+- **H51b — topological twist is exact:** the Fibonacci lattice on the Klein bottle gives parity-inversion fraction **0.446, N-independent** (matching Phase 23a), while the raster grid's fraction drifts 0.449→0.462 with N (grid mode-locking).
+- **H51c — spectral RG honest negative:** Galerkin coarse-graining keeps $D_{\rm eff} \approx 2.2$ (r²≈0.995) at every scale, **never φ**.
+- **Net:** "was Phase 1's negative a raster artifact?" → refined no. The raster hid the incommensurate gap structure, but even the true lattice does not make $D_{\rm eff}=\varphi$. φ is not the substrate's spectral *dimension* — it is its *self-similarity* (exact KKT trace map) and its *topology* (the twist). Same line as Phases 37/46/50.
+
 ### Variable Gravity
 - **Formula:** $G_{\text{eff}} \propto \rho_{\text{fold}}^{1/\varphi}$
 - **Prediction:** ~76% void lensing suppression

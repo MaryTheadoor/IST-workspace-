@@ -125,3 +125,12 @@ are preserved verbatim under git tag **`v6.0-paper-snapshot`**.
   scale-independent, and fails in Koide sqrt-space too. Conclusion: the Golden Partition is
   an emergent property of hadronic bound-state knots, not bare quarks — refining where φ
   lives (with Phase 37 and Phase 46). A v8.0 paper update should add this as §8.1z.
+- Phase 51 (Fibonacci Laplacian): `notes/IST_Phase_51_plan.md`,
+  `code/phase51_fibonacci_laplacian.py`. Rebuilds Phase 1's raster spectral analysis on the
+  true incommensurate (golden-angle / Fibonacci) lattice. 1D KKT exact: trace-map recurrence
+  x_{n+1}=2x_n x_{n-1}-x_{n-2} to 2e-13, invariant conserved to 5e-10, Cantor fragmentation
+  359 bands vs 2 (rational control). 2D Klein: Fibonacci parity-inversion fraction 0.446,
+  N-independent (matches Phase 23a), vs raster drift 0.449→0.462. Spectral RG D_eff ~2.2
+  never φ (honest negative). Conclusion: φ is the substrate spectrum's self-similarity and
+  twist, not its dimension — refines the Phase 1 static-φ falsification. A v8.0 paper update
+  should add this as §8.1.
