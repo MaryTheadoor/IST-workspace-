@@ -385,6 +385,13 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **H55d — single species F₂=1:** one gapless branch at the carrier wavenumber; the two helicity modes share it (one U(1) photon, no second propagating species).
 - **Net:** the photon's four defining facts — universal c, achirality, massless E=hν, single species — are now each measured on the framework's own substrate. The 0.000-vs-0.446 parity-inversion contrast is the substrate's spin-statistics generator: fermions cross the seam once (spin-1/2 double-cover), gauge fields straddle it (spin-1).
 
+### The 4WM Discriminator: Dual-Mode Vacuum vs QED (Phase 56 — gap 7 opened)
+- **Question (external gap 7):** Zhang et al. (2025) simulate quantum-vacuum four-wave mixing (Heisenberg–Euler 3D solver). If IST's photon self-interaction predicts a specific 4WM signature QED lacks, that is table-top falsifiability — the one place IST contacts a laboratory system.
+- **The discriminator is parity.** QED's vacuum has two quartic invariants with the canonical one-loop parity-odd ratio **c₂/c₁ = 7/4** (the (F·F̃)² = (E·B)² pseudo-scalar, source of vacuum birefringence / 4WM polarization rotation). Phase 55's **achiral** dual-mode photon (parity-inversion 0.000) predicts the parity-odd channel is **forbidden**: **IST c₂/c₁ = 0.0000 vs QED 1.7500** (H56a). A single polarization-rotation / ellipticity 4WM measurement separates the models.
+- **H56b — golden-weighted magnitude:** the surviving parity-even channel carries the substrate's golden charge scale: c₁ = α/φ² (φ²/α ≈ 358.8), giving IST/QED coupling ≈ **52.3** = 1/(αφ²), 4WM signal ≈ **2.7×10³** in the allowed channel.
+- **H56c — universal c:** the 4WM output peak propagates at v_g = 1.000000 (dual-mode H55a), consistent with Zhang et al.'s observed ~0.99c.
+- **Net:** gap 7 now has a quantitative, discriminating, lab-testable prediction — the parity-odd 4WM channel is exactly zero for the dual-mode vacuum, mirror-image to the electron's 0.446. Not a new free number: it is Phase 55's geometry pushed into the vacuum.
+
 ### Variable Gravity
 - **Formula:** $G_{\text{eff}} \propto \rho_{\text{fold}}^{1/\varphi}$
 - **Prediction:** ~76% void lensing suppression

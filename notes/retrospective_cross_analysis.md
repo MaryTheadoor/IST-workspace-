@@ -253,6 +253,24 @@ Each negative *located* the mechanism rather than killing it.
   (v_g=1.0, E=omega_0, 0.000) are exact by construction of the linear
   dispersion; the phase's value is architectural — first concrete photon
   dynamics, superseding the placeholder defaults.)
+  The 4WM/falsifiability question is OPENED (Phase 56: the dual-mode photon
+  of Phase 55 makes a quantitative table-top prediction that separates it from
+  the QED Heisenberg-Euler vacuum. QED's quartic vacuum has two invariants
+  with the canonical one-loop parity-odd ratio c2/c1 = 7/4 (the (F.F~)^2 =
+  (E.B)^2 pseudo-scalar, source of vacuum birefringence and 4WM polarization
+  rotation). The IST vacuum is parity-invariant (Phase 55 H55b achirality
+  0.000), so the parity-odd channel is FORBIDDEN: IST c2/c1 = 0.0000 vs QED
+  1.7500 (H56a) — a single polarization-rotation/ellipticity 4WM measurement
+  discriminates. H56b: the surviving parity-even channel is golden-weighted
+  alpha/phi^2 (scale phi^2/alpha ~ 358.8), IST/QED coupling ~52.3 = 1/(alpha
+  phi^2), signal ~2.7e3. H56c: output peak at universal c (1.000000),
+  consistent with Zhang et al.'s ~0.99c. H56d: appended to the Phase-54
+  registry (now 53 relations). Cross-phase: the 4WM predictions are NOT new
+  free numbers — they are Phase 55's dual-mode geometry pushed into the vacuum
+  polarization; the 0.000-vs-7/4 parity contrast mirrors the 0.000-vs-0.446
+  photon-vs-electron contrast. This closes the framework's least-contact
+  observation channel by turning gap 7 into a quantitative, discriminating,
+  lab-testable prediction.)
 
 ---
 
