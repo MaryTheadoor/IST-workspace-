@@ -245,7 +245,14 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Derived (Phase 35):** $m(S) = [4 + \tfrac{k}{2}f_{\text{Klein}}]E$, $k = 1,3,4,5,6$ — the **4 = the double-cover** (four plonk ticks of the 720° cycle), $f_{\text{Klein}} = 3/2$, and the nucleon's $(1/2)f = 19/4$ is now **derived, not empirical** (it's the half-twist / spin-1/2, the same $\theta = 1/2$ throughout the framework)
 - **Decuplet:** Δ, Σ*, Ξ*, Ω all to ≤0.29%
 - **The (3/2) = f_Klein:** the spin-3/2 decuplet sits one topological-factor step above the spin-1/2 nucleon
-- **Octet (honest):** $\Lambda-N \approx \tfrac{9}{10}E$ (0.47%), $\Xi-N \approx 2E$ (3.9%), but internal $\Sigma$-$\Lambda$ mixing prevents a single clean ladder — decuplet is the clean object
+- **Octet (closed, Phase 45):** $\Lambda$, $\Sigma$, $\Xi$ obey a **golden partition** — $\Sigma$ splits the $\Lambda \to \Xi$ interval at $1/\varphi^2$ (0.108%), so $(\Xi-\Sigma)/(\Sigma-\Lambda) = \varphi$ (0.175%). Parameter-free: $\Sigma = \Lambda + (\Xi-\Lambda)/\varphi^2$ → 0.007%, $\Xi = \Lambda + \varphi^2(\Sigma-\Lambda)$ → 0.017%. GMO sum rule holds (0.57%); base-specificity (G2) picks $1/\varphi^2$ uniquely. The octet is NOT an E-ladder — its clean law is the golden partition, vs the decuplet's clean E-ladder.
+
+### Baryon Octet: Λ–Σ Mixing as Golden Partition (Phase 45 — closed)
+- **Open item resolved:** Phase 34 left the octet "Λ–Σ mixing not clean"; Phase 45 shows the internal gaps are **golden-partitioned** by $\Sigma$: $(\Sigma-\Lambda)/(\Xi-\Lambda) = 1/\varphi^2$ (0.108%), $(\Xi-\Sigma)/(\Sigma-\Lambda) = \varphi$ (0.175%)
+- **Parameter-free predictions:** $\Sigma$ from $(\Lambda, \Xi)$ → 0.007%; $\Xi$ from $(\Lambda, \Sigma)$ → 0.017%
+- **Robustness (G2 frame):** `base_specificity` gives a 0.38% basin with $1/\varphi^2$ inside and uniquely best (competitors 3/8, 0.38, 5/13, 8/21, 0.39, 0.4 all worse)
+- **GMO anchor:** standard sum rule holds to 0.57% (known physics, re-verified)
+- **Honest framing:** the octet is NOT an E-ladder (Phase 34 confirmed) — it is the *second* clean SU(3) structure, with the golden partition as its law, complementing the decuplet's E-ladder
 
 ### Dimensional Crystallization (Phase 36 — CMB-refined)
 - **Hypothesis:** the expanding universe is the 3rd dimension crystallizing out of a 2D substrate (ice from a superfluid): $D(z) = 2 + [1+e^{(z-z_c)/w}]^{-1}$

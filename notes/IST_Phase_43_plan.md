@@ -100,10 +100,12 @@ number each, not the credible range.
 
 ## 7. Sequencing
 
-Phase 43 is complete. The standing open items remain: baryon octet Lambda-Sigma
-mixing; stable-knot -> SM multiplicity mapping. (Phase 44 completed the BAO
-sound-horizon test of Phase 36's crystallization: an honest negative — the DESI
-DR1 ruler does not break the H(z) degeneracy, D ~ 3 at observable z survives,
-discriminators remain at higher z.) (Phase 43 added one: whether a
-*reference-level* fix — the scheme-dependence of the m_t = 0.090 reference, vs
-2-loop QCD running 0.108 — re-scopes the closure target.)
+Phase 43 is complete. The standing open items remain: stable-knot -> SM
+multiplicity mapping. (Phase 44 completed the BAO sound-horizon test of Phase
+36's crystallization: an honest negative — the DESI DR1 ruler does not break
+the H(z) degeneracy, D ~ 3 at observable z survives, discriminators remain at
+higher z.) (Phase 45 completed the baryon octet Lambda-Sigma mixing: a golden
+partition of the Lambda->Xi interval — Sigma splits it at 1/phi^2, passing the
+robustness frame.) (Phase 43 added one: whether a *reference-level* fix — the
+scheme-dependence of the m_t = 0.090 reference, vs 2-loop QCD running 0.108 —
+re-scopes the closure target.)

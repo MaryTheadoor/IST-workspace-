@@ -1,6 +1,8 @@
 # IST Phase 45 — Baryon Octet: Λ–Σ Mixing as the Golden Partition
 
-**Status:** IN PROGRESS
+**Status:** COMPLETE — the golden partition CLOSES the octet (Σ predicted to
+0.007%, both splits < 0.2%, base-specificity 0.38% basin selects 1/φ²,
+GMO 0.57%)
 **Predecessor:** Phase 34 (`code/phase34_baryon_ladder.py`) — decuplet is the
 clean SU(3) equal-spacing E-ladder; the octet was left OPEN ("internal Λ–Σ
 mixing not captured by the simple E-ladder"). Phase 35 derived the decuplet

@@ -93,6 +93,7 @@ deviates from LCDM, the predicted distances shift and BAO sees it.
 ## 7. Sequencing
 
 Phase 44 is the immediate successor to Phase 36 called out in the Phase 43
-sequencing note. Standing open items after this: baryon octet Lambda-Sigma
-mixing; stable-knot → SM multiplicity mapping; the m_t reference-level rescope
-from Phase 43.
+sequencing note. Standing open items after this: stable-knot → SM multiplicity
+mapping; the m_t reference-level rescope from Phase 43. (The baryon octet
+Λ–Σ mixing item is COMPLETE as Phase 45: a golden partition of the Λ→Ξ
+interval by Σ, closing the Phase 34 open item.)

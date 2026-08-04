@@ -147,15 +147,22 @@ Each negative *located* the mechanism rather than killing it.
 **Consistent (observational, not confirmed):**
 - Heavy (c,b,t) Koide, dimensional crystallization before recombination.
 
+**Consistent (structural, octet CLOSED):**
+- Baryon octet (Phase 45): the Λ→Ξ interval is golden-partitioned by Σ —
+  (Σ−Λ)/(Ξ−Λ) = 1/φ² (0.108%), parameter-free Σ prediction at 0.007%, GMO
+  anchor 0.57%, base-specificity selects 1/φ² uniquely. Two clean SU(3)
+  laws: decuplet E-ladder + octet golden partition.
+
 **Honest negatives:**
 - Force couplings not golden-laddered; light-quark Koide broken; the
-  octet's Λ–Σ mixing unresolved; the clean golden closure of the α_s
+  octet's Λ–Σ mixing unresolved *until Phase 45* (now closed: golden
+  partition of the Λ→Ξ interval); the clean golden closure of the α_s
   flavor running remains open (Phase 43 localized the conflict to the
   m_b→M_Z slope, +31.5% too steep, irreducible under b0-only, b0+b1,
   both boundary conventions, and reference-systematics ranges).
 
 **Open (natural next targets):**
-- The octet's Λ–Σ mixing; the emergent-twist derivation; the clean golden
+- The emergent-twist derivation; the clean golden
   closure of the α_s flavor running (Phase 42 resolved the boundary
   convention; Phase 43 closed the dead-code b1 gap and pinned the residual
   to the m_b→M_Z slope, but no one-rule closure yet). The BAO
@@ -165,7 +172,8 @@ Each negative *located* the mechanism rather than killing it.
   shape delta +9.1 vs the model-independent D_H(0.51) anomaly +5.7σ/+5.6σ)
   and adds no discriminating power at z ≤ 1.5 — D ≈ 3 at observable z
   survives. The remaining discriminators are the BAO ruler and H(z) at
-  higher z.
+  higher z. The baryon octet Λ–Σ mixing item is CLOSED (Phase 45: golden
+  partition of the Λ→Ξ interval).
 
 ---
 

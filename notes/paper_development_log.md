@@ -80,3 +80,9 @@ are preserved verbatim under git tag **`v6.0-paper-snapshot`**.
   flat z_c basin (χ² 35–38), shape delta +9.1 vs the model-independent D_H(0.51)
   anomaly (+5.7σ/+5.6σ). Confirms D ≈ 3 at observable z; discriminators remain at
   higher z. A v8.0 paper update should note this in the Phase 36/§8.1l discussion.
+- Phase 45 (baryon octet, Λ–Σ golden partition): `notes/IST_Phase_45_plan.md`,
+  `code/phase45_baryon_octet.py`. Resolves the Phase 34 open octet: Σ golden-partitions
+  the Λ→Ξ interval — (Σ−Λ)/(Ξ−Λ) = 1/φ² (0.108%), parameter-free Σ prediction 0.007%,
+  Ξ from (Λ,Σ) 0.017%, GMO anchor 0.57%, base-specificity 0.38% basin. Two clean SU(3)
+  laws (decuplet E-ladder + octet golden partition). A v8.0 paper update should fold
+  this into the Phase 34/35 (§8.1j-k) discussion as the octet closure.

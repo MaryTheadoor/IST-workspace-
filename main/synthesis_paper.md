@@ -479,6 +479,28 @@ Phase 36 left an open discriminator: the H(z) chronometers (z < 2.36, ~10% error
 
 **Honest conclusion.** The BAO sound-horizon test is an honest negative that *confirms* Phase 36: the refined picture (crystallization before recombination, D ≈ 3 at all observable z) survives the standard ruler, and the ruler adds no discriminating power at z ≤ 1.5. The discriminators Phase 36 targeted — the BAO ruler at higher z and high-z H(z) — remain untested by current data, leaving the subtle-transition regime as the only remaining handle on the postulate.
 
+### 8.1u The Baryon Octet: Λ–Σ Mixing as the Golden Partition (Phase 45)
+
+Phase 34's honest negative left the octet open: $\Lambda$, $\Sigma$, $\Xi$ do not sit on the decuplet E-ladder, and the internal $\Sigma{-}\Lambda$ vs $\Xi{-}\Sigma$ gaps (77.5 vs 125.1 MeV) were "not clean." Phase 45 finds the octet's clean content is a *different* SU(3) law — a **golden partition**. The $\Lambda \to \Xi$ mass interval is split by $\Sigma$ at the golden point:
+
+$$\frac{\Sigma-\Lambda}{\Xi-\Lambda} = \frac{1}{\varphi^2}\ \ (0.108\%); \qquad \frac{\Xi-\Sigma}{\Sigma-\Lambda} = \varphi\ \ (0.175\%)$$
+
+This is parameter-free and predictive:
+
+$$\Sigma = \Lambda + \frac{\Xi-\Lambda}{\varphi^2}\ \to\ 1193.070\ \text{MeV}\ (0.007\%); \qquad \Xi = \Lambda + \varphi^2(\Sigma-\Lambda)\ \to\ 1318.504\ (0.017\%)$$
+
+**H45a — the golden split.** Both fractions agree with $\varphi$-powers to < 0.2%; the two internal gaps — the $\Lambda{-}\Sigma$ hyperfine split (ud pair spin-flip, I=0↔I=1) and the $\Xi{-}\Sigma$ strangeness step (S=−1→−2) — stand in the golden ratio.
+
+**H45b — parameter-free prediction.** From the two anchors ($\Lambda$, $\Xi$) one predicts $\Sigma$; from ($\Lambda$, $\Sigma$) one predicts $\Xi$. Both land < 0.05% (0.007% / 0.017%) with no free parameter.
+
+**H45c — GMO anchor.** The octet obeys the standard Gell-Mann–Okubo sum rule $(m_N+m_{\Xi})/2 = (3m_{\Lambda}+m_{\Sigma})/4$ to 0.57% — known physics, re-verified as a consistency check.
+
+**H45d — robustness (Phase 42 frame).** `base_specificity` on the split fraction $1/\varphi^2$ gives a narrow 0.38% basin with $1/\varphi^2$ inside and at the minimum, uniquely beating competitors (3/8, 0.38, 5/13, 8/21, 0.39, 0.4).
+
+**H45e — two SU(3) laws.** The octet is *not* an E-ladder (confirming Phase 34). The framework now has two clean, parameter-free SU(3) mass structures: the decuplet's E-ladder ($m = [4 + (k/2)f_{\text{Klein}}]E$) and the octet's golden partition ($\Sigma$ splitting $\Lambda\to\Xi$ at $1/\varphi^2$). The $\theta = 1/2$ twist family (f_Klein, neutron, Koide) gains a sibling: the octet's golden internal ratio.
+
+**Honest statement.** The golden partition is a single, parameter-free constraint on three measured masses that closes the Phase 34 open item and passes the same robustness frame that demoted H42g. It does not replace GMO (which remains the octet's leading-order relation at 0.57%); it characterizes the residual structure GMO leaves open.
+
 ### 8.2 Observable Predictions
 
 1. **Oscillatory DE at 4σ** over ΛCDM in current data. DESI DR2 and Euclid DR1 will sharpen this.
@@ -551,7 +573,7 @@ All code, tests, and outputs at: `https://github.com/MaryTheadoor/IST-workspace-
 | **31** | **One-twist muon (Koide)** | **The θ=1/2 twist → π/2 phase realizes Koide Q=2/3 to 0.0009% (phase at 6.5 μrad from π/2). Three generations = three 120° offsets. Muon sits on the double-cover back sheet (negative amplitude) — why the naive m_μ/m_e=3/(2α) is only 99.41%** |
 | **32** | **Quark-sector Koide test** | **Honest falsification: heavy (c,b,t) Q=0.6696 (+0.45%) CONSISTENT with 2/3 (edge of pole-mass systematics; MS-bar gives 8%); light (u,d,s) −15%, up/down generations broken. The π/2 twist survives where topological mass dominates** | CONSISTENT, not confirmed |
 | **33** | **Master-equation correction** | **The associator term is twist-dependent: Ξ_eff = 1−θ, c = 2θ(f−α/φ⁶), f = 1+|θ|. Reduces to the original at θ=0 (p/e 99.95% unchanged); fixes neutron at 0.02σ. Electron factor-2 = spin = double-cover (same θ=1/2)** | FRAMEWORK CORRECTION |
-| **34** | **Baryon mass ladder** | **Baryon masses in units of E=ℏc/1fm=197.33 MeV: N=(19/4)E, Δ−N=(3/2)E (f_Klein!), decuplet spacing d=(3/4)E, m(S)=Δ+S·d — decuplet to ≤0.27%. Octet honest (Λ−N=0.9E, internal mixing not clean)** | DECUPLET CLEAN, OCTET OPEN |
+| **34** | **Baryon mass ladder** | **Baryon masses in units of E=ℏc/1fm=197.33 MeV: N=(19/4)E, Δ−N=(3/2)E (f_Klein!), decuplet spacing d=(3/4)E, m(S)=Δ+S·d — decuplet to ≤0.27%. Octet honest (Λ−N=0.9E, internal mixing not clean)** | DECUPLET CLEAN, OCTET OPEN → CLOSED (Ph.45) |
 | **35** | **Double-cover baryon derivation** | **m(S) = [4 + (k/2)f_Klein]E, k=1,3,4,5,6 (half-f steps). The 4 = the double-cover (4 plonk ticks); N = 4+(1/2)f = 19/4 now DERIVED, not empirical. Decuplet ≤0.29%. The half-twist (1/2)f = spin-1/2, same θ=1/2** | 19/4 DERIVED |
 | **36** | **Dimensional crystallization** | **Tests D(z): 3→2 (ice from superfluid) against 60 H(z) chronometers + CMB shift prior. H(z) degenerate with ΛCDM (Δχ²<1); CMB DECISIVE: D→2 by recombination gives R~6 (985σ off) — crystallization completes before recombination, D≈3 at all observable z** | CMB-REFINED |
 | **37** | **Force harmonics test** | **Honest negative: force couplings do NOT sit on golden harmonics. Fixed-scale em/weak≈φ³ (2.3%) but weak/strong, em/strong ~19-22% off; β-coefficients not clean; slaved-running calibrated at M_Z deviates. Harmonic evidence is in the MASS spectrum, not the couplings** | NOT SUPPORTED (simplest forms) |
