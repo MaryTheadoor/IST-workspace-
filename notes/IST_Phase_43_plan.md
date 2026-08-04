@@ -108,4 +108,6 @@ higher z.) (Phase 45 completed the baryon octet Lambda-Sigma mixing: a golden
 partition of the Lambda->Xi interval — Sigma splits it at 1/phi^2, passing the
 robustness frame.) (Phase 43 added one: whether a *reference-level* fix — the
 scheme-dependence of the m_t = 0.090 reference, vs 2-loop QCD running 0.108 —
-re-scopes the closure target.)
+re-scopes the closure target.) (Phase 46 answered it: NO — the reference fix is
+REFUTED on all fronts; the alpha_s flavor closure is reference-irreducible, a
+power-law-vs-log shape mismatch, closing the closure line.)

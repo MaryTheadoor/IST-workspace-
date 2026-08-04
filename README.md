@@ -313,6 +313,15 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Honest negative:** no single golden rule closes all four $\alpha_s$ references; the $m_b/M_Z$ slope conflict is irreducible under b0-only, b0+b1, both boundary conventions, and reference-systematics ranges. The flavor-threshold mechanism is confirmed; the clean closure remains open.
 - **Perf:** QCD RGE hot loop JIT-compiled with numba (works on Python 3.14; GPU not viable — GTX 1050 is Pascal and CUDA 13 dropped Pascal)
 
+### Reference-Level Fix Test (Phase 46 — honest negative, closure is reference-irreducible)
+- **Question (Phase 43 open item):** does the scheme-dependence of the $m_t$ reference (0.090 convention vs 2-loop QCD running 0.108) re-scope the flavor closure target?
+- **H46a — m_t reference fix REFUTED:** substituting $m_t = 0.108$ for 0.090 *worsens* the principled RMS 8.78% → 12.70% ($m_t$ −2.2% → −18.5%). The 0.090 convention was **masking** the $m_t$ deficit, not causing the $m_b/M_Z$ conflict.
+- **H46b — QCD-consistent reference set:** scoring against the exact 2-loop QCD running values (0.3133/0.2236/0.1180/0.1076) makes all golden models *worse* (principled RMS 12.10%; $m_b$ +14.1% irreducible).
+- **H46c — free references in credible ranges:** with ALL four references free inside their credible ranges, the best single exponent ($a = 0.110$) still leaves $m_b$ (+7.4%) and $M_Z$ (−2.5%) OUT — no reference placement rescues a single golden exponent.
+- **H46d — two-parameter decoupling:** two free exponents ($a$ for $n_f\le5$, $b$ for $n_f=6$) also fail (best $(0.110, 0.000)$, $m_b$/$M_Z$ still OUT). The conflict is not an exponent-count artifact.
+- **H46e — structural diagnosis:** the layer base REQUIRED to match 2-loop QCD exactly needs $\varphi^{+0.82}$ in the $m_b\to M_Z$ segment (flattening) — the *opposite sign* of the principled $\varphi^{-0.5}$. Golden running is a **power law in E**; QCD running is $\sim 1/\ln E$ (flattening at high E). The $m_b/M_Z$ conflict is a shape mismatch, **reference-independent**.
+- **Honest negative:** the Phase 43 sequencing question is answered — the flavor closure is reference-irreducible; no legitimate reference choice or golden exponent set closes it. This closes the $\alpha_s$ flavor-closure line with a definite, quantified statement.
+
 ### Variable Gravity
 - **Formula:** $G_{\text{eff}} \propto \rho_{\text{fold}}^{1/\varphi}$
 - **Prediction:** ~76% void lensing suppression

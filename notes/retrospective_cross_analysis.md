@@ -157,15 +157,16 @@ Each negative *located* the mechanism rather than killing it.
 - Force couplings not golden-laddered; light-quark Koide broken; the
   octet's Λ–Σ mixing unresolved *until Phase 45* (now closed: golden
   partition of the Λ→Ξ interval); the clean golden closure of the α_s
-  flavor running remains open (Phase 43 localized the conflict to the
-  m_b→M_Z slope, +31.5% too steep, irreducible under b0-only, b0+b1,
-  both boundary conventions, and reference-systematics ranges).
+  flavor running — *closed as reference-irreducible* (Phase 43 localized
+  the conflict to the m_b→M_Z slope, +31.5% too steep, irreducible under
+  b0-only, b0+b1, both boundary conventions, and reference-systematics
+  ranges; Phase 46 refuted the m_t reference-level fix and showed the
+  required layer base flips sign above m_b — golden power-law running
+  cannot match QCD's ~1/ln E curvature at any reference choice).
 
 **Open (natural next targets):**
-- The emergent-twist derivation; the clean golden
-  closure of the α_s flavor running (Phase 42 resolved the boundary
-  convention; Phase 43 closed the dead-code b1 gap and pinned the residual
-  to the m_b→M_Z slope, but no one-rule closure yet). The BAO
+- The emergent-twist derivation; the stable-knot → SM multiplicity
+  mapping. The BAO
   sound-horizon test of crystallization (Phase 44) is an honest negative
   that CONFIRMS Phase 36: the DESI DR1 ruler (D_M/r_d, D_H/r_d at
   z 0.51–1.49) is degenerate (Δχ² −4.6 joint; z_c basin flat χ² 35–38;
@@ -173,7 +174,9 @@ Each negative *located* the mechanism rather than killing it.
   and adds no discriminating power at z ≤ 1.5 — D ≈ 3 at observable z
   survives. The remaining discriminators are the BAO ruler and H(z) at
   higher z. The baryon octet Λ–Σ mixing item is CLOSED (Phase 45: golden
-  partition of the Λ→Ξ interval).
+  partition of the Λ→Ξ interval). The α_s flavor-closure line is CLOSED
+  (Phase 46: reference-irreducible — the m_b/M_Z conflict is a
+  power-law-vs-log running shape mismatch, not a reference artifact).
 
 ---
 

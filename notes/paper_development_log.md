@@ -86,3 +86,13 @@ are preserved verbatim under git tag **`v6.0-paper-snapshot`**.
   Ξ from (Λ,Σ) 0.017%, GMO anchor 0.57%, base-specificity 0.38% basin. Two clean SU(3)
   laws (decuplet E-ladder + octet golden partition). A v8.0 paper update should fold
   this into the Phase 34/35 (§8.1j-k) discussion as the octet closure.
+- Phase 46 (reference-level fix, honest negative): `notes/IST_Phase_46_plan.md`,
+  `code/phase46_reference_rescope.py`. Answers the Phase 43 sequencing question:
+  the m_t 0.090/0.108 scheme-dependence does NOT re-scope the alpha_s flavor
+  closure. REFUTED on all fronts (H46a-e): m_t=0.108 worsens RMS 8.78→12.70%;
+  QCD-consistent refs score worse (12.10%); free refs in credible ranges still
+  leave m_b +7.4%/M_Z −2.5% OUT; two free exponents fail; the required layer base
+  flips sign above m_b (phi^+0.82 vs principled phi^-0.5) — golden power-law
+  running cannot match QCD's ~1/ln E curvature at ANY reference choice. Closes the
+  alpha_s closure line as reference-irreducible. A v8.0 paper update should fold
+  this into the Phase 39/§8.4(flavor) discussion as the definitive closure negative.

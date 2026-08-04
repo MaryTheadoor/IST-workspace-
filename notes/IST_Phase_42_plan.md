@@ -128,5 +128,7 @@ Phase 42 is the immediate next phase. After it: the Phase 36 follow-up
 an honest negative that confirms D ~ 3 at observable z; the ruler adds no
 discriminating power at z <= 1.5), then the
 remaining open items (baryon octet Lambda-Sigma mixing -- COMPLETE as Phase 45:
-a golden partition of the Lambda->Xi interval by Sigma; emergent-twist
-derivation) as budget allows.
+a golden partition of the Lambda->Xi interval by Sigma; the alpha_s flavor
+closure -- CLOSED as reference-irreducible in Phase 46: the m_t reference fix
+was refuted and golden power-law running cannot match QCD's ~1/ln E curvature
+at any reference choice; emergent-twist derivation) as budget allows.

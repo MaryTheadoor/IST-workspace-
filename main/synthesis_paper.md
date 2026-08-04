@@ -501,6 +501,22 @@ $$\Sigma = \Lambda + \frac{\Xi-\Lambda}{\varphi^2}\ \to\ 1193.070\ \text{MeV}\ (
 
 **Honest statement.** The golden partition is a single, parameter-free constraint on three measured masses that closes the Phase 34 open item and passes the same robustness frame that demoted H42g. It does not replace GMO (which remains the octet's leading-order relation at 0.57%); it characterizes the residual structure GMO leaves open.
 
+### 8.1v The Reference-Level Fix Refuted (Phase 46): The α_s Closure Is Irreducible
+
+Phase 43 left an explicit open question in its sequencing note: whether the scheme-dependence of the $m_t$ reference ($0.090$ convention vs the 2-loop QCD-running value $0.108$) re-scopes the flavor-closure target. Phase 46 tests every legitimate reference choice. It refutes the reference-level fix on all fronts and closes the closure line with a definite negative.
+
+**H46a — The $m_t$ reference fix fails.** Substituting $m_t = 0.108$ (the QCD-running value) for the $0.090$ convention *worsens* the principled RMS $8.78\% \to 12.70\%$; $m_t$ residual goes $-2.2\% \to -18.5\%$. The $0.090$ convention was **masking** a large $m_t$ deficit, not creating the $m_b/M_Z$ conflict — the golden model predicts $\alpha_s(173 \text{ GeV})\approx 0.088$, near the convention but 18% below QCD running.
+
+**H46b — The QCD-consistent reference set scores worse.** Scoring every golden model against the exact 2-loop QCD running values $\{m_\tau\ 0.3133,\ m_b\ 0.2236,\ M_Z\ 0.1180,\ m_t\ 0.1076\}$ — the natural reference frame for a running law — raises the principled RMS to $12.10\%$ with $m_b$ at $+14.1\%$, the b1 cast at $45.1\%$. No golden model improves.
+
+**H46c — Free references cannot close a single exponent.** Minimizing the range-residual over the exponent $a$ with **all four** references free within their credible ranges gives best $a = 0.110$, but $m_b$ (predicted 0.258 vs range [0.210, 0.240], $+7.4\%$) and $M_Z$ (0.114 vs [0.117, 0.119], $-2.5\%$) stay outside. No legitimate reference placement lets one golden exponent close them.
+
+**H46d — Two exponents also fail.** Decoupling the golden exponent ($a$ below, $b$ at $n_f=6$) gives best $(0.110, 0.000)$ with $m_b$, $M_Z$ still outside — a non-fixture artifact, not an exponent-count effect, and $b=0$ means the principled golden-flavor correction at high scale is actively wrong.
+
+**H46e — The structural cause.** The layer-base multiplier required to match 2-loop QCD exactly is $\varphi^{-2.65}$ (below $m_b$), $\varphi^{-1.69}$, then $\varphi^{+0.82}$ in the $m_b \to M_Z$ segment and $\varphi^{+2.96}$ above $M_Z$: the high-scale segments demand **flattening** (positive exponent), the opposite sign of the principled $\varphi^{-(n_f-3)/6}$ (steepening). Golden running is a pure power law in $E$; QCD running is $\sim 1/\ln E$ and flattens at high $E$. The $m_b/M_Z$ slope conflict is the fingerprint of this power-law-vs-log shape mismatch — **reference-independent**.
+
+**Honest statement.** No legitimate reference choice (scheme-dependent $m_t$, QCD-consistent running values, or free references in credible ranges) lets a single- or two-parameter golden rule close all four $\alpha_s$ references. The flavor-threshold mechanism (Phase 39) is confirmed, but the clean golden closure is reference-irreducible: the residual is a shape mismatch between the golden power-law running and the genuine $1/\ln E$ curvature of QCD, not a reference artifact. This closes the Phase 43 sequencing question with a definite, quantified negative.
+
 ### 8.2 Observable Predictions
 
 1. **Oscillatory DE at 4σ** over ΛCDM in current data. DESI DR2 and Euclid DR1 will sharpen this.
@@ -578,7 +594,7 @@ All code, tests, and outputs at: `https://github.com/MaryTheadoor/IST-workspace-
 | **36** | **Dimensional crystallization** | **Tests D(z): 3→2 (ice from superfluid) against 60 H(z) chronometers + CMB shift prior. H(z) degenerate with ΛCDM (Δχ²<1); CMB DECISIVE: D→2 by recombination gives R~6 (985σ off) — crystallization completes before recombination, D≈3 at all observable z** | CMB-REFINED |
 | **37** | **Force harmonics test** | **Honest negative: force couplings do NOT sit on golden harmonics. Fixed-scale em/weak≈φ³ (2.3%) but weak/strong, em/strong ~19-22% off; β-coefficients not clean; slaved-running calibrated at M_Z deviates. Harmonic evidence is in the MASS spectrum, not the couplings** | NOT SUPPORTED (simplest forms) |
 | **38** | **Mass-coupling relation (Insight B)** | **alpha_s(E) = (1/φ²)φ^{−n(E)}, n = ln(E/m_p)/ln(φ⁴): M_Z 3.1%, m_τ 1.3% (mass→coupling SUPPORTED). Per-force ladder C_i = α·φ^k: k=2.5,5.6,8.2, gaps 2.6-3.0 not uniform (partial). Total span α→α_s = 5.6 golden powers** | STRONG SUPPORTED, LADDER PARTIAL |
-| **39** | **Active-flavor thresholds** | **Flavor thresholds fix the mass→coupling relation: free fit cuts m_b error 19.5%→3.0%, m_t 15.2%→4.5%. Principled f(n_f)=φ^{−(n_f−3)/6} (QCD b0 as golden powers) improves m_t→2.7%, m_τ→2.0%; f(6)≈φ (1.3%). No single golden rule fits all 4 yet** | THRESHOLD CONFIRMED, CLOSURE OPEN |
+| **39** | **Active-flavor thresholds** | **Flavor thresholds fix the mass→coupling relation: free fit cuts m_b error 19.5%→3.0%, m_t 15.2%→4.5%. Principled f(n_f)=φ^{−(n_f−3)/6} (QCD b0 as golden powers) improves m_t→2.7%, m_τ→2.0%; f(6)≈φ (1.3%). No single golden rule fits all 4 yet; closure CLOSED as reference-irreducible (Phases 43/46: power-law-vs-log running shape mismatch)** | THRESHOLD CONFIRMED, CLOSURE CLOSED (Ph.43/46) |
 | **40** | **Bell non-locality mechanism** | **Shared substrate = the singlet. Substrate singlet E(a,b)=−cos(a−b) gives CHSH S=2.83 (Tsirelson, Bell-violating); LHV model capped at 2.00; twist-adjacent euclid-far pairs (3024, ratio 7.5×) are the entangled substrate. A-marginals signal-local (0.51≈0.49) — non-locality is a projection artifact** | EPR RESOLVED (mechanism) |
 | **41** | **Measurement problem** | **Wavefunction collapse as entropic crystallization. Vacuum pump on probabilistic superposition triggers laser threshold (layers 8-11): golden coherence jumps to 0.86, normalized gap entropy drops 6%. Silver control (no anti-resonance) fails to crystallize. Unitary redistribution (err=0), not dissipative loss** | COLLAPSE AS PHASE TRANSITION |
 
