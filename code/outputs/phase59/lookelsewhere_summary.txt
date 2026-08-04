@@ -1,0 +1,43 @@
+======================================================================
+PHASE 59 - PRE-REGISTERED, LOOK-ELSEWHERE-ACCOUNTED TEST
+Time-crystal dark energy (Plan 11 audit)
+======================================================================
+
+Data: 60 H(z) points, zmax = 2.36, ln(1+zmax) = 1.2119
+
+LCDM baseline: chi2 = 22.88, H0 = 70.35, Om = 0.255
+
+PRE-REGISTERED ANCHORS (before fitting)
+----------------------------------------------------------------------
+  eps0 = alpha/phi^2  = 0.0027873  (master-equation coupling)
+  Delta0 = ln(phi)    = 0.481212  (golden self-similarity period)
+  Delta1 = phi        = 1.618034  (secondary anchor)
+
+H59a - STRICT AMPLITUDE ANCHOR (eps = eps0 fixed)
+----------------------------------------------------------------------
+  chi2 = 22.73, Delta_chi2 vs LCDM = +0.149
+
+H59b - GOLDEN PERIOD ANCHOR (Delta = ln phi fixed)
+----------------------------------------------------------------------
+  chi2 = 20.69, Delta_chi2 vs LCDM = +2.195
+  fitted eps at golden period = 0.1064 +- 0.0433
+  cycles spanned by data at Delta0: 2.52
+
+H59c - FREE-DELTA SCAN WITH LOOK-ELSEWHERE ACCOUNTING
+----------------------------------------------------------------------
+  best Delta = 0.7251, Delta_chi2 = 3.057
+  local p (2 dof) = 0.2168, trials = 4, GLOBAL p = 0.6238
+  cycles spanned by data at best Delta: 1.67
+  best Delta vs candidates: 3*ln(phi) = 1.4436, pi/2 = 1.5708
+
+H59d - CYCLE COVERAGE + DETECTION FORECAST
+----------------------------------------------------------------------
+  precision factor needed for 3-sigma detection (dchi2=9):
+    of eps0=alpha/phi^2 at Delta0      : 8.9x smaller errors
+    of eps=0.136 at Delta0             : 2.1x
+    of eps=0.136 at best Delta         : 1.8x
+
+VERDICT
+----------------------------------------------------------------------
+Interpretation is drawn from the numbers above and stated in
+notes/IST_Phase_59_plan.md and main/synthesis_paper.md 8.1ah.

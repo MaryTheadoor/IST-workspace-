@@ -60,3 +60,7 @@ phase,relation,form,domain,outcome,best_agreement,reason
 58,block-spin RG has no golden fixed point,"no clean D_eff fixed point across levels",spectral,NEGATIVE,range ~0.14 across 5 levels,decimation does not respect the incommensurate substitution structure
 58,natural RG growth eigenvalue = phi,F_{n+1}/F_n -> phi exactly,spectral,SUPPORTED,error 9.8e-9 at generation 19,parameter-free Fibonacci inflation eigenvalue
 58,KKT trace map is the exact RG kernel,"x_{n+1} = 2 x_n x_{n-1} - x_{n-2}",spectral,DERIVED,"recurrence 2.3e-13; Fricke invariant 4.7e-10",machine-precision (Phase 51 H51a exactness reused)
+59,strict amplitude anchor invisible,"eps = alpha/phi^2 fixed; dchi2 = +0.15",cosmology,NEGATIVE,+0.15 vs LCDM in 60 H(z) points,0.28% modulation far below chronometer noise; needs ~9x better H(z) for 3sigma
+59,golden period anchor gives a hint,"Delta = ln(phi) fixed; eps = 0.106 +- 0.043",cosmology,PARTIAL,+2.20 vs LCDM over 2.5 cycles,pre-registered golden period is well-constrained (fitted 1.54 spans only 0.79 cycles)
+59,free-Delta oscillation not significant,"best dchi2 = 3.06; local p = 0.22",cosmology,NEGATIVE,global p = 0.62 (trial count N=4),Plan 11 "0.29 sigma tension cut" is a chance fluctuation
+59,golden self-similarity period = ln(phi),Delta = ln(phi) for (1+z)->phi(1+z) invariance,cosmology,DERIVED,modulation invariant under golden rescaling,sets the pre-registered DESI-era target period
