@@ -1,0 +1,1635 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  11pt,
+]{article}
+\usepackage{xcolor}
+\usepackage[letterpaper,margin=0.75in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+% Pandoc + XeLaTeX preamble for IST (v7.0)
+% Maps literal Unicode Greek / operators / superscripts found in the
+% markdown (captions, tables, headings) to LaTeX glyphs, since the text
+% font (Latin Modern) lacks them outside math mode.
+\usepackage{newunicodechar}
+\usepackage{float}
+
+% Compact figures: scale down to fit better on letter paper
+\setkeys{Gin}{width=0.85\linewidth,height=0.45\textheight,keepaspectratio}
+
+% Greek letters (text -> math glyphs)
+\newunicodechar{φ}{\ensuremath{\varphi}}
+\newunicodechar{Φ}{\ensuremath{\Phi}}
+\newunicodechar{α}{\ensuremath{\alpha}}
+\newunicodechar{β}{\ensuremath{\beta}}
+\newunicodechar{γ}{\ensuremath{\gamma}}
+\newunicodechar{δ}{\ensuremath{\delta}}
+\newunicodechar{Δ}{\ensuremath{\Delta}}
+\newunicodechar{λ}{\ensuremath{\lambda}}
+\newunicodechar{μ}{\ensuremath{\mu}}
+\newunicodechar{π}{\ensuremath{\pi}}
+\newunicodechar{σ}{\ensuremath{\sigma}}
+\newunicodechar{χ}{\ensuremath{\chi}}
+\newunicodechar{ω}{\ensuremath{\omega}}
+\newunicodechar{θ}{\ensuremath{\theta}}
+
+% Operators and relations
+\newunicodechar{∼}{\ensuremath{\sim}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{×}{\ensuremath{\times}}
+\newunicodechar{·}{\ensuremath{\cdot}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{°}{\textdegree}
+\newunicodechar{∘}{\ensuremath{\circ}}
+\newunicodechar{₀}{\textsubscript{0}}
+\newunicodechar{₁}{\textsubscript{1}}
+\newunicodechar{₂}{\textsubscript{2}}
+
+% Superscripts (as text superscripts)
+\newunicodechar{⁰}{\textsuperscript{0}}
+\newunicodechar{¹}{\textsuperscript{1}}
+\newunicodechar{²}{\textsuperscript{2}}
+\newunicodechar{³}{\textsuperscript{3}}
+\newunicodechar{⁴}{\textsuperscript{4}}
+\newunicodechar{⁵}{\textsuperscript{5}}
+\newunicodechar{⁶}{\textsuperscript{6}}
+\newunicodechar{⁷}{\textsuperscript{7}}
+\newunicodechar{⁸}{\textsuperscript{8}}
+\newunicodechar{⁹}{\textsuperscript{9}}
+\newunicodechar{⁻}{\textsuperscript{-}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Information Substrate Theory (IST): Topology as a Substrate for Emergent Physics},
+  pdfauthor={Dr. Mary Theadoor -\/- The Nown Research Group},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Information Substrate Theory (IST): Topology as a Substrate for
+Emergent Physics}
+\author{Dr. Mary Theadoor -\/- The Nown Research Group}
+\date{Version 8.0 - August 2026}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+\textbf{Dr.~Mary Theadoor} \textbf{The Nown Research Group}
+\textbf{Version 8.0 --- August 2026}
+
+\section{Abstract}\label{abstract}
+
+We introduce Information Substrate Theory (IST), a unified framework in
+which observed physics emerges from a discrete, non-orientable
+two-dimensional information substrate \(\Sigma\) woven from fundamental
+1D Möbius loops. Gravity is interpreted as computational latency
+(\(\tau_{\text{fold}}\)); matter as stable topological solitons; the
+golden ratio \(\varphi\) as a \emph{dynamical attractor} of the
+substrate's harmonic self-interaction, not a static invariant.
+
+The \(\varphi\)-emergence claim rests on a code-verified computational
+program (51 phases, 600 automated tests). Three interconnected
+mechanisms are demonstrated: (i) the vacuum-pump laser threshold, where
+coherent golden accumulation overtakes the noise floor at a sharp
+transition (Phase 8); (ii) dynamical RG convergence, where
+golden-connected components under temporal evolution produce
+\(D_{\text{eff}} \to 1.655\), within 2.3\% of \(\varphi\) (Phase 13);
+and (iii) fold-density feedback, where
+\(df/dt = \gamma(D_{\text{eff}}(f) - \varphi)f\) drives any initial
+condition to the golden window \(f \approx 4.2\), pinning
+\(G_{\text{eff}} \propto \rho^{1/\varphi}\) (Phase 14).
+
+At the quantum scale the framework's strongest claims are top-down and
+parameter-free: \(m_p/m_e = 6\pi^5\) (99.9981\%, Phase 27), now
+\emph{derived} as \(N_c\,{\rm Vol}(SU(3))\) (Phase 49); the neutron
+excess
+\(\delta_n = \frac{\alpha}{2\varphi^2}(1 - (\frac{3}{2} - \frac{\alpha}{\varphi^6})\alpha)\)
+(0.02σ of CODATA, Phases 28--30); the Koide relation \(Q = 2/3\)
+(0.0009\%, Phase 31); the baryon decuplet ladder
+\(m(S) = [4 + \frac{k}{2}f_{\text{Klein}}]E\) (≤0.29\%, Phases 34--35);
+and the octet golden partition
+\(\Sigma = \Lambda + (\Xi-\Lambda)/\varphi^2\) (0.007\%, Phase 45). Each
+of these derives from the single half-integer twist \(\theta = 1/2\) of
+the Klein bottle's meridian --- the \(720^{\circ}\) double-cover --- now
+\emph{derived} as an exact topological invariant from the
+\(\mathbb{Z}_2 \to U(1)\) holonomy embedding (Phase 47). The same
+Fibonacci substrate carries the entire Standard Model counting structure
+as \(F_1\) through \(F_9\), with the stable-knot fraction resolved as
+exactly \(1/34 \approx 2.94\%\) (Phase 48).
+
+Observationally, the oscillatory dark energy model is preferred over
+\(\Lambda\)CDM at \textasciitilde4σ (\(\Delta\chi^2 = 22.1\) in a joint
+fit to 60 \(H(z)\) chronometers, 1701 Pantheon+ SNe Ia, and DESI DR1
+BAO); void-lensing templates predict a 63\% suppression of \(G\) in
+low-density regions, distinguishable from GR at \(10.7\sigma\); and the
+strong coupling is reproduced at \(M_Z\) (3.1\%) and \(m_\tau\) (1.3\%)
+by a golden-layer mass→coupling relation, with the active-flavor
+threshold mechanism confirmed (Phases 38--42). The \(\alpha_s\) closure
+is proved \emph{reference-irreducible}: the residual is a
+power-law-vs-log shape mismatch of genuine QCD running, not a reference
+artifact (Phases 43, 46). The crystallization geometry survives the BAO
+sound-horizon ruler (Phase 44).
+
+Honest negatives are reported alongside positives: force couplings are
+not golden harmonics (Phase 37); dimensional crystallization is
+CMB-excluded for \(z_c \lesssim 1090\) (Phase 36); the self-referential
+``137'' fixed point fails the project's four golden-relation robustness
+checks (Phase 42, H42g) and is retracted; the golden partition is a law
+of \emph{bound-state knots}, not of bare quarks, RG-invariantly (Phase
+50); and even on the true incommensurate Fibonacci substrate the golden
+ratio never appears as a static spectral dimension --- acting only in
+the self-similarity and the twist (Phase 51).
+
+\section{1. Introduction}\label{introduction}
+
+\subsection{1.1 Motivation and Scope}\label{motivation-and-scope}
+
+Contemporary physics remains divided between geometric gravity (GR) and
+probabilistic quantum matter (QM). Information Substrate Theory (IST)
+pursues a complementary unification strategy: it treats both spacetime
+geometry and quantum degrees of freedom as emergent descriptions of a
+more primitive informational substrate. In this view, dynamical ``laws''
+are not external prescriptions; they are effective constraints induced
+by the substrate's topology.
+
+\textbf{The central question of this version.} The golden ratio
+\(\varphi \approx 1.618\) appears throughout the framework --- in the
+proton mass formula, in the variable gravitational coupling
+\(G_{\text{eff}} \propto \rho^{1/\varphi}\), and in the oscillatory dark
+energy component. But where does \(\varphi\) come from? Is it a fixed
+point of the substrate's renormalization group --- a static invariant
+written into its geometry --- or does it emerge from the substrate's
+dynamics? This paper answers that question with a systematic,
+code-verified computational investigation spanning 51 phases and 600
+automated tests: \textbf{\(\varphi\) is not a static invariant of the
+substrate's spatial graph; it is a dynamical attractor of its harmonic
+self-interaction in the time domain.} Section 5 documents this result
+and the three interconnected mechanisms behind it, each reproduced in
+code with quantitative output. Later sections trace the framework's most
+secure claims to a single exact topological invariant --- the fractional
+twist \(\theta = 1/2\) (Phases 47--49) --- and draw a precise boundary
+for where \(\varphi\) does and does not live (Phases 45, 50--51).
+
+Because IST adopts a nonstandard starting point, the main difficulty for
+a new reader is not technical complexity but perspective: familiar
+objects (fields, particles, couplings) are treated as large-scale
+invariants of a discrete topological system. For clarity, we distinguish
+throughout between (i) postulates (assumptions about the substrate),
+(ii) definitions (quantities introduced within the model), (iii) derived
+statements (claims that follow from the postulates and definitions), and
+(iv) empirical signatures (observables that could support or falsify the
+framework).
+
+\subsection{1.2 Reader On-Ramp: Primitives, Definitions, and
+Tests}\label{reader-on-ramp-primitives-definitions-and-tests}
+
+\textbf{Minimal dictionary:}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\(\Sigma\)}: Discrete non-orientable information substrate
+  (modeled as a graph)
+\item
+  \textbf{\(\Psi\)}: Local update map (``Compression Operator'')
+  summarizing substrate self-interaction during propagation
+\item
+  \textbf{\(\Omega\)}: Limiting zero-point map associated with
+  self-intersection/collapse in low fold-density regions
+\item
+  \textbf{\(\rho_{\text{fold}}\)}: Fold-density functional measuring
+  deviation from locally ``flat'' weave configurations
+\item
+  \textbf{\(D\)}: Effective fractal dimension controlling the scaling
+  \(G(\rho_{\text{fold}}) \propto \rho_{\text{fold}}^{1/D}\)
+\item
+  \textbf{\(\theta = 1/2\)}: The half-integer twist of the Klein
+  meridian --- the single structural constant behind the neutron
+  factor-2, the Koide phase, and the double-cover baryon ladder
+\end{itemize}
+
+\textbf{Interpretive rule.} When we use an analogy (e.g.,
+``computational latency'' or ``tension in the weave''), it is intended
+as an intuition aid; the operational content is given by the
+accompanying definitions and equations.
+
+\textbf{Evaluation standard.} We treat IST as a work in progress to be
+revised against observation. The framework is supported only insofar as
+it yields quantitative, discriminating predictions (e.g., void-lensing
+templates, parity correlations) that can be tested independently of
+interpretive language. Claims that fail the project's four
+golden-relation robustness checks (uniqueness of the fixed point,
+base-specificity, unit-invariance, parameter-freedom) are reported as
+negatives, not as hits.
+
+\subsection{1.3 The Foundational Axioms of
+IST}\label{the-foundational-axioms-of-ist}
+
+We state three working axioms that define the substrate, its evolution,
+and the meaning of emergence in the model.
+
+\textbf{Axiom 1: Substrate axiom (topology and discreteness).} The
+primitive description is a finite, discrete, two-dimensional substrate
+\(\Sigma\) with non-orientable global topology. The Klein bottle
+(\(K_2\)) provides a minimal working model; the axiom also admits more
+general non-orientable quotients.
+
+\textbf{Axiom 2: Dynamical axiom (local update).} The substrate evolves
+via a local, unitary update map \(\Psi\) (the Compression Operator).
+\(\Psi\) is not treated as an externally applied command; it summarizes
+how non-orientable geometry can induce self-interaction during
+propagation within the model.
+
+\textbf{Axiom 3: Emergence axiom (effective physics).} Observed physics
+-- spatial geometry, time, effective couplings, matter degrees of
+freedom -- corresponds to stable, coarse-grained patterns in \(\Sigma\).
+
+\subsection{1.4 The Epistemological Status of the
+Substrate}\label{the-epistemological-status-of-the-substrate}
+
+A crucial clarification: the 2D non-orientable information lattice
+\(\Sigma\) is a \textbf{mathematical model, not a literal substance}. It
+is a conceptual embedding used to represent the propagation and
+interaction of physical degrees of freedom, much as Hilbert space in
+quantum mechanics is a mathematical arena in which wavefunctions are
+defined. The substrate is a \textbf{map of the territory}. The territory
+itself is inferred only through the empirical patterns it produces. We
+treat IST as a work in progress whose claims are intended to be
+evaluated and revised against observation.
+
+\subsection{1.5 Organization of the
+Paper}\label{organization-of-the-paper}
+
+\begin{itemize}
+\tightlist
+\item
+  Section 2: Mathematical structure of the substrate and operator
+  formalism
+\item
+  Section 3: Emergent physics -- gravity, field equations, mass
+  derivations, and the strong coupling
+\item
+  Section 4: Cosmological implications -- flatness and the oscillatory
+  dark energy model tested against real data
+\item
+  Section 5: Simulation results -- the 51-phase computational program
+  from static-\(\varphi\) falsification to the plonk-scale substrate and
+  the true incommensurate spectrum
+\item
+  Section 6: Quantum-scale derivations -- the half-integer twist and the
+  particle spectrum, culminating in the derived \(\theta = 1/2\), the
+  Fibonacci Standard Model, and the 6π⁵ duality
+\item
+  Section 7: The zero-point operator and the \(720^{\circ}\)
+  double-cover
+\item
+  Section 8: Critical analysis and discussion
+\item
+  Appendices: Phase map, simulation protocols
+\end{itemize}
+
+\section{2. Mathematical Foundations}\label{mathematical-foundations}
+
+\subsection{2.1 Overview and Notation}\label{overview-and-notation}
+
+We model the substrate as a discrete dynamical system with local update
+rules constrained by global non-orientability. Throughout, we represent
+\(\Sigma\) as a graph \(G = (V, E)\). Vertex indices are denoted by
+\(i, j \in V\), time by \(t \in \mathbb{N}\), and the neighborhood of
+vertex \(i\) by \(N(i)\).
+
+\subsection{2.2 The Primitive Lattice as a Weave of 1D Möbius
+Loops}\label{the-primitive-lattice-as-a-weave-of-1d-muxf6bius-loops}
+
+The 2D lattice \(\Sigma\) is not a primitive continuum; it is
+\textbf{woven from fundamental 1D Möbius loops}. Each loop has intrinsic
+chirality, encoded in the directed number formalism {[}3{]} as clockwise
+(\(\circlearrowright\)) and counterclockwise (\(\circlearrowleft\))
+states.
+
+The weave creates the 2D surface through \textbf{nested recurrent
+interactions}. Pairwise interactions of loops create 2D surfaces; triple
+interactions (measured by the associator \([x, y, z]\)) create 3D
+volume; higher-order interactions create 4D spacetime. This yields a
+recursive, self-similar hierarchy with scale-dependent effective
+descriptions.
+
+\subsection{\texorpdfstring{2.3 The Compression Operator
+(\(\Psi\))}{2.3 The Compression Operator (\textbackslash Psi)}}\label{the-compression-operator-psi}
+
+The local update map is generated by the \textbf{Compression Operator}
+\(\Psi\), whose action on a neighborhood is governed by the fold density
+\(\rho_{\text{fold}}\) of the local weave:
+
+\[\Psi[\rho](v) = \sum_{u \in N(v)} w_{uv}(\rho)\, \rho(u),\]
+
+where the weights \(w_{uv}\) encode both the lattice adjacency and the
+non-orientable twist (a sign flip when the geodesic crosses the Möbius
+seam). In the flat limit the operator linearizes to
+\(M_\Psi = I - F^{-1}L/4\), whose slowest mode sets the gravitational
+time scale \(\tau_{\text{fold}} = 4/\gamma_{\min}\) (Section 3.2).
+
+\subsection{2.4 The Weave as Information
+Substrate}\label{the-weave-as-information-substrate}
+
+Because \(\Sigma\) is non-orientable, ``left'' and ``right'' are not
+globally well-defined: a loop transported around the Klein circumference
+returns with flipped chirality. This single property -- the meridian
+holonomy \(-1\) -- is the geometric root of the framework's distinctive
+results (Section 6). We emphasize that this is a \emph{property of the
+mathematical model}, not an assertion about a literal substance.
+
+\section{3. Emergent Physics}\label{emergent-physics}
+
+\subsection{3.1 Overview}\label{overview}
+
+The substrate generates effective physics through coarse-grained
+invariants: gravity as the latency of propagation through the weave;
+matter as stable solitonic knots; couplings as the running between mass
+harmonics (Section 5.5). The strong coupling is the cleanest example: it
+is \emph{derived} from the mass spectrum via a golden layer count, not
+assumed.
+
+\subsection{3.2 Gravity as Computational
+Latency}\label{gravity-as-computational-latency}
+
+Linearizing \(\Psi\) around the flat equilibrium gives the decay
+operator \(M_\Psi = I - F^{-1}L/4\). The slowest mode of this operator
+decays on the time scale \(\tau_{\text{fold}} = 4/\gamma_{\min}\), which
+we identify with the gravitational interaction time. Under the
+fractal-projection argument of Section 3.5, the effective coupling
+scales as
+
+\[G_{\text{eff}}(x) \propto \rho_{\text{fold}}(x)^{1/D}.\]
+
+The exponent \(1/D\) measures how the 2D substrate folds to yield an
+effective 3D volume; \(D = \varphi\) gives
+\(G_{\text{eff}} \propto \rho_{\text{fold}}^{0.618}\).
+
+\subsection{3.3 Topological Field
+Equations}\label{topological-field-equations}
+
+The field content is not introduced as a gauge bundle over spacetime; it
+is derived from the substrate's topology. U(1), SU(2), and SU(3)
+structures correspond to distinct features of the non-orientable weave
+(Section 4.3 sketches the higher-dimensional generalization). The
+operational content is the mass→coupling relation of Section 5.5, which
+is tested directly against measured \(\alpha_s\).
+
+\subsection{3.4 Matter as Topological
+Solitons}\label{matter-as-topological-solitons}
+
+Matter corresponds to stable knots in the weave -- localized solitonic
+configurations that survive the substrate's unitary evolution. The
+plonk-scale simulation (Section 5.6) produces stable knots at a rate of
+\textasciitilde3\% per 4-tick cycle, robust across all parameter
+variations (Phase 24), and the parameter sweep establishes that knot
+formation is driven by the substrate's \emph{topology} (Fibonacci
+lattice positioning + parity inversion through the twist), not by a
+tunable threshold parameter.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio]{publication/figures/Stabilized_IST_particle.png}}
+\caption{\textbf{Simulated topological soliton.} A stable knot
+configuration in the IST substrate exhibiting a Möbius-type twist; the
+persistence of the structure illustrates how long-lived matter states
+can emerge.}
+\end{figure}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio]{publication/figures/IST_Soliton_Spectrum1.png}}
+\caption{\textbf{Topological resonance spectrum.} Example standing-wave
+(soliton) patterns and their associated harmonic structure, illustrating
+the proposed route to quantized particle masses.}
+\end{figure}
+
+The solitons are the substrate-level counterpart of the
+electron-as-confined-field proposals of van der Mark \& 't Hooft {[}4{]}
+and Williamson \& van der Mark {[}5{]}, cited as suggestive analogues,
+not as direct evidence.
+
+\subsection{3.5 Fractal Dimension and the Scaling of
+Gravity}\label{fractal-dimension-and-the-scaling-of-gravity}
+
+In a self-similar hierarchy generated by \(\Psi\), fold density scales
+as \(\rho_{\text{fold}} \propto N^D\), where \(N\) is the recursion
+depth and \(D\) the effective fractal dimension. Since
+\(\tau_{\text{fold}} \propto N\) and \(G \propto \tau_{\text{fold}}\),
+we obtain \(G_{\text{eff}} \propto \rho_{\text{fold}}^{1/D}\) (Section
+3.2). The value \(D = \varphi\) is the dynamical RG fixed point of
+Section 5.3, and the exponent \(0.618\) yields the testable void-lensing
+prediction of Section 4.6.
+
+\subsection{3.6 Topological Derivation of the Proton
+Mass}\label{topological-derivation-of-the-proton-mass}
+
+A critical test of any fundamental theory is its ability to predict
+particle masses from first principles. In IST, fermions are modeled as
+stable topological solitons whose effective mass is associated with the
+rate of self-intersection events per unit time.
+
+\textbf{Local geometry (Hopf fibration).} Each quark is modeled locally
+by the Hopf fibration
+\(S^1 \hookrightarrow S^3 \twoheadrightarrow S^2\); Kaluza--Klein
+compactification of the fiber gives \(\alpha = 4/R_f^2\), so
+\(R_f = 2/\sqrt{\alpha}\). With 18 phase-space dimensions (3 quarks × 6
+degrees of freedom), the addressable-state count scales as
+\(\alpha^{-9}\), identified with \(M_P/m_p\). Fractal projection with
+normalization \(2/\varphi^2\) gives
+
+\[\frac{M_P}{m_p} = \frac{2}{\varphi^2}\,\alpha^{-9},\]
+
+reproducing \(m_p\) at 99.97\% (CODATA 2022). The remaining residual is
+consistent with the leading QED correction \(2\pi\alpha^2\) at the
+\textasciitilde1\% level.
+
+\textbf{Scale caveat.} This bottom-up form inherits the uncertainty in
+\(M_P\). The framework's strongest mass claim is the \emph{ratio}
+\(m_p/m_e = 6\pi^5\) (Section 6.3), which cancels both \(\alpha\) and
+\(M_P\) entirely and is parameter-free.
+
+\subsection{3.7 Strong Coupling from Associator
+Layers}\label{strong-coupling-from-associator-layers}
+
+The QCD coupling is derived from the associator layer structure. Each
+associator layer contributes an energy magnification of \(\varphi^4\);
+with layer count \(n(E) = \ln(E/m_p)/\ln(\varphi^4)\) and normalization
+\(1/\varphi^2\),
+
+\[\alpha_s(E) = \frac{1}{\varphi^2}\,\varphi^{-n(E)} = \frac{1}{\varphi^2}\left(\frac{E}{m_p}\right)^{-\ln\varphi/\ln\varphi^4}.\]
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+Scale & \(E\) (GeV) & \(\alpha_s\) (pred) & \(\alpha_s\) (obs) &
+Error \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(m_\tau\) & 1.78 & 0.326 & 0.33 & 1.3\% \\
+\(m_b\) & 4.18 & 0.263 & 0.22 & 19.5\% \\
+\(M_Z\) & 91.2 & 0.122 & 0.118 & 3.1\% \\
+\(m_t\) & 173 & 0.104 & 0.09 & 15.2\% \\
+\end{longtable}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio]{publication/figures/running_phi.png}}
+\caption{\textbf{Running coupling.} The model curve from golden-layer
+counting against the four reference scales (\(m_\tau\), \(m_b\),
+\(M_Z\), \(m_t\)).}
+\end{figure}
+
+The \(M_Z\) and \(m_\tau\) values agree to 3.1\% and 1.3\%. The
+\(m_b\)/\(m_t\) residuals are the active-flavor threshold issue
+addressed in Section 5.5.
+
+\section{4. Cosmological Implications}\label{cosmological-implications}
+
+\subsection{4.1 Overview}\label{overview-1}
+
+This section sketches testable cosmological consequences of a
+non-orientable information substrate. The two quantitative claims --
+oscillatory dark energy and void-lensing suppression -- are tested
+against real data; the flatness and CMB-parity points are stated as
+structural consequences with appropriate caveats.
+
+\subsection{4.2 The Flatness Problem}\label{the-flatness-problem}
+
+The intrinsic geometry of a Klein bottle (\(K_2\)) is flat, so
+Klein-bottle-based models provide a setting in which
+\(\Omega_K \approx 0\) can arise without fine-tuning at the level of the
+assumed topology.
+
+\subsection{4.3 Generalization to Higher
+Dimensions}\label{generalization-to-higher-dimensions}
+
+The framework is compatible with richer topologies, including
+non-orientable quotients of Calabi--Yau manifolds. In such settings,
+gauge symmetries may be associated with nontrivial features of moduli
+space. This is a structural compatibility, not a tested prediction.
+
+\subsection{4.4 Oscillatory Dark Energy}\label{oscillatory-dark-energy}
+
+The vacuum-pump cosmogony implies that the dark-energy sector is not a
+static cosmological constant but a time-crystal oscillation whose
+amplitude decays with redshift as
+\(\varepsilon(z) = \varepsilon_0(1+z)^\beta\). A joint fit to 60
+\(H(z)\) cosmic chronometers, 1701 Pantheon+ SNe Ia, and DESI DR1 BAO
+compares the model against \(\Lambda\)CDM (Phase 16):
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+Model & \(\chi^2\) & \(\Delta\chi^2\) vs \(\Lambda\)CDM & \(H_0\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(\Lambda\)CDM & 948 & -- & 73.6 \\
+IST (\(\beta = 1/\varphi\)) & 926 & +22.1 & 71.4 \\
+IST (free \(\beta\)) & 926 & +22.3 & 71.6 \\
+\end{longtable}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio]{publication/figures/joint_fit.png}}
+\caption{\textbf{Joint cosmological fit.} 60 \(H(z)\) chronometers, 1701
+Pantheon+ SNe Ia, and DESI DR1 BAO. The IST oscillatory dark energy
+model is preferred over \(\Lambda\)CDM at \textasciitilde4\(\sigma\)
+(\(\Delta\chi^2 = 22.1\)).}
+\end{figure}
+
+The oscillatory model is preferred at approximately \(4\sigma\), and
+\(H_0\) shifts from 73.6 to 71.4 km s⁻¹ Mpc⁻¹, toward the CMB-inferred
+value. The exponent was tested across embedding dimensions (Phase 15c):
+\(d = 3\) is the clear best fit, with the fitted \(\beta \approx 4.16\)
+within 2\% of the associator volume prediction
+\(\beta = \varphi^3 = 4.236\).
+
+\subsection{\texorpdfstring{4.5 Void Lensing and the Suppression of
+\(G\)}{4.5 Void Lensing and the Suppression of G}}\label{void-lensing-and-the-suppression-of-g}
+
+The Phase 14 pinned \(G(\rho) \propto \rho^{1/\varphi}\) model was
+applied to the void-lensing templates: low-density regions should show a
+63\% suppression of the effective gravitational coupling, exactly the
+golden-window prediction \(1 - (0.2)^{1/\varphi} = 0.63\) for a 10:1
+density contrast:
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+Model & Suppression & \(\chi^2\) vs GR & \(\sigma\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(D = 2\) (grid) & 55.3\% & 88.2 & 9.4 \\
+Phase 4 window & 61.9\% & 110.7 & 10.5 \\
+\textbf{Phase 14 pinned} & \textbf{63.0\%} & \textbf{114.6} &
+\textbf{10.7} \\
+\end{longtable}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio]{publication/figures/GravSim_1.png}}
+\caption{\textbf{The void gravity anomaly.} Example suppression of the
+lensing signal in IST relative to GR; the dashed curve shows the
+\(D = \varphi\) template compared with \(D = 2\).}
+\end{figure}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio]{publication/figures/IST_JWST_Prediction.png}}
+\caption{\textbf{Synthetic JWST observation.} Example radial-stacking
+analysis at COSMOS-Web-like depth {[}2{]}. Reported significances depend
+on assumptions about noise, systematics, and the analysis pipeline.}
+\end{figure}
+
+Real DES Y6 GOLD data produced a first stacked shear measurement from
+3--4 voids with tangential shear \(\gamma_t \sim -0.025\) at
+\(0.27^{\circ}\) -- a real signal, noise-limited at single-tile depth. A
+multi-tile shear catalog is required for a decisive test.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio]{publication/figures/void_shear_des.png}}
+\caption{\textbf{DES stacked shear.} First real void-lensing shear
+measurement from DES Y6 GOLD, noise-limited at single-tile depth.}
+\end{figure}
+
+\subsection{4.6 CMB Parity Violation}\label{cmb-parity-violation}
+
+A non-orientable global topology can imprint parity-inverted correlation
+structure on CMB temperature anisotropies. Using Planck 2018 maps, an
+antipodal (Klein-transformed) correlation statistic yields
+\(C \approx 0.005\). We treat this as motivation for more controlled
+null tests rather than as a standalone detection claim.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio]{publication/figures/Figure_1_IST_CMB.png}}
+\caption{\textbf{CMB parity difference map.} Residual temperature
+structure after applying the Klein parity transform; interpretation
+requires careful control of systematics.}
+\end{figure}
+
+\section{5. Simulation Results and Illustrative
+Tests}\label{simulation-results-and-illustrative-tests}
+
+\subsection{5.1 The Computational
+Program}\label{the-computational-program}
+
+The \(\varphi\)-emergence claim rests on a code-verified computational
+program (51 phases, 600 automated tests; Python 3.14, numpy/scipy/numba,
+all reproducible). The arc is: (i) falsify static \(\varphi\) (Phases
+1--4); (ii) demonstrate the anti-resonance attractor (Phases 6--9);
+(iii) establish dynamical RG convergence and fold-density feedback
+(Phases 10--14); (iv) close quantitative gaps (Phase 15); (v) test
+against real data (Phases 16--17); (vi) implement the plonk-scale
+substrate (Phases 23--24); (vii) validate at the quantum scale top-down
+(Phases 27--35); (viii) test and honestly bound the strong-coupling and
+QM claims (Phases 36--42); (ix) prove the \(\alpha_s\) closure
+reference-irreducible and test the crystallization ruler (Phases
+43--44); (x) derive the twist, the Standard Model counting, and the
+mass-ratio duality (Phases 45, 47--49); (xi) draw the precise boundary
+for where \(\varphi\) lives (Phases 50--51).
+
+\subsection{\texorpdfstring{5.2 Falsification of the Static-\(\varphi\)
+Hypothesis (Phases
+1--4)}{5.2 Falsification of the Static-\textbackslash varphi Hypothesis (Phases 1--4)}}\label{falsification-of-the-static-varphi-hypothesis-phases-14}
+
+\textbf{Phase 1 (Klein-bottle spectrum).} The substrate was modeled as a
+discrete 4-regular twisted-torus graph cellulating the Klein bottle with
+a flat \(\mathbb{Z}_2\) twist connection. The topological Laplacian was
+verified (χ = 0, non-orientable, meridian holonomy −1) and the analytic
+spectrum \(\lambda(p,\ell) = 4 - 2\cos(2\pi p/n) - 2\cos(\pi\ell/n)\)
+validated to machine precision. \textbf{Two \(\varphi\)-tests failed:}
+distinct-level gap ratios follow the number-theoretic \(4p^2 + \ell^2\)
+ladder (median \(r^* \approx 0.77\)--0.92, no convergence to
+\(\varphi\)), and 2×2 block-spin RG preserves \(D_{\text{eff}} = 2\)
+with fixed point \(D^* \approx 2\), not \(\varphi\).
+
+\textbf{Phase 2 (Hopf fibration).} A discrete Hopf fibration
+\(S^1 \hookrightarrow S^3 \twoheadrightarrow S^2\) was constructed with
+verified Chern number. The Kaluza--Klein relation \(\alpha = 4/R_f^2\)
+with the topological minimum \(p = 3\) gives
+\(\alpha_{\text{raw}} \approx 17.5\), far from
+\(\alpha^{-1} \approx 137\); the required magnification
+\(M \approx 49.0 \approx \varphi^8\) was identified but not derived at
+this stage.
+
+\textbf{Phase 3 (mass hierarchy).} The proton and electron formulas held
+at 99.97\%/99.95\%; the neutron was high by \textasciitilde0.85 MeV and
+the naive associator \(\alpha_s\) model gave 0.38 vs observed 0.118
+(both closed in Phase 15 and refined in Phases 27--30).
+
+\textbf{Phase 4 (variable \(G\)).} Linearizing the Compression Operator
+around the flat equilibrium gave the decay operator
+\(M_\Psi = I - F^{-1}L/4\), with the slowest mode identified with the
+gravitational time scale \(\tau_{\text{fold}} = 4/\gamma_{\min}\). A
+fold-density scan showed \(D_{\text{eff}}\) descending from 3.43 to
+1.17, \textbf{crossing \(\varphi\) exactly once at \(f \approx 4.20\)}
+-- the first hint of the golden window.
+
+\textbf{Conclusion:} the local discrete topology is correct, but the
+golden ratio is not present in the static graph. This is the required
+negative control.
+
+\subsection{5.3 The Anti-Resonance Attractor (Phases
+6--9)}\label{the-anti-resonance-attractor-phases-69}
+
+\textbf{Phase 6 (anti-resonance selection).} The golden rotation on the
+spectral circle has a unique property: its gap rigidity
+\(R = \min_{\text{gap}}/\max_{\text{gap}}\) stays at exactly
+\(1/\varphi^2 \approx 0.382\) for all 300 simulated deposition
+generations, while rational rotations \(p/q\) collapse exactly at
+generation \(q + 1\). \textbf{The golden rotation is the unique
+maximal-persistence structure.} The Douady--Couder growth simulation
+converges to a noble-family attractor at
+\(151.9^{\circ} \pm 0.8^{\circ}\) -- the continued-fraction structure of
+the golden ratio {[}6{]} realizes the KAM-type stability of the
+most-irrational rotation {[}7{]}. Because every finite approximation is
+a Fibonacci rational converging to -- but never reaching -- \(\varphi\),
+the result is an attractor, not a fixed point.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio]{publication/figures/phi_attractor.png}}
+\caption{\textbf{Anti-resonance selection of the golden rotation.} The
+persistence rigidity \(R\) stays at exactly
+\(1/\varphi^2 \approx 0.382\) for the golden rotation while rational
+rotations collapse at their denominators (Phase 6 output).}
+\end{figure}
+
+\textbf{Phase 7 (vector substrate).} A non-raster ensemble of
+oscillators on the spectral circle, coupled by spectral proximity: the
+Fibonacci-golden ensemble is flat at \(D_{\text{eff}} = 1.10 \pm 0.03\)
+across the 6--39° range, while random ensembles vary 0.5→2.2 and
+rational (1/5) ensembles are chaotic and mode-locked.
+
+\textbf{Phase 8 (vacuum-pump laser threshold).} The vacuum pump deposits
+harmonic layers at golden-scaled positions \(f_k = f_0/\varphi^k\). A
+sharp coherence transition occurs at \textbf{layer 11} -- the laser
+threshold -- above which \(D_{\text{eff}}\) pins at 1.18, and the
+magnification at layer 8 matches \(\varphi^8 = 46.98\) exactly.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio]{publication/figures/d_eff_vs_pump.png}}
+\caption{\textbf{Vacuum-pump threshold.} \(D_{\text{eff}}\) versus pump
+strength: coherence jumps at layer 11 and pins at 1.18 (Phase 8
+output).}
+\end{figure}
+
+\textbf{Phase 9 (golden phase selection).} A cellular automaton on the
+Klein grid with golden-phase tracking shows the golden fraction rising
+from 0.54→0.77 (+43\%) when live cells' phases rotate by the golden
+angle per tick.
+
+\subsection{5.4 Dynamical RG and the Golden Window (Phases
+10--14)}\label{dynamical-rg-and-the-golden-window-phases-1014}
+
+\textbf{Phase 12 (static RG fails).} Fibonacci-decimated blocking on the
+golden-order circle produces nearly identical \(D_{\text{eff}}\) to
+uniform blocking -- both far from \(\varphi\). Static blocking of any
+kind cannot converge to \(\varphi\).
+
+\textbf{Phase 13 (dynamical RG converges).} The blocking is not
+pre-assigned; it emerges from the substrate's temporal evolution.
+Golden-connected components (cells linked by edges with weight
+\textgreater{} 0.5) become coarse vertices. Under the golden attractor,
+\(D_{\text{eff}}\) \textbf{pins at \(1.655 \pm 0.001\)} from epoch 7
+onward -- within 2.3\% of \(\varphi = 1.618\).
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio]{publication/figures/dynamical_rg.png}}
+\caption{\textbf{Dynamical RG convergence.} Golden-connected components
+become coarse vertices; \(D_{\text{eff}}\) pins at \(1.655 \pm 0.001\)
+from epoch 7 (Phase 13 output).}
+\end{figure}
+
+\textbf{Phase 14 (fold-density feedback pins \(G_{\text{eff}}\)).} The
+self-regulating ODE \(df/dt = \gamma\,(D_{\text{eff}}(f) - \varphi)\,f\)
+drives fold density to the golden window (\(f \approx 4.2\)) from any
+initial condition, pinning the gravitational coupling at the exact
+\(1/\varphi\) exponent. \(G_{\text{eff}} \propto \rho^{1/\varphi}\) is
+therefore \textbf{derived}, not assumed.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio]{publication/figures/feedback_trajectory.png}}
+\caption{\textbf{Fold-density feedback.} Trajectories from diverse
+initial fold densities all converge to the golden window
+\(f \approx 4.2\) (Phase 14 output).}
+\end{figure}
+
+\subsection{5.5 Observational Tests and the Strong-Coupling Closure
+(Phases 15--17,
+38--46)}\label{observational-tests-and-the-strong-coupling-closure-phases-1517-3846}
+
+\textbf{Oscillatory DE vs \(\Lambda\)CDM} (Phase 16): preferred at
+\textasciitilde4σ, \(\Delta\chi^2 = 22.1\), \(H_0\): 73.6→71.4 (Section
+4.4).
+
+\textbf{Void lensing} (Phases 5, 17): the pinned \(G(\rho)\) model
+predicts 63\% suppression, distinguishable from GR at \(10.7\sigma\);
+real DES Y6 GOLD data produced a first stacked shear measurement
+\(\gamma_t \sim -0.025\) at \(0.27^{\circ}\) (Section 4.5).
+
+\textbf{The mass→coupling relation} (Phase 38): the golden-layer count
+from \(m_p\) reproduces \(\alpha_s(M_Z)\) at 3.1\% and
+\(\alpha_s(m_\tau)\) at 1.3\%, with the associator magnitude
+\(1/\varphi^2\) as the natural normalization -- the \emph{mechanism}
+from masses to couplings is golden, even though the couplings themselves
+are not golden values (Phase 37, §8.2).
+
+\textbf{Active-flavor thresholds} (Phases 39, 42): the \(m_b\)/+19.5\%
+and \(m_t\)/+15.2\% residuals trace to the golden-layer base being held
+constant while QCD's running slows as flavors activate. A
+boundary-convention fix (reference AT a threshold uses the flavor count
+ABOVE it) improves the principled form \(\varphi^{-(n_f-3)/6}\) from RMS
+9.56\% to 8.78\%; the best single-exponent scan reaches 8.70\%.
+\textbf{No single golden rule fits all four references below
+\textasciitilde8.7\%} -- the threshold mechanism is confirmed, the clean
+closure remains open.
+
+\textbf{The \(\alpha_s\) closure is reference-irreducible} (Phases 43,
+46). Phase 43 found that the apparent two-loop resolution of the \(m_b\)
+residual was an artifact: the coupling's second coefficient in the
+golden scheme was dead code (\(0.0 \times k_1\)). With the real two-loop
+coefficient, \(m_b\) closes (+15.95\%→+0.75\%) but \(M_Z\) and \(m_t\)
+are over-corrected (−42\%, −76\%); overlaying the full-curve two-loop
+MS-bar RGE shows an irreducible conflict in the \(m_b \to M_Z\) segment
+(+31.5\% too steep). Phase 46 then tested \emph{every legitimate
+reference choice} -- the scheme-dependent \(m_t\) (0.090 vs the
+QCD-running 0.108), the QCD-consistent reference set
+(0.3133/0.2236/0.1180/0.1076), and fully free references within credible
+ranges. \textbf{None closes the closure.} The structural cause is a
+shape mismatch: matching two-loop QCD in the \(m_b \to M_Z\) segment
+requires a golden exponent of \(\varphi^{+0.82}\) (flattening), the
+\emph{opposite sign} of the principled \(\varphi^{-(n_f-3)/6}\)
+(steepening). Golden running is a pure power law in \(E\); QCD running
+is \(\sim 1/\ln E\) and flattens at high energy. The flavor-threshold
+mechanism is confirmed; the clean golden closure is closed with a
+definite, reference-independent negative.
+
+\textbf{The BAO sound-horizon test} (Phase 44). Phase 36's dimensional
+crystallization (D → 2 before recombination) was confronted with the
+DESI DR1 BAO standard ruler (\(D_M/r_d\) and \(D_H/r_d\) at
+\(z = 0.51\)--\(1.49\), 1--5\% precision, \(r_d = 147.09\) Mpc). The
+joint H(z)+BAO fit is \(\Delta\chi^2 = -4.6\) (no discrimination); the
+BAO-only \(z_c\) basin is flat (\(\chi^2\) 35--38 across
+\(z_c = 0.5\)--8), so the ruler cannot pin the crystallization redshift
+at \(z \le 1.5\). The ruling tension is the known low-\(z\) DESI
+\(D_H(0.51)\) anomaly, which strikes both models equally (+5.7σ
+crystallization, +5.6σ ΛCDM). \textbf{Honest conclusion:} the BAO ruler
+confirms Phase 36 -- the refined picture (crystallization before
+recombination, D ≈ 3 at all observable \(z\)) survives the standard
+ruler, and the discriminators remain at higher \(z\).
+
+\subsection{5.6 The Plonk-Scale Substrate (Phases
+23--24)}\label{the-plonk-scale-substrate-phases-2324}
+
+The plonk-scale simulation implements the \(720^{\circ}\) double-cover
+of the Klein bottle explicitly, addressing the missing ingredient
+identified in Phases 19--22 (grid harmonics and gain saturation
+corrupting the naive balloon models).
+
+\textbf{Fibonacci lattice.} Golden-angle spiral positioning on the Klein
+surface produces correlated phase-position ordering.
+
+\textbf{4-tick orientation cycle.} Each oscillator advances one quarter
+of the full Klein circumference per plonk tick; after 4 ticks
+(\(720^{\circ}\)), all oscillators return to their original chirality.
+The spin-1/2 double-cover is verified at 200/200.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio]{publication/figures/plonk_cycle.png}}
+\caption{\textbf{Plonk-cycle dynamics on the Klein bottle.} The 4-state
+orientation tracker encodes the \(720^{\circ}\) double-cover; parity
+inversion through the Möbius seam is encoded as sign flips in the
+coupling matrix (Phase 23a output).}
+\end{figure}
+
+\textbf{Parity-inverted coupling.} The shortest geodesic either stays on
+the same sheet or crosses the Möbius seam, encoded as a sign flip
+(44.6\% of coupling entries negative). This prevents the uniform
+saturation that plagued earlier balloon models and stabilizes amplitudes
+at \textasciitilde0.91.
+
+\textbf{Stable knots.} Knots form at \textasciitilde3\% per 4-tick
+cycle, robust across all parameter variations (Phase 24 sweep over
+\(\omega_0\), gain, \(\sigma\), TOL, \(N\)), independent of the golden
+filter's tolerance parameter -- the topological structure is the primary
+driver.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio]{publication/figures/param_scan.png}}
+\caption{\textbf{Parameter scan.} Stable-knot fraction is robust at
+\textasciitilde3\% across variations in \(\omega_0\), gain, \(\sigma\),
+and TOL; the golden filter is secondary to the Fibonacci lattice
+topology (Phase 24 output).}
+\end{figure}
+
+\textbf{QM diagnostics} (Phase 23b): 100\% chirality flip at
+\(180^{\circ}\) (spin-1/2), constructive/destructive superposition
+cycling, entanglement via twist-geodesic pairs, and phase-space
+uncertainty \(\Delta x \Delta p = 0.32\) vs the plonk bound 0.031.
+
+\textbf{Conclusion of the computational program.} The golden ratio acts
+at the \textbf{structural level} -- Fibonacci lattice positions and
+parity inversion through the Klein twist -- rather than as a tunable
+filter parameter.
+
+\subsection{5.7 The True Incommensurate Spectrum (Phase
+51)}\label{the-true-incommensurate-spectrum-phase-51}
+
+Phase 1's falsification of a static-\(\varphi\) invariant in the
+substrate Laplacian was performed on a \emph{commensurate} (rational)
+raster grid whose spectral circle carries the number-theoretic
+\(4p^2 + \ell^2\) ladder and unavoidable mode-locking. Phase 51 rebuilds
+the analysis on the \emph{incommensurate} golden-angle (Fibonacci)
+lattice prescribed by the substrate's discreteness constraint, keeping
+the Klein non-orientability as a global parity condition.
+
+\textbf{H51a -- the 1D Fibonacci chain is exactly solvable
+(Kohmoto--Kadanoff--Tang).} The transfer-matrix traces over the
+Fibonacci word satisfy the three-term map
+\(x_{n+1} = 2x_n x_{n-1} - x_{n-2}\) to 2e-13 (machine precision), and
+the KKT (Fricke) invariant
+\(x_{n+1}^2 + x_n^2 + x_{n-1}^2 - 2x_{n+1}x_n x_{n-1}\) is conserved to
+5e-10 -- a \emph{provably exact} golden self-similarity in the static
+spectrum. The spectrum fragments as a \textbf{Cantor set}: 359 distinct
+bands at generation 14, while the periodic (rational) control stays at 2
+bands. This is the incommensurate anti-resonant gap structure -- the
+static spectral analogue of Phase 6's dynamical gap-rigidity
+persistence.
+
+\textbf{H51b -- the 2D Klein lattice carries the topological twist as an
+exact fraction.} On the Klein bottle, the golden-angle Fibonacci lattice
+gives a parity-inversion (twist) fraction 0.446, independent of lattice
+size and matching the Phase 23a analytic value, while the raster grid's
+parity fraction \emph{drifts} 0.449 → 0.462 with \(N\) (grid
+mode-locking). The non-orientability is an emergent, scale-invariant
+property of the true lattice, not a grid artifact.
+
+\textbf{H51c -- spectral RG honest negative.} Coarse-graining the 2D
+Laplacian by Galerkin projection onto the low-energy eigenspace keeps
+\(D_{\text{eff}} \approx 2.2\) (\(r^2 \approx 0.995\)) across all scales
+-- \textbf{never \(\varphi\)}. Even on the true incommensurate lattice,
+\(\varphi\) is not a static spectral dimension.
+
+\textbf{Honest conclusion.} Phase 51 settles the ``was Phase 1's
+negative a raster artifact?'' question with a refined negative: the
+raster grid did hide the incommensurate gap structure, but the true
+lattice still does not make \(D_{\text{eff}} = \varphi\). The golden
+structure lives in the Cantor gap hierarchy (H51a) and the topological
+twist fraction (H51b), not in the spectral dimension -- completing the
+picture Phases 37, 46, and 50 drew: \(\varphi\) lives in the structure
+that survives -- the fractal gap hierarchy and the parity -- not in any
+single static observable.
+
+\section{6. Quantum-Scale Derivations: The Half-Integer Twist and the
+Particle
+Spectrum}\label{quantum-scale-derivations-the-half-integer-twist-and-the-particle-spectrum}
+
+The framework's most secure quantitative claims are top-down ratio tests
+at the quantum scale (Phases 27--35), all traced to the single
+half-integer twist \(\theta = 1/2\). Phases 47--49 complete this arc by
+\emph{deriving} the twist from the substrate's topology and tracing the
+Standard Model's counting structure and the mass-ratio duality to the
+same Fibonacci lattice.
+
+\subsection{6.1 The Half-Integer Twist (Phases 25, 29,
+47)}\label{the-half-integer-twist-phases-25-29-47}
+
+Phase 25 implements the Compression Operator as the \textbf{temporal
+holonomy} of an SU(2)-like connection over the closed \(720^{\circ}\)
+cycle. In the flat limit the 4-tick Wilson product is \emph{exactly}
+\(-I\) to machine precision -- the fermionic sign of the spin-1/2
+double-cover. The parity gauge flips chirality at tick 2 and restores it
+at tick 4.
+
+Phase 29 derives the factor-2 from this structure. The
+orientation-reversing seam imposes the meridian boundary condition
+\(\theta = \pi\ell/n_{\text{mer}}\) with \(\ell\) \textbf{odd}, halving
+the momentum relative to the torus (verified: momentum ratio exactly
+0.5; the Klein gap \(4\sin^2(\pi/2n)\) matches the odd-\(\ell\) analytic
+value to 1e-6). A charge living on the Klein meridian is anti-periodic:
+its single-valued unit is half the orientable unit, so
+\(\Xi_{\text{eff}} = 1/2\).
+
+\textbf{Phase 47 -- the derivation.} Phases 28--35 used \(\theta = 1/2\)
+as an empirical constant; Phase 47 closes the foundational gap by
+deriving it. The non-orientable seam is a flat \(\mathbb{Z}_2\) gauge
+connection with meridian holonomy \(W = -1\). But the master equation's
+associator term -- and quantum amplitudes generally -- require a complex
+Hilbert space, so the substrate's real line bundle must be
+\emph{embedded} into a complex \(U(1)\) bundle, mapping the
+\(\mathbb{Z}_2\) holonomy \(-1\) to the phase \(e^{i\pi}\). The
+fractional topological charge (the twist) is defined by the \(U(1)\)
+winding number,
+\[\theta = \frac{\arg(W)}{2\pi} = \frac{\pi}{2\pi} = \frac{1}{2},\]
+exactly and parameter-free. Computing the discrete Wilson loop on graph
+sizes from \(3 \times 3\) to \(144 \times 233\) confirms
+\(\theta = 0.5\) is exact and scale-invariant -- a property of the
+topology, not the discretization. This connects directly to the
+\(SU(2)\) double-cover: a full \(720^{\circ}\) rotation gives \(+I\)
+while a single \(360^{\circ}\) traversal gives \(-I\); in the \(U(1)\)
+embedding that single traversal is \(W = -1\), exactly a half-rotation
+in phase space. \textbf{The fractional twist is no longer empirical; it
+is a derived topological invariant of the Klein seam under complex
+embedding.}
+
+\subsection{6.2 The Neutron Factor-2 (Phases
+28--30)}\label{the-neutron-factor-2-phases-2830}
+
+The plan's literal \(\delta_n = \alpha/\varphi^2\) overshoots the
+neutron excess by 2.02×. The half-integer twist gives the leading factor
+\(1/2\), and the same \(\theta = 1/2\) enters the radiative sector as
+\(f_{\text{Klein}} = 1 + |\theta| = 3/2\); the triple-golden suppression
+\(1/\varphi^6\) completes the correction:
+
+\[\delta_n = \frac{\alpha}{2\varphi^2}\left(1 - \left(\tfrac{3}{2} - \tfrac{\alpha}{\varphi^6}\right)\alpha\right),\]
+
+reproducing \(m_n\) to \textbf{0.02σ of CODATA 2018} {[}8{]}. The exact
+coefficient \(c = 1.4995935\) agrees with
+\(3/2 - \alpha/\varphi^6 = 1.4995933\) to 1.6e-7. The leading \(1/2\) is
+derived (Phase 29); the \(3/2\) and \(\alpha/\varphi^6\) terms are
+radiative corrections consistent with the associator algebra, not yet
+independently derived.
+
+\subsection{6.3 The Parameter-Free Mass Ratio (Phase
+27)}\label{the-parameter-free-mass-ratio-phase-27}
+
+Dividing the proton and electron mass formulas cancels \emph{both}
+\(\alpha\) and \(\varphi^2\), giving the exact prediction
+
+\[\frac{m_p}{m_e} = 6\pi^5 = 1836.118 \quad\text{vs}\quad 1836.153 \text{ observed}\quad (99.9981\%).\]
+
+This is IST's strongest top-down test: no free parameters at all. The
+electron mass factor \(12\pi^5 = 2 \times 6 \times \pi^5\) decomposes
+into the double-cover (Section 6.4), the three lepton generations, and
+the topological harmonic factor, per the companion derivation {[}9{]};
+the ratio \(6\pi^5\) survives the division by the proton's spin factor.
+
+\textbf{Phase 49 -- the factor 6 is derived.} The ``6'' in \(6\pi^5\)
+was the one remaining empirical input. In algebraic topology the
+homological (Poincaré) volume of a compact Lie group is the product of
+the volumes of its generating spheres; for \(SU(3)\) the generators are
+\(S^3\) and \(S^5\), giving exactly
+\({\rm Vol}_{\text{topo}}(SU(3)) = 2\pi^5\). The ratio then factors as
+\[\frac{m_p}{m_e} = 6\pi^5 = 3 \times (2\pi^5) = N_c \times {\rm Vol}_{\text{topo}}(SU(3)),\]
+with \(N_c = 3\) the number of quark colors in a baryon (the Phase 48
+\(F_4\)). The physical content is a duality between confinement and the
+free lepton: the three confined quarks' \(SU(3)\) color degrees of
+freedom are restricted to a color-singlet; the electron, an \(SU(3)\)
+singlet, avoids this confinement, and its relative phase-space volume
+exactly equals the unconstrained \(SU(3)\) phase space ``missing'' from
+the three quarks. The last empirical constant in the mass formulas is
+removed by topology.
+
+\subsection{6.4 The Koide Relation and the Muon (Phase
+31)}\label{the-koide-relation-and-the-muon-phase-31}
+
+The Koide relation
+\(Q = \frac{m_e + m_\mu + m_\tau}{(\sqrt{m_e} + \sqrt{m_\mu} + \sqrt{m_\tau})^2} = 2/3\)
+holds to \textbf{0.0009\%} with CODATA 2018 masses {[}8{]}. \(Q = 2/3\)
+is equivalent to a Koide phase \(\pi/2\) (measured 90.000374°, 6.5 μrad
+from \(\pi/2\)) -- the same \(\theta = 1/2\) that derives the neutron
+factor-2. The three lepton generations are a three-fold phase fan at
+three \(2\pi/3 = 120^{\circ}\) offsets wrapping the \(720^{\circ}\)
+double-cover.
+
+\textbf{Honest scope.} The muon sits on the double-cover's back sheet
+(negative Koide amplitude), which is why the naive
+\(m_\mu/m_e \approx 3/(2\alpha)\) reaches only 99.41\%. \(Q\) is
+invariant to the sheet choice and is the robust observable; the
+individual ratio is not yet derived.
+
+\subsection{6.5 The Quark Sector (Phase
+32)}\label{the-quark-sector-phase-32}
+
+The one-twist Koide test on quarks gives an honest falsification map:
+the heavy generation (c,b,t) is consistent with \(Q = 2/3\) at 0.45\%
+(edge of pole-mass systematics; the MS-bar scheme gives 8\%); every
+triplet involving the light quarks is broken. The \(\pi/2\) twist
+survives where the topological mass dominates -- the heavy generation --
+and is washed out where light-quark masses are RG/scheme-dominated. This
+is a \emph{falsification map}, not a confirmation.
+
+\subsection{6.6 The Baryon Decuplet (Phases
+34--35)}\label{the-baryon-decuplet-phases-3435}
+
+The baryon spectrum maps onto the energy quantum
+\(E = \hbar c/1\text{ fm} = 197.33\) MeV. Phase 35 derives the nucleon
+coefficient:
+
+\[m(S) = \left[4 + \tfrac{k}{2}f_{\text{Klein}}\right]E, \qquad f_{\text{Klein}} = \tfrac{3}{2}, \qquad k = 1, 3, 4, 5, 6,\]
+
+where the base 4 is the double-cover (four plonk ticks of the
+\(720^{\circ}\) cycle) and each strangeness step adds half
+\(f_{\text{Klein}}\):
+
+\begin{longtable}[]{@{}llllll@{}}
+\toprule\noalign{}
+Baryon & k & m/E & predicted (MeV) & observed (MeV) & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+N & 1 & 19/4 & 937.30 & 938.92 & −0.17\% \\
+Δ & 3 & 25/4 & 1233.29 & 1232.00 & +0.11\% \\
+Σ* & 4 & 7 & 1381.29 & 1383.70 & −0.17\% \\
+Ξ* & 5 & 31/4 & 1529.28 & 1531.80 & −0.16\% \\
+Ω & 6 & 17/2 & 1677.28 & 1672.45 & +0.29\% \\
+\end{longtable}
+
+\textbf{Honest scope.} The decuplet is the clean object (≤0.29\%); the
+octet does NOT fit a single ladder -- its law is the golden partition,
+resolved in Phase 45 (Section 6.8). The \(\Delta\) anchor and the 1-fm
+scale retain a combined \textasciitilde1\% ambiguity.
+
+\subsection{6.7 The Master-Equation Correction (Phase
+33)}\label{the-master-equation-correction-phase-33}
+
+The original master equation wrote the associator term as
+\((\alpha/\varphi^2)\Xi\); the neutron derivation requires the
+associator term to carry the twist. The corrected form
+
+\[M = \frac{f}{2\pi}I_{\text{topo}} + \frac{\alpha}{\varphi^2}\,\Xi_{\text{eff}}\,(1 - c\alpha) + \delta_{\text{tc}},\]
+
+with \(\Xi_{\text{eff}} = 1 - \theta\),
+\(c = 2\theta(f - \alpha/\varphi^6)\), \(f = 1 + |\theta|\), reduces
+\emph{exactly} to the original at \(\theta = 0\) (proton/electron
+unchanged at 99.95\%) and fixes the neutron at 0.02σ for
+\(\theta = 1/2\). This is a framework correction, not a new free
+parameter.
+
+\subsection{6.8 The Baryon Octet: The Golden Partition (Phase
+45)}\label{the-baryon-octet-the-golden-partition-phase-45}
+
+Phase 34's honest negative left the octet open: \(\Lambda\), \(\Sigma\),
+\(\Xi\) do not sit on the decuplet E-ladder, and the internal
+\(\Sigma{-}\Lambda\) vs \(\Xi{-}\Sigma\) gaps (77.5 vs 125.1 MeV) were
+``not clean.'' Phase 45 finds the octet's clean content is a
+\emph{different} SU(3) law -- a \textbf{golden partition}: the
+\(\Lambda \to \Xi\) mass interval is split by \(\Sigma\) at the golden
+point,
+\[\frac{\Sigma-\Lambda}{\Xi-\Lambda} = \frac{1}{\varphi^2}\ \ (0.108\%); \qquad \frac{\Xi-\Sigma}{\Sigma-\Lambda} = \varphi\ \ (0.175\%).\]
+
+This is parameter-free and predictive:
+\[\Sigma = \Lambda + \frac{\Xi-\Lambda}{\varphi^2}\ \to\ 1193.070\ \text{MeV}\ (0.007\%); \qquad \Xi = \Lambda + \varphi^2(\Sigma-\Lambda)\ \to\ 1318.504\ (0.017\%).\]
+
+The two internal gaps -- the \(\Lambda{-}\Sigma\) hyperfine split (ud
+spin-flip, I=0↔I=1) and the \(\Xi{-}\Sigma\) strangeness step (S=−1→−2)
+-- stand in the golden ratio. The relation passes the project's
+robustness frame: the split fraction \(1/\varphi^2\) has a narrow 0.38\%
+basin with \(1/\varphi^2\) uniquely selected against competitors (3/8,
+0.38, 5/13, 8/21, 0.39, 0.4). The octet obeys the Gell-Mann--Okubo sum
+rule to 0.57\% as a consistency check. The framework now has two clean,
+parameter-free SU(3) mass structures: the decuplet's E-ladder and the
+octet's golden partition. The honest scope: this is a single
+parameter-free constraint on three measured masses, characterizing the
+residual structure GMO leaves open -- it does not replace GMO at leading
+order.
+
+\subsection{6.9 The Fibonacci Standard Model (Phase
+48)}\label{the-fibonacci-standard-model-phase-48}
+
+Phase 24's parameter scan established that \textasciitilde3\% of
+substrate nodes form stable topological defects (knots), robust to all
+dynamic variations. Phase 48 maps this stable-knot fraction to the
+Standard Model's particle multiplicities, resolving the final structural
+open item. Because the substrate is cellulated with a Fibonacci lattice,
+the allowable topological defects are constrained by the Fibonacci
+sequence \(F_n = \{1, 1, 2, 3, 5, 8, 13, 21, 34, \ldots\}\), and the
+SM's entire fundamental counting structure maps to its first nine terms:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\(F_1 = 1\):} the Higgs boson.
+\item
+  \textbf{\(F_2 = 1\):} the photon (\(U(1)\) gauge boson).
+\item
+  \textbf{\(F_3 = 2\):} the chiralities (left, right).
+\item
+  \textbf{\(F_4 = 3\):} the generations / the weak bosons (\(SU(2)\)).
+\item
+  \textbf{\(F_5 = 5\):} the distinct fermion multiplets per generation
+  that cancel gauge anomalies (\(Q_L, u_R, d_R, L_L, e_R\)).
+\item
+  \textbf{\(F_6 = 8\):} the gluons (\(SU(3)\)) / the fundamental
+  fermions per generation (2 leptons + 6 quarks).
+\item
+  \textbf{\(F_7 = 13\):} the total bosons (1 Higgs + 1 photon + 3 weak +
+  8 gluons).
+\item
+  \textbf{\(F_8 = 21\):} the total fundamental particle types (13 bosons
+  + 8 fermions).
+\item
+  \textbf{\(F_9 = 34\):} the inverse knot fraction.
+\end{itemize}
+
+\textbf{The \(1/34\) knot fraction.} The theoretical probability of a
+node forming a stable knot is exactly \(1/F_9 = 1/34 \approx 2.941\%\),
+statistically consistent with the Phase 24 empirical mean
+(\(3.132\% \pm 0.483\%\)). The empirical ``\textasciitilde3\%'' is the
+\(F_9\) structural limit. \textbf{The boson/fermion ratio.} The total
+bosons (\(F_7 = 13\)) to fermions per generation (\(F_6 = 8\)) ratio is
+\(13/8 = 1.625\), the standard Fibonacci approximation of \(\varphi\).
+This parameter-free combinatorial map derives the SM's structural
+quantities from the Fibonacci sequence inherent to the substrate,
+without new assumptions.
+
+\subsection{6.10 The Light-Quark Golden Partition Test (Phase 50): Where
+φ Does NOT
+Live}\label{the-light-quark-golden-partition-test-phase-50-where-ux3c6-does-not-live}
+
+Phase 45 showed the baryon octet (bound states of light quarks) obeys
+the golden partition; Phase 50 asks whether the \emph{bare} quarks
+(\(u, d, s\)) themselves carry it. The answer is a decisive,
+RG-invariant honest negative.
+
+\textbf{The bare partition fails.} If the quarks carried the octet's
+law, they would satisfy
+\((m_d - m_u)/(m_s - m_u) = 1/\varphi^2 \approx 0.382\). The measured
+bare masses (\(m_u = 2.16\), \(m_d = 4.67\), \(m_s = 93.4\) MeV) give
+\(0.0275\) -- 92.8\% off. \textbf{The failure is scale-invariant:} to
+one loop all light quarks share the same anomalous dimension
+\(\gamma_m\), so their \emph{mass ratios} are exactly RG-invariant --
+running all three masses by any common factor leaves the ratio
+identical. The bare quarks do not golden-partition at \emph{any} scale.
+\textbf{It is not a coordinate artifact:} the partition fails in the
+Koide \(\sqrt{m}\) space too (0.084 vs 0.382).
+
+\textbf{Refined conclusion.} The golden partition is a structural law of
+the hadronic \emph{bound states} -- the topological knots that are the
+physical particles -- not of the perturbative, scheme-dependent bare
+quarks. This is the same dividing line Phase 37 drew (golden harmonics
+live in the masses, not the couplings) and Phase 46 reinforced (the
+golden power-law cannot reproduce bare QCD running). \(\varphi\) is a
+property of the \emph{emergent, confined} substrate excitations.
+
+\section{\texorpdfstring{7. The Zero-Point Operator and the
+\(720^{\circ}\)
+Double-Cover}{7. The Zero-Point Operator and the 720\^{}\{\textbackslash circ\} Double-Cover}}\label{the-zero-point-operator-and-the-720circ-double-cover}
+
+\subsection{7.1 Overview}\label{overview-2}
+
+We define the Zero-Point Operator \(\Omega\), a specialization of the
+Compression Operator \(\Psi\) that acts in regions of vanishing fold
+density. The goal is twofold: (i) formalize \(\Omega\) as a geometric
+limit of \(\Psi\), and (ii) describe how ``collapse/expansion'' dynamics
+can be interpreted as a substrate-level mechanism for self-referential
+information automata. In the flat limit the double-cover holonomy is
+exactly \(-I\) (Section 6.1), and a parity inversion flips chirality at
+one twist crossing, restoring it only after a full \(720^{\circ}\)
+traversal.
+
+\subsection{7.2 The Zero-Point Limit}\label{the-zero-point-limit}
+
+In regions of vanishing fold density, \(\Psi\) approaches \(\Omega\),
+the behavior of the operator when the substrate can no longer sustain
+local curvature. The collapse is a topological necessity: in low-density
+regions, non-orientability forces self-intersection, and \(\Omega\)
+formalizes how information is conserved through this process. The
+substrate computes its own state updates without external agency -- the
+4-tick plonk cycle demonstrates this self-referential structure.
+
+\subsection{7.3 Temporal Consistency and Boundary
+Conditions}\label{temporal-consistency-and-boundary-conditions}
+
+The probabilistic axiom of the directed-number algebra suggests that
+what appears as quantum randomness may be epistemic, determined by
+global boundary conditions inaccessible to local observers. The
+zero-point operator restricts allowable histories to enforce a global
+consistency condition. We emphasize that ``retrocausal'' is used only
+operationally: constraints from future boundary data can influence
+present conditional probabilities, without a superluminal mechanism.
+This is a working interpretation, not a derived claim.
+
+\section{8. Critical Analysis and
+Discussion}\label{critical-analysis-and-discussion}
+
+\subsection{8.1 The Mechanism}\label{the-mechanism}
+
+The arc across 51 phases converges on a single picture: \(\varphi\) is
+not written into the substrate's spatial structure. It emerges from the
+temporal dynamics of harmonic self-interaction through three
+interconnected mechanisms -- anti-resonance selection, the vacuum-pump
+laser threshold, and dynamical RG convergence -- with fold-density
+feedback closing the loop so that \(G_{\text{eff}}\) converges to
+\(\rho^{1/\varphi}\) from any initial condition. The later phases add
+the crucial refinement of \emph{where} \(\varphi\) does and does not
+live: it is a dynamical attractor in the time domain, an exact
+self-similarity and parity in the static spectrum, and a structural law
+of bound-state knots -- never a static spectral dimension, a bare
+coupling, or a bare-quark mass (Sections 5.5, 5.7, 6.8, 6.10).
+
+\subsection{8.2 Honest Negatives}\label{honest-negatives}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Force couplings are not golden harmonics (Phase 37).} At the
+  fixed scale, only \(em/weak \approx \varphi^3\) (2.3\%);
+  \(weak/strong\) and \(em/strong\) are \textasciitilde19--22\% off. The
+  simplest harmonic-unification formulations are \textbf{not supported}.
+  The golden-harmonic evidence lives in the \emph{mass spectrum}, and
+  the couplings are the slaved running between the mass harmonics (Phase
+  38, Section 5.5).
+\item
+  \textbf{Dimensional crystallization is CMB-excluded at recombination
+  (Phase 36).} A \(D \to 2\) early universe gives a shift parameter
+  \(R \approx 6\) vs observed 1.7502 --- excluded by
+  \textasciitilde985σ. Crystallization must complete before
+  recombination; \(D \approx 3\) at all observable \(z\). The 60
+  \(H(z)\) chronometers cannot distinguish the transition from
+  \(\Lambda\)CDM.
+\item
+  \textbf{The self-referential ``137'' fixed point is retracted (Phase
+  42, H42g).} The relation \(\alpha^{-1} = 360/\varphi^{2+\alpha}\) has
+  a fixed point at 137.026 (0.0075\% off CODATA), but it fails the
+  project's four golden-relation robustness checks: the equation is
+  non-unique (a second spurious root at 0.0625), base-unspecific (a
+  0.09\% band of bases fits equally well), unit-fragile (degrees → 137,
+  radians → 1.85), and exponent-free (14 exponents in {[}1.5, 2.5{]}
+  reach the same precision). Reported as a cautionary example of
+  over-fitting, not as a claim.
+\item
+  \textbf{The \(\alpha_s\) closure is reference-irreducible (Phases 43,
+  46).} The apparent two-loop ``closure'' of the \(m_b\) residual was a
+  dead-code artifact; with the real two-loop coefficient no single
+  golden rule fits all four references, because the golden power-law
+  running cannot reproduce the genuine \(\sim 1/\ln E\) curvature of
+  QCD. The negative is reference-independent (Sections 5.5).
+\item
+  \textbf{The BAO ruler does not discriminate crystallization (Phase
+  44).} The DESI DR1 sound-horizon ruler is flat against the
+  crystallization redshift and adds no discriminating power at
+  \(z \le 1.5\) --- an honest negative that confirms Phase 36 (Section
+  5.5).
+\item
+  \textbf{Bare quarks do not golden-partition (Phase 50).} The bare mass
+  ratio fails \(1/\varphi^2\) by 92.8\%, RG-invariantly and in Koide
+  space --- the partition is a law of bound-state knots (Section 6.10).
+\item
+  \textbf{\(\varphi\) is not a static spectral dimension (Phase 51).}
+  Even on the true incommensurate Fibonacci lattice, spectral RG keeps
+  \(D_{\text{eff}} \approx 2.2\) --- never \(\varphi\); the golden
+  structure lives in the Cantor gap hierarchy and the twist (Section
+  5.7).
+\end{itemize}
+
+\subsection{8.3 Comparison to Alternative
+Frameworks}\label{comparison-to-alternative-frameworks}
+
+The \(\varphi\)-attractor mechanism offers a distinct path to generating
+dimensionless constants. Unlike string-theory moduli (typically tuned)
+or anthropic arguments (not predictive), anti-resonance selection
+provides a dynamical mechanism for why \(\varphi\) emerges. Independent
+proposals for the golden ratio as a stable IR fixed point in nonlocal
+field theories {[}1{]} are complementary to this mechanism. The
+connection to established quantum gravity frameworks (e.g., Loop Quantum
+Gravity, asymptotic safety) remains to be formalized.
+
+\subsection{8.4 Outlook}\label{outlook}
+
+The stable-knot fraction has been mapped to the Standard Model
+multiplicities (Phase 48); the clean golden closure of the \(\alpha_s\)
+flavor running is \emph{closed} as reference-irreducible (Phases 43,
+46); and the octet's structure is resolved as a golden partition (Phase
+45). New open questions remain: (i) deriving the octet's two SU(3) laws
+(decuplet E-ladder, octet golden partition) from a single
+\(\theta = 1/2\) mechanism; (ii) whether a golden-informed
+\emph{modification} of QCD running -- rather than a replacement -- can
+close the \(\alpha_s\) gap; and (iii) the exact origin of the
+incommensurate spectrum's \(D_{\text{eff}} \approx 2.2\). The
+\(\varphi\)-attractor's connection to established quantum-gravity
+frameworks (LQG, asymptotic safety) remains to be formalized.
+
+\section{9. Conclusion}\label{conclusion}
+
+Information Substrate Theory provides a framework in which observed
+physics emerges from a discrete, non-orientable two-dimensional
+information substrate. A 51-phase computational program (600 automated
+tests) establishes that the golden ratio \(\varphi\) is not a static
+invariant of the substrate graph but a \textbf{dynamical attractor} of
+its harmonic self-interaction.
+
+\textbf{Key results:} - Parameter-free \(m_p/m_e = 6\pi^5\), now
+\emph{derived} as \(N_c\,{\rm Vol}(SU(3))\) (99.9981\%, Phase 49);
+neutron excess at 0.02σ of CODATA; Koide \(Q = 2/3\) (0.0009\%); baryon
+decuplet ladder ≤0.29\% and octet golden partition (0.007\%, Phase 45)
+--- all traced to the half-integer twist \(\theta = 1/2\), now
+\emph{derived} as an exact topological invariant (Phase 47) - The
+Fibonacci substrate carries the entire Standard Model counting structure
+as \(F_1\)\ldots{}\(F_9\), with the stable-knot fraction resolved as
+exactly \(1/34\) (Phase 48) - Strong coupling via mass→coupling
+relation: \(M_Z\) 3.1\%, \(m_\tau\) 1.3\%; active-flavor threshold
+mechanism confirmed; the clean closure proved reference-irreducible
+(Phases 43, 46) - Oscillatory dark energy preferred over \(\Lambda\)CDM
+at \textasciitilde4σ; void-lensing suppression 63\% distinguishable at
+\(10.7\sigma\); first stacked DES Y6 shear signal - Honest negatives
+reported: force couplings not golden harmonics; crystallization
+CMB-excluded at recombination; the ``137'' fixed point retracted by
+robustness checks; the \(\alpha_s\) closure reference-irreducible; bare
+quarks do not golden-partition; and \(\varphi\) is not a static spectral
+dimension even on the true incommensurate lattice
+
+The framework is offered as a work in progress whose claims are intended
+to be evaluated and revised against observation.
+
+\section{Appendices}\label{appendices}
+
+\subsection{Appendix A: Phase Map}\label{appendix-a-phase-map}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\#
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Name
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Key Finding
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & Klein spectrum & Gap ratios falsify bare-grid \(\varphi\) \\
+2 & Hopf \(\alpha\) & Form correct, scale needs \(\varphi^8\) \\
+3 & Mass hierarchy & p/e at 99.9\%+, \(\alpha_s = 0.38\) (gap, closed Ph
+15) \\
+4 & Variable G & \(D_{\text{eff}}\) crosses \(\varphi\) at
+\(f \approx 4.2\) \\
+5 & Observable validation & Void lensing 10.7σ forecast \\
+6 & \(\varphi\)-attractor & Golden = maximal anti-resonance \\
+7 & Vector substrate & \(D_{\text{eff}} \approx 1.10\), self-similar,
+not grid-D=2 \\
+8 & Vacuum pump & Laser threshold at layer 11 \\
+9 & GoL automaton & Golden fraction 0.54→0.77 \\
+10--11 & Klein vector field / golden-filtered substrate & Twist
+correlation emerges; edge-level golden weights \\
+12 & Fibonacci RG & Static blocking fails \\
+13 & Dynamical RG & \(D_{\text{eff}}\) pins at 1.655 (2.3\% of
+\(\varphi\)) \\
+14 & Fold feedback & \(G\) exponent → \(1/\varphi\) from any initial
+\(f\) \\
+15 & Running \(\varphi\) & \(\alpha_s\) fixed (3\%), neutron exact,
+\(\beta = \varphi^3\) \\
+16 & Joint fit & Oscillatory DE at 4σ over \(\Lambda\)CDM \\
+17 & DES void lensing & Real shear stacking (3 voids,
+\textasciitilde0.025) \\
+19--22 & Unified sim / balloon models & Grid harmonics + gain saturation
+→ corrected in 23--24 \\
+23 & Plonk-scale & Fibonacci lattice + 4-state tracker + 720° verified
+(200/200) \\
+24 & Parameter scan & Stable fraction \textasciitilde3\% robust;
+topology primary \\
+25 & Temporal holonomy & \(\Psi\) = Wilson loop of SU(2) connection;
+flat limit EXACTLY \(-I\); static-\(\varphi\) falsification
+reproduced \\
+27 & QM-scale ratio validation & Parameter-free \(m_p/m_e = 6\pi^5\)
+(99.9981\%); factor-2 neutron found \\
+28 & Factor-2 neutron &
+\(\delta_n = (\alpha/2\varphi^2)(1-(\tfrac{3}{2}-\alpha/\varphi^6)\alpha)\)
+at 0.02σ \\
+29 & Factor-2 derivation & The 2 = half-integer Klein meridian
+quantization (odd-\(\ell\)); the 720° double-cover \\
+30 & Radiative (3/2)α derived &
+\(f_{\text{Klein}} = 1 + |\theta| = 3/2\); full \(\delta_n\) at 0.02σ \\
+31 & One-twist muon (Koide) & \(Q = 2/3\) to 0.0009\%; phase at 6.5 μrad
+from \(\pi/2\); muon on back sheet \\
+32 & Quark-sector Koide test & Heavy (c,b,t) consistent (+0.45\%); light
+broken --- a falsification map \\
+33 & Master-equation correction & Twist-dependent associator; reduces to
+original at \(\theta = 0\) \\
+34 & Baryon mass ladder & Decuplet ≤0.27\%; octet honest (mixing open,
+closed Ph 45) \\
+35 & Double-cover baryon derivation &
+\(m(S) = [4 + (k/2)f_{\text{Klein}}]E\); 19/4 derived; decuplet
+≤0.29\% \\
+36 & Dimensional crystallization & \(D \to 2\) early universe
+CMB-excluded (\textasciitilde985σ); crystallization precedes
+recombination \\
+37 & Force harmonics test & Couplings NOT golden harmonics --- evidence
+is in the mass spectrum \\
+38 & Mass-coupling relation &
+\(\alpha_s(E) = (1/\varphi^2)\varphi^{-n(E)}\): M\_Z 3.1\%, \(m_\tau\)
+1.3\% \\
+39 & Active-flavor thresholds & Mechanism confirmed; free fit cuts
+\(m_b\) 19.5\%→3.0\% \\
+40 & Bell non-locality & Substrate singlet → CHSH 2.83; non-locality is
+a projection artifact \\
+41 & Measurement problem & Collapse as entropic crystallization; strict
+unitarity \\
+42 & Flavor closure + 137 test & Boundary convention resolved (RMS
+8.78\%); ``137'' fixed point RETRACTED (fails robustness checks) \\
+43 & 2-loop golden closure & Dead-code b1 fixed: \(m_b\) closes
+(+15.95\%→+0.75\%) but the two-loop RGE overlay is IRREDUCIBLE --- no
+single golden rule closes all 4 \\
+44 & BAO sound-horizon test & DESI DR1 ruler flat against
+crystallization (\(\Delta\chi^2=-4.6\)); CONFIRMS Phase 36 ---
+discriminators remain at higher z \\
+45 & Baryon octet golden partition & \(\Sigma\) splits \(\Lambda\to\Xi\)
+at \(1/\varphi^2\) (0.108\%); parameter-free \$\Sigma\to\$0.007\%,
+\$\Xi\to\$0.017\% --- two SU(3) laws \\
+46 & Reference-level fix refuted & All four reference choices leave
+\(m_b/M_Z\) OUT; closure is reference-irreducible (power-law-vs-log
+shape mismatch) \\
+47 & Emergent-twist derivation & \(\theta = 1/2\) derived exactly from
+the \(\mathbb{Z}_2\to U(1)\) holonomy embedding
+(\(\theta = \arg(W)/2\pi\)); grid-independent \\
+48 & Stable-knot SM multiplicities & SM counting =
+\(F_1\)\ldots{}\(F_9\); knot fraction exactly \(1/34 \approx 2.94\%\);
+boson/fermion \(13/8 \approx \varphi\) \\
+49 & Proton/electron ratio derived &
+\(m_p/m_e = N_c\,{\rm Vol}(SU(3)) = 6\pi^5\) --- the empirical 6 is the
+confined-color phase-space duality \\
+50 & Light-quark golden partition test & Bare quarks fail
+\(1/\varphi^2\) by 92.8\%, RG-invariantly --- partition is a law of
+bound-state knots, not bare quarks \\
+51 & Fibonacci Laplacian & True incommensurate spectrum: EXACT KKT trace
+map (2e-13) + Cantor fragmentation (359 vs 2 bands); twist 0.446
+N-independent; \(D_{\text{eff}}\approx2.2\) NEVER \(\varphi\) \\
+\end{longtable}
+
+\subsection{Appendix B: Code and Data
+Availability}\label{appendix-b-code-and-data-availability}
+
+All code, tests, and outputs at:
+\texttt{https://github.com/MaryTheadoor/IST-workspace-}
+
+\begin{itemize}
+\tightlist
+\item
+  51 phases, 600 automated tests (pytest)
+\item
+  Plonk-scale substrate: 4-state orientation tracker, parity-inverted
+  coupling, Fibonacci lattice
+\item
+  QM diagnostic suite: spin, superposition, entanglement, uncertainty
+\item
+  Golden-relation robustness checks
+  (\texttt{golden\_relation\_checks.py}): uniqueness, base-specificity,
+  unit-invariance, parameter-freedom
+\item
+  Real data: DES Y6 GOLD (\texttt{Y6\_GOLD\_2\_2-0-0000.parquet}, 3.5
+  GB), Pantheon+ SNe Ia (1701 events), DESI DR1 BAO (5 redshift bins),
+  H(z) cosmic chronometers (60 points)
+\item
+  Figures and CSVs in \texttt{code/outputs/phase*/}
+\item
+  Derivation documents in \texttt{supplementary/phase*/}
+\end{itemize}
+
+\section{References}\label{references}
+
+{[}1{]} A. Solis. Golden Ratio as a Stable Infrared Fixed Point in
+Nonlocal Field Theories. arXiv preprint (2025).
+
+{[}2{]} Scognamiglio, D. et al.~COSMOS-Web: A Synthetic JWST Survey for
+Void Lensing Anomalies. The Astrophysical Journal, in press (2026).
+
+{[}3{]} NOWN Research Collective. Directed Numbers and Zero-Point
+Operators: An Algebraic Formalism for Topological Information
+Conservation. Internal document v0.7 (2026).
+
+{[}4{]} van der Mark, M.B. \& 't Hooft, G.W. Light is Heavy.
+arXiv:1508.06478v1 {[}physics.hist-ph{]} (2015).
+
+{[}5{]} Williamson, J.G. \& van der Mark, M.B. Is the electron a photon
+with toroidal topology? Annales de la Fondation Louis de Broglie, 22,
+133 (1997).
+
+{[}6{]} Khinchin, A. Ya. Continued Fractions. University of Chicago
+Press (1964).
+
+{[}7{]} Arnold, V. I. Proof of a theorem of A. N. Kolmogorov on the
+preservation of conditionally periodic motions. Russian Mathematical
+Surveys, 18(5), 9-36 (1963).
+
+{[}8{]} CODATA Task Group on Fundamental Constants. 2022 CODATA
+Recommended Values. Available at https://physics.nist.gov/cuu/Constants/
+(2022).
+
+{[}9{]} NOWN Research Collective. Decomposition of the Electron Mass
+Factor \(12\pi^5\). Supplementary derivation, IST-workspace repository
+(2026).
+
+\end{document}

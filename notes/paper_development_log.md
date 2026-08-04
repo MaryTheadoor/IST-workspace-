@@ -1,5 +1,29 @@
 # IST Paper Development Log
 
+## v8.0 — Full Unified Arc (August 2026)
+
+### Decision
+
+Bumped `main/ist_v7_0_topology_substrate.md` (frozen at Phase 42) to
+`main/ist_v8_0_topology_substrate.md`, incorporating Phases 43–51. v8.0 reports the
+full 51-phase arc (600 tests) and adds the unified origin story: the twist θ = 1/2 is
+now *derived* as an exact topological invariant from the Z₂→U(1) holonomy embedding
+(Phase 47), the Standard Model counting structure maps to F_1…F_9 (Phase 48), and the
+empirical 6 in m_p/m_e = 6π⁵ is derived as N_c·Vol(SU(3)) (Phase 49). New sections:
+5.5 (α_s closure reference-irreducible, Phases 43/46; BAO sound-horizon test, Phase 44),
+5.7 (the true incommensurate spectrum, Phase 51), 6.1 (Phase 47 derivation),
+6.3 (Phase 49 derivation), 6.8 (octet golden partition, Phase 45), 6.9 (Fibonacci
+Standard Model, Phase 48), 6.10 (light-quark honest negative, Phase 50); honest
+negatives extended in 8.2 and outlook in 8.4 updated. Appendix A phase map extended
+42→51; Appendix B counts 51/600. Built `publication/ist_v8_0_topology_substrate.tex`
+(pandoc) and `.pdf` (xelatex, 2 passes, 29 pages).
+
+### Note
+
+The master living paper (`main/synthesis_paper.md`, v2.0) and the strict-physics-core
+formal paper (`main/ist_v8_0_topology_substrate.md`) now both cover Phases 1–51; the
+master is the phase-map-sync target, the v8.0 document is the formal LaTeX/PDF lineage.
+
 ## v7.0 — Strict Physics Core (August 2026)
 
 ### Decision
