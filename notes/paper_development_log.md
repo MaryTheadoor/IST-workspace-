@@ -118,3 +118,10 @@ are preserved verbatim under git tag **`v6.0-paper-snapshot`**.
   m_p/m_e = 6pi^5. Derives this factor exactly from the topological (Poincare) volume
   of the SU(3) gauge group, Vol(SU(3)) = 2pi^5. Shows that the mass ratio is exactly
   N_c * Vol(SU(3)) = 3 * 2pi^5 = 6pi^5. A v8.0 paper update should add this as §8.1y.
+- Phase 50 (light quark golden partition test, honest negative): `notes/IST_Phase_50_plan.md`,
+  `code/phase50_light_quark_partition.py`. Tests whether the bare (u,d,s) quarks obey the
+  Baryon Octet's Golden Partition. REFUTED: (m_d-m_u)/(m_s-m_u)=0.0275 vs 1/φ²=0.382 (92.8%
+  off). Proves the ratio is RG-invariant (all light quarks share γ_m), so the negative is
+  scale-independent, and fails in Koide sqrt-space too. Conclusion: the Golden Partition is
+  an emergent property of hadronic bound-state knots, not bare quarks — refining where φ
+  lives (with Phase 37 and Phase 46). A v8.0 paper update should add this as §8.1z.

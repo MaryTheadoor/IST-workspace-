@@ -566,6 +566,18 @@ $$ \frac{m_p}{m_e} = 6\pi^5 = 3 \times (2\pi^5) = N_c \times Vol_{topo}(SU(3)) $
 
 **Honest conclusion.** The $6\pi^5$ factor is derived exactly as $N_c \times Vol(SU(3))$. This derivation removes the last empirical constant from the mass formulas, revealing a fundamental geometric duality between confined hadrons and free leptons.
 
+### 8.1z The Light Quark Golden Partition Test (Phase 50): Where φ Does NOT Live
+
+Phase 45 showed the Baryon Octet (bound states of light quarks) obeys the Golden Partition. Phase 50 asks the crucial refinement question: do the *bare* quarks ($u, d, s$) themselves carry the golden structure, or is it emergent in the bound state? The answer is a decisive, RG-invariant honest negative.
+
+**H50a — The bare quark partition fails.** If the quarks carried the octet's law, they would satisfy $(m_d - m_u)/(m_s - m_u) = 1/\varphi^2 \approx 0.382$. The measured bare masses ($m_u=2.16$, $m_d=4.67$, $m_s=93.4$ MeV) give $0.0275$ — 92.8% off.
+
+**H50b — The failure is scale-invariant (not a μ artifact).** Quark masses run with the renormalization scale μ. A skeptic might dismiss the negative as "wrong scale." But to one-loop order, all light quarks share the same anomalous dimension $\gamma_m$; their *mass ratios* (hence gap ratios) are exactly RG-invariant. The computation confirms: running all three masses by any common factor leaves the ratio identical. The bare quarks do not golden-partition at *any* scale.
+
+**H50c — Koide space also fails.** The partition fails in the $\sqrt{m}$ space of the Koide formula ($0.084$ vs $0.382$), so it is not a coordinate artifact either.
+
+**Honest conclusion.** The Golden Partition is a structural law of the hadronic *bound states* (the topological knots that are the physical particles), not of the bare, scheme-dependent quarks. This is the same dividing line Phase 37 drew (golden harmonics live in the masses, not the couplings) and Phase 46 reinforced (the golden power-law cannot reproduce bare QCD running). φ is a property of the *emergent, confined* substrate excitations, not the perturbative degrees of freedom — exactly where the framework claims it lives.
+
 ### 8.2 Observable Predictions
 
 1. **Oscillatory DE at 4σ** over ΛCDM in current data. DESI DR2 and Euclid DR1 will sharpen this.

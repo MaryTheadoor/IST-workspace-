@@ -340,6 +340,13 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **The Duality:** The mass ratio is exactly $m_p/m_e = N_c \times Vol(SU(3)) = 3 \times 2\pi^5 = 6\pi^5$.
 - **Physical Meaning:** The relative phase-space volume of the unconfined electron exactly balances the unconstrained $SU(3)$ phase space that is "missing" from the $3$ confined quarks of the proton.
 
+### Light Quark Golden Partition Test (Phase 50 — honest negative)
+- **Question:** Phase 45 showed the Baryon Octet obeys the Golden Partition $(\Sigma-\Lambda)/(\Xi-\Lambda) = 1/\varphi^2$. Do the bare quarks ($u, d, s$) that comprise these hyperons carry the same law?
+- **H50a — REFUTED:** the bare gap ratio $(m_d-m_u)/(m_s-m_u) = 0.0275$ is 92.8% off $1/\varphi^2 \approx 0.382$.
+- **H50b — scale-invariant negative:** all light quarks share the same $\gamma_m$, so their mass ratios (and gap ratios) are exactly RG-invariant — running the masses by any factor changes nothing. The failure is absolute, not a $\mu=2$ GeV artifact.
+- **H50c — Koide space fails too:** $0.084$ vs $0.382$ in $\sqrt{m}$ space.
+- **Net:** the Golden Partition is a law of the *bound-state topological knots* (the physical hadrons), not of the bare, scheme-dependent quarks — the same dividing line as Phase 37 (golden in masses, not couplings) and Phase 46 (golden power-law fails on bare QCD). φ lives in the emergent confined excitations.
+
 ### Variable Gravity
 - **Formula:** $G_{\text{eff}} \propto \rho_{\text{fold}}^{1/\varphi}$
 - **Prediction:** ~76% void lensing suppression

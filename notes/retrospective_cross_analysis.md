@@ -183,6 +183,10 @@ Each negative *located* the mechanism rather than killing it.
   The proton/electron mass ratio is CLOSED (Phase 49: derived exact
   topological duality m_p/m_e = N_c * Vol(SU(3)) = 6pi^5). All structural
   open items from Phase 1 through 49 are now fully resolved.
+  The light-quark golden partition question is CLOSED (Phase 50: honest
+  negative — the bare quarks do NOT golden-partition at any scale; the
+  partition is an emergent property of the hadronic bound states, refining
+  where phi lives).
 
 ---
 
