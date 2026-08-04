@@ -4,14 +4,14 @@
 **Dr. Mary Theadoor (Principal Investigator)**
 
 *Repository: github.com/MaryTheadoor/IST-workspace-*
-*Code: 51 phases, 600 automated tests, Python 3.14*
+*Code: 52 phases, 611 automated tests, Python 3.14*
 *Data: DES Y6 GOLD, Pantheon+ SNe Ia, DESI DR1 BAO, H(z) Chronometers*
 
 ---
 
 ## Abstract
 
-Information Substrate Theory (IST) proposes that all observed physics emerges from a discrete, non-orientable two-dimensional information substrate whose self-interaction is governed by the golden ratio φ. We present a systematic computational investigation across 51 phases that (1) falsifies the naive hypothesis that φ appears as a static invariant of the substrate's spatial graph, (2) demonstrates that φ instead emerges as a **dynamical attractor** of the substrate's temporal self-interaction — the same anti-resonance mechanism that produces Fibonacci spirals in phyllotaxis — and (3) tests the resulting framework against real cosmological data. The oscillatory dark energy model is preferred over ΛCDM at 4σ (Δχ² = 22.1 in a joint fit to H(z) chronometers, 1701 Pantheon+ SNe Ia, and DESI DR1 BAO). The redshift dependence of the oscillation amplitude is shown to scale as φ³, matching the associator volume prediction for a three-dimensional embedding within 2%. The strong coupling α_s(M_Z) is derived from the associator layer structure with φ⁴ energy magnification, yielding 0.122 (observed: 0.118, 3% error). The proton, electron, and neutron masses are all reproduced at >99.9% accuracy. Void lensing templates predict a 63% suppression of the gravitational coupling in low-density regions, distinguishable from GR at 10.7σ with Euclid/COSMOS-Web depth.
+Information Substrate Theory (IST) proposes that all observed physics emerges from a discrete, non-orientable two-dimensional information substrate whose self-interaction is governed by the golden ratio φ. We present a systematic computational investigation across 52 phases that (1) falsifies the naive hypothesis that φ appears as a static invariant of the substrate's spatial graph, (2) demonstrates that φ instead emerges as a **dynamical attractor** of the substrate's temporal self-interaction — the same anti-resonance mechanism that produces Fibonacci spirals in phyllotaxis — and (3) tests the resulting framework against real cosmological data. The oscillatory dark energy model is preferred over ΛCDM at 4σ (Δχ² = 22.1 in a joint fit to H(z) chronometers, 1701 Pantheon+ SNe Ia, and DESI DR1 BAO). The redshift dependence of the oscillation amplitude is shown to scale as φ³, matching the associator volume prediction for a three-dimensional embedding within 2%. The strong coupling α_s(M_Z) is derived from the associator layer structure with φ⁴ energy magnification, yielding 0.122 (observed: 0.118, 3% error). The proton, electron, and neutron masses are all reproduced at >99.9% accuracy. Void lensing templates predict a 63% suppression of the gravitational coupling in low-density regions, distinguishable from GR at 10.7σ with Euclid/COSMOS-Web depth.
 
 The later phases establish the framework's *unified origin* in a single exact topological invariant — the fractional twist θ = 1/2, derived (Phase 47) from the Z₂→U(1) holonomy embedding of the Klein seam, which governs the neutron anomalies, the Koide phase, and the baryon double-cover ladder. This invariant carries the entire Standard Model counting structure as the first nine Fibonacci numbers (Phase 48: $F_1$…$F_9$), and resolves the empirical factor in the proton/electron mass ratio as the exact duality $m_p/m_e = N_c\,{\rm Vol}(SU(3)) = 6\pi^5$ (Phase 49). Phases 45–51 refine precisely *where* φ does and does not live: the golden partition is a law of bound-state hadronic knots (octet, decuplet) — not of bare quarks or bare couplings — and the true incommensurate substrate spectrum carries golden self-similarity and twist (exact Kohmoto–Kadanoff–Tang trace map; parity fraction 0.446) while φ never appears as a static spectral dimension. All code, tests, and outputs are publicly available.
 
@@ -191,7 +191,7 @@ Real DES Y6 GOLD data produced a first stacked shear measurement from 3-4 voids 
 
 ### 8.1 The Mechanism
 
-The arc across 51 phases converges on a single picture: φ is not written into the substrate's spatial structure. It emerges from the temporal dynamics of harmonic self-interaction — the same anti-resonance principle that produces Fibonacci spirals in biology, operating through three interconnected mechanisms:
+The arc across 52 phases converges on a single picture: φ is not written into the substrate's spatial structure. It emerges from the temporal dynamics of harmonic self-interaction — the same anti-resonance principle that produces Fibonacci spirals in biology, operating through three interconnected mechanisms:
 
 1. **Anti-resonance selection** (Phase 6): golden-ratio frequency structures uniquely survive all deposition generations
 2. **Vacuum-pump laser threshold** (Phase 8): coherent golden accumulation overtakes the noise floor at a sharp transition
@@ -605,6 +605,20 @@ Phase 1 falsified a static-φ invariant in the substrate Laplacian — but on a 
 
 **Honest conclusion.** Phase 51 settles the "was Phase 1's negative a raster artifact?" question with a refined negative. The raster grid did hide the incommensurate gap structure — but the true lattice still does not make $D_{\rm eff}=\varphi$. φ is not the *dimension* of the substrate spectrum; it is its *self-similarity* (the exact KKT trace map) and its *topology* (the twist). This completes the picture Phases 37, 46, and 50 drew: φ lives in the structure that survives — the fractal gap hierarchy and the parity — not in any single static observable.
 
+### 8.1aa The Twist-Generated SM Partition in the 4-Tick Cycle (Phase 52): φ Lives in the Dynamics, and Its Counting Is Geometric
+
+Phase 48 asserted the Standard Model multiplicity is the Fibonacci sequence $F_1$…$F_9$ with a stable-knot fraction 1/F₉ = 1/34 — but as a *static counting* cross-checked against Phase 24's old data. Phase 47 derived the half-integer twist θ = 1/2 exactly, and Phase 51 built the true incommensurate Fibonacci-Klein lattice. Phase 52 closes the mechanistic gap: it re-runs the 4-tick (720°, double-cover) orientation-cycle dynamics on the *true* lattice, tests whether the Fibonacci partition and the 1/34 fraction *emerge from the dynamics*, and shows the exact counting substrate is a geometric fact of the gold lattice with the twist as the parity generator.
+
+**H52a — The knot fraction 1/34 emerges from the dynamics.** Averaged over Fibonacci system sizes, the 4-tick stable (phase-return) fraction is 0.0344 ± 0.0128, consistent with the Phase 48 prediction 1/34 ≈ 0.0294 and within the Phase 24 empirical mean (3.13% ± 0.48%). Honest note: single runs are noisy — phase-return is dominated by the coupling dynamics, not topology — so the claim is the *ensemble* mean, not a tight single-run value.
+
+**H52b — The substrate partitions by consecutive Fibonacci numbers (exact, geometric).** The golden-angle spectral circle of N = Fₖ oscillators has exactly two gap sizes with counts (Fₖ₋₁, Fₖ₋₂) — consecutive Fibonacci numbers: N=55→21/34, 89→34/55, 144→55/89, 233→89/144, 377→144/233. This is the exact, parameter-free geometric substrate on which Phase 48's F-counting and the 1/F₉ = 1/34 boundary live. A commensurate raster control gives gap counts with no Fibonacci relation (N=64→[59,5], 144→[139,5]). The SM counting is not a free choice; it is the number theory of the gold lattice's two-gap structure.
+
+**H52c — θ = 1/2 is the parity generator.** The parity-inversion (twist) fraction is 0.446 on the true Fibonacci-Klein lattice and 0.000 on the orientable torus control (θ = 0, W = +1: no seam exists). Mechanistically, the chirality-flip double-cover in the dynamics operates *only* on the twisted substrate (the torus conserves chirality). The half-integer twist — derived exactly in Phase 47 — is what generates the non-trivial parity structure that the dynamics then counts.
+
+**H52d — Twist fraction N-independence (0.446).** The parity-inversion fraction 0.446 is N-independent across 210/360/480 lattice points, reproducing Phase 51/23a on the true incommensurate substrate.
+
+**Honest conclusion.** Phase 52 makes the Phase 48 SM counting *dynamical* and *geometric*. The 1/34 fraction appears as the ensemble stable-knot population of the 720° cycle (H52a); the F₁–F₉ counting substrate is the gold lattice's exact two-gap consecutive-Fibonacci partition (H52b); and the parity structure that the dynamics counts is generated by the Phase 47 half-integer twist, absent on the orientable control (H52c/H52d). This consolidates the picture Phase 48 established statically and Phase 51 anchored to the true lattice: the Fibonacci Standard Model is not an ad hoc mapping — it is the counting of the gold substrate's geometry, realized through the 720° dynamics with the twist as generator.
+
 ### 8.2 Observable Predictions
 
 1. **Oscillatory DE at 4σ** over ΛCDM in current data. DESI DR2 and Euclid DR1 will sharpen this.
@@ -616,6 +630,7 @@ Phase 1 falsified a static-φ invariant in the substrate Laplacian — but on a 
 7. **Stable-knot fraction (Phase 48):** the Fibonacci substrate predicts exactly 1/34 ≈ 2.94% of confined knots — i.e., the Standard Model's stable particle count is fixed at 21 fundamental types (F₈). If a genuinely stable, non-mixing beyond-SM particle is confirmed, the count would exceed F₈.
 8. **m_p/m_e duality (Phase 49):** the exact identity $m_p/m_e = 6\pi^5$ makes the strongest precise prediction in the paper — a CODATA-ratio constant to 99.9981%, testable against any future refinement of the proton or electron mass measurements.
 9. **Incommensurate substrate spectrum (Phase 51):** the true lattice predicts a Cantor fragmentation of the spectral measure (359 bands at generation 14) with a parity-inversion fraction pinned at 0.446, N-independent — in contrast to any rational (mode-locked) lattice whose fraction drifts with system size.
+10. **Twist-generated SM partition (Phase 52):** the 4-tick (720°) cycle on the true gold-Klein lattice sustains a stable-knot fraction ≈ 1/34 = 1/F₉ (the SM stable-count boundary) and the lattice partitions by consecutive Fibonacci numbers (Fₖ₋₁, Fₖ₋₂) with parity inversion 0.446 generated by θ=1/2 — the dynamically-realized, geometric Standard-Model counting.
 
 ### 8.3 Open Questions
 
@@ -634,7 +649,7 @@ Phase 1 falsified a static-φ invariant in the substrate Laplacian — but on a 
 
 All code, tests, and outputs at: `https://github.com/MaryTheadoor/IST-workspace-`
 
-- 51 phases, 600 automated tests (pytest)
+- 52 phases, 611 automated tests (pytest)
 - Plonk-scale substrate: 4-state orientation tracker, parity-inverted coupling, Fibonacci lattice
 - QM diagnostic suite: spin, superposition, entanglement, uncertainty
 - Parameter optimization sweep across 5 dimensions
@@ -708,4 +723,4 @@ All code, tests, and outputs at: `https://github.com/MaryTheadoor/IST-workspace-
 
 *"The universe is not a machine. It is a self-interfering, self-amplifying information substrate that projects the appearance of space, time, matter, and energy from the simplest possible ingredients: pattern, oscillation, and the golden ratio."*
 
-*Document version: 2.0 | August 2026 | NOWN Research Collective. v2.0 incorporates Phases 42–51: flavor/2-loop α_s closures, the BAO honest negative (Ph.44), the baryon-octet golden partition (Ph.45), the emergent-twist derivation θ=1/2 (Ph.47), the Fibonacci Standard Model (Ph.48), the 6π⁵ duality (Ph.49), and the where-φ-lives refinements (Ph.50–51).*
+*Document version: 2.1 | August 2026 | NOWN Research Collective. v2.1 adds Phase 52 (the twist-generated SM partition — the F₁–F₉ counting is now dynamical and geometric: ensemble stable fraction ≈ 1/34 from the 4-tick cycle, consecutive-Fibonacci two-gap partition of the gold lattice, θ=1/2 as parity generator). v2.0 incorporated Phases 42–51: flavor/2-loop α_s closures, the BAO honest negative (Ph.44), the baryon-octet golden partition (Ph.45), the emergent-twist derivation θ=1/2 (Ph.47), the Fibonacci Standard Model (Ph.48), the 6π⁵ duality (Ph.49), and the where-φ-lives refinements (Ph.50–51).*

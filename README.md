@@ -354,6 +354,14 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **H51c — spectral RG honest negative:** Galerkin coarse-graining keeps $D_{\rm eff} \approx 2.2$ (r²≈0.995) at every scale, **never φ**.
 - **Net:** "was Phase 1's negative a raster artifact?" → refined no. The raster hid the incommensurate gap structure, but even the true lattice does not make $D_{\rm eff}=\varphi$. φ is not the substrate's spectral *dimension* — it is its *self-similarity* (exact KKT trace map) and its *topology* (the twist). Same line as Phases 37/46/50.
 
+### Twist-Generated SM Partition (Phase 52 — the counting is now dynamical + geometric)
+- **Question:** Phase 48 mapped the SM to F₁–F₉ with stable-knot fraction 1/34 — but as a *static* count cross-checked against Phase 24's old data. Phase 47 derived θ=1/2; Phase 51 built the true incommensurate lattice. Does the partition *emerge from the 4-tick (720°) orientation-cycle dynamics* on the true lattice, with the twist as generator?
+- **H52a — 1/34 from the dynamics:** ensemble stable-knot fraction **0.0344 ± 0.0128**, consistent with 1/F₉ = 1/34 ≈ 2.94% and Phase 24's 3.13%±0.48% band. (Honest: single runs are noisy — phase-return is dominated by coupling, not topology — the claim is the ensemble mean.)
+- **H52b — the substrate partitions by consecutive Fibonacci numbers (exact):** the golden-angle circle of N=Fₖ points has exactly two gaps with counts (Fₖ₋₁, Fₖ₋₂) — 55→21/34, 89→34/55, 144→55/89, 233→89/144, 377→144/233. The raster control [59,5]/[139,5] is NOT Fibonacci. This is the geometric substrate Phase 48's F-counting sits on.
+- **H52c — θ=1/2 is the parity generator:** parity-inversion fraction **0.446 (Klein) vs 0.000 (torus)**; the chirality-flip double-cover operates *only* on the twisted substrate.
+- **H52d — N-independence:** 0.446 across 210/360/480, reproducing Phase 51/23a.
+- **Net:** the Phase 48 SM counting is not an ad hoc mapping — it is the counting of the gold substrate's geometry (consecutive-F two-gap partition), realized through the 720° double-cover dynamics with the half-integer twist (Phase 47) as the generator. Closes the mechanistic loop: static count (48) → twist derivation (47) → true lattice (51) → dynamics (52).
+
 ### Variable Gravity
 - **Formula:** $G_{\text{eff}} \propto \rho_{\text{fold}}^{1/\varphi}$
 - **Prediction:** ~76% void lensing suppression

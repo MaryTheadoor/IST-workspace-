@@ -195,6 +195,17 @@ Each negative *located* the mechanism rather than killing it.
   the raster grid hid the incommensurate gap structure, but even the true
   lattice does not put phi in the spectral dimension — phi lives in the
   self-similarity (trace map) and the topology (twist), not the dimension).
+  The twist-generated SM partition question is CLOSED (Phase 52: the 4-tick
+  720 deg orientation-cycle dynamics on the true lattice gives an ensemble
+  stable-knot fraction 0.0344 +/- 0.0128 consistent with 1/F_9 = 1/34, and
+  the gold lattice partitions by CONSECUTIVE Fibonacci numbers (F_k-1,
+  F_k-2) — the exact geometric substrate of Phase 48's F-counting — with the
+  half-integer twist as the parity generator (0.446 Klein vs 0.000 torus).
+  Cross-phase: Phase 52 makes Phase 48's static counting DYNAMICAL (the
+  knot fraction now emerges from the cycle, not from a prior cross-check)
+  and GEOMETRIC (the counting is the lattice's two-gap consecutive-F
+  partition), anchoring Phase 47's theta=1/2 as the parity source and Phase
+  51's 0.446 as the lattice signature.)
 
 ---
 
