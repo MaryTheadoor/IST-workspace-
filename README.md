@@ -322,6 +322,12 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **H46e — structural diagnosis:** the layer base REQUIRED to match 2-loop QCD exactly needs $\varphi^{+0.82}$ in the $m_b\to M_Z$ segment (flattening) — the *opposite sign* of the principled $\varphi^{-0.5}$. Golden running is a **power law in E**; QCD running is $\sim 1/\ln E$ (flattening at high E). The $m_b/M_Z$ conflict is a shape mismatch, **reference-independent**.
 - **Honest negative:** the Phase 43 sequencing question is answered — the flavor closure is reference-irreducible; no legitimate reference choice or golden exponent set closes it. This closes the $\alpha_s$ flavor-closure line with a definite, quantified statement.
 
+### Emergent-Twist Derivation (Phase 47 — derived)
+- **Open item resolved:** Phase 29 empirically mapped the fractional twist $\theta = 1/2$ to momentum halving, but lacked a topological derivation. Phase 47 derives $\theta = 1/2$ exactly and parameter-free.
+- **U(1) Embedding:** the non-orientable Klein substrate (Phase 1) has an orientation-reversing seam, defining a flat $\mathbb{Z}_2$ connection with meridian holonomy $W = -1$.
+- **Fractional Charge:** to support a complex quantum field (master equation), this real line bundle embeds into a $U(1)$ bundle, mapping $-1 \to e^{i\pi}$. The twist is the fractional winding number $\theta = \arg(W)/2\pi = 1/2$ exactly.
+- **Unification:** this rigorously proves $\theta = 1/2$ is an exact topological invariant, securing the foundation for the neutron factor-2, Koide phase, and double-cover baryon ladder.
+
 ### Variable Gravity
 - **Formula:** $G_{\text{eff}} \propto \rho_{\text{fold}}^{1/\varphi}$
 - **Prediction:** ~76% void lensing suppression

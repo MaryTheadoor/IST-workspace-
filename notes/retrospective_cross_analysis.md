@@ -165,7 +165,7 @@ Each negative *located* the mechanism rather than killing it.
   cannot match QCD's ~1/ln E curvature at any reference choice).
 
 **Open (natural next targets):**
-- The emergent-twist derivation; the stable-knot → SM multiplicity
+- The stable-knot → SM multiplicity
   mapping. The BAO
   sound-horizon test of crystallization (Phase 44) is an honest negative
   that CONFIRMS Phase 36: the DESI DR1 ruler (D_M/r_d, D_H/r_d at
@@ -177,6 +177,8 @@ Each negative *located* the mechanism rather than killing it.
   partition of the Λ→Ξ interval). The α_s flavor-closure line is CLOSED
   (Phase 46: reference-irreducible — the m_b/M_Z conflict is a
   power-law-vs-log running shape mismatch, not a reference artifact).
+  The emergent-twist derivation is CLOSED (Phase 47: θ=1/2 derived
+  exactly from U(1) embedding of the Z2 substrate holonomy).
 
 ---
 

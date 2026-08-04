@@ -1,0 +1,9 @@
+grid,topology,cycle,wilson_real,wilson_imag,theta,f_factor
+10x10,Klein,Meridian,-1.0,0.0,0.5,1.5
+10x10,Torus,Meridian,1.0,0.0,0.0,1.0
+21x34,Klein,Meridian,-1.0,0.0,0.5,1.5
+21x34,Torus,Meridian,1.0,0.0,0.0,1.0
+55x89,Klein,Meridian,-1.0,0.0,0.5,1.5
+55x89,Torus,Meridian,1.0,0.0,0.0,1.0
+144x233,Klein,Meridian,-1.0,0.0,0.5,1.5
+144x233,Torus,Meridian,1.0,0.0,0.0,1.0

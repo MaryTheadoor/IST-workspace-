@@ -96,3 +96,11 @@ are preserved verbatim under git tag **`v6.0-paper-snapshot`**.
   running cannot match QCD's ~1/ln E curvature at ANY reference choice. Closes the
   alpha_s closure line as reference-irreducible. A v8.0 paper update should fold
   this into the Phase 39/§8.4(flavor) discussion as the definitive closure negative.
+- Phase 47 (emergent-twist derivation, closed): `notes/IST_Phase_47_plan.md`,
+  `code/phase47_emergent_twist.py`. Derives the framework's ubiquitous $\theta=1/2$
+  fractional twist directly from the non-orientable substrate topology. The Klein
+  seam has a flat Z2 holonomy of -1; to support a complex quantum field, this embeds
+  into a U(1) bundle as the phase $e^{i\pi}$. The twist is the fractional winding
+  number $\arg(-1)/2\pi = 1/2$. Parameter-free, exact, and grid-independent. Unifies
+  neutron, Koide, and baryon decuplet under a derived topological invariant. A v8.0
+  paper update should add this as §8.1w.
