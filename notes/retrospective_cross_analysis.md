@@ -134,6 +134,7 @@ mass towers** — the scale where the E-ladder and the α⁻⁹ tower coincide.
 | CMB excludes D→2 | crystallization precedes recombination | 36 |
 | Free-fit f(6)≈φ not a signal | Phase 39 boundary bug: m_t never gets 6 flavors | 42 |
 | H42g 137 fixed point (0.0075%) not a claim | fails uniqueness/base-specificity/unit-invariance — tuned 2-parameter coincidence | 42 |
+| "4σ" oscillatory DE headline claim | artifact of anti-phase channel (ε₀<0 = hidden free phase π); Δχ²≈0 under ε₀≥0 constraint; amplitude bridge fails | 60 |
 
 Each negative *located* the mechanism rather than killing it.
 
@@ -146,6 +147,7 @@ Each negative *located* the mechanism rather than killing it.
 
 **Consistent (observational, not confirmed):**
 - Heavy (c,b,t) Koide, dimensional crystallization before recombination.
+- Oscillatory dark energy (Phase 59): golden-period form (Δ=ln φ, ε=α/φ², 2.5 cycles) plausible but unverified; the v8 headline "4σ" claim is an artifact of the anti-phase channel (Phase 60), not a detection.
 
 **Consistent (structural, octet CLOSED):**
 - Baryon octet (Phase 45): the Λ→Ξ interval is golden-partitioned by Σ —

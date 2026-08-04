@@ -416,6 +416,15 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **H59d — detection forecast:** 3σ needs 8.9× smaller H(z) errors (for ε₀) or 2.1× (for ε = 0.136 at Δ = ln φ).
 - **Net:** the time-crystal dark-energy modulation is **plausible but unverified** — consistent with ΛCDM in the H(z) data after accounting. Its falsifiable golden form (Δ = ln φ, ε = α/φ², 2.5 cycles) is a pre-registered target for the DESI DR1/DR2 full-shape arena, not a detected signal.
 
+### Oscillatory DE "4σ" Audit (Phase 60 — joint H(z)+Pantheon++DESI BAO)
+- **Origin:** Plan 11 / v8 §4.4 headline "4σ / Δχ²=22.1" joint-fit claim; Phase 59 already down-graded the 60-point H(z) subset (global p = 0.62). Phase 60 audits the *full* joint data.
+- **LCDM baseline reproduced exactly:** χ² = 948.5, H₀ = 73.6 — pipeline matches v8.
+- **Physical free fit (ε₀ ≥ 0, no hidden phase):** Δχ² ≈ 0 — oscillation adds nothing; ε₀ driven to zero. **The headline claim is not reproduced under the physically required constraint.**
+- **No-sign free fit (ε₀ < 0 allowed):** Δχ² = +39.1 at interior Δ = 1.385, global p ≈ 0 — the entire "4σ" lives in the anti-phase channel, which is an unacknowledged free phase shift (π) masquerading as a detection.
+- **Pre-registered φ³ (Δ = ln φ, β = φ³, ε₀ = α/φ²):** Δχ² = +1.0 — invisible on the joint data.
+- **Amplitude bridge fails:** ε_eff(φ³) = 0.032 at z̄ ≈ 0.78 — still ×3.3 below Phase 59's ε ≈ 0.106.
+- **Net:** the paper's headline observational claim is **an artifact of the sign-degeneracy channel** (ε₀ < 0 = hidden free phase π). The honest value of the oscillatory DE model on current joint data is Δχ² ≈ 0; the "4σ" does not survive scrutiny.
+
 ### Variable Gravity
 - **Formula:** $G_{\text{eff}} \propto \rho_{\text{fold}}^{1/\varphi}$
 - **Prediction:** ~76% void lensing suppression
