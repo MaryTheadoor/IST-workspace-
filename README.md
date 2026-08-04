@@ -400,6 +400,13 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **H57c — the bare default disperses:** a localized single strand evolved on the Klein graph (free walk, no rung binding) spreads (concentration 1.0 → 0.03), while the rung-bound compound stays at 1.0 — the rungs are load-bearing.
 - **Net:** the dual-mode geometry is **forced**, not chosen. The old `"no knot → v=c"` default is **demoted to speed-only, insufficient** — right about v=c, wrong that it is enough. Consistent with Phases 55 (achirality 0.000) and 52 (electron = single-strand knot, 0.446).
 
+### The Trace-Map RG (Phase 58 — rescoring Phase 51's spectral-dimension negative)
+- **Origin:** the quasicrystal literature (Naumis 2003; Jagannathan RMP 2021) says the *trace map* is the natural RG for Fibonacci lattices and block-spin decimation is inappropriate for quasiperiodic systems. Phase 51 H51c's D_eff ≈ 2.2 "never φ" was measured with the *wrong* (Galerkin) RG.
+- **H58a — the wrong RG is non-convergent and never golden:** block-spin spectral coarse-graining of the Fibonacci-Klein lattice gives D_eff that never approaches φ (min |D_eff − φ| ≈ **0.54**, an order of magnitude above the scheme's own scatter) and does not settle (range ~0.14; deepest projection degrades r²). No golden fixed point.
+- **H58b — the natural RG is golden-EXACT:** the substitution RG (A→AB, B→A) has growth eigenvalue **F_{n+1}/F_n → φ** exactly (parameter-free; error 9.8×10⁻⁹), and its spectral kernel is the **KKT trace map** (recurrence 2.3×10⁻¹³, Fricke invariant conserved 4.7×10⁻¹⁰).
+- **H58c — the verdict:** φ is an **RG (inflation) eigenvalue** of the golden substitution, *not* a static spectral dimension D_eff. Phase 51's negative is **rescored, not overturned** — it was right that φ is not D_eff, and the literature explains why (wrong RG).
+- **Net:** a reported negative is now mechanistically explained, and φ's home in the substrate's RG structure is identified exactly — the golden inflation eigenvalue.
+
 ### Variable Gravity
 - **Formula:** $G_{\text{eff}} \propto \rho_{\text{fold}}^{1/\varphi}$
 - **Prediction:** ~76% void lensing suppression
