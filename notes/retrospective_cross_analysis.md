@@ -271,6 +271,29 @@ Each negative *located* the mechanism rather than killing it.
   photon-vs-electron contrast. This closes the framework's least-contact
   observation channel by turning gap 7 into a quantitative, discriminating,
   lab-testable prediction.)
+  The single-strand-photon question is CLOSED (Phase 57: the repo's OLD photon
+  default — "no knot -> v=c, m=0", ist_toolkit_v2.py — was a single
+  structureless strand that was never tested. Phase 57 tests it and EXCLUDES
+  it. The key asymmetry: SPEED DOES NOT DISCRIMINATE — a single strand also
+  translates at v_g=1.00000 (shared linear dispersion), which is exactly why
+  the default survived every speed/massless test. PARITY DOES: a single strand
+  threading the Klein seam must flip chirality at 2 ticks, so its parity-
+  inversion is the COMPUTED lattice twist fraction 0.446 (numerically
+  identical to the electron knot, Phase 52 H52c) vs the rung-bound dual mode's
+  EXACTLY 0.000 (H57a, N=210/360/480). A single-strand "photon" is chirally
+  indistinguishable from a fermion. H57b: helicity modes 1 vs 2 (E_+, E_-) —
+  two polarizations need two strands. H57c: a localized single strand evolved
+  on the Klein proximity graph (free Schrodinger walk, no rung binding)
+  DISPERSES (concentration 1.0 -> ~0.03) while the rung-bound compound stays
+  at 1.0 — the rungs are load-bearing. H57d: the old default DEMOTED to
+  speed-only, insufficient; registry now 56 relations. Cross-phase: this closes
+  the last loophole in the photon model — the dual-mode geometry is FORCED, not
+  chosen — and it re-affirms the spin-statistics generator (Phase 52/55): a
+  single seam-crossing strand is always a chiral fermion (0.446), a rung-bound
+  straddling pair is always an achiral gauge field (0.000). Honest scope: a
+  discriminator, not a fit — 0.446/0.000 and the 1/2 helicity count are a
+  computed lattice fraction and structural counts; the falsifiable core remains
+  Phase 55's 0.000 achirality.)
 
 ---
 

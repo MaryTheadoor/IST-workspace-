@@ -392,6 +392,14 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **H56c — universal c:** the 4WM output peak propagates at v_g = 1.000000 (dual-mode H55a), consistent with Zhang et al.'s observed ~0.99c.
 - **Net:** gap 7 now has a quantitative, discriminating, lab-testable prediction — the parity-odd 4WM channel is exactly zero for the dual-mode vacuum, mirror-image to the electron's 0.446. Not a new free number: it is Phase 55's geometry pushed into the vacuum.
 
+### The Single- vs Dual-Strand Discriminator (Phase 57 — is the dual-mode geometry forced?)
+- **Question:** the repo's OLD photon default was a *single structureless strand*: `"no knot → v=c, m=0"`. It was never tested. Could a single bare strand also be a photon?
+- **Speed does NOT discriminate.** A single strand also translates at v_g = 1.00000 (shared linear dispersion) — the old default passed every speed/massless test, which is why it survived. Speed alone cannot tell a photon from a fermion.
+- **Parity DOES discriminate.** A single strand threading the non-orientable Klein seam must flip chirality at 2 ticks: its parity-inversion is the **computed** lattice twist fraction **0.446** (numerically identical to the electron knot, H57a), vs the rung-bound dual mode's **0.000**. A single-strand "photon" is chirally indistinguishable from a fermion.
+- **H57b — two polarizations need two strands:** helicity count 1 vs 2 (E₊, E₋); a single strand has no second independent polarization.
+- **H57c — the bare default disperses:** a localized single strand evolved on the Klein graph (free walk, no rung binding) spreads (concentration 1.0 → 0.03), while the rung-bound compound stays at 1.0 — the rungs are load-bearing.
+- **Net:** the dual-mode geometry is **forced**, not chosen. The old `"no knot → v=c"` default is **demoted to speed-only, insufficient** — right about v=c, wrong that it is enough. Consistent with Phases 55 (achirality 0.000) and 52 (electron = single-strand knot, 0.446).
+
 ### Variable Gravity
 - **Formula:** $G_{\text{eff}} \propto \rho_{\text{fold}}^{1/\varphi}$
 - **Prediction:** ~76% void lensing suppression

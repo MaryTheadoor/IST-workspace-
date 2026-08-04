@@ -52,3 +52,7 @@ phase,relation,form,domain,outcome,best_agreement,reason
 56,achiral parity-odd 4WM channel,c2/c1 = 0.000,vacuum 4WM,SUPPORTED,IST 0.000 vs QED 1.7500 (canonical 7/4),parity-invariant dual-mode vacuum cannot source (F.F~)^2
 56,golden-weighted parity-even 4WM coupling,c1 = alpha/phi^2 (scale phi^2/alpha ~ 358.8),vacuum 4WM,SUPPORTED,"IST/QED coupling ~52.3, signal ~2.7e3",surviving channel carries the substrate golden charge scale
 56,4WM output peak at universal c,v_g = c,vacuum 4WM,SUPPORTED,v_g = 1.000000; Zhang et al. observe ~0.99c,"dual-mode dispersion, H55a consistent"
+57,single-strand photon excluded (parity),"parity-inversion 0.446 vs dual-mode 0.000",photon propagation,NEGATIVE,"0.446 computed on true Fibonacci-Klein lattice (N=210/360/480)",single strand is chirally indistinguishable from a fermion; speed is degenerate (v_g=1.0 both)
+57,single-strand photon excluded (helicity),1 helicity mode vs 2 (E_+, E_-),photon propagation,NEGATIVE,1 vs 2,two polarizations need two strands
+57,bare "no knot -> v=c" default disperses,"free Schrodinger walk on Klein graph, no rung binding",photon propagation,NEGATIVE,"concentration 1.0 -> ~0.03 (spreads)",rungs are load-bearing; old default DEMOTED to speed-only, insufficient
+57,dual-mode geometry forced,"achiral (0.000) + two helicities + bound compound",photon propagation,SUPPORTED,0.000 parity; 2 helicities; concentration stays 1.0,consistent with Phases 55 (achirality) and 52 (electron = single-strand knot 0.446)
