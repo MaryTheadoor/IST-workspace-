@@ -199,7 +199,7 @@ The arc across 52 phases converges on a single picture: φ is not written into t
 
 The fold-density feedback (Phase 14) closes the loop: G_eff is not assumed to scale as ρ^{1/φ} — it converges there from any initial condition.
 
-### 8.1a The Unified Picture: Where φ Lives (Phases 42–53)
+### 8.1a The Unified Picture: Where φ Lives (Phases 42–54)
 
 The recent phases do not add isolated results; they sharpen one question — *where exactly is the golden ratio, and where is it not?* — into a coherent answer.
 
@@ -210,6 +210,7 @@ The recent phases do not add isolated results; they sharpen one question — *wh
 - φ is *not* a property of the bare perturbative degrees of freedom: bare quarks fail the partition at every scale, RG-invariantly (Phase 50), just as the force couplings failed golden harmonics (Phase 37) and the golden α_s power-law failed to reproduce genuine QCD running (Phases 43, 46 — a power-law-vs-log shape mismatch, reference-irreducible).
 - φ is *not* a static spectral dimension: even the true incommensurate substrate spectrum (Phase 51, rebuilding Phase 1 on the Fibonacci lattice) keeps D_eff ≈ 2.2 under RG — never φ — but it *is* the spectrum's self-similarity (exact Kohmoto–Kadanoff–Tang trace map, invariant conserved to 5e-10) and its topology (parity-inversion fraction 0.446, N-independent).
 - φ is *not* a general property of the (Λ, Σ, Ξ) SU(3) triplet: the heavy-flavor analogs fail the octet partition at 139.5% (charm) and 189.7% (bottom, with the mass hierarchy inverted), 177–512σ under PDG 2024 error propagation (Phase 53) — the golden partition is specific to the *emergent, near-degenerate light octet*, just as Phase 50 showed it is absent from the bare light quarks.
+- The octet's "1/φ²" must be read as the *limit of the golden-Fibonacci family*, not a uniquely-selected rational: the measured split 0.382379 is fit 16× tighter by 13/34 = F₇/F₉ (0.0067%) than by 1/φ² (0.108%), and all in-family matches are consecutive-Fibonacci convergents of 1/φ² — exactly the Phase 52 substrate (Phase 54, H54b). This refines rather than negates Phase 45.
 
 The refined conclusion: **φ is the emergent, self-similar structure that survives — the fractal gap hierarchy, the topological twist, and the bound-state masses — never a static constant of the substrate's bare geometry, couplings, or running.**
 
@@ -630,6 +631,22 @@ Phase 45's golden partition $(\Sigma-\Lambda)/(\Xi-\Lambda) = 1/\varphi^2$ was t
 
 **Honest statement.** The golden partition is a law of the *emergent, near-degenerate light octet*, where the diquark hyperfine split and the strangeness step are dynamically balanced at $1/\varphi$. A hard heavy-quark mass ($c/b$ — set at the Higgs/Yukawa scale, not emergent) injects an off-scale splitting that reshuffles the hierarchy and erases the golden balance — the same dividing line Phase 50's RG-invariance argument predicted for any non-light sector. All failures are 177–512σ under PDG error propagation; the light anchor still passes (0.11% off) in the same module. This NARROWS where φ lives: the golden partition is specific to the light, near-degenerate emergent octet — neither the bare quarks (Phase 50) nor the heavy-flavor baryons (Phase 53) carry it.
 
+### 8.1ac Look-Elsewhere Accounting (Phase 54): The Trial-Factor Audit
+
+A referee's first question about a framework with many candidate relations is statistical: *how many things were tried, and what is the chance some survivors are coincidence?* Phase 54 answers it with a public **registry** and a bounded **trial-factor analysis**. The registry catalogs all 46 tested relations across Phases 1–53 with outcome and rejection reason — 20 SUPPORTED, 7 DERIVED, 13 NEGATIVE, 2 DEMOTED (H42g's self-referential 137 and the φ⁸ magnification are registered, not hidden), 1 REJECTED, 2 PARTIAL, 1 CONSISTENT. This makes the trial count explicit rather than implicit.
+
+For each headline hit, Phase 54 counts how many of the **1866 simple constants** the framework can express (rationals a/b, a·φ^k, a·π^k, (2π)^k, a·6π⁵, Fibonacci ratios F_i/F_j) fall within the observed tolerance of the measured value:
+
+- **m_p/m_e ~ 6π⁵**: unique (1/1866) — robust.
+- **Stable-knot ~ 1/34**: unique (1/1866) — robust.
+- **Decuplet base 19/4**: unique (1/1866) — robust.
+- **Koide Q ~ 2/3**: 2/1866 — robust (one in-family golden competitor, 12φ⁻⁶, at 0.3%).
+- **Octet split ~ 1/φ²**: **13/1866 — family-degenerate** (see H54b).
+
+**H54b — octet specificity audit.** The measured octet split $r = 0.382379$ is fit *16× tighter* by the Fibonacci convergent **13/34 = F₇/F₉ (0.0067%)** than by **1/φ² (0.108%)**. Of the 13 pool constants matching inside 0.2%, 12 are consecutive-Fibonacci ratios — i.e. convergents of 1/φ², the *same* golden family, and precisely Phase 52's consecutive-F geometric substrate. This does NOT negate Phase 45 (13/34 → 1/φ² as the Fibonacci numbers grow); it refines the claim's wording. Phase 45 asserted "1/φ² uniquely selected" after testing competing *bases* (G2 base-specificity); it did not test competing *Fibonacci rationals*. The honest statement is: *the octet split sits in the golden-Fibonacci family, whose limit is 1/φ²* — a statement Phase 52 independently predicts. H54b makes the look-elsewhere blind spot explicit and public.
+
+**Honest statement.** The trial-factor frame is deliberately conservative: a pool of 1866 simple constants is far larger than the handful of relations any single phase reported, so the per-hit "chance-match" fraction is a generous bound, not an optimistic one. The registry is a living artifact — every future phase adds its tested relations to it.
+
 ### 8.2 Observable Predictions
 
 1. **Oscillatory DE at 4σ** over ΛCDM in current data. DESI DR2 and Euclid DR1 will sharpen this.
@@ -643,6 +660,7 @@ Phase 45's golden partition $(\Sigma-\Lambda)/(\Xi-\Lambda) = 1/\varphi^2$ was t
 9. **Incommensurate substrate spectrum (Phase 51):** the true lattice predicts a Cantor fragmentation of the spectral measure (359 bands at generation 14) with a parity-inversion fraction pinned at 0.446, N-independent — in contrast to any rational (mode-locked) lattice whose fraction drifts with system size.
 10. **Twist-generated SM partition (Phase 52):** the 4-tick (720°) cycle on the true gold-Klein lattice sustains a stable-knot fraction ≈ 1/34 = 1/F₉ (the SM stable-count boundary) and the lattice partitions by consecutive Fibonacci numbers (Fₖ₋₁, Fₖ₋₂) with parity inversion 0.446 generated by θ=1/2 — the dynamically-realized, geometric Standard-Model counting.
 11. **Golden partition is light-octet specific (Phase 53):** the partition $(\Sigma-\Lambda)/(\Xi-\Lambda) = 1/\varphi^2$ is a falsifiable law of the *light, near-degenerate emergent octet only*. The pre-registered analog predictions for the charmed and bottom baryons are falsified (charm 0.9149 vs 0.382, bottom 1.1067 and inverted ordering) — so if a future measurement or theory moved any heavy-flavor triplet toward the golden split, it would contradict the established dividing line, while the light octet remains the sole golden-partitioned (Λ, Σ, Ξ) family.
+12. **Golden-Fibonacci family, not a single rational (Phase 54):** the octet split is a member of the consecutive-Fibonacci convergent family (closest 13/34 = F₇/F₉ at 0.0067%, limit 1/φ²). This predicts that any refinement of the Λ–Σ–Ξ masses will keep the split inside the golden-Fibonacci convergent family (Phase 52's geometric substrate) rather than locking onto a single rational — a specificity testable against the PDG 2024 masses to ~0.1%.
 
 ### 8.3 Open Questions
 
@@ -735,4 +753,4 @@ All code, tests, and outputs at: `https://github.com/MaryTheadoor/IST-workspace-
 
 *"The universe is not a machine. It is a self-interfering, self-amplifying information substrate that projects the appearance of space, time, matter, and energy from the simplest possible ingredients: pattern, oscillation, and the golden ratio."*
 
-*Document version: 2.2 | August 2026 | NOWN Research Collective. v2.2 adds Phase 53 (the golden partition is light-octet specific — the pre-registered heavy-flavor analog test is an honest negative: charm/bottom fail by 139.5%/189.7% with PDG 2024 error propagation, the bottom hierarchy inverts, and the partition narrows to the emergent near-degenerate light octet; also adds the φ⁸ cautionary negative, notes/IST_phi8_caution.md). v2.1 added Phase 52 (the twist-generated SM partition — the F₁–F₉ counting is now dynamical and geometric: ensemble stable fraction ≈ 1/34 from the 4-tick cycle, consecutive-Fibonacci two-gap partition of the gold lattice, θ=1/2 as parity generator). v2.0 incorporated Phases 42–51: flavor/2-loop α_s closures, the BAO honest negative (Ph.44), the baryon-octet golden partition (Ph.45), the emergent-twist derivation θ=1/2 (Ph.47), the Fibonacci Standard Model (Ph.48), the 6π⁵ duality (Ph.49), and the where-φ-lives refinements (Ph.50–51).*
+*Document version: 2.3 | August 2026 | NOWN Research Collective. v2.3 adds Phase 54 (gap 1 closed — the global look-elsewhere accounting: a registry of all 46 tested relations with outcomes/reasons, and a trial-factor analysis over 1866 simple constants showing m_p/m_e~6π⁵, 1/34, 19/4 unique, Koide 2/3 robust, and the octet split family-degenerate — H54b refines Phase 45 from "1/φ² uniquely selected" to "the split sits in the golden-Fibonacci family, limit 1/φ²", 13/34=F₇/F₉ fitting 16× tighter, consistent with Phase 52's consecutive-F substrate). v2.2 added Phase 53 (the golden partition is light-octet specific — the pre-registered heavy-flavor analog test is an honest negative: charm/bottom fail by 139.5%/189.7% with PDG 2024 error propagation, the bottom hierarchy inverts, and the partition narrows to the emergent near-degenerate light octet; also adds the φ⁸ cautionary negative, notes/IST_phi8_caution.md). v2.1 added Phase 52 (the twist-generated SM partition — the F₁–F₉ counting is now dynamical and geometric: ensemble stable fraction ≈ 1/34 from the 4-tick cycle, consecutive-Fibonacci two-gap partition of the gold lattice, θ=1/2 as parity generator). v2.0 incorporated Phases 42–51: flavor/2-loop α_s closures, the BAO honest negative (Ph.44), the baryon-octet golden partition (Ph.45), the emergent-twist derivation θ=1/2 (Ph.47), the Fibonacci Standard Model (Ph.48), the 6π⁵ duality (Ph.49), and the where-φ-lives refinements (Ph.50–51).*

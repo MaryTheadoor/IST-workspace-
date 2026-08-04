@@ -219,6 +219,18 @@ Each negative *located* the mechanism rather than killing it.
   external analysis and NARROWS where phi lives: neither the bare quarks
   (Phase 50) nor the heavy-flavor baryons (Phase 53) carry the partition —
   only the emergent light octet does.)
+  The look-elsewhere accounting question is CLOSED (Phase 54: a registry of
+  all 46 tested relations with outcomes/reasons plus a trial-factor analysis
+  over a bounded pool of 1866 simple constants. Headline hits m_p/m_e~6pi^5,
+  1/34, 19/4 are UNIQUE (1/1866); Koide 2/3 robust; octet split 1/phi^2 is
+  FAMILY-DEGENERATE — H54b finds the split r=0.382379 is fit 16x tighter by
+  13/34=F7/F9 (0.0067%) than 1/phi^2 (0.108%), with all in-family matches
+  being consecutive-Fibonacci convergents of 1/phi^2 (Phase 52's substrate).
+  Reading: Phase 45 should state "the split sits in the golden-Fibonacci
+  family (lim 1/phi^2)", not "1/phi^2 uniquely beats every rational" —
+  Phase 45 tested bases, not competing Fibonacci rationals. This is a
+  refinement consistent with Phase 52, and it makes the look-elsewhere
+  blind spot public.)
 
 ---
 

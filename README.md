@@ -369,6 +369,13 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **H53c — not an artifact:** failures are 177–512σ with PDG error propagation; the light anchor still passes (0.11% off) inside the same module.
 - **Net:** the golden partition is a law of the *emergent, near-degenerate light octet* — the diquark hyperfine split and strangeness step balanced at 1/φ. A hard heavy-quark mass (c/b, set at the Higgs/Yukawa scale, NOT emergent) injects an off-scale splitting that erases the balance. Same dividing line as Phase 50 (bare quarks don't carry it) — φ lives in the emergent light confined structures.
 
+### Look-Elsewhere Accounting: Registry + Trial-Factor (Phase 54 — gap 1 closed)
+- **Question (external gap 1):** a referee's first question is *how many relations did you try, and what's the chance some survivors are coincidence?* Per-relation robustness (G1–G4) existed; global look-elsewhere accounting did not.
+- **Registry:** all **46 tested relations** across Phases 1–53 with outcome + rejection reason: 20 SUPPORTED, 7 DERIVED, 13 NEGATIVE, 2 DEMOTED (H42g's 137 and the φ⁸ magnification — the self-demotions are registered, not hidden), 1 REJECTED, 2 PARTIAL, 1 CONSISTENT.
+- **Trial factor:** each headline hit is scored against a bounded pool of **1866 simple constants** (rationals, a·φ^k, a·π^k, (2π)^k, a·6π⁵, Fibonacci ratios). m_p/m_e ~ 6π⁵ (1/1866), 1/34 (1/1866), decuplet 19/4 (1/1866) are **unique**; Koide 2/3 is robust (one golden competitor 12φ⁻⁶).
+- **H54b — octet specificity audit:** the octet split r = 0.382379 is fit **16× tighter by 13/34 = F₇/F₉ (0.0067%)** than by 1/φ² (0.108%). 12 of the 13 matching constants are consecutive-Fibonacci convergents of 1/φ² — the *same* golden family, and exactly Phase 52's consecutive-F substrate.
+- **Net (refinement, not negation):** Phase 45 should be read as "the octet split sits in the golden-Fibonacci family (limit 1/φ²)", not "1/φ² uniquely beats every rational" — Phase 45 tested competing *bases*, not competing *Fibonacci rationals*. H54b makes that blind spot explicit and public; it is consistent with Phase 52's geometric substrate.
+
 ### Variable Gravity
 - **Formula:** $G_{\text{eff}} \propto \rho_{\text{fold}}^{1/\varphi}$
 - **Prediction:** ~76% void lensing suppression
