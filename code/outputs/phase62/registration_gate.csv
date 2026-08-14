@@ -1,0 +1,4 @@
+model,c1_ratio,c2_ratio,delta_n_surface,decoupling_radius_Rstar,decoupling_in_30_300,vr_energy_keV,vr_in_2_4_keV
+QED,1.0,1.0,0.00192,136.2,True,3.0,True
+"IST branch (ii): c2=0, c1~QED",1.0,0.0,-0.00256,144.2,True,3.0,True
+"IST branch (i): c2=0, c1=52.3x",52.343,0.0,-0.13424,318.3,False,0.41,False
