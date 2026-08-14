@@ -2,7 +2,7 @@
 
 **Status:** Internal research note (draft) — conceptual framework note, pre-phase
 **Authors:** NOWN Research Collective
-**Date:** 2026-08-05 (rev. 2026-08-12: §2 Phases 13/14 dynamical evidence; §5 strand-count rule; §7.2 Kamada refinement)
+**Date:** 2026-08-05 (rev. 2026-08-12: §2 Phases 13/14 dynamical evidence; §5 strand-count rule; §7.2 Kamada refinement. rev. 2026-08-14: P3′ locus/QRF clarification — the zero point is a locus not an axis, stacking is observer-relative, isotropy selects the locus reading; §5 spin-as-rotation-around-the-locus; Giacomini QRF citation)
 **Related:** Phases 1, 6, 8, 8b, 13, 14, 24, 36, 41, 44, 47, 48, 52, 55–57, 58, 59, 60; Plans 9, 10, 12; Phase 2 BH topology (Runs A–E)
 
 ---
@@ -78,6 +78,29 @@ geometric direction once adjacent sheets lock into coherent phase
 relations — is the emergent third dimension. Within a sheet, physics is 2D
 (consistent with the Phase 8b measured D_eff ≈ 2.0–2.8 for the single-sheet
 Klein oscillator ensemble); across the stack, effective 3D.
+
+**Clarification (P3′ — the zero point is a locus, not an axis; stacking is
+observer-relative).** The formulation above invites a misreading that must
+be rejected: it suggests ONE global stacking direction — a preferred axis in
+emergent space. That reading is falsified by observation: a single global
+stack normal would make 3D space anisotropic (one distinguished direction),
+while space is isotropic to ~10⁻⁵ (CMB) and Lorentz invariance holds to high
+precision. The substrate machinery supports the stronger reading: the zero
+point is a **locus, not a single axis** — every oscillator carries its own
+Ω-crossing (the seam meridian and its holonomy W = −1 exist *at every point*,
+locally, per Phase 47's flat connection). The cross-Ω direction therefore
+exists **in every direction at every point**, and "the stacking direction"
+is defined **relative to each observer's quantum reference frame (QRF)**, not
+absolutely. Layers stack in any direction the QRF picks; isotropy is built
+in, not assumed. The shared 3D of all observers is then a *shared harmonic
+class* fact (observers who share a coupling class share the emergent
+dimensions; incommensurate classes decouple entirely — §3), not an
+absolute-frame fact. This is the relational stance of the mereology mapping
+made geometric, and it is the literature's QRF program (Giacomini et al.
+2019) applied to the substrate. **Consequence for spin:** the spin axis is
+the cross-Ω axis defined per-QRF — spin is quantizable along *any* axis
+because the zero-point locus provides the axis in every direction; there is
+no global spin axis (see §5).
 
 **Dynamical evidence (already in the runtime).** P2/P3 are not untested
 intuition: two phases in the existing program are dimension-crystallization
@@ -206,6 +229,17 @@ knot) lives in-sheet, threads the seam, and carries seam parity (0.446).
 Rule of thumb: dual-strand ⇒ achiral; single-strand ⇒ seam parity. The
 neutrino is the next excitation to classify under this rule — its near-miss
 signatures in Phase 44 make it the outstanding test case.
+
+**Spin as rotation around the zero-point locus.** Per P3′, the cross-Ω
+axis exists in every direction at every point (the zero point is a locus,
+not a global axis). The framework's spin assignments follow: the photon's
+spin-1 is in-sheet circulation (helicity — rotation within the 2D sheet,
+the only rotation a sheet-bound dual strand can execute); the electron's
+spin-½ is the twist *around* the cross-Ω axis (a half-turn around the zero
+point flips it — the seam holonomy; Phase 61's exchange sign −1 is the
+meridian holonomy around the same axis). Spin is quantizable along any axis
+because the locus provides the axis in every direction, per-QRF — there is
+no preferred frame, and the emergent space is isotropic by construction.
 
 ---
 
@@ -369,5 +403,6 @@ point, and Hawking radiation is the zero point giving the information back.
 - Whitney immersion/embedding theorems (standard topology references).
 - Rolfsen, *Knots and Links* (unknotting in codimension ≥ 3).
 - Kamada, S. (2017). *Surface-Knots in 4-Space*. Springer; Hillman, J. (2002). *Four-Manifolds, Geometries and Knots*.
+- Giacomini, F., Castro-Ruiz, E. & Brukner, Č. (2019). Quantum mechanics and the covariance of physical laws in quantum reference frames. *Nat. Commun.* 10, 494.
 - Repo-internal: Phases 1, 2 (Runs A–E), 5, 6, 8, 8b, 13, 14, 24, 36, 41, 44, 47,
-  48, 52, 55–57, 58, 59, 60; Plans 9, 10 (A–C), 12; REPORT_PHASE5.md.
+  48, 52, 55–57, 58, 59, 60, 61; Plans 9, 10 (A–C), 12; REPORT_PHASE5.md.
