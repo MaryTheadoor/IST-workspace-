@@ -25,8 +25,11 @@ ist_papers/
 |
 |-- README.md                          # This file
 |-- main/
-|   |-- ist_v7_0_topology_substrate.md  # Primary IST paper (v7.0, strict physics core)
+|   |-- ist_v8_0_topology_substrate.md  # Primary IST paper (v8.0, strict physics core)
+|   |-- ist_v7_0_topology_substrate.md  # Superseded by v8.0 (historical snapshot)
 |   |-- ist_v6_0_topology_substrate.md  # Deprecated snapshot (tag v6.0-paper-snapshot)
+|   |-- cross_phase_synthesis.md        # Complete phase table (1-60) + cross-phase synthesis
+|   |-- synthesis_paper.md              # Living synthesis paper (v2.9)
 |
 |-- supplementary/
 |   |-- directed_numbers_v0_8_1.md      # Algebraic formalism
@@ -128,8 +131,8 @@ When ready for publication:
 # apt-get install pandoc texlive-full
 
 # Convert main paper
-pandoc main/ist_v7_0_topology_substrate.md \
-  -o publication/ist_v7_0_topology_substrate.tex \
+pandoc main/ist_v8_0_topology_substrate.md \
+  -o publication/ist_v8_0_topology_substrate.tex \
   --template=eisvogel \
   --pdf-engine=xelatex \
   --toc \
@@ -145,7 +148,7 @@ pandoc supplementary/*.md \
 Or use the provided conversion script:
 
 ```bash
-python scripts/md_to_latex.py --input main/ist_v7_0_topology_substrate.md --output publication/
+python scripts/md_to_latex.py --input main/ist_v8_0_topology_substrate.md --output publication/
 ```
 
 ---
@@ -163,8 +166,8 @@ python scripts/md_to_latex.py --input main/ist_v7_0_topology_substrate.md --outp
 
 ```bash
 # Clone the repository
-git clone https://github.com/NOWN-Research/ist_papers.git
-cd ist_papers
+git clone https://github.com/MaryTheadoor/IST-workspace-.git
+cd IST-workspace-
 
 # Create virtual environment
 python -m venv venv
@@ -617,6 +620,61 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Script:** `code/phase9_game_of_life_substrate.py` | **Tests:** `tests/test_phase9_automaton.py` (7 tests)
 - **Outputs:** `code/outputs/phase9/structure_evolution.png`, `evolution.csv`
 
+### Phase 10: Klein Vector Substrate — Directed-Number Field Dynamics
+- **Model:** the actual substrate dynamics, not a cellular-automaton approximation: a 2D doubly-stochastic vector matrix on the Klein bottle, each cell carrying a 3-component directed-number state (up/down/zero amplitudes). Update rule is the IST compression operator with tanh nonlinearity: `s(t+1) = tanh(W@s(t) + noise)`.
+- **Key result:** twist correlation emerges from the field dynamics itself — topology imprints on the emergent field without any hand-placed seam coupling (the Phase 1 seam enters only through the cellulation).
+- **Script:** `code/phase10_gpu_substrate.py` | **Tests:** `tests/test_phase10_substrate.py`
+- **Outputs:** `code/outputs/phase10/`
+
+### Phase 11: Golden-Filtered Klein Vector Substrate
+- **Model:** integrate the Phase 8 vacuum-pump golden filter into the Phase 10 Klein vector substrate. Each neighbor edge gets a dynamic coupling weight set by the golden-ratio phase filter: golden-resonant (~137.5°) → 1.0, neutral → 0.3, rational (p/q) → suppressed.
+- **Key result:** the golden-weighted edge coupling fragments the field into ~220 distinct patterns — an edge-level golden filter acting as the selection mechanism.
+- **Script:** `code/phase11_golden_substrate.py` | **Tests:** `tests/test_phase11_golden_substrate.py`
+- **Outputs:** `code/outputs/phase11/`
+
+### Phase 12: Fibonacci RG — Static Blocking Fails (honest negative)
+- **Model:** test whether Fibonacci-scaled blocking on the golden-rotation-order (GRO) circle preserves spectral self-similarity under RG; three blocking schemes compared (Fibonacci, uniform, rational).
+- **Key result:** static (blocking) RG fails to produce the golden fixed point — the negative that forced Phase 13's dynamical answer.
+- **Script:** `code/phase12_fibonacci_rg.py` | **Tests:** `tests/test_phase12_fibonacci_rg.py`
+- **Outputs:** `code/outputs/phase12/`
+
+### Phase 13: Dynamical RG — D_eff Converges to φ
+- **Model:** replace static blocking (Phase 12) with emergent blocking: golden-connected components (cells linked by edges with weight > 0.5) become coarse vertices under temporal evolution; the Galerkin projection of the effective Laplacian gives D_eff per epoch.
+- **Key result:** D_eff pins at **1.655, within 2.3% of φ** — the first dynamical convergence to the golden dimension. This is a dimension-crystallization event in the runtime (the evidence base for the dimensional-emergence note's P2/P3).
+- **Script:** `code/phase13_dynamical_rg.py` | **Tests:** `tests/test_phase13_dynamical_rg.py`
+- **Outputs:** `code/outputs/phase13/`
+
+### Phase 14: Fold-Density Feedback — G Pinned at the Golden Window
+- **Model:** the self-regulating feedback ODE `df/dt = γ·(D_eff(f) − φ)·f` drives fold density to the fixed point where D_eff(f) = φ (f ≈ 4.2): under-folded regions fold more, over-folded regions relax.
+- **Key result:** the G exponent → 1/φ from **any** initial fold density — the pinning mechanism behind `G_eff ∝ ρ^{1/φ}` and the 63% void suppression. (Also a dimension-crystallization event: D_eff is driven onto φ.)
+- **Script:** `code/phase14_feedback.py` | **Tests:** `tests/test_phase14_feedback.py`
+- **Outputs:** `code/outputs/phase14/`
+
+### Phase 15: Running φ — Three Closures (α_s, Neutron, Dimensional β)
+- **15a — running φ(μ):** `φ(μ) = φ_inf + (φ_0 − φ_inf)exp(−μ/μ_c)`; the golden-layer count `n(E) = ln(E/m_p)/ln(φ⁴)` closes **α_s(M_Z) → 0.122 vs 0.118 (3% error)** — the original factor-3.2 associator gap is CLOSED.
+- **15b — neutron mass:** running-φ correction gives **0.9395 GeV vs observed 0.9396** (GAP CLOSED; later superseded by the parameter-free Phase 28 closed form).
+- **15c — dimensional β:** testing the oscillation exponent across embedding dimensions gives **d = 3 as the clear best fit**, with fitted β ≈ 4.16 within 2% of the associator volume prediction β = φ³ = 4.236.
+- **Scripts:** `code/phase15_running_phi.py`, `code/phase16_dimensions.py` | **Tests:** `tests/test_phase15_running_phi.py`
+- **Outputs:** `code/outputs/phase15/`
+
+### Phase 16: Joint Cosmological Fit + Dimensional Amplification
+- **Joint fit:** oscillatory DE vs ΛCDM on 60 H(z) + 1701 Pantheon+ + DESI DR1 BAO: nominal Δχ² = 22.1, H₀ 73.6→71.4. **The "4σ" headline is RETRACTED** — Phase 60 shows it lives in the anti-phase channel (ε₀<0 = hidden free phase π); under the physical constraint ε₀ ≥ 0 the oscillatory fit gives Δχ² ≈ 0. See the Phase 60 section above.
+- **Dimensional amplification:** 3D as the critical dimension — the vacuum pump's constructive interference peaks when the Phase 10 vector substrate is extended to 3D hypercubic grids (2D–5D compared); the 3D-vs-2D amplification factor (~1300×, Plan 12) is re-interpreted by the dimensional-emergence note as the opening of the stacking direction.
+- **Scripts:** `code/phase16_joint_fit.py`, `code/phase16_dimensions.py` | **Tests:** `tests/test_phase16_dimensions.py`
+- **Outputs:** `code/outputs/phase16_joint/` (`joint_fit.png`, `beta_scan.csv`)
+
+### Phase 17: Void Lensing with Pinned G(ρ) + Real DES Shear Stacking
+- **Pinned model:** Phase 14's `G_eff(ρ) = ρ^{1/φ}` applied to the Phase 5 void-lensing templates; void abundance calibrated from SDSS DR7 (Sutter+ 2012) + Euclid forecast.
+- **Key result:** 63% suppression of G in voids, distinguishable from GR at **10.7σ** with Euclid/COSMOS-Web depth; real DES Y6 GOLD shear stacking (BDF_G − PSF_G estimator; foreground voids z ≤ 0.4, background shear z > 0.4) produced the first stacked signal γ_t ~ −0.025 at 0.27°.
+- **Scripts:** `code/phase17_void_lensing.py`, `code/phase17_des_voids.py` | **Tests:** `tests/test_phase17_void_lensing.py`
+- **Outputs:** `code/outputs/phase17/`, `code/outputs/phase17_des/`
+
+### Phase 18: DES Y6 BAO Distance Scale
+- **Model:** fit the BAO peak position in the DES Y6 angular correlation function across 6 redshift bins; extract D_A(z)/r_d and compare to both ΛCDM and the Phase 16 oscillatory model (which modifies H(z) → D_A(z) → θ_BAO).
+- **Status (honest):** data vectors loaded and the pipeline runs; a proper CAMB/CLASS template extraction for the BAO peak remains to be completed — superseded on the observational front by the Phase 44 DESI DR1 sound-horizon test.
+- **Script:** `code/phase18_bao.py` | **Input:** `data/bao/DESY6BAO_datavectors/acf/`
+- **Outputs:** `code/outputs/phase18_bao/`
+
 ### Data Pipeline
 - **Fetch:** `data_fetch/fetch_hsc_m31.py`, `fetch_cosmos_web.py`, `fetch_ligo.py`
 - **Preprocess:** `preprocess_microlensing.py` (events → threads), `preprocess_lss.py` (galaxies → Ξ threads)
@@ -678,7 +736,7 @@ If you use IST in your research, please cite:
   author={Theadoor, Mary and the NOWN Research Collective},
   journal={arXiv preprint},
   year={2026},
-  note={Working paper v7.0}
+  note={Working paper v8.0}
 }
 ```
 
@@ -694,7 +752,7 @@ This work is licensed under the Creative Commons Attribution 4.0 International L
 
 **Principal Investigator:** Dr. Mary Theadoor  
 **Research Group:** NOWN Research Collective  
-**Repository:** https://github.com/NOWN-Research/ist_papers
+**Repository:** https://github.com/MaryTheadoor/IST-workspace-
 
 ---
 

@@ -59,3 +59,23 @@ would manufacture numerology, not resolve it.
 **No phase is planned for φ⁸.** If the absolute scale of α is ever pursued, it must
 come from an independent derivation of R_f / the plonk unit, not from a fitted
 magnification.
+
+---
+
+## Recurrence log (Aug 2026 — three independent appearances of the demoted constant)
+
+Despite the demotion, φ⁸ = 46.979 appears in **three independent places** in the
+program:
+
+| Site | Appearance | Reading |
+|---|---|---|
+| Phase 2 | Required magnification M ≈ φ⁸ to reach 1/α ≈ 137 from the topological-minimum fiber p = 3 | Demoted here (§2 above): 4.4% off, R_f forced |
+| Phase 8 | `"magnification": PHI ** self.n_layers` — exactly 46.98 at layer 8 | Definitional counter column, not a measurement (§1 above) |
+| Phase 23c | φ⁸ used as the scale factor in the plonk→Compton bridge, plotted against the 320-tick count | Co-opted scale reference in the bridging plot (`phase23c_scale_bridging.py`) |
+
+Disposition: three appearances of one demoted constant is either real
+secondary structure or exactly what the Phase 54 trial factor predicts for a
+pool of 1866 constants (a recurrence like this is well inside the look-elsewhere
+budget). Registered, not revived: no new phase is planned on any of the three
+appearances, and the registry rows (Phase 2 partial; φ⁸ demotion) already
+cross-link this note.
