@@ -66,6 +66,15 @@ Non-obvious quirks in specific phase modules.
 - `unit_robustness` takes `scale` as a 2-tuple (deg, rad); the fixed-point
   function passed must accept the circle measure as its only argument.
 
+## phase51_fibonacci_laplacian.py
+
+- **All `spla.eigsh` calls must pass a deterministic `v0`** (a normalized
+  `np.ones(N)` vector). ARPACK's default random start makes `rg_flow_2d` /
+  `block_spin_drift` drift run-to-run (observed: min |D_eff − φ| flapping
+  0.55 ↔ 0.34), which flakes `test_phase58_trace_map_rg` intermittently.
+  The deterministic value is min |D_eff − φ| = 0.5462 — if a future edit
+  removes `v0` and the Phase-58 test fails only sometimes, this is why.
+
 ## phase46_reference_rescope.py
 
 - **The flavor-closure modules form a one-way import chain:**

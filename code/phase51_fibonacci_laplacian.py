@@ -277,8 +277,9 @@ def gap_ratio_stats(L, k=120, atol=1e-8):
     """Median gap ratio of the distinct-level sequence (Phase 1 metric)."""
     N = L.shape[0]
     k = min(k, N - 2)
+    v0 = np.ones(L.shape[0]) / np.sqrt(L.shape[0])   # deterministic ARPACK start
     vals = spla.eigsh(sp.csr_matrix(L), k=k, sigma=-1e-6, which="LM",
-                      return_eigenvectors=False)
+                      return_eigenvectors=False, v0=v0)
     vals = np.sort(vals[vals > 1e-10])
     clusters = []
     for v in vals:
@@ -323,8 +324,9 @@ def spectral_dimension(L, k=60, window_low=0.08, window_high=0.55):
     if k < 5:
         return np.nan, 0.0
     try:
+        v0 = np.ones(L.shape[0]) / np.sqrt(L.shape[0])  # deterministic start
         vals = spla.eigsh(sp.csr_matrix(L), k=k, sigma=-1e-6, which="LM",
-                          return_eigenvectors=False)
+                          return_eigenvectors=False, v0=v0)
     except spla.ArpackError:
         return np.nan, 0.0
     vals = np.sort(vals[vals > 1e-10])
@@ -347,8 +349,9 @@ def spectral_coarsen(L, n_target):
     """Galerkin projection onto the low-energy eigenspace: L' = V^T L V,
     keeping ~n_target bottom eigenvectors (spectral RG type)."""
     k = max(4, min(n_target, L.shape[0] - 2))
+    v0 = np.ones(L.shape[0]) / np.sqrt(L.shape[0])    # deterministic ARPACK start
     vecs = spla.eigsh(sp.csr_matrix(L), k=k, sigma=-1e-6, which="LM",
-                      return_eigenvectors=True)[1]
+                      return_eigenvectors=True, v0=v0)[1]
     return vecs.T @ L @ vecs
 
 
