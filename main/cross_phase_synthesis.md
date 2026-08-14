@@ -25,7 +25,7 @@
 | 15 | α_s fixed | φ⁴ layer-counting: α_s(M_Z)→0.122 (3% error) | GAP CLOSED |
 | 15 | Dimensional β | β=φ³, d=3 best fit (2% from fitted 4.16) | Geometric |
 | 15 | Neutron mass | Running φ: 0.9395 GeV (obs 0.9396) | GAP CLOSED |
-| 16 | Joint fit | H(z)+Pantheon++DESI BAO: 4σ over ΛCDM | Real data |
+| 16 | Joint fit | H(z)+Pantheon++DESI BAO: Δχ²=22.1 joint fit (headline overturned by Phase 60: artifact of anti-phase channel ε₀<0) | Real data (downgraded) |
 | 17 | DES void lensing | Real shear stacking from GOLD catalog | Operational |
 | 18 | DES BAO | Data vectors loaded, CAMB needed |
 | **23a** | **Plonk orientation cycle** | **Fibonacci lattice + 4-state tracker + 720° return verified (200/200) + parity inversion fix (44.6% negative coupling)** |
@@ -118,9 +118,12 @@ Phase 4 measured the exponent sweeping 0.60→1.0 across the fold scan. Phase 14
 
 ## Observable Predictions
 
-### Confirmed at ≥4σ
-- **Oscillatory DE vs ΛCDM:** Δχ²=22.1 (Phase 16, H(z)+Pantheon++DESI BAO)
+### Confirmed
 - **Dimensional β=φ³:** d=3 best fit (Phase 15, χ² min at d=3)
+- **Dimensionality of observable space:** D ≈ 3 at all observable z — D→2 by recombination excluded at ~985σ (Phase 36, CMB shift prior); survives the BAO standard ruler (Phase 44)
+
+### Downgraded (retracted headline)
+- **Oscillatory DE "4σ" (Phase 16):** the Δχ²=22.1 joint-fit headline is an artifact of the anti-phase channel (ε₀<0 = hidden free phase π); under the physical constraint ε₀≥0 the oscillatory joint fit gives Δχ²≈0 (Phase 60). The pre-registered golden form (Δ=ln φ, ε=α/φ², 2.5 cycles) remains the falsifiable DESI-era target; the ×38 master-equation-to-cosmology amplitude gap is the honest open problem (Phases 59–60).
 
 ### Forecast (Phase 17)
 - **Void lensing suppression:** 10.7σ distinguishable at Euclid/COSMOS-Web depth. DES single-tile: 3-4 voids, signal present but noise-dominated.
@@ -148,7 +151,7 @@ Phase 4 measured the exponent sweeping 0.60→1.0 across the fold scan. Phase 14
 3. Vacuum-pump cosmogony and golden filter (Phases 7-9)
 4. Dynamical RG and convergence (Phases 10-14)
 5. α_s closure and mass hierarchy (Phase 15)
-6. Observational tests: oscillatory DE at 4σ, dimensional β = φ³ (Phase 15-16)
+6. Observational tests: dimensional β = φ³ (Phase 15); oscillatory DE audited, not confirmed (Phases 59–60)
 7. Void lensing forecast (Phase 17)
 8. Discussion — φ as geometric attractor, predictions for Euclid/DESI
 

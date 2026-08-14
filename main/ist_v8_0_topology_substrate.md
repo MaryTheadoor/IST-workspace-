@@ -12,7 +12,7 @@ The $\varphi$-emergence claim rests on a code-verified computational program (51
 
 At the quantum scale the framework's strongest claims are top-down and parameter-free: $m_p/m_e = 6\pi^5$ (99.9981%, Phase 27), now *derived* as $N_c\,{\rm Vol}(SU(3))$ (Phase 49); the neutron excess $\delta_n = \frac{\alpha}{2\varphi^2}(1 - (\frac{3}{2} - \frac{\alpha}{\varphi^6})\alpha)$ (0.02σ of CODATA, Phases 28–30); the Koide relation $Q = 2/3$ (0.0009%, Phase 31); the baryon decuplet ladder $m(S) = [4 + \frac{k}{2}f_{\text{Klein}}]E$ (≤0.29%, Phases 34–35); and the octet golden partition $\Sigma = \Lambda + (\Xi-\Lambda)/\varphi^2$ (0.007%, Phase 45). Each of these derives from the single half-integer twist $\theta = 1/2$ of the Klein bottle's meridian — the $720^{\circ}$ double-cover — now *derived* as an exact topological invariant from the $\mathbb{Z}_2 \to U(1)$ holonomy embedding (Phase 47). The same Fibonacci substrate carries the entire Standard Model counting structure as $F_1$ through $F_9$, with the stable-knot fraction resolved as exactly $1/34 \approx 2.94\%$ (Phase 48).
 
-Observationally, the oscillatory dark energy model is preferred over $\Lambda$CDM at ~4σ ($\Delta\chi^2 = 22.1$ in a joint fit to 60 $H(z)$ chronometers, 1701 Pantheon+ SNe Ia, and DESI DR1 BAO); void-lensing templates predict a 63% suppression of $G$ in low-density regions, distinguishable from GR at $10.7\sigma$; and the strong coupling is reproduced at $M_Z$ (3.1%) and $m_\tau$ (1.3%) by a golden-layer mass→coupling relation, with the active-flavor threshold mechanism confirmed (Phases 38–42). The $\alpha_s$ closure is proved *reference-irreducible*: the residual is a power-law-vs-log shape mismatch of genuine QCD running, not a reference artifact (Phases 43, 46). The crystallization geometry survives the BAO sound-horizon ruler (Phase 44).
+Observationally, void-lensing templates predict a 63% suppression of $G$ in low-density regions, distinguishable from GR at $10.7\sigma$; and the strong coupling is reproduced at $M_Z$ (3.1%) and $m_\tau$ (1.3%) by a golden-layer mass→coupling relation, with the active-flavor threshold mechanism confirmed (Phases 38–42). The earlier claim that an oscillatory dark energy model is preferred over $\Lambda$CDM at ~4σ ($\Delta\chi^2 = 22.1$ in a joint fit to 60 $H(z)$ chronometers, 1701 Pantheon+ SNe Ia, and DESI DR1 BAO; Phase 16) is retracted: the Phase 60 audit shows the preference lives entirely in the anti-phase channel $\varepsilon_0 < 0$ — an unacknowledged free phase shift of $\pi$ — and the oscillatory joint fit gives $\Delta\chi^2 \approx 0$ under the physical constraint $\varepsilon_0 \geq 0$. The pre-registered golden-period form ($\Delta = \ln\varphi$, $\varepsilon_0 = \alpha/\varphi^2$) remains a falsifiable target for the DESI full-shape arena (Phases 59–60). The $\alpha_s$ closure is proved *reference-irreducible*: the residual is a power-law-vs-log shape mismatch of genuine QCD running, not a reference artifact (Phases 43, 46). The crystallization geometry survives the BAO sound-horizon ruler (Phase 44).
 
 Honest negatives are reported alongside positives: force couplings are not golden harmonics (Phase 37); dimensional crystallization is CMB-excluded for $z_c \lesssim 1090$ (Phase 36); the self-referential "137" fixed point fails the project's four golden-relation robustness checks (Phase 42, H42g) and is retracted; the golden partition is a law of *bound-state knots*, not of bare quarks, RG-invariantly (Phase 50); and even on the true incommensurate Fibonacci substrate the golden ratio never appears as a static spectral dimension — acting only in the self-similarity and the twist (Phase 51).
 
@@ -175,9 +175,9 @@ The vacuum-pump cosmogony implies that the dark-energy sector is not a static co
 | IST ($\beta = 1/\varphi$) | 926 | +22.1 | 71.4 |
 | IST (free $\beta$) | 926 | +22.3 | 71.6 |
 
-![**Joint cosmological fit.** 60 $H(z)$ chronometers, 1701 Pantheon+ SNe Ia, and DESI DR1 BAO. The IST oscillatory dark energy model is preferred over $\Lambda$CDM at ~4$\sigma$ ($\Delta\chi^2 = 22.1$).](publication/figures/joint_fit.png)
+![**Joint cosmological fit** (Phase 16). 60 $H(z)$ chronometers, 1701 Pantheon+ SNe Ia, and DESI DR1 BAO. The nominal $\Delta\chi^2 = 22.1$ preference was retracted by the Phase 60 audit (anti-phase artifact, $\varepsilon_0<0$ = hidden phase $\pi$; see text).](publication/figures/joint_fit.png)
 
-The oscillatory model is preferred at approximately $4\sigma$, and $H_0$ shifts from 73.6 to 71.4 km s⁻¹ Mpc⁻¹, toward the CMB-inferred value. The exponent was tested across embedding dimensions (Phase 15c): $d = 3$ is the clear best fit, with the fitted $\beta \approx 4.16$ within 2% of the associator volume prediction $\beta = \varphi^3 = 4.236$.
+The table records the Phase 16 fit. **The Phase 60 audit retracts the significance claim.** The Δχ² = 22.1 preference requires $\varepsilon_0 < 0$ — an unacknowledged free phase shift of $\pi$ (the anti-phase channel). Under the physical constraint $\varepsilon_0 \geq 0$ the oscillatory joint fit gives $\Delta\chi^2 \approx 0$, so the model is not preferred over $\Lambda$CDM in current data; the falsifiable golden-period form ($\Delta = \ln\varphi$, $\varepsilon_0 = \alpha/\varphi^2$) remains the pre-registered DESI-era target (Phases 59–60; synthesis paper §8.1ai). The dimensional part of the result stands independently: the exponent was tested across embedding dimensions (Phase 15c), $d = 3$ is the clear best fit, with the fitted $\beta \approx 4.16$ within 2% of the associator volume prediction $\beta = \varphi^3 = 4.236$.
 
 ### 4.5 Void Lensing and the Suppression of $G$
 
@@ -249,7 +249,7 @@ The $\varphi$-emergence claim rests on a code-verified computational program (51
 
 ### 5.5 Observational Tests and the Strong-Coupling Closure (Phases 15--17, 38--46)
 
-**Oscillatory DE vs $\Lambda$CDM** (Phase 16): preferred at ~4σ, $\Delta\chi^2 = 22.1$, $H_0$: 73.6→71.4 (Section 4.4).
+**Oscillatory DE vs $\Lambda$CDM** (Phase 16): the nominal Δχ² = 22.1 preference is retracted — the Phase 60 audit shows it lives in the anti-phase channel ($\varepsilon_0<0$ = hidden phase $\pi$); under the physical constraint $\varepsilon_0 \geq 0$, $\Delta\chi^2 \approx 0$ (Section 4.4).
 
 **Void lensing** (Phases 5, 17): the pinned $G(\rho)$ model predicts 63% suppression, distinguishable from GR at $10.7\sigma$; real DES Y6 GOLD data produced a first stacked shear measurement $\gamma_t \sim -0.025$ at $0.27^{\circ}$ (Section 4.5).
 
@@ -443,7 +443,7 @@ Information Substrate Theory provides a framework in which observed physics emer
 - Parameter-free $m_p/m_e = 6\pi^5$, now *derived* as $N_c\,{\rm Vol}(SU(3))$ (99.9981%, Phase 49); neutron excess at 0.02σ of CODATA; Koide $Q = 2/3$ (0.0009%); baryon decuplet ladder ≤0.29% and octet golden partition (0.007%, Phase 45) — all traced to the half-integer twist $\theta = 1/2$, now *derived* as an exact topological invariant (Phase 47)
 - The Fibonacci substrate carries the entire Standard Model counting structure as $F_1$…$F_9$, with the stable-knot fraction resolved as exactly $1/34$ (Phase 48)
 - Strong coupling via mass→coupling relation: $M_Z$ 3.1%, $m_\tau$ 1.3%; active-flavor threshold mechanism confirmed; the clean closure proved reference-irreducible (Phases 43, 46)
-- Oscillatory dark energy preferred over $\Lambda$CDM at ~4σ; void-lensing suppression 63% distinguishable at $10.7\sigma$; first stacked DES Y6 shear signal
+- Oscillatory dark energy: the Phase 16 "4σ" preference is retracted as an anti-phase artifact ($\varepsilon_0<0$ = hidden phase $\pi$; Phase 60); void-lensing suppression 63% distinguishable at $10.7\sigma$; first stacked DES Y6 shear signal
 - Honest negatives reported: force couplings not golden harmonics; crystallization CMB-excluded at recombination; the "137" fixed point retracted by robustness checks; the $\alpha_s$ closure reference-irreducible; bare quarks do not golden-partition; and $\varphi$ is not a static spectral dimension even on the true incommensurate lattice
 
 The framework is offered as a work in progress whose claims are intended to be evaluated and revised against observation.
@@ -468,7 +468,7 @@ The framework is offered as a work in progress whose claims are intended to be e
 | 13 | Dynamical RG | $D_{\text{eff}}$ pins at 1.655 (2.3% of $\varphi$) |
 | 14 | Fold feedback | $G$ exponent → $1/\varphi$ from any initial $f$ |
 | 15 | Running $\varphi$ | $\alpha_s$ fixed (3%), neutron exact, $\beta = \varphi^3$ |
-| 16 | Joint fit | Oscillatory DE at 4σ over $\Lambda$CDM |
+| 16 | Joint fit | Oscillatory DE Δχ²=22.1 (4σ claim retracted: Phase 60 anti-phase artifact) |
 | 17 | DES void lensing | Real shear stacking (3 voids, ~0.025) |
 | 19–22 | Unified sim / balloon models | Grid harmonics + gain saturation → corrected in 23–24 |
 | 23 | Plonk-scale | Fibonacci lattice + 4-state tracker + 720° verified (200/200) |

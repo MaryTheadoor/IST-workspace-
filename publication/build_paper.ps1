@@ -16,7 +16,7 @@
 #   - <stem>.pdf     rendered PDF
 # ============================================================================
 param(
-    [string]$Source = "main\ist_v7_0_topology_substrate.md"
+    [string]$Source = "main\ist_v8_0_topology_substrate.md"
 )
 
 $ErrorActionPreference = "Stop"
@@ -46,7 +46,7 @@ Write-Host "[1/3] pandoc: markdown -> LaTeX"
     -H (Join-Path $out "preamble.tex") `
     --metadata title="Information Substrate Theory (IST): Topology as a Substrate for Emergent Physics" `
     --metadata author="Dr. Mary Theadoor -- The Nown Research Group" `
-    --metadata date="Version 7.0 - August 2026"
+    --metadata date="Version 8.0 - August 2026"
 if ($LASTEXITCODE -ne 0) { throw "pandoc failed (exit $LASTEXITCODE)" }
 
 Write-Host "[2/3] xelatex pass 1"

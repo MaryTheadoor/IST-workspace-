@@ -11,7 +11,7 @@
 
 ## Abstract
 
-Information Substrate Theory (IST) proposes that all observed physics emerges from a discrete, non-orientable two-dimensional information substrate whose self-interaction is governed by the golden ratio φ. We present a systematic computational investigation across 52 phases that (1) falsifies the naive hypothesis that φ appears as a static invariant of the substrate's spatial graph, (2) demonstrates that φ instead emerges as a **dynamical attractor** of the substrate's temporal self-interaction — the same anti-resonance mechanism that produces Fibonacci spirals in phyllotaxis — and (3) tests the resulting framework against real cosmological data. The oscillatory dark energy model is preferred over ΛCDM at 4σ (Δχ² = 22.1 in a joint fit to H(z) chronometers, 1701 Pantheon+ SNe Ia, and DESI DR1 BAO). The redshift dependence of the oscillation amplitude is shown to scale as φ³, matching the associator volume prediction for a three-dimensional embedding within 2%. The strong coupling α_s(M_Z) is derived from the associator layer structure with φ⁴ energy magnification, yielding 0.122 (observed: 0.118, 3% error). The proton, electron, and neutron masses are all reproduced at >99.9% accuracy. Void lensing templates predict a 63% suppression of the gravitational coupling in low-density regions, distinguishable from GR at 10.7σ with Euclid/COSMOS-Web depth.
+Information Substrate Theory (IST) proposes that all observed physics emerges from a discrete, non-orientable two-dimensional information substrate whose self-interaction is governed by the golden ratio φ. We present a systematic computational investigation across 52 phases that (1) falsifies the naive hypothesis that φ appears as a static invariant of the substrate's spatial graph, (2) demonstrates that φ instead emerges as a **dynamical attractor** of the substrate's temporal self-interaction — the same anti-resonance mechanism that produces Fibonacci spirals in phyllotaxis — and (3) tests the resulting framework against real cosmological data. A joint fit to H(z) chronometers, 1701 Pantheon+ SNe Ia, and DESI DR1 BAO originally favored an oscillatory dark energy model over ΛCDM (Δχ² = 22.1, Phase 16), but the Phase 60 audit shows that headline is an artifact of the anti-phase channel (ε₀ < 0 = a hidden free phase shift π): under the physical constraint ε₀ ≥ 0 the oscillatory joint fit gives Δχ² ≈ 0, so the model is not preferred in current data. The redshift dependence of the oscillation amplitude was shown to scale as φ³, matching the associator volume prediction for a three-dimensional embedding within 2%; the falsifiable golden-period form (Δ = ln φ, ε = α/φ², 2.5 cycles) remains a pre-registered target for the DESI DR2 full-shape arena. The strong coupling α_s(M_Z) is derived from the associator layer structure with φ⁴ energy magnification, yielding 0.122 (observed: 0.118, 3% error). The proton, electron, and neutron masses are all reproduced at >99.9% accuracy. Void lensing templates predict a 63% suppression of the gravitational coupling in low-density regions, distinguishable from GR at 10.7σ with Euclid/COSMOS-Web depth.
 
 The later phases establish the framework's *unified origin* in a single exact topological invariant — the fractional twist θ = 1/2, derived (Phase 47) from the Z₂→U(1) holonomy embedding of the Klein seam, which governs the neutron anomalies, the Koide phase, and the baryon double-cover ladder. This invariant carries the entire Standard Model counting structure as the first nine Fibonacci numbers (Phase 48: $F_1$…$F_9$), and resolves the empirical factor in the proton/electron mass ratio as the exact duality $m_p/m_e = N_c\,{\rm Vol}(SU(3)) = 6\pi^5$ (Phase 49). Phases 45–51 refine precisely *where* φ does and does not live: the golden partition is a law of bound-state hadronic knots (octet, decuplet) — not of bare quarks or bare couplings — and the true incommensurate substrate spectrum carries golden self-similarity and twist (exact Kohmoto–Kadanoff–Tang trace map; parity fraction 0.446) while φ never appears as a static spectral dimension. All code, tests, and outputs are publicly available.
 
@@ -161,6 +161,8 @@ d=3 is the clear best fit. The fitted β ≈ 4.16 is within 2% of φ³ ≈ 4.236
 
 ### 7.1 Oscillatory DE vs ΛCDM (Phase 16)
 
+> **Audited (Phase 60):** the Δχ² = 22.1 preference below is an artifact of the anti-phase channel — it requires ε₀ < 0, an unacknowledged free phase shift of π. Under the physical constraint ε₀ ≥ 0 the oscillatory joint fit gives Δχ² ≈ 0; the headline is not a detection. See §8.1ai for the full audit; the falsifiable golden-period form (Δ = ln φ, ε = α/φ², 2.5 cycles) is the surviving, pre-registered target.
+
 A joint fit to 60 H(z) cosmic chronometers, 1701 Pantheon+ SNe Ia, and DESI DR1 BAO yields:
 
 | Model | χ² | Δχ² vs ΛCDM | H₀ |
@@ -169,7 +171,7 @@ A joint fit to 60 H(z) cosmic chronometers, 1701 Pantheon+ SNe Ia, and DESI DR1 
 | IST (β=1/φ) | 926 | **+22.1** | 71.4 |
 | IST (free β) | 926 | +22.3 | 71.6 |
 
-The oscillatory model is preferred at ~4σ over ΛCDM. H₀ shifts from 73.6→71.4, pulling the Hubble tension in the right direction. [Output: `outputs/phase16_joint/joint_fit.png`]
+This was Phase 16's reading of the fit: the oscillatory model preferred at ~4σ over ΛCDM, with H₀ shifting 73.6→71.4, pulling the Hubble tension in the right direction. [Output: `outputs/phase16_joint/joint_fit.png`] **The Phase 60 audit (above) shows the 4σ preference is an artifact of the anti-phase channel; the fit numbers are retained here only as the historical record.**
 
 ### 7.2 Void Lensing (Phases 5, 17)
 
@@ -818,7 +820,7 @@ All code, tests, and outputs at: `https://github.com/MaryTheadoor/IST-workspace-
 | 13 | Dynamical RG | D_eff pins at 1.655 (2.3% of φ) |
 | 14 | Fold feedback | G exponent → 1/φ from any initial f |
 | 15 | Running φ | α_s fixed (3%), neutron exact, β=φ³ |
-| 16 | Joint fit | Oscillatory DE at 4σ over ΛCDM |
+| 16 | Joint fit | Oscillatory DE over ΛCDM (Δχ²=22.1; 4σ headline overturned by Phase 60: anti-phase artifact) |
 | 17 | DES void lensing | Real shear stacking (3 voids, ~0.025) |
 | 18 | DES BAO | Data loaded, CAMB needed |
 | 19 | Unified φ-sim | D_eff descends 2.98→2.24, trending toward φ |
