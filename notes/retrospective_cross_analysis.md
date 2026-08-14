@@ -368,6 +368,32 @@ Each negative *located* the mechanism rather than killing it.
   from the dimensional-emergence discussion with a computed collapse (Z2); and
   closes spin-statistics as an input gap. Zero free parameters; registry
   69 -> 73.)
+  The flagship c2/c1 = 0 prediction meets its first empirical neighbor (Phase
+  62: the IXPE vacuum-birefringence gate — Stewart et al. 2026, magnetar
+  1E 1547.0-5408, B ~ 5 B_cr: the strongest evidence yet for QED VB, with the
+  absolute Delta n NOT extracted). The phase derives the mode algebra from
+  scratch — exact quadratic expansion of L = c1(F^2)^2 + c2(F.F~)^2 around a
+  pure-B background decouples the photon eigenmodes by invariant:
+  n(E||B)-1 = 16 c2 B^2 sin^2(theta), n(E_|_B)-1 = 16 c1 B^2 sin^2(theta) —
+  reproducing the canonical (14/45, 8/45) QED indices with ratio 7/4 = c2/c1
+  to 8 significant figures at all angles. Consequence: c2 = 0 does NOT kill VB;
+  it makes the E||B mode EXACTLY non-refractive (index 1 at all angles) while
+  the E_|_B mode keeps the c1 shift — a structural, normalization-independent
+  signature. Magnetar check: the QED accumulated phase puts the mode-decoupling
+  radius at 136 R* (inside the paper's own 30-300 R* statement — an independent
+  validation of the chain). Branch (ii) (c1 ~ QED, c2 = 0): |Delta n| =
+  (4/3) QED sign-flipped, 144 R*, VR unchanged -> consistent. Branch (i)
+  (c1 = 52.3x QED, the Phase-56 alpha/phi^2 magnitude reading): the
+  vacuum-resonance energy moves to 0.41 keV (observed 2-4 keV dip) and the
+  decoupling radius to 318 R* -> tension on both anchors. Gate verdict: the
+  structural c2/c1 = 0 SURVIVES and is registered in the mode-resolved form
+  (n(E||B) = 1); the 52.3x 4WM enhancement is GATED OFF pending a physical c1
+  normalization derivation — the IXPE 2-4 keV dip pins c1 to near-QED
+  strength, so the m^4/associator-scale normalization of c1 is now a required
+  derivation, recorded as an open item. Cross-phase: this is the flagship put
+  through the same discipline as the 4sigma-DE audit (Phase 60) — the
+  empirical neighbor constrains, the structural core stands, the magnitude
+  claim yields. Registry 73 -> 77.)
 
 ---
 
