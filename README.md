@@ -428,6 +428,14 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **Amplitude bridge fails:** ε_eff(φ³) = 0.032 at z̄ ≈ 0.78 — still ×3.3 below Phase 59's ε ≈ 0.106.
 - **Net:** the paper's headline observational claim is **an artifact of the sign-degeneracy channel** (ε₀ < 0 = hidden free phase π). The honest value of the oscillatory DE model on current joint data is Δχ² ≈ 0; the "4σ" does not survive scrutiny.
 
+### Spin-Statistics from Seam Braiding (Phase 61 — spin-statistics DERIVED from the Z₂ holonomy)
+- **Origin (external gap):** spin-statistics was an *input* — QFT imports it; IST should derive it from the substrate. The machinery already existed: W = −1 meridian holonomy (Phase 47), the 4-tick SU(2) cycle with flat limit exactly −I (Phase 25), and the strand dichotomy — electron = single-strand knot (parity 0.446), photon = dual-strand rung-bound compound (0.000) (Phases 52/55/57).
+- **H61a — the exchange phase IS the substrate holonomy:** the meridian Wilson loop is W = −1 (grid-independent on the Phase-1 Klein graph; +1 torus). The 4-tick temporal cycle: single-strand (seam-threading, two half-twists per 360°) → **−I → phase −1 (fermion)**; dual-strand (achiral, no crossings) → **+I → phase +1 (boson)**; torus (no seam) → +1 for *both* — **there are no fermions without the twist.**
+- **H61b — Pauli exclusion is the exchange algebra:** P|i,j⟩ = χ|j,i⟩ on the two-particle Hilbert space; P² = I exactly (double exchange = identity → ±1, the emergent-3D collapse σ = σ⁻¹); fermions: (1+P)|i,i⟩ = 0 — double occupancy annihilated topologically; bosons: (1−P)|i,i⟩ = 0 — antisymmetric double occupancy vanishes, symmetric survives; mixed species: no exclusion.
+- **H61c — the anyon collapse is the Z₂:** all Wilson loops of the Klein graph are ±1 (holonomy group exactly Z₂); a continuous U(1) holonomy (θ ≠ π) gives P² ≠ I and non-±1 eigenvalues — genuine anyons with no clean exclusion; the Z₂ value θ = π is the unique collapse point. Honest guard: the exchange phase is **not** the random-pair twist flag (the 0.446 mixture is pair-dependent, not a statistics); it is the loop holonomy W = −1.
+- **H61d — consistency + prediction:** electron (single, 0.446) ↔ χ = −1 fermion; photon (dual, 0.000) ↔ χ = +1 boson; the dimensional-emergence note's strand classifier (single-strand ⇒ seam parity) then **predicts the neutrino is a fermion** (single-strand) — consistent with observation.
+- **Net:** spin-statistics is no longer an input — it is the Z₂ exchange holonomy of the seam, composed from Phase 47's W = −1 and the measured strand structure (Phases 55/57). No free parameters. The anyon question is answered: the flat Z₂ seam quantizes the braid phase to ±1, and the emergent 3D stack (σ = σ⁻¹) makes it a genuine permutation statistic.
+
 ### Variable Gravity
 - **Formula:** $G_{\text{eff}} \propto \rho_{\text{fold}}^{1/\varphi}$
 - **Prediction:** ~76% void lensing suppression

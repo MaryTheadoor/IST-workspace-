@@ -341,6 +341,33 @@ Each negative *located* the mechanism rather than killing it.
   Honest scope: no detection claimed or refuted — the modulation is plausible
   but unverified, and the falsifiable content is the derived golden period.
   Registry now 65 relations.)
+  Spin-statistics is DERIVED from the substrate (Phase 61: the missing bridge
+  between θ = 1/2 and the Pauli principle — previously imported from QFT, now a
+  consequence of the Z2 exchange holonomy. The exchange (braid) phase of two
+  identical structures is the holonomy of the seam connection along the
+  exchange loop = one 4-tick temporal cycle on the double cover. H61a: the
+  meridian Wilson loop is W = -1, grid-independent on the Phase-1 Klein graph
+  (+1 torus); the 4-tick SU(2) cycle product is -I for the single-strand
+  (seam-threading) excitation -> chi = -1 (fermion, the Phase-25 flat-limit
+  sign), +I for the dual-strand achiral compound -> chi = +1 (boson), and +1
+  for both on the torus — no fermions without the twist. H61b: the two-particle
+  exchange operator P|i,j> = chi|j,i> satisfies P^2 = I exactly (double
+  exchange = identity, the emergent-3D sigma = sigma^-1 collapse); fermions:
+  (1+P)|i,i> = 0 — double occupancy annihilated topologically, Pauli exclusion
+  is the algebra; bosons: occupancy allowed; mixed: no exclusion. H61c: the
+  anyon collapse IS the Z2 — all Klein Wilson loops are +-1 (holonomy group
+  exactly Z2); a continuous U(1) holonomy theta != pi gives P^2 != I and
+  non-+-1 eigenvalues (genuine anyons, no clean exclusion); theta = pi is the
+  unique collapse point, exactly Phase 47's value. Honest guard: the naive
+  pair-twist identification (the 0.446 mixture) is NOT a statistics — the
+  statistics is the loop holonomy, a global invariant. H61d: electron (single,
+  0.446) <-> chi = -1; photon (dual, 0.000) <-> chi = +1; the strand classifier
+  of the dimensional-emergence note predicts the neutrino is a fermion.
+  Cross-phase: composes Phases 47 (W = -1), 25 (-I), 52/55/57 (strand
+  dichotomy) into the missing statistics result; answers the anyon caution
+  from the dimensional-emergence discussion with a computed collapse (Z2); and
+  closes spin-statistics as an input gap. Zero free parameters; registry
+  69 -> 73.)
 
 ---
 
