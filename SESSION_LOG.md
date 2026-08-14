@@ -1,187 +1,101 @@
-# opencode Session Log — IST Workspace
+# Kimi Session Log — IST Workspace
 
-**Session Date:** 2026-06-03 to 2026-06-07  
-**Repository:** `MaryTheadoor/IST-workspace-`  
-**Local Path:** `C:\Users\AmosA\Documents\IST-workspace-`  
-**Branch:** `main` (single unified branch)  
-**Latest Commit:** `62d1e86` — sync DeepSeek parallel instance
+**Session Date:** 2026-08-13 to 2026-08-14
+**Repository:** `MaryTheadoor/IST-workspace-`
+**Local Path:** `C:\Users\AmosA\IST-workspace`
+**Branch:** `main` (single unified branch)
+**Session Head:** `ffc02e7` — docs: sync phases 64-65
+**Test Suite:** 737 passed (deterministic after the Phase-58 eigsh fix)
+**Sync:** working tree clean, up to date with `origin/main` at session close
 
 ---
 
 ## Session Summary
 
-This session executed Plans 8–10, built the directed numbers runtime, merged all branches into a single `main`, and synchronized a parallel DeepSeek conversation instance.
+This session: (1) swept the stale "4σ" claim and completed all housekeeping
+from the previous session's memo; (2) landed Phases 61–65 (spin-statistics
+derived; the IXPE vacuum-birefringence gate; the c₁ normalization resolution;
+neutrino classification; the signature duality); (3) wrote the Phase 49
+internal memo and the quantum-mereology mapping note; (4) upgraded the
+dimensional-emergence note with the locus/QRF refinement (P3′), the
+time-expansion and entanglement-as-shared-zero-point corollaries (P4, P4′),
+and the spin-as-locus-rotation reading; (5) fixed an intermittent Phase-58
+ARPACK flake.
 
 ---
 
-## Completed Plans
+## Commits This Session (13)
 
-| Plan | Commit | Description |
-|------|--------|-------------|
-| Plan 8 | `8d8f56b`, `80e232e` | Beta function derivation, TQFT formulation, observational predictions |
-| Plan 9 | `f2af692` | Directed numbers runtime — Parity enum, Thread/TemporalThread, 78/78 tests passing |
-| Plan 10 Phase A | `fed1915` | Associator charge from PBH candidates + time crystal simulation |
-| Plan 10 Phase B | `649d8c2` | Data pipeline: fetch scripts, preprocessing, observational fitting |
-| Plan 10 Phase C | `5680c39` | Running coupling cross-reference, GW data integration, README update |
-| DeepSeek Sync | `62d1e86` | Parallel instance notes: E=mc², quantum vacuum/plasma, Ecker large-D DSS |
+| Commit | Kind | Content |
+|---|---|---|
+| `f2158ec` | docs | 4σ retraction sweep (CPS, synthesis v2.9, v8.0 paper, publication) |
+| `ea79fa6` | docs | dimensional-emergence note + popular paper + README 10–18 + φ⁸ log |
+| `fd0a8fe` | feat | Phase 61 — spin-statistics from seam braiding (Z₂ exchange holonomy) |
+| `532bd31` | docs | Phase 61 phase-map sync |
+| `ec56f9f` | feat | Phase 62 — the IXPE vacuum-birefringence gate (Stewart et al. 2026) |
+| `f39dca8` | docs | Phase 62 sync + quantum-mereology mapping note |
+| `782ec8a` | fix | deterministic eigsh start vector in phase51 (Phase-58 flake) |
+| `052e558` | feat | Phase 63 — the c₁ normalization resolution |
+| `f14a2be` | docs | Phase 63 sync + Phase 49 internal memo |
+| `efeceb7` | docs | P3′ locus/QRF refinement of the dimensional-emergence note |
+| `a460b65` | docs | P4 time-expansion + P4′ entanglement-as-shared-zero-point + OQ7 |
+| `63830fb` | feat | Phase 64 — neutrino classification (strand rule's next test) |
+| `2843d3a` | feat | Phase 65 — the signature duality (elliptic zero vs hyperbolic time) |
+| `ffc02e7` | docs | phases 64–65 sync |
 
 ---
 
 ## Key Files Created This Session
 
 ### Code
-- `code/directed_numbers.py` — Enhanced v0.9.0 with Parity enum, DNumber, associator(), mul(), is_absolute_zero/is_directed_zero
-- `code/black_hole_simulation.py` — Updated with compute_associator_charge(), run_validation_simulation()
-- `code/associator_from_PBH.py` — Ξ from 13 PBH candidates (log10 Ξ ≈ 33.8)
-- `code/time_crystal_simulation.py` — Klein bottle horizon + TemporalThread loop sims
-- `code/cross_reference_running_coupling.py` — PBH Ξ on Plan 7 coupling curve
-- `code/ist_observational_fit.py` — Master equation fitting pipeline
-- `code/preprocess_microlensing.py` — Events → directed number threads
-- `code/preprocess_lss.py` — Galaxy catalogs → Ξ threads
-- `code/data_fetch/fetch_hsc_m31.py` — PBH data from arXiv/Sugiyama et al.
-- `code/data_fetch/fetch_cosmos_web.py` — LSS density maps (338k synthetic galaxies)
-- `code/data_fetch/fetch_ligo.py` — GWTC-3 events + NANOGrav SGWB
-- `code/README_directed_numbers.md` — API reference for Plan 9 runtime
-- `code/README_data_integration.md` — Data pipeline usage guide
+- `code/phase61_spin_statistics.py` (+ tests) — exchange phase from Z₂ holonomy
+- `code/phase62_ixpe_vb_gate.py` (+ tests) — mode algebra, magnetar gate
+- `code/phase63_c1_normalization.py` (+ tests) — φ²m_e normalization resolution
+- `code/phase64_neutrino_classification.py` (+ tests) — strand rule: neutrino
+- `code/phase65_signature_duality.py` (+ tests) — elliptic zero vs hyperbolic time
+- `code/phase51_fibonacci_laplacian.py` — deterministic eigsh v0 (flake fix)
+- `code/AGENTS.md` — eigsh determinism trap documented
 
 ### Notes
-- `notes/IST Plan 8.md` — Topological cosmology + relational ontology
-- `notes/IST Plan 8 (research tasks).md` — Beta function, TQFT, predictions
-- `notes/beta_function_derivation.md` — β(α_topo) = φ·α_topo derivation
-- `notes/tqft_action.md` — BF+CS+Φ action on Möbius-twisted 3-manifold
-- `notes/observational_predictions.md` — H(z) modulation, rotation curves, PTA echoes
-- `notes/IST Plan 9.md` — Directed Numbers Runtime specification (via DeepSeek log)
-- `notes/IST Plan 10.md` — Associator charge from PBH + time crystal plan
-- `notes/IST Plan 10.5.md` — Data integration pipeline plan
-- `notes/IST agent research update.md` — Observational support from microlensing/LSS
-- `notes/emc2_in_IST.md` — E=mc² as topological counting formula
-- `notes/quantum_vacuum_and_plasma_analogues_in_IST.md` — Laser experiments as IST analogues
-- `notes/ecker_large_D_DSS_IST_mapping.md` — Large-D spacetime crystals ↔ time crystals
-- `notes/DeepSeek_IST_conversation_log.md` — Full 4,670-line parallel instance reference
+- `notes/IST_dimensional_emergence.md` — created + P3′/P4/P4′/§5-spin/OQ7 upgrades
+- `notes/loom_beneath_space_popular.md` — general-audience paper
+- `notes/quantum_mereology_ist_mapping.md` — H-QM1/H-QM2 program
+- `notes/phase49_internal_memo.md` — 6π⁵ normalization audit (Boya–Sudarshan–Tilma)
+- `notes/IST_Phase_61_plan.md` … `notes/IST_Phase_65_plan.md` — pre-registered plans
+- `notes/IST_phi8_caution.md` — recurrence log section added
 
-### Tests
-- `tests/test_directed_numbers.py` — 78/78 passing (covers Axioms 2.3–2.18)
-
-### Output Figures
-- `code/outputs/associator_histogram.png` / `associator_vs_mass.png`
-- `code/outputs/time_crystal_oscillations.png` / `time_crystal_fft.png`
-- `code/outputs/ist_fits/pbh_mass_fit.png` / `quenching_vs_xi.png`
-- `code/outputs/ist_fits/running_coupling_cross_reference.png`
-- `code/outputs/directed_numbers_validation.png`
+### Publication
+- `publication/synthesis_paper.md` — restored as a real symlink to `main/`
+- `publication/synthesis_paper.tex/.html` — regenerated (v2.13)
+- `publication/build_paper.ps1` — stale v7.0 default/metadata fixed
 
 ---
 
-## Key Results
+## Headline Results This Session
 
-### PBH Associator Charge
-- 13 candidates (12 HSC M31 + Phoebe): log10(Ξ) = 33.78 ± 0.25
-- Fits smoothly on Plan 7 running coupling curve (deviation −1.6)
-- Mass formula slope = 1.0000 (exact IST prediction)
+- **Spin-statistics derived** (Phase 61): exchange phase = Z₂ meridian
+  holonomy; fermions −1, bosons +1, torus +1 (no fermions without the twist);
+  Pauli exclusion = the exchange algebra; the anyon collapse IS the Z₂.
+- **Flagship gated** (Phase 62): c₂/c₁ = 0 survives structurally (n(E∥B) ≡ 1
+  exactly); the 52.3× 4WM magnitude reading gated off; QED decoupling radius
+  136 R* lands inside the IXPE paper's own 30–300 R* band.
+- **c₁ normalized** (Phase 63): IXPE band selects M_assoc = φ²m_e = 1.338 MeV;
+  c₁_IST = 1.114×QED; E_VR = 2.84 keV; why-φ² remains the open derivation.
+- **Fermion taxonomy complete** (Phase 64): electron = closed knot, neutrino =
+  open strand, photon = dual strand — parity from strand count, mass from
+  closure.
+- **Signature duality confirmed at runtime level** (Phase 65): Ω cycle closed
+  (|λ| = 1), parity period-2, time hyperbolic (φ).
 
-### Time Crystal
-- Klein bottle horizon: dominant f = 0.00125, power = 213,510
-- TemporalThread loop: dominant f = 0.20 (matches 1/5 expansion period)
+## Housekeeping Completed (from the previous session's memo)
 
-### Environmental Quenching
-- Quenched galaxies: Ξ/I_topo = 4.89× higher than star-forming
-- Confirms IST prediction: associator binding drives quenching
-
-### GW Predictions
-- 10 GWTC-3 events with f_tc = f_rd/(2φ) and echo delays
-- IST SGWB component at 0.28% of NANOGrav observed amplitude
-
----
-
-## Current Repo State
-
-```
-Branch: main (single unified, all feature branches deleted)
-Remote: origin/main — fully pushed and up to date
-Working tree: clean
-
-Latest commits:
-  62d1e86 feat: sync DeepSeek parallel instance
-  5680c39 feat: Plan 10 Phase C
-  649d8c2 feat: Plan 10 Phase B (data pipeline)
-  da20647 Merge old topology-bh-dynamics
-  fed1915 feat: Plan 10 Phase A
-  f2af692 feat: Plan 9 (directed numbers runtime)
-```
-
----
-
-## GitHub CLI
-
-```
-gh v2.72.0
-Logged in as: MaryTheadoor
-Token scopes: gist, read:org, repo
-```
-
----
-
-## Python Environment
-
-```
-Python 3.14.2
-Key packages: numpy, matplotlib, scipy, pytest
-Tests: cd code && python -m pytest ../tests/test_directed_numbers.py -v (78 pass)
-```
-
----
-
-## Next Steps / Pending
-
-1. **Plan 10.5 Phase 3 remaining:** Hubble expansion fitting with real Pantheon+/DESI data (placeholder in `ist_observational_fit.py`)
-2. **Plan 10.5 Phase 4:** Validation visualizations — save figures to `outputs/figures/`
-3. **Draft "Towards a Topological Cosmology"** internal paper (proposed in DeepSeek log, line ~4176)
-4. **Quantum vacuum numerical experiment:** Use directed numbers runtime to simulate Zhang et al. 4-wave mixing
-5. **Run full test suite** — `python -m pytest tests/`
-
----
-
-## How to Resume
-
-```bash
-cd C:\Users\AmosA\Documents\IST-workspace-
-git pull
-git log --oneline -5   # verify latest commit is 62d1e86
-
-# Run tests
-cd code
-python -m pytest ../tests/test_directed_numbers.py -v
-
-# Re-run data pipeline
-python data_fetch/fetch_hsc_m31.py
-python data_fetch/fetch_cosmos_web.py
-python preprocess_microlensing.py
-python preprocess_lss.py
-python ist_observational_fit.py
-
-# Re-run associator analysis
-python associator_from_PBH.py
-python time_crystal_simulation.py
-python cross_reference_running_coupling.py
-
-# Check README
-cat ../README.md
-```
-
----
-
-## Key URLs
-
-- **GitHub repo:** https://github.com/MaryTheadoor/IST-workspace-
-- **DeepSeek chat log:** https://chat.deepseek.com/share/dp7pjmxdqlj9ho93fq
-- **Local workspace:** `C:\Users\AmosA\Documents\IST-workspace-`
-
----
-
-## Notes for Next Session
-
-- All branches merged into `main` — no feature branches exist
-- The `code/outputs/data/` directory is gitignored (large files); raw data is generated by fetch scripts
-- The `code/outputs/ist_fits/` and plot outputs are tracked
-- Plans 1–7 were executed in prior sessions, Plans 8–10 in this session
-- The DeepSeek parallel instance independently validated the same topology, formulas, and runtime architecture
-- The repo is in a clean, push-ready state with no uncommitted changes
+- [x] Stale "4σ"/0.00239 sweep across synthesis, CPS, v8.0 paper, publication
+- [x] Dimensional-emergence note committed (with Kamada §7.2 + Phases 13/14)
+- [x] README phase map: Phases 10–18 added
+- [x] φ⁸ recurrence annotated (registry cross-links)
+- [x] Phase 49 internal memo written
+- [x] General-audience paper landed in notes/
+- [x] Quantum-mereology mapping note landed in notes/
+- [x] IXPE gate computed (memo item 9 — the urgent one)
+- [x] publication/synthesis_paper.md symlink restored; artifacts regenerated
+- [x] Registry: 60 → 89 relations
