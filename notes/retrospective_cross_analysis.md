@@ -419,6 +419,34 @@ Each negative *located* the mechanism rather than killing it.
   produced not a kill shot but a normalization measurement, and the framework
   adapted: one golden factor (phi^2) now does double duty in the electron mass
   formula and the vacuum-polarization scale. Registry 77 -> 81.)
+  The strand rule gets its next test (Phase 64: neutrino classification). The
+  neutrino is required by observation to be a fermion, and the runtime
+  confirms the framework's reading: the single OPEN strand's parity-inversion
+  is 0.446 (0.4456-0.4473 across N = 210/360/480) — the electron's fermionic
+  value — while the dual-strand (bosonic) alternative (0.000) is excluded by
+  the same discriminator that forced the photon geometry. The
+  electron-vs-neutrino mass hierarchy is KNOT CLOSURE within one parity
+  class: the electron is a closed single-strand knot (stable fraction 0.044,
+  the Phase-52 band); the neutrino is an open strand (stability 0 — it
+  tunnels, never phase-returns). Mass is knot tension; lightness is
+  non-closure. Honest re-anchor: Phase 3's tunneling gap (P_tunnel ~ 4e-30
+  required for m_nu ~ 0.05 eV, 27 orders below the naive alpha/phi^2 and below
+  the 0.446 crossing fraction) is restated precisely — the classification
+  does not depend on closing it. Registry 81 -> 85.)
+  The signature-duality conjecture is given its first runtime test (Phase 65:
+  elliptic zero vs hyperbolic time, OQ7 of the dimensional-emergence note).
+  The zero point instantiates the elliptic geometry exactly: Omega_inv(Omega
+  (x)) = x over 60 cycles with max drift 0.0 (the compression-expansion cycle
+  is the identity map, |return eigenvalue| = 1, bounded), and the parity
+  circle is period-2 (W = -1, W^2 = +1, theta = 1/2 — the wound meridian).
+  The temporal axis instantiates the hyperbolic geometry exactly: the
+  substitution RG grows by eigenvalue phi (error 9.8e-9) without return.
+  The runtime confirms the duality's first checkable layer — closed/
+  unit-modulus/elliptic vs open/phi/hyperbolic, with no intermediate values;
+  the strong form (the elliptic zero as the pre-geometric dual of the metric
+  signature) remains a conjecture, with the testable content that the
+  zero-point direction contributes no open causal structure. Registry 85 ->
+  89.)
 
 ---
 

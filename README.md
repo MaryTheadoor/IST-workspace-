@@ -449,6 +449,19 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **H63d — the φ² reading:** the vacuum loop pays the same associator suppression φ² the electron mass formula pays (M_P/m_e = (12π⁵/φ²)α⁻⁹) → **M_assoc = φ²m_e**, giving **c₁_IST = 1.114×QED, E_VR = 2.84 keV, |Δn| = 1.486×QED (sign-flipped), decoupling 147 R*** — every observable inside the IXPE anchors. Falsifiable the moment |Δn| is extracted or the dip centroid is measured.
 - **H63e — honest status:** the normalization is *empirically anchored* (IXPE band + the φ² rationale), not yet first-principles — why the loop pays exactly φ² remains the open associator-amplitude derivation. The 52.3× enhancement stays gated; the surviving parity-even 4WM magnitude is **1.114×QED**.
 
+### Neutrino Classification (Phase 64 — the strand rule's next test)
+- **Question:** Phase 61's strand rule (single-strand ⇒ seam parity ⇒ fermion) flagged the neutrino as the next case. Observationally it *is* a fermion — so the framework requires it to be single-strand.
+- **H64a — parity:** the single **open strand** threading the seam has parity-inversion **0.446** (0.4456–0.4473 across N = 210/360/480) — the electron's fermionic value; the dual-strand (bosonic) alternative (0.000) is excluded. **The neutrino is a fermion, confirmed in the runtime.**
+- **H64b — closure:** the electron is a *closed* single-strand knot (stable fraction 0.044, the Phase-52 band); the neutrino is an *open* strand (stability 0 — it tunnels, never phase-returns). **The electron-vs-neutrino mass hierarchy is knot closure within one parity class** — mass = knot tension; lightness = non-closure.
+- **H64c — honest re-anchor:** Phase 3's tunneling gap restated precisely — m_ν = M_P·P_tunnel still requires P_tunnel ≈ 4×10⁻³⁰, 27 orders below the naive α/φ² and below the measured 0.446 crossing fraction. The gap is re-anchored, not closed; the classification does not depend on it.
+
+### The Signature Duality (Phase 65 — elliptic zero vs hyperbolic time)
+- **Question (OQ7, conjectured this session):** in the emergent signature (+−−−) time contributes the *hyperbolic* sign; the zero-point direction is its pre-geometric dual — *elliptic*, a closed cycle.
+- **H65a — the Ω cycle is exactly closed:** Ω_inv(Ω(x)) = x over 60 cycles with max drift **0.0** — amplitude, parity, and memory restored exactly; |return eigenvalue| = 1 (bounded, elliptic).
+- **H65b — the parity circle is period-2:** W = −1, W² = +1, θ = ½; flip twice = identity — the wound meridian circle.
+- **H65c — time is open:** the temporal substitution grows by eigenvalue **φ** (error 9.8×10⁻⁹, Phase 58) without return — the hyperbolic expansion direction.
+- **H65d — verdict:** the runtime instantiates the duality **exactly** — closed/unit-modulus/elliptic zero point vs open/φ/hyperbolic time. The conjecture's first checkable layer is confirmed; the strong form (pre-geometric dual of the metric signature) remains a conjecture.
+
 ### Variable Gravity
 - **Formula:** $G_{\text{eff}} \propto \rho_{\text{fold}}^{1/\varphi}$
 - **Prediction:** ~76% void lensing suppression
