@@ -1,0 +1,4 @@
+structure,geometry,return,growth,closed
+zero point (Omega cycle),elliptic,exact identity (|lambda| = 1),0.0,True
+parity (seam meridian),elliptic,"period-2 (W^2 = +1, theta = 1/2)",0.0,True
+time (substitution RG),hyperbolic,none (open),1.6180339985218033,False
