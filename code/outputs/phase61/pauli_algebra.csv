@@ -1,0 +1,3 @@
+N,chi,P2_deviation,diag_sym_norm,diag_asym_norm,mixed_norm,eig_plus,eig_minus,fermion_excluded,boson_allowed
+16,-1.0,0.0,0.0,4.0,2.0000000000000004,120,136,True,False
+16,1.0,0.0,4.0,0.0,2.0000000000000004,136,120,False,True

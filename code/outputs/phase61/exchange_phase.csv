@@ -1,0 +1,5 @@
+strand,topology,exchange_phase,tr_half,statistics
+single,Klein,-1.0,-1.0,FERMION
+single,Torus,1.0,1.0,BOSON
+dual,Klein,1.0,1.0,BOSON
+dual,Torus,1.0,1.0,BOSON

@@ -1,0 +1,9 @@
+grid,topology,W,seam_crossings
+10x10,Klein,-1.0,1
+10x10,Torus,1.0,0
+21x34,Klein,-1.0,1
+21x34,Torus,1.0,0
+55x89,Klein,-1.0,1
+55x89,Torus,1.0,0
+144x233,Klein,-1.0,1
+144x233,Torus,1.0,0

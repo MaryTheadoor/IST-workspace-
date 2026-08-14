@@ -1,0 +1,5 @@
+excitation,strand,parity_inversion,exchange_phase,statistics,status
+electron knot,single,0.446,-1.0,fermion,Phase 52/57 (computed 0.446)
+photon (dual-mode),dual,0.0,1.0,boson,Phase 55/57 (computed 0.000)
+neutrino (predicted),single,,-1.0,fermion,prediction: strand classifier (dim. emergence note)
+any (torus control),either,0.0,1.0,boson,"no seam, W = +1 (Phase 47 H47d)"
