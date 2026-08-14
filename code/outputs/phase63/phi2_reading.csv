@@ -1,0 +1,9 @@
+quantity,value
+M_assoc_MeV,1.337812619315508
+R,1.1141874643674066
+E_VR_keV,2.8421181021009834
+delta_n_ratio_vs_QED,1.4855832858232088
+decoupling_Rstar,147.4200344954668
+E_VR_in_band,True
+decoupling_in_30_300,True
+R_close_to_unity,True

@@ -1,0 +1,7 @@
+candidate,M_MeV,R,E_VR_keV,in_2_4_keV_band,note
+m_e,0.511,52.3431,0.415,False,electron mass (the QED loop)
+2 m_e,1.022,3.2714,1.659,False,pair-production threshold
+phi^2 m_e,1.3378,1.1142,2.842,True,golden-doubled electron (associator)
+m_n - m_p,1.2933,1.2756,2.656,True,neutron-proton mass difference
+sqrt(m_e m_mu),7.3479,0.0012,85.738,False,geometric e-mu mean
+m_pi0,134.9768,0.0,28931.423,False,pion scale
