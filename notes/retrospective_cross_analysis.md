@@ -394,6 +394,31 @@ Each negative *located* the mechanism rather than killing it.
   through the same discipline as the 4sigma-DE audit (Phase 60) — the
   empirical neighbor constrains, the structural core stands, the magnitude
   claim yields. Registry 73 -> 77.)
+  The gate's required derivation is delivered (Phase 63: the c1 normalization
+  resolution, templated on the Phase 49 normalization result — the topological
+  SU(3) volume 2 pi^5 reproduces 6 pi^5 at 1e-5 while the Boya-Sudarshan-Tilma
+  Haar volume sqrt(3) pi^5 is 13.4% off: physical normalizations are fixed by
+  the phase space actually paid, and the data select the counting). H63a/b:
+  R = c1_IST/c1_QED = 52.33 (m_e/M_assoc)^4; the observed 2-4 keV VR dip
+  (E_VR = 3 keV/sqrt(R)) inverts to M_assoc in [1.12, 1.59] MeV — the IXPE
+  data select the loop scale. H63c: candidates scored — m_e (R = 52.3, E_VR =
+  0.41 keV: the gated Phase-56 branch), 2 m_e (1.66 keV: out), phi^2 m_e =
+  1.338 MeV (R = 1.114, 2.84 keV: IN), m_n - m_p = 1.293 MeV (R = 1.28, 2.66
+  keV: IN — an independent framework scale at the selected value),
+  sqrt(m_e m_mu) and m_pi (far out). H63d: the framework rationale — the
+  electron mass formula already pays the associator suppression phi^2
+  (M_P/m_e = (12 pi^5/phi^2) alpha^-9), and the vacuum-polarization loop pays
+  the same suppression: M_assoc = phi^2 m_e -> c1_IST = 1.114x QED, E_VR =
+  2.84 keV, |Delta n| = (4/3)*1.114 = 1.486x QED (sign-flipped), decoupling
+  147 R* — every observable inside the IXPE anchors, falsifiable when |Delta n|
+  is extracted. H63e: the normalization is empirically anchored, not
+  first-principles — why the loop pays exactly phi^2 remains the open
+  associator-amplitude derivation; the 52.3x enhancement stays gated; the
+  surviving parity-even 4WM magnitude becomes 1.114x QED. Cross-phase: this
+  closes the loop Phase 62 opened — the flagship's first empirical neighbor
+  produced not a kill shot but a normalization measurement, and the framework
+  adapted: one golden factor (phi^2) now does double duty in the electron mass
+  formula and the vacuum-polarization scale. Registry 77 -> 81.)
 
 ---
 

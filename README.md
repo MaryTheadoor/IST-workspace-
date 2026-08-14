@@ -442,6 +442,13 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **H62b — the magnetar observable:** the QED accumulated phase puts the mode-decoupling radius at **136 R*** — inside the paper's own 30–300 R* statement (an independent validation of the whole chain). Branch (ii) (c₁ ≈ QED, c₂ = 0): |Δn| = 4/3×QED sign-flipped, decoupling 144 R*, VR unchanged → **consistent**. Branch (i) (c₁ = 52.3×QED, the Phase 56 α/φ² magnitude reading): VR dip moves to **0.41 keV** (observed 2–4 keV) and decoupling 318 R* → **tension**.
 - **H62c/H62d — the gate verdict:** (1) **c₂/c₁ = 0 survives structurally** — the E∥B mode's index ≡ 1 is a normalization-independent, mode-resolved falsifiable signature that no current dataset tests; (2) **the 52.3× 4WM enhancement (Phase 56 H56b) is gated OFF** — the 2–4 keV dip constrains c₁ to near-QED strength; the physical c₁ normalization is now a required derivation; (3) registry records the constraint, the branch table, and the gap. The public registration of c₂/c₁ = 0 proceeds in the structural (mode-resolved) form only.
 
+### The c₁ Normalization Resolution (Phase 63 — the gate's required derivation, delivered)
+- **Origin:** the Phase 62 gate demanded the physical normalization of c₁ = α/φ². The template: Phase 49's normalization lesson — physical normalizations are fixed by the phase space actually paid, and the data select the counting (Vol_topo(SU(3)) = 2π⁵ over Vol_Haar = √3π⁵; see the new `notes/phase49_internal_memo.md`).
+- **H63a/b — the map and the band:** R ≡ c₁_IST/c₁_QED = 52.33·(m_e/M_assoc)⁴. The observed 2–4 keV VR dip (E_VR = 3 keV/√R) inverts to **M_assoc ∈ [1.12, 1.59] MeV** — the IXPE data select the loop scale.
+- **H63c — candidate scales:** m_e (R = 52.3, E_VR = 0.41 keV — the gated branch), 2m_e (1.66 keV — out), **φ²m_e = 1.338 MeV (R = 1.114, E_VR = 2.84 keV — IN)**, m_n−m_p = 1.293 MeV (R = 1.28, 2.66 keV — IN), √(m_e·m_μ) and m_π (far out).
+- **H63d — the φ² reading:** the vacuum loop pays the same associator suppression φ² the electron mass formula pays (M_P/m_e = (12π⁵/φ²)α⁻⁹) → **M_assoc = φ²m_e**, giving **c₁_IST = 1.114×QED, E_VR = 2.84 keV, |Δn| = 1.486×QED (sign-flipped), decoupling 147 R*** — every observable inside the IXPE anchors. Falsifiable the moment |Δn| is extracted or the dip centroid is measured.
+- **H63e — honest status:** the normalization is *empirically anchored* (IXPE band + the φ² rationale), not yet first-principles — why the loop pays exactly φ² remains the open associator-amplitude derivation. The 52.3× enhancement stays gated; the surviving parity-even 4WM magnitude is **1.114×QED**.
+
 ### Variable Gravity
 - **Formula:** $G_{\text{eff}} \propto \rho_{\text{fold}}^{1/\varphi}$
 - **Prediction:** ~76% void lensing suppression
