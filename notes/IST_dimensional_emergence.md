@@ -2,7 +2,7 @@
 
 **Status:** Internal research note (draft) — conceptual framework note, pre-phase
 **Authors:** NOWN Research Collective
-**Date:** 2026-08-05 (rev. 2026-08-12: §2 Phases 13/14 dynamical evidence; §5 strand-count rule; §7.2 Kamada refinement. rev. 2026-08-14: P3′ locus/QRF clarification — the zero point is a locus not an axis, stacking is observer-relative, isotropy selects the locus reading; §5 spin-as-rotation-around-the-locus; Giacomini QRF citation)
+**Date:** 2026-08-05 (rev. 2026-08-12: §2 Phases 13/14 dynamical evidence; §5 strand-count rule; §7.2 Kamada refinement. rev. 2026-08-14: P3′ locus/QRF clarification — the zero point is a locus not an axis, stacking is observer-relative, isotropy selects the locus reading; §5 spin-as-rotation-around-the-locus; P4 time-expansion + P4′ entanglement-as-shared-zero-point (Phase 26/40 unification); §8.7 hyperbolic-vs-elliptic signature conjecture; Giacomini QRF citation)
 **Related:** Phases 1, 6, 8, 8b, 13, 14, 24, 36, 41, 44, 47, 48, 52, 55–57, 58, 59, 60; Plans 9, 10, 12; Phase 2 BH topology (Runs A–E)
 
 ---
@@ -120,7 +120,29 @@ oscillation exists before and during the stacking, and is therefore subject
 to inflationary amplification while dimensions crystallize (Plan 12:
 N_inf ≈ 49–52 e-folds; the 3D-vs-2D amplification factor of ~1300× in
 plan12_3d_time_crystal.py is re-interpreted as the opening of the stacking
-direction).
+direction). Time is the *rearrangement* dimension — the direction along which
+stable knots and time crystals rotate and configurations permute (Phase 25's
+temporal holonomy: time is the parallel-transport direction of the substrate
+connection). Read cosmologically: **the universe expands into time, and that
+expansion is the flow of time** — because space and time are one emergent
+manifold, the spatial expansion necessarily carries the temporal axis forward
+(the growing-block structure, with the time crystal already running before
+any spatial dimension existed).
+
+**Corollary (P4′ — entanglement shares the zero point, not space).** The
+zero-point locus is everywhere and nowhere: it has no magnitude *within*
+space because it is the base on which space is built (P3′). Two excitations
+linked through the same zero-point crossing therefore share no spatial
+interval — which is exactly the framework's entanglement mechanism: Phase 26
+found 3024 *twist-adjacent, euclid-far* pairs, and Phase 40 showed two
+entangled particles are two 3D projections of the same substrate point
+(shared-substrate singlet, CHSH S = 2.83 = Tsirelson) while remaining
+signal-local (A-marginals do not shift: no superluminal signaling). The
+correlation is instantaneous in the operational sense because there is no
+space to traverse — not because anything propagates faster than light, but
+because the two projections meet at a point that is not in space at all.
+Non-locality is a projection artifact, and the zero point is the shared
+locus the projection passes through.
 
 ---
 
@@ -373,6 +395,18 @@ point, and Hawking radiation is the zero point giving the information back.
    coherence threshold — state this explicitly in any formal writeup, since
    philosophers will spot the ambiguity before physicists do. (See the
    quantum-mereology mapping note for the full placement.)
+7. **The signature duality: hyperbolic time vs elliptic zero (conjecture).**
+   In the emergent signature (+−−−) the temporal direction contributes the
+   *hyperbolic* sign — open, causal, the direction of expansion. The
+   zero-point direction is proposed to be its pre-geometric dual: *elliptic*
+   — a closed cycle (the Ω/Ω_inv loop of the directed-numbers runtime, the
+   wound meridian the twist wraps), orthogonal to every emergent direction
+   the way the 4th dimension is orthogonal to the three spatial ones, but
+   with the opposite (closed, not open) geometry. Checkable statement: in
+   the directed-numbers runtime, the zero-point operators should realize a
+   closed-cycle (elliptic) structure in precise dual contrast to the
+   temporal axis's open (hyperbolic) one — test before promoting to a
+   postulate.
 
 ---
 
