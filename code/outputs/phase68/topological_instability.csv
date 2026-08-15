@@ -1,0 +1,7 @@
+N,knot_stability,unstable,mechanism
+1,0.044,False,stable knots (3D codimension)
+2,0.039599999999999996,False,stable knots (3D codimension)
+3,0.0352,False,stable knots (3D codimension)
+4,0.005954752462410958,True,4D: knots unknot (codimension too high)
+5,0.0008058881111043039,True,5D: no stable knotting
+6,0.00010906509577331976,True,6D: no stable knotting
