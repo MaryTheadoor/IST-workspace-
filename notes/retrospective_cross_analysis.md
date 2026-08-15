@@ -488,6 +488,27 @@ Each negative *located* the mechanism rather than killing it.
   factorization must emerge from the coherence threshold (P2-P3), not from
   the pre-mereological zero point (P0). An honest negative that refines
   where the factorization lives. Registry 93 -> 96.
+  OQ1 closed (Phase 68: the sheet-stacking automaton). The stopping rule
+  for why the substrate stacks to exactly 3 spatial dimensions, stated
+  dynamically. Phase 66 supplied the suppression factor psi^2 = 1/phi^2;
+  this phase builds the dynamical model. H68a (analytic): D_eff(N) =
+  2*(1 - psi^{2N})/(1 - psi^2) crosses 3 at N=3 (D_eff(3) = 3.056) and
+  asymptotes to 2*phi ~ 3.236 — each level contributes 2*psi^{2n}, a
+  geometric series with ratio 1/phi^2. H68b (locus model): a dynamical
+  simulation with the P3' locus reading (isotropic stacking, golden-angle
+  rotation per sheet) reproduces the analytic curve — D_eff crosses 3 at
+  N=3 (measured 3.027 vs analytic 3.056). H68c (naive-axis contrast):
+  the naive-axis model (fixed direction, no anti-resonant gap) overshoots
+  — D_eff crosses 3 at N=2 and grows linearly (2N); the contrast
+  falsifies the naive-axis reading and selects the P3' locus model. H68d
+  (topological instability): knot stability collapses at N=4 (0.006 vs
+  the Phase-52 band of 0.044) — knots unknot in 4D (codimension too
+  high). H68e (OQ1 closed): (1) each additional level is suppressed by
+  1/phi^2, making D_eff converge to 2*phi; (2) level 4 is topologically
+  unstable; together these select 3 spatial dimensions. The coherence-
+  threshold gap from Phase 67 is addressed: the factorization emerges at
+  the stacking transition (N=3), not from the zero-point dynamics.
+  Registry 96 -> 99.
 ---
 
 *The project has moved from "where does φ come from?" (falsified as static,
