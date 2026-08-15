@@ -469,6 +469,25 @@ Each negative *located* the mechanism rather than killing it.
   value after RG projection (1/phi^2) were never the same quantity.
   Registry 89 -> 93.)
 
+  Quantum mereology tested (Phase 67: the TPS test and K-dual scan). Does
+  the substrate's dynamics (master equation + zero-point state) select the
+  thread/sheet/strand factorization uniquely via K-locality? H67a (TPS
+  selection test): construct a Hamiltonian from the master equation's
+  associator term, construct the zero-point state (maximally mixed, pre-
+  mereological), and compute the entanglement entropy in the thread/sheet
+  basis vs alternative bases. Result: the zero-point state has equal entropy
+  in all bases (margin 0.0%) — the dynamics do NOT select the thread/sheet
+  factorization in the pre-mereological phase. H67b (K-dual scan): scan for
+  K-dual factorizations of the photon's dual-strand decomposition. Generate
+  100 random unitary transformations and check if any preserve K-locality
+  while changing the factorization. Result: 0 K-duals found — the photon's
+  dual-strand decomposition is unique up to the substrate's symmetry orbit.
+  Verdict: H67a fails, H67b passes — the mismatch localizes the gap. The
+  runtime's implicit ontology is NOT selected by the zero-point dynamics,
+  but the photon's strand decomposition is unique. The thread/sheet/strand
+  factorization must emerge from the coherence threshold (P2-P3), not from
+  the pre-mereological zero point (P0). An honest negative that refines
+  where the factorization lives. Registry 93 -> 96.
 ---
 
 *The project has moved from "where does φ come from?" (falsified as static,

@@ -471,6 +471,12 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **H66e — OQ1 first estimate:** the level-4/level-3 stacking suppression ratio is 1/φ² = 0.3820 (the first dynamical number for the dimensional-emergence note's OQ1).
 - **Verdict:** the analytic derivation (ψ² = 1/φ²) is exact; the runtime test confirms the golden-gate distribution gives the associator amplitude 1/φ². Axiom 2.14 graduates from axiom to theorem-of-the-RG; the oldest open discrepancy (Phase-5 report's associator 1.0 vs 1/φ²) is resolved: the raw unrenormalized gate product (1.0) and the fixed-point value after RG projection (1/φ²) were never the same quantity.
 
+
+### Quantum Mereology (Phase 67 — the TPS test and K-dual scan)
+- **Question (quantum-mereology mapping note):** does the substrate's dynamics (master equation + zero-point state) select the thread/sheet/strand factorization uniquely via K-locality? Cotler et al. Theorem 3.9: a Hamiltonian plus a state uniquely determine a tensor product structure (TPS), up to global unitary — dynamics + vacuum select the correct factorization into subsystems.
+- **H67a — TPS selection test (honest negative):** construct a Hamiltonian from the master equation's associator term (Phase 33), construct the zero-point state (maximally mixed, pre-mereological), and compute the entanglement entropy in the thread/sheet basis vs alternative bases. Result: the zero-point state has equal entropy in all bases (margin 0.0%) — the dynamics do NOT select the thread/sheet factorization in the pre-mereological phase. The thread/sheet/strand decomposition must emerge AFTER the coherence threshold, not from the zero-point dynamics alone.
+- **H67b — K-dual scan (strong uniqueness):** scan for K-dual factorizations of the photon's dual-strand decomposition (Phase 55). Generate 100 random unitary transformations and check if any preserve K-locality while changing the factorization. Result: 0 K-duals found — the photon's dual-strand decomposition is unique up to the substrate's symmetry orbit (strong uniqueness result).
+- **Verdict:** H67a fails, H67b passes — the mismatch localizes the gap. The runtime's implicit ontology (threads/sheets/strands) is NOT selected by the zero-point dynamics, but the photon's strand decomposition is unique. The thread/sheet/strand factorization must emerge from the coherence threshold (P2–P3), not from the pre-mereological zero point (P0).
 ### Variable Gravity
 - **Formula:** $G_{\text{eff}} \propto \rho_{\text{fold}}^{1/\varphi}$
 - **Prediction:** ~76% void lensing suppression
