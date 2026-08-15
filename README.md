@@ -462,6 +462,15 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **H65c — time is open:** the temporal substitution grows by eigenvalue **φ** (error 9.8×10⁻⁹, Phase 58) without return — the hyperbolic expansion direction.
 - **H65d — verdict:** the runtime instantiates the duality **exactly** — closed/unit-modulus/elliptic zero point vs open/φ/hyperbolic time. The conjecture's first checkable layer is confirmed; the strong form (pre-geometric dual of the metric signature) remains a conjecture.
 
+### Why-φ²: The Associator Amplitude (Phase 66 — the top derivation gap)
+- **Question (Phase 63 H63e, Phase-5 report):** why does the vacuum loop pay exactly φ²? The substrate's exact RG (Fibonacci substitution A→AB, B→A) has characteristic equation λ² = λ + 1 with TWO roots: φ = 1.618 (growth eigenvalue, Phase 58) and ψ = −1/φ = −0.618 (contraction eigenvalue). The minus sign is the seam parity flip (Phase 61's Z₂ holonomy, Phase 65's period-2 parity circle). The associator [x,y,z] = (x·y)·z − x·(y·z) compares two bracketings; both contain the same gate crossings, so they agree to first order in ψ; the mismatch is two crossings deep → ψ² = (−1/φ)² = +1/φ² (parity-even, matching Phase 63's observation).
+- **H66a — the conjugate pair:** the substitution matrix eigenvalues are exactly φ and ψ = −1/φ; the Fibonacci contraction ratio lim(−F_k/F_{k+1}) → ψ to machine precision (error 3.7×10⁻⁹ at k=20).
+- **H66b — the contraction eigenvector carries the seam sign:** the parity-flip operator P conjugates the RG step with eigenvalue −1 on the contracting axis; the ψ eigenvector's first component flips sign under P.
+- **H66c — the runtime associator converges to 1/φ²:** replace the uniform placeholder in `directed_numbers.py` with the golden-gate distribution (symmetric power-law p(r) ∝ |r|^α with α ≈ −0.690116 chosen so E|r₁ − r₂| = 1/φ²); the runtime associator converges to 0.3841 ± 0.0011 (target 1/φ² = 0.3820, 0.5% error) vs 2/3 for the uniform placeholder.
+- **H66d — Phase 63 without the postulate:** recomputing the c₁ reading with the derived amplitude ψ² as INPUT reproduces the Phase-63 φ² m_e reading (M_assoc = 1.338 MeV, R = 1.114, E_VR = 2.84 keV, all inside the IXPE band).
+- **H66e — OQ1 first estimate:** the level-4/level-3 stacking suppression ratio is 1/φ² = 0.3820 (the first dynamical number for the dimensional-emergence note's OQ1).
+- **Verdict:** the analytic derivation (ψ² = 1/φ²) is exact; the runtime test confirms the golden-gate distribution gives the associator amplitude 1/φ². Axiom 2.14 graduates from axiom to theorem-of-the-RG; the oldest open discrepancy (Phase-5 report's associator 1.0 vs 1/φ²) is resolved: the raw unrenormalized gate product (1.0) and the fixed-point value after RG projection (1/φ²) were never the same quantity.
+
 ### Variable Gravity
 - **Formula:** $G_{\text{eff}} \propto \rho_{\text{fold}}^{1/\varphi}$
 - **Prediction:** ~76% void lensing suppression

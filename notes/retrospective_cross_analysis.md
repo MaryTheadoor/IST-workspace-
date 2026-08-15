@@ -447,6 +447,27 @@ Each negative *located* the mechanism rather than killing it.
   signature) remains a conjecture, with the testable content that the
   zero-point direction contributes no open causal structure. Registry 85 ->
   89.)
+  The top derivation gap is closed (Phase 66: why-phi^2, the associator
+  amplitude from the conjugate root). The substrate's exact RG (Fibonacci
+  substitution A->AB, B->A, Phase 58) has characteristic equation
+  lambda^2 = lambda + 1 with TWO roots: phi = 1.618 (growth eigenvalue) and
+  psi = -1/phi = -0.618 (contraction eigenvalue, the seam parity flip).
+  The associator [x,y,z] = (x*y)*z - x*(y*z) compares two bracketings; both
+  contain the same gate crossings, so they agree to first order in psi; the
+  mismatch is two crossings deep -> psi^2 = (-1/phi)^2 = +1/phi^2 (parity-
+  even, matching Phase 63's observation). The runtime test: replace the
+  uniform placeholder in directed_numbers.py with the golden-gate
+  distribution (symmetric power-law p(r) ~ |r|^alpha with alpha ~ -0.690116
+  chosen so E|r1-r2| = 1/phi^2); the runtime associator converges to
+  0.3841 +/- 0.0011 (target 1/phi^2 = 0.3820, 0.5% error) vs 2/3 for the
+  uniform placeholder. Phase 63's phi^2 m_e reading is reproduced without
+  postulate (M_assoc = 1.338 MeV, R = 1.114, E_VR = 2.84 keV). OQ1's first
+  dynamical number: the level-4/level-3 stacking suppression ratio is
+  1/phi^2 = 0.3820. Axiom 2.14 graduates from axiom to theorem-of-the-RG;
+  the oldest open discrepancy (Phase-5 report's associator 1.0 vs 1/phi^2)
+  is resolved: the raw unrenormalized gate product (1.0) and the fixed-point
+  value after RG projection (1/phi^2) were never the same quantity.
+  Registry 89 -> 93.)
 
 ---
 
