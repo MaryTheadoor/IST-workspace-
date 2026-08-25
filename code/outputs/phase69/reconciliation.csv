@@ -1,0 +1,3 @@
+mechanism,potential_form,range,long_range_tail
+dimensional-collapse (Phase 8 note),V ~ -A exp(-d^2/2 sigma^2),short (cutoff sigma),none (exponential)
+thread-counting (this phase),V ~ -G Mm/r,infinite (conserved flux),1/r^2 (Newtonian)
