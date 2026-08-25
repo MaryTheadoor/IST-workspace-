@@ -1,0 +1,313 @@
+# Dimensional Emergence in IST: From the Zero-Point Oscillation to 3D Space, and Local 4D Embedding in Black Holes
+
+**Status:** Internal research note (draft) — conceptual framework note, pre-phase
+**Authors:** NOWN Research Collective
+**Date:** 2026-08-05
+**Related:** Phases 1, 6, 8, 8b, 24, 36, 41, 44, 47, 48, 52, 55–57; Plans 9, 10, 12; Phase 2 BH topology (Runs A–E)
+
+---
+
+## 1. Motivation
+
+The Constants-from-Geometry program established *that* the substrate is a
+non-orientable 2D manifold with an exact half-integer twist (Phases 1, 47),
+and the observational program established that gradual dimensional
+crystallization at observable redshift is excluded (Phase 36, ~985σ; Phase 44
+BAO confirmation). What remains open is the *mechanism and logic* of
+dimensional emergence: why a 2D substrate exists at all, why observable space
+is 3D, why the dimensions are mutually orthogonal, and what happens to
+dimensionality where matter collapses.
+
+This note consolidates a conceptual framework for these questions. It is
+deliberately theory-first: no new simulations are proposed here. Instead, we
+state postulates and theorems in a form that future phases can test, and we
+connect each element to results already in the repository. Two of the
+arguments (§4, §7) appear to be new structural contributions: the
+uniqueness of 3D from knot stability, and black holes as the *only*
+regions where local 4D embedding is tolerable.
+
+---
+
+## 2. Postulate set: from zero to sheet
+
+**P0 — The zero-point locus.** The fundamental state is the oscillation
+between manifest and unmanifest across the 0-point locus Ω. Zero is not
+absence but an undifferentiated superposition of all potential manifest
+information. This is already encoded in the Plan 9 runtime's distinction
+between `is_absolute_zero` and `is_directed_zero`: zero has structure, and
+crossing it flips parity. The Ω/Ω_inv cycle is the most primitive dynamics
+the substrate possesses.
+
+**P1 — The oscillation axis.** The Ω-oscillation defines the first
+pre-geometric direction: the amplitude axis, transverse to any propagation.
+It is the seed of the orthogonal dimension in which amplitude operates.
+
+**P2 — The sheet as minimal wave-bearer.** Coherent propagation requires
+two directions: the direction of travel and the orthogonal direction in
+which amplitude operates. A 2D sheet is therefore the *minimal structure
+capable of bearing a wave*. Emergent dimensions are relative to coherent
+structure: below the vacuum-pump coherence threshold (Phase 8, layers
+8–11), there is no wave, hence no dimension — the spectral dimension becomes
+well-defined only above threshold.
+
+**Clarification (P2′).** Two distinct claims must be kept separate:
+
+- *(a) Orthodox:* oscillation requires a phase space — a quantity and its
+  conjugate. Symplectic structure is 2n-dimensional; quantum amplitudes are
+  complex for the same reason. This is not controversial.
+- *(b) Radical:* the amplitude direction is a *literal* pre-geometric
+  dimension. This is IST's committed postulate, comparable in kind to string
+  theory's transverse worldsheet vibrations defining embedding space. The
+  note adopts (b) explicitly: the dimension orthogonal to propagation *is*
+  the substrate's own oscillation axis.
+
+**P3 — Stacking.** Sheets occur along the temporal axis and stack, layered
+in both parity directions outward from Ω into the expanding Klein-bottle
+universe. The stacking direction — the Ω-oscillation axis promoted to a
+geometric direction once adjacent sheets lock into coherent phase
+relations — is the emergent third dimension. Within a sheet, physics is 2D
+(consistent with the Phase 8b measured D_eff ≈ 2.0–2.8 for the single-sheet
+Klein oscillator ensemble); across the stack, effective 3D.
+
+**P4 — The time crystal predates space.** A sheet oscillating across Ω with
+the tick period is the δ_tc term of the master equation. On the stacking
+picture, time-crystallinity is *more* fundamental than 3D space: the
+oscillation exists before and during the stacking, and is therefore subject
+to inflationary amplification while dimensions crystallize (Plan 12:
+N_inf ≈ 49–52 e-folds; the 3D-vs-2D amplification factor of ~1300× in
+plan12_3d_time_crystal.py is re-interpreted as the opening of the stacking
+direction).
+
+---
+
+## 3. Orthogonality as harmonic compatibility
+
+**Claim.** Spatial orthogonality is mode-independence in the substrate's
+harmonic space.
+
+Two emergent directions are orthogonal when their associated oscillation
+modes share no Fourier content — mutually incommensurate (golden-separated,
+per the Phase 6/8 anti-resonance principle) frequency channels.
+Commensurate channels phase-lock and merge into a single direction;
+incommensurate channels remain independent axes.
+
+Consequences:
+
+- **Why 90°:** a geometric rotation between orthogonal axes is a
+  superposition in mode space; independent harmonic modes admit no such
+  decomposition. Maximal harmonic independence = spatial orthogonality.
+- **Why other sheets are invisible:** the 2D sheet plane through Ω can in
+  principle be projected at any rotation; sheets whose coupling channels are
+  incommensurate with ours do not interact with our matter or light. We see
+  the world "illuminated by photons and comprised of baryons" because those
+  are the structures sharing our harmonic coupling class.
+- **Division of labor:** harmonic compatibility explains *orthogonality and
+  mutual decoupling* — it does **not** fix the number of dimensions. That
+  comes from topology (§4). The two explanations are independent and fail
+  differently under attack; the writeup of the formal paper should keep
+  them separate.
+
+---
+
+## 4. Why exactly three dimensions: the knot-stability theorem
+
+**Theorem (classical).** A 1-dimensional thread forms stable knots only in
+exactly three dimensions:
+
+- In ≤2D, a thread cannot cross itself: no knots exist.
+- In ≥4D, every knot unknots: the extra freedom always allows the strand to
+  be slid around the crossing.
+
+**IST identification.** Matter in IST is stable topological information-knots
+of substrate threads (Phase 24: ~3% stable-knot fraction; Phase 48: the
+Fibonacci SM multiplicity mapping; Phase 52: twist-generated knot partition
+from dynamics, 0.0344 ± 0.0128 consistent with 1/F_9 = 1/34). Therefore:
+
+> **Stable matter exists in exactly one dimensionality: 3. The emergent
+> space is 3D not approximately, and not as the bottom of a ladder, but
+> uniquely.**
+
+This converts the intuition "knots need an additional embedding dimension"
+into a selection theorem. It also answers the stacking-continuation
+objection (why doesn't the stack continue to 4, 5, …?): any substrate
+history that stacks beyond three dimensions unknots its own matter and
+contains no persistent structure — no coherent history, no observers, no
+record. Four-dimensional stacking is not forbidden by fiat; it is
+*self-erasing*. (See §7 for the crucial local exception.)
+
+**Supporting convergence — the twist is the price of 3D.** The Klein bottle
+immerses in ℝ³ only with a self-intersection (it embeds cleanly only in
+ℝ⁴, by the Whitney immersion theorem's sharpness for this case). The
+self-intersection locus of the 3D immersion *is* the flat Z₂ seam whose
+meridian holonomy W = −1 gives θ = arg(W)/2π = 1/2 (Phase 47). Hence:
+
+> **3D is the minimal immersion dimension of the substrate, and the
+> half-integer twist is the unavoidable cost of that immersion. The
+> dimension count and the twist are derived from each other.**
+
+This links the two most load-bearing structures in the framework — the
+dimension number and θ = ½ — into a single topological fact.
+
+**Literature positioning (for the formal paper).** Cite and differentiate:
+
+- Brandenberger–Vafa (string gas cosmology): winding strings annihilate
+  only in ≤3+1 dimensions, so only three can decompactify — same "why 3"
+  spirit, different mechanism.
+- Tegmark's dimensionality arguments: stable orbits and clean Huygens-principle
+  wave propagation only in 3+1 — complementary selection pressures.
+- Whitney immersion/embedding theorems; the classical unknotting theorem
+  in codimension ≥ 3.
+
+---
+
+## 5. The photon as the template coherent structure
+
+The sheet picture gives the Phase 55–57 photon results a natural geometric
+reading. The photon is a dual-mode wave function: amplitude oscillates
+across Ω (the zero-crossing parity cycle of P0) *while* rotating around the
+axis of propagation in one of two chiral fashions — the two polarizations.
+Chirality is rotation within the sheet; the parity cycle is oscillation
+across the sheet-normal (the future stacking direction). The measured
+achirality contrast (photon 0.000 vs electron 0.446, Phase 55) and the
+forced dual-mode geometry (Phase 57) are consistent with the photon being
+the minimal coherent structure that *uses both* the in-sheet rotation and
+the cross-Ω oscillation — the template from which the emergent dimensions
+themselves are read out. This is the sense in which "dimensions are
+relative to coherent structure": the photon is not in the dimensions; the
+dimensions are made of photon-like coherence relations.
+
+---
+
+## 6. Consistency constraints from the falsification record
+
+The mechanism must satisfy the boundary conditions set by past honest
+negatives:
+
+| Constraint | Source | Implication for stacking |
+|---|---|---|
+| D(z) → 2 gradual crystallization excluded at ~985σ | Phase 36 (CMB shift prior) | Stacking must complete *before* recombination |
+| BAO at z ≤ 1.5 does not discriminate | Phase 44 | No residual 2D signature at observable z |
+| D_eff ≈ 2, never φ, under spectral RG | Phases 1, 51, 58 | Single-sheet physics is 2D; φ enters as RG/flow eigenvalue, not dimension |
+| Sheet ensemble D_eff ≈ 2.0–2.8 | Phase 8b | Consistent with single-sheet effective dimension |
+
+Framing: the emergence mechanism is a *cosmogony* (an early-universe event),
+not an ongoing process. Phase 36/44 are not failures of this note's picture
+but design specifications for it.
+
+---
+
+## 7. Black holes: the local 4D exception and the zero-point singularity
+
+The global argument of §4 forbids 4D stacking *where coherent history is
+required*. This suggests its own exception: **local 4D embedding may occur
+precisely where unknotting is acceptable — inside black holes.**
+
+**7.1 The interior as locally 4D.** Phase 2 (Run B) already tracked compact
+dimension growth with infall: n_compact = ⌊ρ_I/ρ_I^crit⌋, followed to
+n = 6. We re-interpret the first such opening as the onset of a local fourth
+embedding dimension in the horizon interior, where information density
+exceeds the knot-stability threshold.
+
+**7.2 Unknotting = disintegration of matter.** By the theorem of §4, in the
+locally 4D interior all thread-knots untie. Matter does not survive as
+configured structure. This is the IST mechanism behind the *appearance* of a
+singularity: the interior is not a point of infinite density but a region
+where information has returned to the unconfigured, zero-point state of P0 —
+a **macroscopic projection of the Ω locus**. The information is all in
+there, but it is no longer knotted into matter: it is pure probabilistic
+information, an undifferentiated superposition, until release.
+
+**7.3 Information conservation.** Unknotting destroys configuration, not
+information — the same unitarity verified in Phase 41 (collapse as unitary
+redistribution of topological charge; error = 0.0) and in the Plan 9
+compression–expansion cycle (4.76 → 0 → 4.76). The linking-number content
+of the former knots persists as phase/amplitude correlations in the
+probabilistic state, written on the horizon's Klein-bottle topology (Phase
+2's sphere → Klein transition under gradient trigger; hysteresis at the
+boundary).
+
+**7.4 Hawking radiation as re-release.** Release is the inverse of the
+inversion vortex: as the horizon re-radiates, threads re-emerge into 3D,
+where they *can* re-knot. The Phase 2 non-thermal Hawking spectrum — narrow
+Lorentzian peaks at ω_i = (c/R_s)·Lk_i, indexed by winding/linking numbers —
+is then read literally: **the spectrum carries the knot census of the
+infallen matter, released as quantized information during inversion events.**
+This distinguishes IST Hawking radiation from the thermal Hawking spectrum
+and from the standard information-paradox framing: there is no paradox
+because the interior state is information-complete, merely unconfigured —
+and the release channel is spectrally structured, not thermal.
+
+**7.5 Why this resolves the dimensional self-consistency question.** The
+same theorem now explains both regimes: globally, 4D stacking self-erases
+(§4) so the universe is stably 3D; locally, inside horizons, 4D embedding is
+the *only* place it can occur, and there it does — with the observational
+signature carried by the radiation spectrum rather than by any persistent
+structure. The black hole is where the universe locally returns to the zero
+point, and Hawking radiation is the zero point giving the information back.
+
+**7.6 Falsifiable hooks (existing, to be sharpened).**
+
+- Non-thermal spectral peaks at linking-number frequencies (Phase 2 Run E;
+  Phase 5 GW/PTA sensitivity analysis: currently below detectability —
+  sensitivity-limited, not null).
+- Ringdown echo structure f_tc = f_rd/(2φ) (Plan 10 Phase C; Phase 5
+  matched-filter pipeline).
+- Horizon hysteresis memory (2667 flips, Run A): reversible topology
+  transitions should leave statistical signatures in horizon-scale
+  fluctuations.
+
+---
+
+## 8. Open questions
+
+1. **The stopping rule, stated dynamically.** §4 gives the selection
+   argument (4D self-erases); what is missing is the *dynamical* statement —
+   which substrate coupling makes the stacking amplitude at level 4
+   suppressed relative to level 3? Candidate: the associator magnitude of
+   the stacking triple product; ties to the long-open associator-amplitude
+   derivation (Phase 5 report, §7.3 discrepancy 1.0 vs 1/φ²).
+2. **The sheet–stack transition scale.** At what information density does
+   coherent stacking begin — and is it the same ρ_I^crit as the BH
+   compact-dimension threshold (Run B)? If yes, dimensional opening inside
+   horizons and dimensional emergence in cosmogony are the same event at
+   different eras; if no, why two thresholds?
+3. **Harmonic classes.** Can the "coupling class" of P3/§3 be defined
+   operationally in the directed-numbers runtime (e.g., as a commensurability
+   equivalence relation on thread frequencies)? This would make "other
+   sheets are invisible" a theorem of the runtime rather than a narrative.
+4. **Time crystal before space.** P4 inverts the usual presentation; check
+   consistency with Plan 12's joint CMB fit (oscillation suppressed by the
+   Planck H0 prior) and with the Phase 59/60 amplitude-gap problem (×38):
+   does sheet-era amplification naturally supply the missing factor, in
+   whole or part?
+5. **Photon template.** Does the dual-mode photon geometry (Phase 55–57)
+   uniquely fix the sheet's local frame (propagation axis + rotation plane)?
+   If so, the emergent coordinate system is photon-defined and the Lorentz
+   structure may follow rather than be assumed.
+
+---
+
+## 9. Proposed formalization order (theory-first, no new compute)
+
+1. This note → internal review; extract postulates P0–P4 into
+   `supplementary/dimensional_emergence.md` once stable.
+2. §4 theorem + twist-immersion argument → candidate section for the v8.x
+   formal paper ("Why three dimensions, and why the twist: one topological
+   fact").
+3. §7 → integration with the BH topology chapter (Phase 2) and the
+   information-paradox discussion; sharpen the three falsifiable hooks.
+4. Only then: a computational phase (tentative "Phase 6x: sheet-stacking
+   automaton") testing whether coherent stacking of Klein oscillator sheets
+   reproduces D_eff crossing 3 with the golden window at the transition —
+   designed to fail gracefully (each of P2–P4 independently checkable).
+
+---
+
+## 10. References (to be completed in references.bib)
+
+- Brandenberger, R. & Vafa, C. (1989). Superstrings in the early universe. *Nucl. Phys. B* 316, 391.
+- Tegmark, M. (1997). On the dimensionality of spacetime. *Class. Quantum Grav.* 14, L69.
+- Whitney immersion/embedding theorems (standard topology references).
+- Rolfsen, *Knots and Links* (unknotting in codimension ≥ 3).
+- Repo-internal: Phases 1, 2 (Runs A–E), 5, 6, 8, 8b, 24, 36, 41, 44, 47,
+  48, 52, 55–57, 58, 59, 60; Plans 9, 10 (A–C), 12; REPORT_PHASE5.md.

@@ -108,3 +108,4 @@ phase,relation,form,domain,outcome,best_agreement,reason
 69,Newton's constant from substrate,G = kappa c^2 L^2/(16 pi^3 hbar^2),gravity,DERIVED,verified ratio 1.0000 against measured G,happy gap: kappa and L remain; Planck-length id wrong by ~95 orders
 69,exponent tracks dimension,force exponent exactly -(D-1),gravity,DERIVED,D=3 -> -2; D=4 -> -3,inverse-square requires D=3 -> cross-validates Phase 68
 69,reconciliation of two gravity mechanisms,dimensional-collapse Gaussian vs thread-counting 1/r^2,gravity,SUPPORTED,agree at short range; thread-counting supplies long-range,dimensional-collapse note's "no infinite-range tail" RESOLVED claim revised
+69,H-GRAV1: thread-counting 1/r^2 profile (parallel-agent registry 113),conserved thread flux gives fitted slope -2.000 for D=3,gravity,RESOLVED,satisfied by Phase 69 (H69b/H69d) - count-don't-inject,do NOT re-run; Phase 69 derives the conservation (Phase 65) rather than embedding a knot
