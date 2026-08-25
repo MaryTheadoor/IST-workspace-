@@ -53,18 +53,18 @@ global symmetry.
   (real 2D systems do this — fractional quantum Hall). Speculative-prediction
   candidate; registry-labeled.
 - The toy scan used a flux-cylinder lattice, not the true Fibonacci-Klein
-  lattice; promotion requires Phase 70.
+  lattice; promotion requires Phase 71.
 
-## Phase 70 — pre-registered hypotheses (renumbered: my Phase 69 is gravity)
+## Phase 71 — pre-registered hypotheses (renumbered: none — Phase 71 is the twist scan; Phase 70 is H-GRAV2)
 
-- **H70a:** Braid statistics on the true Fibonacci-Klein lattice reproduce
+- **H71a:** Braid statistics on the true Fibonacci-Klein lattice reproduce
   χ_n = e^{i2πnθ} under a generalized seam holonomy.
-- **H70b:** The knot-stability band (Phase 52's 0.044) as a function of θ
+- **H71b:** The knot-stability band (Phase 52's 0.044) as a function of θ
   **peaks at θ = ½** — graduating the stability intuition to a derived result.
-- **H70c:** The Casimir/vacuum-cost curve computed (not asserted), maximum
+- **H71c:** The Casimir/vacuum-cost curve computed (not asserted), maximum
   at θ = ½.
-- **H70d:** Reality islands at exactly {0, ½} on the true lattice.
-- **H70e:** The spectral dimension D_s is θ-blind — the dimensional-emergence
+- **H71d:** Reality islands at exactly {0, ½} on the true lattice.
+- **H71e:** The spectral dimension D_s is θ-blind — the dimensional-emergence
   machinery (Phases 13/14/68) is independent of the seam flux; the twist is
   visible to statistics, invisible to dimension.
 

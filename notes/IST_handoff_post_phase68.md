@@ -44,7 +44,7 @@ recommended queue; §10 lists the guardrails.
 
 ---
 
-## 1. Twist as a variable (→ proposed Phase 70; renumbered — my Phase 69 is gravity)
+## 1. Twist as a variable (→ proposed Phase 71; renumbered — my Phase 69 is gravity)
 
 **Origin:** user's question — if the Klein twist (θ = ½) is the axis that
 stabilizes knots by introducing asymmetry, is one twist the only option?
@@ -74,13 +74,13 @@ Scan θ ∈ [0, 1).
 
 | # | ID | Test | Pass criterion |
 |---|---|---|---|
-| 105 | H70a | Lattice braid reproduces χ_n = e^{i2πnθ} | machine-precision phase match (harness T1: err 1.1e-16) |
-| 106 | H70b | Knot-stability band vs θ peaks at θ = ½ | risky test; honest negative publishable |
-| 107 | H70c | Casimir gap maximal at θ = ½ | computed (harness T2); re-verify on Fibonacci-Klein lattice |
-| 108 | H70d | Reality islands at {0, ½} only | computed (harness T3); promote to theorem sketch |
-| 109 | H70e | D_s θ-blind | computed (harness T4, spread 0.023) |
+| 105 | H71a | Lattice braid reproduces χ_n = e^{i2πnθ} | machine-precision phase match (harness T1: err 1.1e-16) |
+| 106 | H71b | Knot-stability band vs θ peaks at θ = ½ | risky test; honest negative publishable |
+| 107 | H71c | Casimir gap maximal at θ = ½ | computed (harness T2); re-verify on Fibonacci-Klein lattice |
+| 108 | H71d | Reality islands at {0, ½} only | computed (harness T3); promote to theorem sketch |
+| 109 | H71e | D_s θ-blind | computed (harness T4, spread 0.023) |
 
-**Phase 70 scope:** rerun H70b–H70e on the true Fibonacci-Klein lattice
+**Phase 71 scope:** rerun H71b–H71e on the true Fibonacci-Klein lattice
 (Phase 51/58 machinery), not the toy cylinder/torus. Full detail:
 `notes/IST_twist_variable_scan.md`.
 
@@ -246,7 +246,7 @@ bridges to Q3).
 
 | Registry # (proposed) | ID | One-liner | Effort | Class |
 |---|---|---|---|---|
-| 105–109 | H70a–e | Twist scan on Fibonacci-Klein lattice | medium | phase (70) |
+| 105–109 | H71a–e | Twist scan on Fibonacci-Klein lattice | medium | phase (71) |
 | 110 | H-IW1 | Bragg peaks at φ-momenta | low | runtime |
 | 111 | H-IW2 | KAM stability of mass tower | high | analysis+runtime |
 | 112 | H-IW3 | DTC period-2 = seam Z₂ | medium | runtime |
@@ -263,11 +263,11 @@ bridges to Q3).
    directly feeds the standing "gravity thread-counting" queue item.
 2. **H-IW1** — cheapest new computation overall (FFT of existing lattices);
    independent-φ evidence if positive.
-3. **Phase 70 (H70a–e)** — promote the twist scan to a full phase on the
+3. **Phase 71 (H71a–e)** — promote the twist scan to a full phase on the
    Fibonacci-Klein lattice; H69b is the risky falsifiable one.
 4. **H-GRAV2** — the attraction sign (now Phase 70); needs the H-GRAV1 profile as
    profile as the reference).
-5. **H70c/d/e** promotion + **H-IW3** (DTC) as a pair — both are
+5. **H71c/d/e** promotion + **H-IW3** (DTC) as a pair — both are
    seam-in-time vs seam-in-space checks.
 6. **Q1 (BH area law from thread counting)** — high effort, highest payoff;
    the discriminator for the whole latency program.
