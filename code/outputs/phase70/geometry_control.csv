@@ -1,0 +1,3 @@
+model,kappa,E_int,dEdd,attracts
+with tension (kappa),0.0013936703267906137,-5.152155806379596e-08,1.7173852687931987e-08,True
+pure geometry (kappa=0),0.0,-0.0,0.0,False
