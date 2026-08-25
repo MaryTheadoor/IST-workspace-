@@ -485,6 +485,14 @@ plot_hopf_fiber(save_path="figures/hopf_mobius.png")
 - **H68d — the topological instability at level 4:** knot stability collapses at N = 4 (0.006 vs the Phase 52 band of 0.044) — knots unknot in 4D (codimension too high). The second half of the stopping rule.
 - **H68e — OQ1 closed:** the full dynamical statement — (1) each additional level is suppressed by 1/φ² (Phase 66's ψ²), making D_eff converge to 2φ ≈ 3.236; (2) level 4 is topologically unstable; together these select 3 spatial dimensions. The coherence-threshold gap from Phase 67 is addressed: the factorization emerges at the stacking transition (N = 3), not from the zero-point dynamics.
 
+### Gravity from Thread-Counting (Phase 69 — the inverse-square law)
+- **Question (queue item 3):** derive the 1/r² law from counting stretched lattice threads. The dimensional-collapse note's Gaussian kernel explicitly *resolves* that it does NOT reproduce 1/r² (exponential cutoff); this phase supplies the missing infinite-range sector.
+- **H69a — mass ∝ thread count:** N(M) = Mcℓ/(2πℏ) from the emc² formula — exactly linear (N/M constant to machine precision, no free exponent).
+- **H69b — conserved flux gives 1/r²:** threads emitted isotropically (golden-angle spiral, the IST anti-resonant distribution, Phase 6) are NOT dissipated (Phase 65 zero-point conservation), so every shell passes all threads; the flux density falls as r^(1−D), fitted slope −2.000 for D=3, with NO exponential tail. This supersedes the dimensional-collapse note's "no infinite-range tail" resolve.
+- **H69c — Newton's constant from the substrate:** F = κ·N(M)N(m)/(4πr²) assembles to G = κc²L²/(16π³ℏ²), verified to ratio 1.0000. Honest gap: two constants (coupling κ, substrate length L) remain; the naive Planck-length identification is wrong by ~95 orders.
+- **H69d — exponent tracks the dimension:** force exponent is exactly −(D−1): D=2 → −1, D=3 → −2, D=4 → −3. The inverse-square law *requires* D=3 — a cross-validation of Phase 68 (and a falsification of the naive-axis 4D overshoot, which would give 1/r³).
+- **H69e — the reconciliation:** the two IST gravity mechanisms — dimensional-collapse (Gaussian, short-range, exponential cutoff) vs thread-counting (conserved flux, long-range, 1/r²) — agree at short range; thread-counting supplies the Newtonian infinite-range tail. The dimensional-collapse note's "no infinite-range tail" RESOLVED claim is revised.
+
 ### Variable Gravity
 - **Formula:** $G_{\text{eff}} \propto \rho_{\text{fold}}^{1/\varphi}$
 - **Prediction:** ~76% void lensing suppression

@@ -509,6 +509,23 @@ Each negative *located* the mechanism rather than killing it.
   threshold gap from Phase 67 is addressed: the factorization emerges at
   the stacking transition (N=3), not from the zero-point dynamics.
   Registry 96 -> 99.
+  Gravity from thread-counting (Phase 69: the inverse-square law). The final
+  big derivation item. The dimensional-collapse note (gravity_from_dimensional_
+  collapse.md) uses a Gaussian kernel and explicitly resolves that it does NOT
+  reproduce 1/r^2 (exponential cutoff). This phase supplies the missing
+  infinite-range sector by counting threads. H69a: mass ~ thread count, N =
+  McL/(2 pi hbar), exactly linear (N/M constant to machine precision). H69b:
+  conserved flux gives 1/r^2 — threads emitted isotropically (golden-angle
+  spiral, Phase 6) are NOT dissipated (Phase 65 zero-point conservation), so
+  every shell passes all threads; flux density ~ r^(1-D), fitted slope -2.000
+  for D=3, NO exponential tail. H69c: G = kappa c^2 L^2/(16 pi^3 hbar^2),
+  verified to ratio 1.0000; honest gap: kappa and L remain, Planck-length
+  identification wrong by ~95 orders. H69d: force exponent is exactly -(D-1),
+  so inverse-square requires D=3 — cross-validates Phase 68. H69e: the two IST
+  gravity mechanisms (dimensional-collapse Gaussian short-range vs thread-
+  counting conserved-flux 1/r^2 long-range) agree at short range; thread-
+  counting supplies the Newtonian infinite-range tail. The dimensional-collapse
+  note's "no infinite-range tail" RESOLVED claim is revised. Registry 104 -> 109.
 ---
 
 *The project has moved from "where does φ come from?" (falsified as static,

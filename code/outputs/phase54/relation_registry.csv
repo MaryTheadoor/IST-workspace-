@@ -103,3 +103,8 @@ phase,relation,form,domain,outcome,best_agreement,reason
 68,naive-axis model overshoots,naive-axis crosses 3 at N=2 and grows linearly (2N),dimensional emergence,NEGATIVE,falsified by contrast with locus model,no anti-resonant gap without golden-angle rotation
 68,topological instability at level 4,knot stability collapses to 0.006 at N=4 (vs 0.044 band),topological stability,DERIVED,knots unknot in 4D (codimension too high),second half of the stopping rule
 68,OQ1 closed: 3D selected,suppression 1/phi^2 + 4D topological instability,dimensional emergence,DERIVED,D_eff converges to 2*phi and level 4 is unstable,the full dynamical stopping rule
+69,mass ~ thread count,N(M) = McL/(2 pi hbar) exactly linear,gravity,SUPPORTED,N/M constant to machine precision,emc2 formula: mass is the number of frozen information threads
+69,conserved flux gives 1/r^2,flux density ~ r^(1-D); slope -2.000 for D=3,gravity,DERIVED,no exponential tail; every shell passes all threads,Phase 65 zero-point conservation -> no dissipation
+69,Newton's constant from substrate,G = kappa c^2 L^2/(16 pi^3 hbar^2),gravity,DERIVED,verified ratio 1.0000 against measured G,happy gap: kappa and L remain; Planck-length id wrong by ~95 orders
+69,exponent tracks dimension,force exponent exactly -(D-1),gravity,DERIVED,D=3 -> -2; D=4 -> -3,inverse-square requires D=3 -> cross-validates Phase 68
+69,reconciliation of two gravity mechanisms,dimensional-collapse Gaussian vs thread-counting 1/r^2,gravity,SUPPORTED,agree at short range; thread-counting supplies long-range,dimensional-collapse note's "no infinite-range tail" RESOLVED claim revised
