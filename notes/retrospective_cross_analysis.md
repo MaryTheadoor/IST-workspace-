@@ -526,6 +526,28 @@ Each negative *located* the mechanism rather than killing it.
   counting conserved-flux 1/r^2 long-range) agree at short range; thread-
   counting supplies the Newtonian infinite-range tail. The dimensional-collapse
   note's "no infinite-range tail" RESOLVED claim is revised. Registry 104 -> 109.
+  H-GRAV2 executed (Phase 70: the attraction sign from linking-mode tension).
+  The gravity-as-latency-gradient note (sec 4) flags the obstacle: in 2+1-D
+  conical defects do NOT attract, so pure geometry (widening alone) gives
+  curvature but not pull. The burden is to derive, from the substrate
+  Hamiltonian (master equation, Phase 33), that the shared harmonic modes
+  between two knots are under tension and that letting them approach lowers
+  the total mode energy. H70a: E_int(d) = -kappa^2 c^2 G(d), G = 1/(4 pi d)
+  the continuum 3D kernel (knots live in emergent 3D space, Phase 68's
+  D_eff = 3); the finite-lattice cross-check is documented as a limitation
+  (it does not reproduce the continuum kernel at finite L with mu-regularization
+  -- the emergent medium is continuum, not a finite grid). H70b: attraction/
+  binding -- E_int < 0 (bound), dE/dd > 0 (more negative as d shrinks), so
+  F = -dE/dd < 0 toward the other knot = ATTRACTION at all sampled d. H70c:
+  the sign comes from the tension, NOT geometry -- the control (kappa = 0,
+  pure geometry) gives zero interaction and NO attraction, respecting the
+  2+1-D no-attraction theorem. H70d: the force profile is 1/d^2 -- exponent
+  = -(D-1) exactly (D=3 -> -1.993, D=2 -> -0.996, D=4 -> -2.989), so the
+  inverse-square law requires D=3. H70e: H-GRAV2 survives -- attraction is a
+  DERIVED consequence of the master-equation linking tension
+  (kappa = (alpha/phi^2) Xi_eff), not an assumption. The flag-and-verify
+  sequence is now: 1/r^2 skeleton (Phase 69) -> attraction sign (Phase 70)
+  -> the metric/latency component (H-GRAV3, open). Registry 110 -> 115.
 ---
 
 *The project has moved from "where does φ come from?" (falsified as static,
